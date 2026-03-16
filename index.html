@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LeanLog — AI Agents for Warehouses</title>
+<meta name="description" content="LeanLog automates supplier communications, procurement, invoicing, and scheduling. No software to learn. Your team just talks.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ── Reset & Tokens ────────────────────────────────────────────── */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#f8f5ef;
+  --bg2:#f1ede6;
+  --bg3:#e9e4db;
+  --bg4:#e1dbd0;
+  --accent:#141210;
+  --accent-dim:rgba(0,0,0,.04);
+  --accent-glow:rgba(0,0,0,.08);
+  --text:#141210;
+  --text2:#5a5650;
+  --text3:#a09a92;
+  --border:rgba(0,0,0,.08);
+  --border2:rgba(0,0,0,.14);
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+
+/* ── Dot-grid ──────────────────────────────────────────────────── */
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:radial-gradient(rgba(0,0,0,.06) 1px,transparent 1px);
+  background-size:32px 32px;
+}
+
+/* ── Scrollbar ─────────────────────────────────────────────────── */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--text3);border-radius:2px}
+
+/* ── Utility ───────────────────────────────────────────────────── */
+.container{max-width:1140px;margin:0 auto;padding:0 48px}
+.tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--text3);margin-bottom:22px}
+.tag::before{content:'//'}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-d1{transition-delay:.08s}
+.reveal-d2{transition-delay:.16s}
+.reveal-d3{transition-delay:.24s}
+.reveal-d4{transition-delay:.32s}
+
+/* ── Navigation ────────────────────────────────────────────────── */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  padding:0 48px;height:60px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(248,245,239,.92);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{
+  font-family:var(--mono);font-size:16px;font-weight:500;letter-spacing:-.3px;
+  color:var(--text);
+}
+.nav-logo span{opacity:.45}
+.nav-center{display:flex;gap:32px}
+.nav-center a{font-size:13px;color:var(--text3);letter-spacing:.2px;transition:color .2s}
+.nav-center a:hover{color:var(--text2)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.btn-ghost{
+  font-size:13px;color:var(--text3);padding:7px 16px;
+  border:1px solid var(--border2);background:none;cursor:pointer;
+  font-family:var(--sans);transition:all .2s;letter-spacing:.1px;
+}
+.btn-ghost:hover{color:var(--text2);border-color:var(--text3)}
+.btn-primary{
+  font-size:13px;font-weight:500;color:var(--bg);background:var(--accent);
+  padding:8px 20px;border:none;cursor:pointer;font-family:var(--sans);
+  transition:all .2s;letter-spacing:.2px;
+  display:inline-flex;align-items:center;
+}
+.btn-primary:hover{background:#2e2b28;box-shadow:0 4px 20px rgba(0,0,0,.15)}
+.btn-outline{
+  font-size:13px;font-weight:500;color:var(--text);background:none;
+  padding:8px 20px;border:1px solid var(--border2);cursor:pointer;
+  font-family:var(--sans);transition:all .2s;letter-spacing:.2px;
+  display:inline-flex;align-items:center;gap:6px;
+}
+.btn-outline:hover{background:var(--bg2);border-color:var(--text3)}
+
+/* ── Hero ──────────────────────────────────────────────────────── */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  justify-content:center;padding:120px 48px 80px;
+  position:relative;overflow:hidden;
+}
+.hero-glow{
+  position:absolute;top:-20%;right:-10%;width:800px;height:800px;
+  background:radial-gradient(circle,rgba(0,0,0,.03) 0%,transparent 65%);
+  pointer-events:none;
+}
+.hero-inner{max-width:1140px;margin:0 auto;width:100%}
+.hero-eyebrow{
+  display:flex;align-items:center;gap:12px;margin-bottom:32px;
+  opacity:0;animation:fadeUp .8s .1s forwards;
+}
+.eyebrow-badge{
+  font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--text3);padding:5px 14px;border:1px solid var(--border2);
+}
+.eyebrow-line{width:36px;height:1px;background:var(--border2)}
+.hero h1{
+  font-family:var(--serif);font-size:clamp(38px,5vw,70px);line-height:1.07;
+  max-width:860px;margin-bottom:24px;color:var(--text);
+  font-weight:400;letter-spacing:-.5px;
+  opacity:0;animation:fadeUp .8s .22s forwards;
+}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.hero-sub{
+  font-size:16px;line-height:1.8;color:var(--text2);max-width:480px;
+  margin-bottom:44px;font-weight:300;
+  opacity:0;animation:fadeUp .8s .38s forwards;
+}
+.hero-actions{
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  opacity:0;animation:fadeUp .8s .52s forwards;
+}
+.hero-actions .btn-primary,.hero-actions .btn-outline{padding:12px 28px;font-size:14px}
+.hero-contact{
+  display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text3);
+  padding:11px 22px;border:1px solid var(--border2);transition:all .2s;
+}
+.hero-contact:hover{border-color:var(--border2);color:var(--text2)}
+.hero-contact svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.5}
+
+/* ── Stats bar ─────────────────────────────────────────────────── */
+.stats-wrap{
+  padding:0 48px;
+  opacity:0;animation:fadeUp .8s .65s forwards;
+}
+.stats-inner{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border:1px solid var(--border);background:var(--bg2);
+}
+.stat{
+  padding:30px 28px;text-align:center;
+  border-right:1px solid var(--border);
+}
+.stat:last-child{border-right:none}
+.stat-num{
+  font-family:var(--serif);font-size:40px;color:var(--text);
+  margin-bottom:6px;letter-spacing:-.5px;font-weight:400;
+}
+.stat-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:2px;font-family:var(--mono)}
+
+/* ── Section commons ───────────────────────────────────────────── */
+section{padding:110px 0;position:relative;z-index:1}
+.section-header{margin-bottom:56px}
+.section-title{
+  font-family:var(--serif);font-size:clamp(28px,3.2vw,48px);
+  line-height:1.12;max-width:640px;color:var(--text);
+  font-weight:400;letter-spacing:-.3px;margin-bottom:18px;
+}
+.section-title em{font-style:italic;color:var(--accent)}
+.section-desc{font-size:15px;line-height:1.8;color:var(--text2);max-width:500px;font-weight:300}
+
+/* ── Problem ───────────────────────────────────────────────────── */
+#problem{background:var(--bg)}
+.problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+.problem-card{
+  background:var(--bg);padding:40px 32px;position:relative;
+  overflow:hidden;transition:background .3s;
+}
+.problem-card:hover{background:var(--bg2)}
+.pc-index{
+  font-family:var(--mono);font-size:10px;color:var(--text3);
+  letter-spacing:2px;margin-bottom:24px;display:block;
+}
+.pc-icon{
+  width:40px;height:40px;border:1px solid var(--border2);
+  display:flex;align-items:center;justify-content:center;margin-bottom:20px;
+}
+.pc-icon svg{width:18px;height:18px;stroke:var(--text);fill:none;stroke-width:1.5;opacity:.6}
+.problem-card:hover .pc-icon svg{opacity:1}
+.problem-card h3{font-size:15px;font-weight:500;margin-bottom:12px;line-height:1.4;color:var(--text)}
+.problem-card p{font-size:13px;color:var(--text2);line-height:1.75;font-weight:300}
+
+/* ── How it works ──────────────────────────────────────────────── */
+#how{background:var(--bg2)}
+.how-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border)}
+.how-step{
+  background:var(--bg2);padding:40px 36px;display:flex;gap:24px;
+  align-items:flex-start;position:relative;transition:background .3s;
+}
+.how-step:hover{background:var(--bg3)}
+.how-num{
+  font-family:var(--mono);font-size:28px;font-weight:500;
+  color:var(--text3);line-height:1;flex-shrink:0;width:36px;
+  transition:color .3s;
+}
+.how-step:hover .how-num{color:var(--text2)}
+.how-content h4{font-size:15px;font-weight:500;color:var(--text);margin-bottom:10px}
+.how-content p{font-size:13px;color:var(--text2);line-height:1.75;font-weight:300}
+
+/* ── Solution ──────────────────────────────────────────────────── */
+#solution{background:var(--bg)}
+.solution-block{display:grid;grid-template-columns:1fr 1.15fr;gap:80px;align-items:start}
+.solution-features{display:flex;flex-direction:column}
+.sf{
+  padding:24px 0;border-bottom:1px solid var(--border);
+  display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;
+}
+.sf-dot{
+  width:5px;height:5px;background:var(--text3);flex-shrink:0;
+  margin-top:8px;
+}
+.sf h4{font-size:14px;font-weight:500;color:var(--text);margin-bottom:7px}
+.sf p{font-size:13px;color:var(--text2);line-height:1.75;font-weight:300}
+
+/* ── Demo Panel ────────────────────────────────────────────────── */
+.demo-panel{
+  border:1px solid var(--border);background:var(--bg2);
+  position:sticky;top:80px;overflow:hidden;
+}
+.demo-header{
+  padding:12px 18px;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:8px;
+}
+.demo-dots{display:flex;gap:5px}
+.demo-dot{width:9px;height:9px;border-radius:50%}
+.demo-dot-r{background:#ff5f57}
+.demo-dot-y{background:#febc2e}
+.demo-dot-g{background:#28c840}
+.demo-title-bar{
+  flex:1;font-family:var(--mono);font-size:10px;color:var(--text3);
+  text-align:center;letter-spacing:.8px;
+}
+.demo-tabs{display:flex;border-bottom:1px solid var(--border);overflow-x:auto}
+.demo-tabs::-webkit-scrollbar{height:2px}
+.demo-tab{
+  padding:10px 14px;font-family:var(--mono);font-size:9px;letter-spacing:.5px;
+  color:var(--text3);cursor:pointer;transition:all .2s;white-space:nowrap;
+  border-bottom:2px solid transparent;text-transform:uppercase;flex-shrink:0;
+}
+.demo-tab:hover{color:var(--text2)}
+.demo-tab.active{color:var(--text);border-bottom-color:var(--text2)}
+.demo-body{
+  padding:24px;min-height:340px;display:flex;flex-direction:column;
+  gap:12px;overflow-y:auto;max-height:420px;
+}
+.demo-body::-webkit-scrollbar{width:3px}
+.demo-body::-webkit-scrollbar-thumb{background:var(--border2)}
+
+/* message types */
+.demo-msg{
+  font-size:13px;line-height:1.6;max-width:92%;
+  opacity:0;transform:translateY(5px);transition:opacity .3s,transform .3s;
+}
+.demo-msg.visible{opacity:1;transform:translateY(0)}
+.demo-msg.agent{
+  padding:12px 16px;background:var(--bg3);
+  border-left:2px solid rgba(0,0,0,.22);color:var(--text);
+}
+.demo-msg.human{
+  padding:12px 16px;background:var(--bg);
+  border:1px solid var(--border2);color:var(--text2);
+  align-self:flex-end;
+}
+.demo-msg.system{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 14px;background:rgba(0,0,0,.03);
+  border:1px solid var(--border);color:var(--text3);
+  font-family:var(--mono);font-size:11px;letter-spacing:.5px;
+  align-self:center;max-width:none;width:100%;
+}
+.sys-pulse{
+  display:flex;align-items:center;gap:3px;flex-shrink:0;
+}
+.sys-pulse span{
+  width:3px;height:3px;background:var(--text3);border-radius:50%;
+  animation:pulse-bar 1.1s ease-in-out infinite;
+}
+.sys-pulse span:nth-child(2){animation-delay:.18s}
+.sys-pulse span:nth-child(3){animation-delay:.36s}
+@keyframes pulse-bar{
+  0%,60%,100%{transform:scaleY(1);opacity:.4}
+  30%{transform:scaleY(2.2);opacity:1}
+}
+.msg-label{
+  font-family:var(--mono);font-size:9px;letter-spacing:2px;
+  text-transform:uppercase;color:var(--text3);margin-bottom:5px;
+}
+.typing-cursor{
+  display:inline-block;width:1.5px;height:12px;background:var(--text3);
+  margin-left:1px;vertical-align:text-bottom;animation:blink .55s step-end infinite;
+}
+@keyframes blink{50%{opacity:0}}
+
+/* ── Team ──────────────────────────────────────────────────────── */
+#team{background:var(--bg)}
+.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border)}
+.team-card{
+  background:var(--bg);padding:44px 40px;
+  position:relative;overflow:hidden;transition:background .3s;
+}
+.team-card:hover{background:var(--bg2)}
+.team-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,var(--text3),transparent);
+  transform:scaleX(0);transform-origin:left;transition:transform .4s;
+}
+.team-card:hover::after{transform:scaleX(1)}
+.tm-role{
+  font-family:var(--mono);font-size:9px;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--text3);margin-bottom:10px;
+}
+.tm-name{
+  font-family:var(--serif);font-size:28px;color:var(--text);
+  font-weight:400;margin-bottom:20px;letter-spacing:-.2px;
+}
+.tm-bio{font-size:13px;color:var(--text2);line-height:1.85;font-weight:300}
+.tm-bio strong{color:var(--text);font-weight:500}
+.tm-links{display:flex;gap:10px;margin-top:20px}
+.tm-link{
+  font-family:var(--mono);font-size:9px;letter-spacing:1px;text-transform:uppercase;
+  color:var(--text3);padding:6px 12px;border:1px solid var(--border);
+  transition:all .2s;
+}
+.tm-link:hover{color:var(--text2);border-color:var(--border2)}
+
+/* ── Org logo strip ────────────────────────────────────────────── */
+.org-strip{margin-top:0;padding-top:0;border-top:none}
+.org-strip-label{
+  font-family:var(--mono);font-size:10px;letter-spacing:2.5px;
+  text-transform:uppercase;color:var(--text3);text-align:center;margin-bottom:36px;
+}
+.org-logos{
+  display:flex;align-items:center;justify-content:center;
+  flex-wrap:wrap;gap:0;
+}
+.org-logo{
+  padding:20px 32px;border-right:1px solid var(--border);
+  color:var(--text3);transition:color .25s;display:flex;align-items:center;
+}
+.org-logo:last-child{border-right:none}
+.org-logo:hover{color:var(--text2)}
+.org-logo svg{height:36px;width:auto;display:block}
+
+/* ── CTA ───────────────────────────────────────────────────────── */
+#contact{
+  padding:150px 48px;text-align:center;position:relative;overflow:hidden;
+  background:var(--bg);
+}
+#contact::before{
+  content:'';position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);width:700px;height:700px;
+  background:radial-gradient(circle,rgba(0,0,0,.03) 0%,transparent 60%);
+  pointer-events:none;
+}
+.cta-inner{position:relative;z-index:1;max-width:600px;margin:0 auto}
+.cta-inner h2{
+  font-family:var(--serif);font-size:clamp(32px,4vw,58px);
+  line-height:1.1;margin-bottom:18px;color:var(--text);
+  font-weight:400;letter-spacing:-.3px;
+}
+.cta-inner h2 em{font-style:italic}
+.cta-inner p{font-size:15px;color:var(--text2);margin-bottom:44px;line-height:1.8;font-weight:300}
+.contact-chips{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.contact-chip{
+  display:flex;align-items:center;gap:8px;padding:12px 22px;
+  border:1px solid var(--border2);font-size:13px;color:var(--text2);
+  transition:all .2s;font-family:var(--mono);letter-spacing:.3px;
+}
+.contact-chip:hover{border-color:var(--border2);color:var(--text);background:rgba(255,255,255,.03)}
+.contact-chip svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.5;opacity:.6}
+
+/* ── Footer ────────────────────────────────────────────────────── */
+footer{
+  border-top:1px solid var(--border);padding:28px 48px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:11px;color:var(--text3);background:var(--bg2);
+  font-family:var(--mono);letter-spacing:.5px;
+}
+
+/* ── Animations ────────────────────────────────────────────────── */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ── Responsive ────────────────────────────────────────────────── */
+@media(max-width:960px){
+  .container{padding:0 24px}
+  .nav{padding:0 24px}
+  .nav-center,.nav-right .btn-ghost{display:none}
+  .hero{padding:100px 24px 60px}
+  section{padding:80px 0}
+  #contact{padding:90px 24px}
+  .problem-grid{grid-template-columns:1fr}
+  .how-grid{grid-template-columns:1fr}
+  .solution-block{grid-template-columns:1fr;gap:48px}
+  .demo-panel{position:static}
+  .team-grid{grid-template-columns:1fr}
+  .org-logos{gap:0}
+  .org-logo{padding:16px 20px}
+  footer{padding:20px 24px;flex-direction:column;gap:6px;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- ── Navigation ── -->
+<nav class="nav">
+  <div class="nav-logo">Lean<span>Log</span></div>
+  <div class="nav-center">
+    <a href="#problem">Problem</a>
+    <a href="#how">How it works</a>
+    <a href="#solution">Solution</a>
+    <a href="#team">Team</a>
+  </div>
+  <div class="nav-right">
+    <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Book a call</button>
+  </div>
+</nav>
+
+<!-- ── Hero ── -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <div class="eyebrow-badge">AI Agents for Warehouses</div>
+      <div class="eyebrow-line"></div>
+    </div>
+    <h1>Your Warehouse Deserves Greater Margins. Not Another System to <em>Manage.</em></h1>
+    <p class="hero-sub">LeanLog automates supplier communications, procurement, invoicing, and scheduling. No software to learn. No screens to check. Your team just talks.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="mailto:rodrigo@leanlog.ai">Talk with a Founder</a>
+      <button class="btn-outline" onclick="document.getElementById('solution').scrollIntoView({behavior:'smooth'})">See the Demo</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── Problem ── -->
+<section id="problem">
+  <div class="container">
+    <div class="section-header">
+      <div class="tag reveal">01 — The problem</div>
+      <h2 class="section-title reveal reveal-d1">Warehouses are the backbone of commerce. They're also being <em>crushed.</em></h2>
+      <p class="section-desc reveal reveal-d2">Rising salaries, greater rent, and intense competition have squeezed margins to near zero. The software that's supposed to help costs more to implement than years of licensing.</p>
+    </div>
+    <div class="problem-grid reveal reveal-d3">
+      <div class="problem-card">
+        <span class="pc-index">01 / 03</span>
+        <div class="pc-icon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+        </div>
+        <h3>Margins under siege</h3>
+        <p>Warehouses operate on 3–7% margins and face pressure from rising labor costs, SKU complexity, and rent inflation. Every dollar counts.</p>
+      </div>
+      <div class="problem-card">
+        <span class="pc-index">02 / 03</span>
+        <div class="pc-icon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Labor is your biggest cost</h3>
+        <p>Back-office work accounts for up to 30% of all labor — supplier calls, invoicing, scheduling, procurement. All done manually, every day.</p>
+      </div>
+      <div class="problem-card">
+        <span class="pc-index">03 / 03</span>
+        <div class="pc-icon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Software doesn't help</h3>
+        <p>Legacy WMS costs $200–500K and takes months to set up. Teams still end up running operations on spreadsheets and phone calls.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── How it works ── -->
+<section id="how">
+  <div class="container">
+    <div class="section-header">
+      <div class="tag reveal">02 — How it works</div>
+      <h2 class="section-title reveal reveal-d1">The agent works the way you <em>already</em> work.</h2>
+      <p class="section-desc reveal reveal-d2">No training. No dashboards. LeanLog connects to your existing operation from day one — through voice and text.</p>
+    </div>
+    <div class="how-grid reveal reveal-d3">
+      <div class="how-step">
+        <div class="how-num">01</div>
+        <div class="how-content">
+          <h4>A call or message comes in</h4>
+          <p>Suppliers, carriers, or your own team reach out. The agent picks up, captures the details, and checks your operation's state in real time.</p>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="how-num">02</div>
+        <div class="how-content">
+          <h4>Agent checks and alerts you</h4>
+          <p>Before confirming anything, LeanLog texts or calls you with a summary and recommendation. You reply in one word.</p>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="how-num">03</div>
+        <div class="how-content">
+          <h4>You approve. Agent executes.</h4>
+          <p>The agent calls the third party, confirms, updates your schedule, and notifies your team — all without manual steps on your end.</p>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="how-num">04</div>
+        <div class="how-content">
+          <h4>Everything is logged</h4>
+          <p>Every call, invoice, PO, and schedule change is recorded automatically. Full audit trail, always up to date.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Solution ── -->
+<section id="solution">
+  <div class="container">
+    <div class="solution-block">
+      <div>
+        <div class="section-header">
+          <div class="tag reveal">03 — The solution</div>
+          <h2 class="section-title reveal reveal-d1">An AI agent that runs your back office.</h2>
+          <p class="section-desc reveal reveal-d2">LeanLog automates the conversations that eat your team's time. You approve. The agent handles the rest.</p>
+        </div>
+        <div class="solution-features">
+          <div class="sf reveal reveal-d1">
+            <div class="sf-dot"></div>
+            <div>
+              <h4>Works by talking</h4>
+              <p>No software to learn, no screens to check, no data to enter. Your team just talks or texts — the agent handles everything from there.</p>
+            </div>
+          </div>
+          <div class="sf reveal reveal-d2">
+            <div class="sf-dot"></div>
+            <div>
+              <h4>Starts working day one</h4>
+              <p>No lengthy setup, no consultants, no data migration. LeanLog plugs into your existing operation immediately.</p>
+            </div>
+          </div>
+          <div class="sf reveal reveal-d3">
+            <div class="sf-dot"></div>
+            <div>
+              <h4>Full visibility</h4>
+              <p>The agent keeps records of every interaction — every call, invoice, and schedule change — logged and searchable.</p>
+            </div>
+          </div>
+          <div class="sf reveal reveal-d4">
+            <div class="sf-dot"></div>
+            <div>
+              <h4>You stay in control</h4>
+              <p>Nothing is confirmed without your approval. The agent checks in before acting on your behalf.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Demo Panel -->
+      <div class="demo-panel reveal reveal-d2">
+        <div class="demo-header">
+          <div class="demo-dots">
+            <div class="demo-dot demo-dot-r"></div>
+            <div class="demo-dot demo-dot-y"></div>
+            <div class="demo-dot demo-dot-g"></div>
+          </div>
+          <div class="demo-title-bar">leanlog — live demo</div>
+        </div>
+        <div class="demo-tabs" id="demoTabs"></div>
+        <div class="demo-body" id="demoBody"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Team ── -->
+<section id="team">
+  <div class="container">
+    <div class="section-header">
+      <div class="tag reveal">04 — The team</div>
+      <h2 class="section-title reveal reveal-d1">Built by operators, for operators.</h2>
+      <p class="section-desc reveal reveal-d2">We've managed warehouses, scaled logistics operations, and built AI for the world's largest supply chains. We know this problem from the inside. Our fundamental mission is helping you succeed.</p>
+    </div>
+    <!-- Org logos strip -->
+    <div class="org-strip reveal reveal-d2">
+      <div class="org-strip-label">Experience &amp; credentials from</div>
+      <div class="org-logos">
+        <div class="org-logo">
+          <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <text x="60" y="28" text-anchor="middle" font-family="Georgia,serif" font-size="18" font-weight="700" fill="currentColor" letter-spacing="-0.5">UChicago</text>
+          </svg>
+        </div>
+        <div class="org-logo">
+          <svg viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg">
+            <text x="50" y="28" text-anchor="middle" font-family="Georgia,serif" font-size="16" font-weight="400" font-style="italic" fill="currentColor" letter-spacing="0.5">Stanford</text>
+          </svg>
+        </div>
+        <div class="org-logo">
+          <svg viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg">
+            <text x="50" y="29" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="300" fill="currentColor" letter-spacing="2">amazon</text>
+          </svg>
+        </div>
+        <div class="org-logo">
+          <svg viewBox="0 0 80 40" xmlns="http://www.w3.org/2000/svg">
+            <text x="40" y="28" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="currentColor" letter-spacing="-1">intel</text>
+          </svg>
+        </div>
+        <div class="org-logo">
+          <svg viewBox="0 0 140 40" xmlns="http://www.w3.org/2000/svg">
+            <text x="70" y="26" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" font-weight="600" fill="currentColor" letter-spacing="2.5">U.S. AIR FORCE</text>
+          </svg>
+        </div>
+        <div class="org-logo">
+          <svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+            <text x="30" y="28" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="700" fill="currentColor" letter-spacing="1">J&amp;J</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── CTA ── -->
+<section id="contact">
+  <div class="cta-inner">
+    <div class="tag reveal" style="justify-content:center">05 — Get started</div>
+    <h2 class="reveal reveal-d1">Ready to reclaim<br>your <em>margins?</em></h2>
+    <p class="reveal reveal-d2">Join the operators already saving 30% on back-office labor with LeanLog. Talk with a founder — no commitment required.</p>
+    <div class="contact-chips reveal reveal-d3">
+      <a class="contact-chip" href="mailto:rodrigo@leanlog.ai">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13L2 4"/></svg>
+        rodrigo@leanlog.ai
+      </a>
+      <a class="contact-chip" href="tel:+17733863801">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        (773) 386-3801
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer>
+  <span>&copy; 2026 LeanLog, Inc.</span>
+  <span>AI-native back office for warehouses</span>
+</footer>
+
+<script>
+/* ── Scroll reveal ─────────────────────────────────────────────── */
+const ro = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+/* ── Demo cases ────────────────────────────────────────────────── */
+const cases = [
+  {
+    tab: "Customer order",
+    msgs: [
+      { role: "human", text: "Rivera Restaurants just called. They want 200 cases of SKU #1142 by Wednesday — can we do it?" },
+      { role: "system", text: "Checking stock levels and outbound capacity…", duration: 2000 },
+      { role: "agent", text: "You have 340 units of SKU #1142 on hand. Wednesday delivery is doable if we ship tomorrow. Want me to confirm with Rivera and generate the sales order?" },
+      { role: "human", text: "Yes, confirm it." },
+      { role: "system", text: "Calling Rivera Restaurants…", duration: 2400 },
+      { role: "agent", text: "Done. Rivera confirmed for Wednesday delivery. Sales order #4821 generated — $6,200. Outbound scheduled for tomorrow 8am. Your shipping team has been notified." }
+    ]
+  },
+  {
+    tab: "Delivery scheduling",
+    msgs: [
+      { role: "system", text: "Incoming call — Acme Foods", duration: 1600 },
+      { role: "agent", text: "Acme wants to deliver 500 cases Thursday at 2pm. Dock 3 is open. Confirm?" },
+      { role: "human", text: "Yes, lock it in." },
+      { role: "system", text: "Calling Acme Foods — will notify when confirmed…", duration: 2600 },
+      { role: "agent", text: "Confirmed with Acme — Thursday 2pm, Dock 3. Receiving schedule updated. Floor team notified." }
+    ]
+  },
+  {
+    tab: "Invoice dispute",
+    msgs: [
+      { role: "human", text: "I only got 480 cases from Acme. The invoice might say 500." },
+      { role: "system", text: "Looking up Acme invoice in system…", duration: 1800 },
+      { role: "agent", text: "Found it — Invoice #AC-8821: 500 cases at $12.40 = $6,200. You received 480, so there's a $248 discrepancy. Want me to call Acme and request a corrected invoice?" },
+      { role: "human", text: "Yes, handle it." },
+      { role: "system", text: "Calling Acme Foods — will notify when resolved…", duration: 2800 },
+      { role: "agent", text: "Acme confirmed the short delivery. A $248 credit memo is being issued. Records updated — adjusted total is $5,952." }
+    ]
+  },
+  {
+    tab: "Carrier quotes",
+    msgs: [
+      { role: "human", text: "I need to ship 12 pallets to Dallas by Friday. Get me some quotes." },
+      { role: "system", text: "Contacting FastFreight, LoneStar, and RoadRunner…", duration: 2200 },
+      { role: "agent", text: "Three quotes back: FastFreight $1,840 (Thu), LoneStar $1,620 (Fri AM), RoadRunner $2,100 (Wed). Want me to try negotiating?" },
+      { role: "human", text: "Yes, push them down." },
+      { role: "system", text: "Negotiating with FastFreight and LoneStar…", duration: 2600 },
+      { role: "agent", text: "FastFreight dropped to $1,680. LoneStar held at $1,620 — still cheapest, Friday morning. Book LoneStar?" },
+      { role: "human", text: "Book LoneStar." },
+      { role: "system", text: "Booking LoneStar Logistics…", duration: 1400 },
+      { role: "agent", text: "Booked. Pickup tomorrow 3pm, Dock 1. Confirmation sent to your phone." }
+    ]
+  },
+  {
+    tab: "Low stock reorder",
+    msgs: [
+      { role: "agent", text: "SKU #4412 (kraft mailer boxes) is down to 120 units — below your 200-unit threshold. Reorder?" },
+      { role: "human", text: "Yeah, what are the options? Check if there's something cheaper than Pacific." },
+      { role: "system", text: "Searching market — comparing suppliers and live pricing…", duration: 2400 },
+      { role: "agent", text: "Found 3 suppliers: Pacific Supply $0.82/unit (your usual), BoxCo $0.74/unit (new), WebPack $0.79/unit. BoxCo saves $40 on a 500-unit order, same 3-day lead time." },
+      { role: "human", text: "Go with BoxCo." },
+      { role: "system", text: "Placing PO with BoxCo…", duration: 1600 },
+      { role: "agent", text: "PO sent to BoxCo — 500 units at $0.74, total $370. Saves $40 vs. Pacific. Expected delivery Monday. I'll track it." }
+    ]
+  }
+];
+
+const tabsEl = document.getElementById('demoTabs');
+const bodyEl = document.getElementById('demoBody');
+let activeCase = 0, animTimeout = null, animating = false;
+
+cases.forEach((c, i) => {
+  const t = document.createElement('div');
+  t.className = 'demo-tab' + (i === 0 ? ' active' : '');
+  t.textContent = c.tab;
+  t.onclick = () => switchCase(i);
+  tabsEl.appendChild(t);
+});
+
+function switchCase(idx) {
+  if (animTimeout) { clearTimeout(animTimeout); animTimeout = null; }
+  activeCase = idx;
+  tabsEl.querySelectorAll('.demo-tab').forEach((t, i) => t.classList.toggle('active', i === idx));
+  bodyEl.innerHTML = '';
+  animating = true;
+  animateMessages(cases[idx].msgs, 0);
+}
+
+function animateMessages(msgs, idx) {
+  if (idx >= msgs.length) {
+    animating = false;
+    animTimeout = setTimeout(() => switchCase((activeCase + 1) % cases.length), 4000);
+    return;
+  }
+
+  const m = msgs[idx];
+
+  if (m.role === 'system') {
+    // System / status message — appears instantly, stays for duration, then next
+    const div = document.createElement('div');
+    div.className = 'demo-msg system';
+    div.innerHTML = `<div class="sys-pulse"><span></span><span></span><span></span></div><span>${m.text}</span>`;
+    bodyEl.appendChild(div);
+    requestAnimationFrame(() => div.classList.add('visible'));
+    bodyEl.scrollTop = bodyEl.scrollHeight;
+    animTimeout = setTimeout(() => animateMessages(msgs, idx + 1), m.duration);
+    return;
+  }
+
+  // Agent or human — type out character by character
+  const div = document.createElement('div');
+  div.className = 'demo-msg ' + m.role;
+  const lbl = document.createElement('div'); lbl.className = 'msg-label';
+  lbl.textContent = m.role === 'agent' ? 'LeanLog Agent' : 'You';
+  const txt = document.createElement('div');
+  div.appendChild(lbl); div.appendChild(txt);
+  bodyEl.appendChild(div);
+  requestAnimationFrame(() => div.classList.add('visible'));
+
+  const cursor = document.createElement('span'); cursor.className = 'typing-cursor';
+  txt.appendChild(cursor);
+  let ci = 0;
+  const speed = m.role === 'agent' ? 14 : 10;
+  const node = document.createTextNode('');
+  txt.insertBefore(node, cursor);
+
+  function typeChar() {
+    if (ci < m.text.length) {
+      node.textContent += m.text[ci++];
+      bodyEl.scrollTop = bodyEl.scrollHeight;
+      animTimeout = setTimeout(typeChar, speed + Math.random() * 8);
+    } else {
+      cursor.remove();
+      animTimeout = setTimeout(() => animateMessages(msgs, idx + 1), 500);
+    }
+  }
+  animTimeout = setTimeout(typeChar, m.role === 'human' ? 320 : 420);
+}
+
+switchCase(0);
+</script>
+</body>
+</html>
