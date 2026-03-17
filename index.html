@@ -275,21 +275,15 @@ section{padding:50px 0;position:relative;z-index:1}
 #problem{background:var(--bg)}
 .problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
 .problem-card{
-  background:var(--bg);padding:40px 32px;position:relative;
+  background:var(--bg);padding:28px 28px;position:relative;
   overflow:hidden;transition:background .3s;
 }
 .problem-card:hover{background:var(--bg2)}
 .pc-index{
   font-family:var(--mono);font-size:10px;color:var(--text3);
-  letter-spacing:2px;margin-bottom:24px;display:block;
+  letter-spacing:2px;margin-bottom:14px;display:block;
 }
-.pc-icon{
-  width:40px;height:40px;border:1px solid var(--border2);
-  display:flex;align-items:center;justify-content:center;margin-bottom:20px;
-}
-.pc-icon svg{width:18px;height:18px;stroke:var(--text);fill:none;stroke-width:1.5;opacity:.6}
-.problem-card:hover .pc-icon svg{opacity:1}
-.problem-card h3{font-size:15px;font-weight:500;margin-bottom:12px;line-height:1.4;color:var(--text)}
+.problem-card h3{font-size:15px;font-weight:500;margin-bottom:10px;line-height:1.4;color:var(--text)}
 .problem-card p{font-size:13px;color:var(--text2);line-height:1.75;font-weight:300}
 
 /* ── Solution (merged: how it works + features) ────────────────── */
@@ -308,31 +302,28 @@ section{padding:50px 0;position:relative;z-index:1}
 .how-step:hover .how-num{color:var(--text2)}
 .how-content h4{font-size:15px;font-weight:500;color:var(--text);margin-bottom:10px}
 .how-content p{font-size:13px;color:var(--text2);line-height:1.75;font-weight:300}
-/* ── Solution visuals (2-column: bullets left, panel right) ────── */
-.sf-block{display:grid;grid-template-columns:1fr 1.5fr;column-gap:48px;background:transparent;margin-top:40px;padding-top:40px;border-top:1px solid var(--border)}
-.sf-list{display:flex;flex-direction:column;gap:1px;background:var(--border)}
-.sf{
-  background:var(--bg);padding:38px 36px;
-  display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;
-  transition:background .3s;cursor:pointer;
+/* ── Solution rows (Cursor-style alternating) ──────────────────── */
+.sf-rows{display:flex;flex-direction:column;gap:56px;background:transparent;margin-top:48px}
+.sf-row{display:grid;grid-template-columns:1fr 1.5fr;gap:1px;background:var(--border);align-items:stretch;border:1px solid var(--border)}
+.sf-row-flip{grid-template-columns:1.5fr 1fr}
+.sf-row-text{
+  background:var(--bg);padding:56px 52px;
+  display:flex;flex-direction:column;justify-content:center;
 }
-.sf.sf-active,.sf:hover{background:var(--bg2)}
-.sf-dot{width:5px;height:5px;background:var(--text3);flex-shrink:0;margin-top:8px}
-.sf h4{font-size:14px;font-weight:500;color:var(--text);margin-bottom:7px}
-.sf p{font-size:13px;color:var(--text2);line-height:1.75;font-weight:300}
-.sf-visual{background:var(--bg);overflow:hidden;border:1px solid var(--border2);height:550px}
-.sf-panel{display:none;height:100%}
-.sf-panel.sf-panel-active{display:flex;flex-direction:column;height:100%;animation:sfFadeIn .35s ease}
-@keyframes sfFadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-/* Static demo panel */
+.sf-row-num{font-family:var(--mono);font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--text3);margin-bottom:20px}
+.sf-row-text h4{font-family:var(--serif);font-size:24px;font-weight:400;color:var(--text);margin-bottom:14px;line-height:1.25}
+.sf-row-text p{font-size:13px;color:var(--text2);line-height:1.9;font-weight:300}
+.sf-row-visual{background:var(--bg);overflow:hidden;display:flex;flex-direction:column;min-height:300px}
+/* Chat body */
 .sf-demo-body{padding:20px;flex:1;display:flex;flex-direction:column;gap:10px;background:var(--bg)}
-/* Scheduling table */
+/* Scheduling / approval tables */
 .sf-table{width:100%;border-collapse:collapse;font-size:12px}
 .sf-table th{
   padding:8px 14px;text-align:left;font-family:var(--mono);font-size:9px;
   letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);
   border-bottom:1px solid var(--border);font-weight:400;
 }
+.sf-table th.center,.sf-table td.center{text-align:center}
 .sf-table td{padding:10px 14px;color:var(--text2);border-bottom:1px solid var(--border);font-size:12px}
 .sf-table tr:last-child td{border-bottom:none}
 .sf-tag{font-family:var(--mono);font-size:9px;letter-spacing:.5px;text-transform:uppercase;padding:2px 6px;border:1px solid var(--border)}
@@ -341,8 +332,11 @@ section{padding:50px 0;position:relative;z-index:1}
 .sf-status{font-family:var(--mono);font-size:9px;letter-spacing:.5px;text-transform:uppercase}
 .sf-status-done{color:#28a745}
 .sf-status-pend{color:var(--text3)}
-/* Flowchart */
-.sf-flow{padding:20px;flex:1;display:flex;align-items:center;justify-content:center}
+/* Approval pills */
+.sf-pill{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:8px;letter-spacing:.8px;text-transform:uppercase;padding:3px 9px;border-radius:20px}
+.sf-pill::before{content:'●';font-size:6px}
+.sf-pill-on{background:rgba(40,167,69,.1);color:#1e9440;border:1px solid rgba(40,167,69,.2)}
+.sf-pill-req{background:rgba(210,110,0,.1);color:#b86a00;border:1px solid rgba(210,110,0,.2)}
 
 
 /* ── Team ──────────────────────────────────────────────────────── */
@@ -387,6 +381,27 @@ section{padding:50px 0;position:relative;z-index:1}
 .cta-strip .btn-outline{padding:16px 40px;font-size:16px;letter-spacing:.3px}
 
 /* ── Footer ────────────────────────────────────────────────────── */
+/* ── Bottom CTA ────────────────────────────────────────────────── */
+#cta{background:var(--bg);border-top:1px solid var(--border)}
+.cta-inner{
+  max-width:1140px;margin:0 auto;padding:120px 48px 128px;
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+}
+.cta-inner h2{
+  font-family:var(--serif);font-size:clamp(36px,5vw,72px);font-weight:400;
+  color:var(--text);line-height:1.08;letter-spacing:-.5px;margin-bottom:48px;
+}
+.cta-inner h2 em{font-style:italic}
+.cta-buttons{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:24px}
+.cta-inner .btn-primary{padding:18px 48px;font-size:15px;letter-spacing:.3px}
+.cta-secondary{
+  font-family:var(--mono);font-size:11px;letter-spacing:1px;color:var(--text3);
+  text-transform:uppercase;text-decoration:none;
+  display:inline-flex;align-items:center;gap:6px;transition:color .2s;
+}
+.cta-secondary:hover{color:var(--text2)}
+.cta-secondary::after{content:'→'}
+
 footer{
   border-top:1px solid var(--border);padding:28px 48px;
   display:flex;justify-content:space-between;align-items:center;
@@ -409,11 +424,15 @@ footer{
   section{padding:80px 0}
   .problem-grid{grid-template-columns:1fr}
   .how-grid{grid-template-columns:1fr}
-  .sf-block{grid-template-columns:1fr;column-gap:0}
+  .sf-row,.sf-row-flip{grid-template-columns:1fr}
+  .sf-row-text{padding:40px 28px}
+  .sf-row-flip .sf-row-visual{order:-1}
   .demo-panel{position:static}
   .team-grid{grid-template-columns:1fr}
   .hero-creds{margin-top:40px}
   footer{padding:20px 24px;flex-direction:column;gap:6px;text-align:center}
+  .cta-inner{padding:80px 24px 88px}
+  .cta-buttons{flex-direction:column;align-items:center}
 }
 
 /* Mobile logo grid — 3 columns × 2 rows */
@@ -570,25 +589,16 @@ footer{
     <div class="problem-grid reveal reveal-d3">
       <div class="problem-card">
         <span class="pc-index">01 / 03</span>
-        <div class="pc-icon">
-          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
-        </div>
         <h3>Margins under siege</h3>
         <p>You compete on price and service. But every carrier dispute, short-pay, and manual PO erodes the margin you fought to win. There's no room for back-office inefficiency.</p>
       </div>
       <div class="problem-card">
         <span class="pc-index">02 / 03</span>
-        <div class="pc-icon">
-          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        </div>
         <h3>Labor is your biggest cost</h3>
         <p>For every shipment, there are 5–10 back-office touches: scheduling calls, supplier follow-ups, invoice reconciliation. That's a full-time employee's work, repeated daily across every client or vendor.</p>
       </div>
       <div class="problem-card">
         <span class="pc-index">03 / 03</span>
-        <div class="pc-icon">
-          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-        </div>
         <h3>Your WMS doesn't cover the half of it</h3>
         <p>A WMS tracks inventory. It doesn't call the carrier when a delivery is late, dispute the invoice, or follow up with a vendor on a short shipment. That still falls on your team.</p>
       </div>
@@ -605,45 +615,23 @@ footer{
       <p class="section-desc reveal reveal-d2">No new software to learn. No process changes. LeanLog slots into how your team already operates, through voice and text, from day one.</p>
     </div>
 
-    <div class="sf-block reveal reveal-d3">
+    <div class="sf-rows reveal reveal-d3">
 
-      <!-- Left: feature bullets -->
-      <div class="sf-list">
-        <div class="sf sf-active" data-visual="0">
-          <div class="sf-dot"></div>
-          <div>
-            <h4>Works by talking</h4>
-            <p>Your dispatcher, ops manager, or buyer just sends a message — "schedule Dock 3 for Tuesday," "dispute the Acme invoice," "reorder SKU 4821." The agent handles the rest: calls, emails, records, follow-ups.</p>
-          </div>
+      <!-- Row 1: Works by talking — text left, chat right -->
+      <div class="sf-row">
+        <div class="sf-row-text">
+          <div class="sf-row-num">01 — works by talking</div>
+          <h4>Your team talks. The agent handles everything else.</h4>
+          <p>Your dispatcher, ops manager, or buyer just sends a message — "schedule Dock 3 for Tuesday," "dispute the Acme invoice," "reorder SKU 4821." The agent handles the rest: calls, emails, records, follow-ups.</p>
         </div>
-        <div class="sf" data-visual="1">
-          <div class="sf-dot"></div>
-          <div>
-            <h4>Full visibility</h4>
-            <p>Every carrier call, vendor negotiation, PO, and invoice is logged automatically. Your team and your clients always know where things stand — no chasing updates.</p>
-          </div>
-        </div>
-        <div class="sf" data-visual="2">
-          <div class="sf-dot"></div>
-          <div>
-            <h4>You stay in control</h4>
-            <p>You set the rules. High-value POs require approval; routine reorders execute automatically. Works for 3PLs managing client SLAs and distributors managing vendor terms alike.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Right: rotating visual panels -->
-      <div class="sf-visual">
-
-        <!-- Panel 0: Static invoice dispute -->
-        <div class="sf-panel sf-panel-active" id="sf-panel-0">
+        <div class="sf-row-visual">
           <div class="demo-header">
             <div class="demo-dots">
               <div class="demo-dot demo-dot-r"></div>
               <div class="demo-dot demo-dot-y"></div>
               <div class="demo-dot demo-dot-g"></div>
             </div>
-            <div class="demo-title-bar">invoice dispute</div>
+            <div class="demo-title-bar">invoice dispute · acme foods</div>
           </div>
           <div class="sf-demo-body">
             <div class="demo-msg human visible">
@@ -670,16 +658,18 @@ footer{
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Panel 1: Scheduling database -->
-        <div class="sf-panel" id="sf-panel-1">
+      <!-- Row 2: Full visibility — table left, text right -->
+      <div class="sf-row sf-row-flip">
+        <div class="sf-row-visual">
           <div class="demo-header">
             <div class="demo-dots">
               <div class="demo-dot demo-dot-r"></div>
               <div class="demo-dot demo-dot-y"></div>
               <div class="demo-dot demo-dot-g"></div>
             </div>
-            <div class="demo-title-bar">scheduling database</div>
+            <div class="demo-title-bar">scheduling database · live</div>
           </div>
           <table class="sf-table">
             <thead>
@@ -714,68 +704,73 @@ footer{
             </tbody>
           </table>
         </div>
+        <div class="sf-row-text">
+          <div class="sf-row-num">02 — full visibility</div>
+          <h4>Every record, updated automatically.</h4>
+          <p>Every carrier call, vendor negotiation, PO, and invoice is logged without anyone touching a keyboard. Your team and your clients always know where things stand — no chasing updates.</p>
+        </div>
+      </div>
 
-        <!-- Panel 2: Approval flowchart -->
-        <div class="sf-panel" id="sf-panel-2">
+      <!-- Row 3: You stay in control — text left, approval table right -->
+      <div class="sf-row">
+        <div class="sf-row-text">
+          <div class="sf-row-num">03 — you stay in control</div>
+          <h4>You decide what runs automatically and what needs a sign-off.</h4>
+          <p>Set rules once. Routine reorders and scheduling run on their own. High-value POs, invoice disputes, and cancellations wait for your approval before executing.</p>
+        </div>
+        <div class="sf-row-visual">
           <div class="demo-header">
             <div class="demo-dots">
               <div class="demo-dot demo-dot-r"></div>
               <div class="demo-dot demo-dot-y"></div>
               <div class="demo-dot demo-dot-g"></div>
             </div>
-            <div class="demo-title-bar">workflow config · approval rules</div>
+            <div class="demo-title-bar">approval settings</div>
           </div>
-          <div class="sf-flow">
-            <svg viewBox="0 0 300 264" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;max-width:400px;margin:0 auto">
-              <defs>
-                <marker id="sfArr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-                  <path d="M0,0 L0,6 L6,3 z" fill="#a09a92"/>
-                </marker>
-              </defs>
-              <!-- Start → Diamond1 -->
-              <line x1="150" y1="32" x2="150" y2="48" stroke="#a09a92" stroke-width="1" marker-end="url(#sfArr)"/>
-              <!-- Diamond1 YES left branch -->
-              <polyline points="92,68 35,68 35,106" fill="none" stroke="#a09a92" stroke-width="1" marker-end="url(#sfArr)"/>
-              <!-- Diamond1 NO right branch -->
-              <polyline points="208,68 220,68 220,106" fill="none" stroke="#a09a92" stroke-width="1" marker-end="url(#sfArr)"/>
-              <!-- Notify → Diamond2 -->
-              <line x1="220" y1="142" x2="220" y2="158" stroke="#a09a92" stroke-width="1" marker-end="url(#sfArr)"/>
-              <!-- Diamond2 YES left branch -->
-              <polyline points="175,178 150,178 150,214" fill="none" stroke="#a09a92" stroke-width="1" marker-end="url(#sfArr)"/>
-              <!-- Diamond2 NO right branch -->
-              <polyline points="265,178 265,214" fill="none" stroke="#a09a92" stroke-width="1" marker-end="url(#sfArr)"/>
-              <!-- YES / NO labels -->
-              <text x="58" y="63" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#a09a92" letter-spacing="1">YES</text>
-              <text x="218" y="63" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#a09a92" letter-spacing="1">NO</text>
-              <text x="155" y="173" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#a09a92" letter-spacing="1">YES</text>
-              <text x="270" y="173" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#a09a92" letter-spacing="1">NO</text>
-              <!-- Node: New task arrives -->
-              <rect x="88" y="8" width="124" height="24" rx="2" fill="#e9e4db" stroke="rgba(0,0,0,.14)" stroke-width="1"/>
-              <text x="150" y="24" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#5a5650" letter-spacing=".5">NEW TASK ARRIVES</text>
-              <!-- Diamond: Auto-approve? -->
-              <polygon points="150,48 208,68 150,88 92,68" fill="#f1ede6" stroke="rgba(0,0,0,.12)" stroke-width="1"/>
-              <text x="150" y="72" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#141210" letter-spacing=".3">AUTO-APPROVE?</text>
-              <!-- Node: Execute auto (YES) -->
-              <rect x="5" y="106" width="60" height="24" rx="2" fill="#141210"/>
-              <text x="35" y="122" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#f8f5ef" letter-spacing=".8">EXECUTE</text>
-              <!-- Node: Notify owner (NO) -->
-              <rect x="170" y="106" width="100" height="36" rx="2" fill="#f1ede6" stroke="rgba(0,0,0,.12)" stroke-width="1"/>
-              <text x="220" y="121" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#141210" letter-spacing=".3">NOTIFY OWNER</text>
-              <text x="220" y="134" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#5a5650" letter-spacing=".3">+ RECOMMEND</text>
-              <!-- Diamond: Owner approves? -->
-              <polygon points="220,158 265,178 220,198 175,178" fill="#f1ede6" stroke="rgba(0,0,0,.12)" stroke-width="1"/>
-              <text x="220" y="182" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7.5" fill="#141210" letter-spacing=".3">OWNER APPROVES?</text>
-              <!-- Node: Execute approved (YES) -->
-              <rect x="105" y="214" width="90" height="24" rx="2" fill="#141210"/>
-              <text x="150" y="230" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#f8f5ef" letter-spacing=".8">EXECUTE</text>
-              <!-- Node: Discard (NO) -->
-              <rect x="235" y="214" width="60" height="24" rx="2" fill="#e9e4db" stroke="rgba(0,0,0,.12)" stroke-width="1"/>
-              <text x="265" y="230" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#5a5650" letter-spacing=".5">DISCARD</text>
-            </svg>
-          </div>
+          <table class="sf-table">
+            <thead>
+              <tr><th>Workflow</th><th class="center">Status</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Reorder inventory (&lt; $2,000)</td>
+                <td class="center"><span class="sf-pill sf-pill-on">Auto</span></td>
+              </tr>
+              <tr>
+                <td>Schedule delivery</td>
+                <td class="center"><span class="sf-pill sf-pill-on">Auto</span></td>
+              </tr>
+              <tr>
+                <td>Send carrier quote</td>
+                <td class="center"><span class="sf-pill sf-pill-on">Auto</span></td>
+              </tr>
+              <tr>
+                <td>Dispute invoice</td>
+                <td class="center"><span class="sf-pill sf-pill-req">Approval</span></td>
+              </tr>
+              <tr>
+                <td>Create PO &gt; $5,000</td>
+                <td class="center"><span class="sf-pill sf-pill-req">Approval</span></td>
+              </tr>
+              <tr>
+                <td>Cancel shipment</td>
+                <td class="center"><span class="sf-pill sf-pill-req">Approval</span></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-
       </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Bottom CTA ── -->
+<section id="cta">
+  <div class="cta-inner">
+    <h2>Try LeanLog <em>now.</em></h2>
+    <div class="cta-buttons">
+      <a class="btn-primary reveal" href="mailto:rodrigo@leanlog.ai">Get Started →</a>
     </div>
   </div>
 </section>
@@ -946,30 +941,6 @@ const demoTrigger = new IntersectionObserver((entries) => {
 }, { threshold: 0.35 });
 demoTrigger.observe(document.querySelector('.demo-panel'));
 
-/* ── Solution visuals rotation ─────────────────────────────────── */
-const sfItems = document.querySelectorAll('.sf[data-visual]');
-const sfPanels = document.querySelectorAll('.sf-panel');
-let sfActive = 0, sfTimer;
-function showSfPanel(idx) {
-  sfActive = idx;
-  sfItems.forEach((s, i) => s.classList.toggle('sf-active', i === idx));
-  sfPanels.forEach((p, i) => p.classList.toggle('sf-panel-active', i === idx));
-  clearTimeout(sfTimer);
-  sfTimer = setTimeout(() => showSfPanel((idx + 1) % sfItems.length), 5000);
-}
-sfItems.forEach((s, i) => s.addEventListener('click', () => showSfPanel(i)));
-
-let sfStarted = false;
-const sfTrigger = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting && !sfStarted) {
-      sfStarted = true;
-      showSfPanel(0);
-      sfTrigger.disconnect();
-    }
-  });
-}, { threshold: 0.3 });
-sfTrigger.observe(document.querySelector('.sf-block'));
 
 /* ── Hero headline cycling ─────────────────────────────────────── */
 const cycleTexts = [
