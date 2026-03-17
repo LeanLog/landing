@@ -417,7 +417,7 @@ footer{
 
 /* Mobile logo grid — 3 columns × 2 rows */
 @media(max-width:680px){
-  .hero h1{font-size:clamp(28px,8vw,42px);line-height:1.15}
+  .hero h1{font-size:clamp(35px,10vw,52px);line-height:1.15}
   .hero-cycle{min-width:0}
   .org-logos{
     display:grid;
@@ -466,7 +466,7 @@ footer{
       <div class="eyebrow-badge">AI Agents for 3PLs &amp; Wholesale Distributors</div>
       <div class="eyebrow-line"></div>
     </div>
-    <h1><span class="hero-cycle" id="heroCycle">Run More Clients</span>.<br>Without Hiring More People.</h1>
+    <h1><span class="hero-cycle" id="heroCycle">Run More Clients.</span><br>Without Hiring More People.</h1>
     <p class="hero-sub">LeanLog handles customer orders, invoice disputes, carrier scheduling, vendor POs, reorder alerts, and other workflows. Automatically. Your team talks. The agent executes.</p>
     <div class="hero-actions">
       <a class="btn-primary" href="mailto:rodrigo@leanlog.ai">Talk with a Founder</a>
@@ -971,7 +971,7 @@ const sfTrigger = new IntersectionObserver((entries) => {
 sfTrigger.observe(document.querySelector('.sf-block'));
 
 /* ── Hero headline cycling ─────────────────────────────────────── */
-const cycleTexts = ['Run More Clients', 'Manage More Suppliers', 'Handle More Carriers'];
+const cycleTexts = ['Run More Clients.', 'Manage More Suppliers.', 'Handle More Carriers.'];
 let cycleIdx = 0;
 const cycleEl = document.getElementById('heroCycle');
 setInterval(() => {
