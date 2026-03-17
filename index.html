@@ -342,33 +342,14 @@ section{padding:110px 0;position:relative;z-index:1}
 }
 .tm-link:hover{color:var(--text2);border-color:var(--border2)}
 
-/* ── CTA ───────────────────────────────────────────────────────── */
-#contact{
-  padding:90px 48px 100px;text-align:center;position:relative;overflow:hidden;
-  background:var(--bg);
+/* ── CTA strip (merged into solution) ──────────────────────────── */
+.cta-strip{
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  margin-top:48px;flex-wrap:wrap;
+  padding-top:40px;border-top:1px solid var(--border);
 }
-#contact::before{
-  content:'';position:absolute;top:50%;left:50%;
-  transform:translate(-50%,-50%);width:700px;height:700px;
-  background:radial-gradient(circle,rgba(0,0,0,.03) 0%,transparent 60%);
-  pointer-events:none;
-}
-.cta-inner{position:relative;z-index:1;max-width:600px;margin:0 auto}
-.cta-inner h2{
-  font-family:var(--serif);font-size:clamp(32px,4vw,58px);
-  line-height:1.1;margin-bottom:18px;color:var(--text);
-  font-weight:400;letter-spacing:-.3px;
-}
-.cta-inner h2 em{font-style:italic}
-.cta-inner p{font-size:15px;color:var(--text2);margin-bottom:44px;line-height:1.8;font-weight:300}
-.contact-chips{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-.contact-chip{
-  display:flex;align-items:center;gap:8px;padding:12px 22px;
-  border:1px solid var(--border2);font-size:13px;color:var(--text2);
-  transition:all .2s;font-family:var(--mono);letter-spacing:.3px;
-}
-.contact-chip:hover{border-color:var(--border2);color:var(--text);background:rgba(255,255,255,.03)}
-.contact-chip svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.5;opacity:.6}
+.cta-strip .btn-primary{padding:16px 40px;font-size:16px;letter-spacing:.3px}
+.cta-strip .btn-outline{padding:16px 40px;font-size:16px;letter-spacing:.3px}
 
 /* ── Footer ────────────────────────────────────────────────────── */
 footer{
@@ -391,7 +372,6 @@ footer{
   .nav-center,.nav-right .btn-ghost{display:none}
   .hero{padding:100px 24px 72px}
   section{padding:80px 0}
-  #contact{padding:70px 24px 80px}
   .problem-grid{grid-template-columns:1fr}
   .how-grid{grid-template-columns:1fr}
   .solution-features{grid-template-columns:1fr}
@@ -433,13 +413,13 @@ footer{
 <nav class="nav">
   <div class="nav-logo">Lean<span>Log</span></div>
   <div class="nav-center">
+    <a href="#demo">Demo</a>
     <a href="#problem">Problem</a>
     <a href="#how">How it works</a>
     <a href="#solution">Solution</a>
-    <a href="#team">Team</a>
   </div>
   <div class="nav-right">
-    <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Book a call</button>
+    <a class="btn-primary" href="mailto:rodrigo@leanlog.ai">Book a Demo</a>
   </div>
 </nav>
 
@@ -659,24 +639,9 @@ footer{
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ── CTA ── -->
-<section id="contact">
-  <div class="cta-inner">
-    <div class="tag reveal" style="justify-content:center">05 — Get started</div>
-    <h2 class="reveal reveal-d1">Ready to reclaim<br>your <em>margins?</em></h2>
-    <p class="reveal reveal-d2">Join the operators already saving 30% on back-office labor with LeanLog. Talk with a founder — no commitment required.</p>
-    <div class="contact-chips reveal reveal-d3">
-      <a class="contact-chip" href="mailto:rodrigo@leanlog.ai">
-        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13L2 4"/></svg>
-        rodrigo@leanlog.ai
-      </a>
-      <a class="contact-chip" href="tel:+17733863801">
-        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        (773) 386-3801
-      </a>
+    <div class="cta-strip reveal reveal-d4">
+      <a class="btn-primary" href="mailto:rodrigo@leanlog.ai">Book a Demo</a>
+      <a class="btn-outline" href="tel:+17733863801">(773) 386-3801</a>
     </div>
   </div>
 </section>
@@ -826,7 +791,18 @@ function animateMessages(msgs, idx) {
   animTimeout = setTimeout(typeChar, m.role === 'human' ? 320 : 420);
 }
 
-switchCase(0);
+/* ── Start demo on scroll into view ────────────────────────────── */
+let demoStarted = false;
+const demoTrigger = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting && !demoStarted) {
+      demoStarted = true;
+      switchCase(0);
+      demoTrigger.disconnect();
+    }
+  });
+}, { threshold: 0.35 });
+demoTrigger.observe(document.querySelector('.demo-panel'));
 </script>
 </body>
 </html>
