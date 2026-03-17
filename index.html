@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/favicon.ico">
 <title>LeanLog — AI Agents for Warehouses</title>
 <meta name="description" content="LeanLog automates supplier communications, procurement, invoicing, and scheduling. No software to learn. Your team just talks.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -300,24 +302,41 @@ section{padding:50px 0;position:relative;z-index:1}
 .how-step:hover .how-num{color:var(--text2)}
 .how-content h4{font-size:15px;font-weight:500;color:var(--text);margin-bottom:10px}
 .how-content p{font-size:13px;color:var(--text2);line-height:1.75;font-weight:300}
-.section-divider{height:1px;background:var(--border);margin:56px 0 0}
-.solution-sub{
-  font-family:var(--mono);font-size:9px;letter-spacing:2.5px;text-transform:uppercase;
-  color:var(--text3);margin:56px 0 24px;
-}
-.solution-features{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+/* ── Solution visuals (2-column: bullets left, panel right) ────── */
+.sf-block{display:grid;grid-template-columns:1fr 1.5fr;column-gap:48px;background:transparent;margin-top:40px;padding-top:40px;border-top:1px solid var(--border)}
+.sf-list{display:flex;flex-direction:column;gap:1px;background:var(--border)}
 .sf{
-  background:var(--bg);padding:32px 36px;
+  background:var(--bg);padding:48px 36px;
   display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;
-  transition:background .3s;
+  transition:background .3s;cursor:pointer;
 }
-.sf:hover{background:var(--bg2)}
-.sf-dot{
-  width:5px;height:5px;background:var(--text3);flex-shrink:0;
-  margin-top:8px;
-}
+.sf.sf-active,.sf:hover{background:var(--bg2)}
+.sf-dot{width:5px;height:5px;background:var(--text3);flex-shrink:0;margin-top:8px}
 .sf h4{font-size:14px;font-weight:500;color:var(--text);margin-bottom:7px}
 .sf p{font-size:13px;color:var(--text2);line-height:1.75;font-weight:300}
+.sf-visual{background:var(--bg);overflow:hidden;border:1px solid var(--border2);height:550px}
+.sf-panel{display:none;height:100%}
+.sf-panel.sf-panel-active{display:flex;flex-direction:column;height:100%;animation:sfFadeIn .35s ease}
+@keyframes sfFadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+/* Static demo panel */
+.sf-demo-body{padding:20px;flex:1;display:flex;flex-direction:column;gap:10px;background:var(--bg)}
+/* Scheduling table */
+.sf-table{width:100%;border-collapse:collapse;font-size:12px}
+.sf-table th{
+  padding:8px 14px;text-align:left;font-family:var(--mono);font-size:9px;
+  letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);
+  border-bottom:1px solid var(--border);font-weight:400;
+}
+.sf-table td{padding:10px 14px;color:var(--text2);border-bottom:1px solid var(--border);font-size:12px}
+.sf-table tr:last-child td{border-bottom:none}
+.sf-tag{font-family:var(--mono);font-size:9px;letter-spacing:.5px;text-transform:uppercase;padding:2px 6px;border:1px solid var(--border)}
+.sf-tag-in{color:#1C3C8C;border-color:rgba(28,60,140,.25)}
+.sf-tag-out{color:var(--text3)}
+.sf-status{font-family:var(--mono);font-size:9px;letter-spacing:.5px;text-transform:uppercase}
+.sf-status-done{color:#28a745}
+.sf-status-pend{color:var(--text3)}
+/* Flowchart */
+.sf-flow{padding:20px;flex:1;display:flex;align-items:center;justify-content:center}
 
 
 /* ── Team ──────────────────────────────────────────────────────── */
@@ -384,9 +403,7 @@ footer{
   section{padding:80px 0}
   .problem-grid{grid-template-columns:1fr}
   .how-grid{grid-template-columns:1fr}
-  .solution-features{grid-template-columns:1fr;background:transparent}
-  .sf{border-bottom:1px solid var(--border)}
-  .solution-sub{margin:40px 0 20px}
+  .sf-block{grid-template-columns:1fr;column-gap:0}
   .demo-panel{position:static}
   .team-grid{grid-template-columns:1fr}
   .hero-creds{margin-top:40px}
@@ -423,7 +440,7 @@ footer{
 
 <!-- ── Navigation ── -->
 <nav class="nav">
-  <div class="nav-logo">Lean<span>Log</span></div>
+  <a href="#" class="nav-logo">Lean<span>Log</span></a>
   <div class="nav-center">
     <a href="#demo">Demo</a>
     <a href="#problem">Problem</a>
@@ -580,32 +597,177 @@ footer{
       <p class="section-desc reveal reveal-d2">No training. No dashboards. LeanLog connects to your existing operation from day one — through voice and text.</p>
     </div>
 
-    <div class="solution-features reveal reveal-d1">
-      <div class="sf">
-        <div class="sf-dot"></div>
-        <div>
-          <h4>Works by talking</h4>
-          <p>No software to learn, no screens to check, no data to enter. Your team just talks or texts — the agent handles everything from there.</p>
+    <div class="sf-block reveal reveal-d3">
+
+      <!-- Left: feature bullets -->
+      <div class="sf-list">
+        <div class="sf sf-active" data-visual="0">
+          <div class="sf-dot"></div>
+          <div>
+            <h4>Works by talking</h4>
+            <p>No software to learn, no screens to check, no data to enter. Your team just talks or texts — the agent handles everything from there.</p>
+          </div>
+        </div>
+        <div class="sf" data-visual="1">
+          <div class="sf-dot"></div>
+          <div>
+            <h4>Full visibility</h4>
+            <p>The agent manages all records internally — every call, invoice, PO, and schedule change is logged and accessible to you at any time.</p>
+          </div>
+        </div>
+        <div class="sf" data-visual="2">
+          <div class="sf-dot"></div>
+          <div>
+            <h4>You stay in control</h4>
+            <p>You decide which workflows require your approval. Some tasks execute automatically; others check in with you first — your call.</p>
+          </div>
         </div>
       </div>
-      <div class="sf">
-        <div class="sf-dot"></div>
-        <div>
-          <h4>Full visibility</h4>
-          <p>The agent manages all records internally — every call, invoice, PO, and schedule change is logged and accessible to you at any time.</p>
+
+      <!-- Right: rotating visual panels -->
+      <div class="sf-visual">
+
+        <!-- Panel 0: Static invoice dispute -->
+        <div class="sf-panel sf-panel-active" id="sf-panel-0">
+          <div class="demo-header">
+            <div class="demo-dots">
+              <div class="demo-dot demo-dot-r"></div>
+              <div class="demo-dot demo-dot-y"></div>
+              <div class="demo-dot demo-dot-g"></div>
+            </div>
+            <div class="demo-title-bar">invoice dispute</div>
+          </div>
+          <div class="sf-demo-body">
+            <div class="demo-msg human visible">
+              <div class="msg-label">You</div>
+              <div>I got 480 cases from Acme. Compare that to the invoice they sent.</div>
+            </div>
+            <div class="demo-msg system visible settled">
+              <span class="sys-text">Found invoice #AC-8821</span>
+            </div>
+            <div class="demo-msg agent visible">
+              <div class="msg-label">LeanLog Agent</div>
+              <div>Invoice #AC-8821: 500 cases at $12.40 = $6,200. You received 480, so there's a $248 discrepancy. Want me to call Acme and request a corrected invoice?</div>
+            </div>
+            <div class="demo-msg human visible">
+              <div class="msg-label">You</div>
+              <div>Yes, handle it.</div>
+            </div>
+            <div class="demo-msg system visible settled">
+              <span class="sys-text">Called Acme Foods — credit memo issued</span>
+            </div>
+            <div class="demo-msg agent visible">
+              <div class="msg-label">LeanLog Agent</div>
+              <div>A $248 credit memo is being issued. Records updated — adjusted total is $5,952.</div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="sf">
-        <div class="sf-dot"></div>
-        <div>
-          <h4>You stay in control</h4>
-          <p>You decide which workflows require your approval. Some tasks execute automatically; others check in with you first — your call.</p>
+
+        <!-- Panel 1: Scheduling database -->
+        <div class="sf-panel" id="sf-panel-1">
+          <div class="demo-header">
+            <div class="demo-dots">
+              <div class="demo-dot demo-dot-r"></div>
+              <div class="demo-dot demo-dot-y"></div>
+              <div class="demo-dot demo-dot-g"></div>
+            </div>
+            <div class="demo-title-bar">scheduling database</div>
+          </div>
+          <table class="sf-table">
+            <thead>
+              <tr><th>Dock</th><th>Carrier</th><th>Date</th><th>Time</th><th>Type</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Dock 1</td><td>LoneStar Logistics</td><td>Mar 18</td><td>3:00 PM</td>
+                <td><span class="sf-tag sf-tag-out">Outbound</span></td>
+                <td><span class="sf-status sf-status-done">Confirmed</span></td>
+              </tr>
+              <tr>
+                <td>Dock 3</td><td>Rivera Restaurants</td><td>Mar 19</td><td>8:00 AM</td>
+                <td><span class="sf-tag sf-tag-out">Outbound</span></td>
+                <td><span class="sf-status sf-status-done">Confirmed</span></td>
+              </tr>
+              <tr>
+                <td>Dock 2</td><td>Acme Foods</td><td>Mar 20</td><td>2:00 PM</td>
+                <td><span class="sf-tag sf-tag-in">Inbound</span></td>
+                <td><span class="sf-status sf-status-done">Confirmed</span></td>
+              </tr>
+              <tr>
+                <td>Dock 4</td><td>BoxCo Supply</td><td>Mar 24</td><td>10:00 AM</td>
+                <td><span class="sf-tag sf-tag-in">Inbound</span></td>
+                <td><span class="sf-status sf-status-pend">Scheduled</span></td>
+              </tr>
+              <tr>
+                <td>Dock 1</td><td>FastFreight</td><td>Mar 25</td><td>1:00 PM</td>
+                <td><span class="sf-tag sf-tag-out">Outbound</span></td>
+                <td><span class="sf-status sf-status-pend">Scheduled</span></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+
+        <!-- Panel 2: Approval flowchart -->
+        <div class="sf-panel" id="sf-panel-2">
+          <div class="demo-header">
+            <div class="demo-dots">
+              <div class="demo-dot demo-dot-r"></div>
+              <div class="demo-dot demo-dot-y"></div>
+              <div class="demo-dot demo-dot-g"></div>
+            </div>
+            <div class="demo-title-bar">workflow config · approval rules</div>
+          </div>
+          <div class="sf-flow">
+            <svg viewBox="0 0 300 264" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;max-width:400px;margin:0 auto">
+              <defs>
+                <marker id="sfArr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                  <path d="M0,0 L0,6 L6,3 z" fill="#a09a92"/>
+                </marker>
+              </defs>
+              <!-- Start → Diamond1 -->
+              <line x1="150" y1="32" x2="150" y2="48" stroke="#a09a92" stroke-width="1" marker-end="url(#sfArr)"/>
+              <!-- Diamond1 YES left branch -->
+              <polyline points="92,68 35,68 35,106" fill="none" stroke="#a09a92" stroke-width="1" marker-end="url(#sfArr)"/>
+              <!-- Diamond1 NO right branch -->
+              <polyline points="208,68 220,68 220,106" fill="none" stroke="#a09a92" stroke-width="1" marker-end="url(#sfArr)"/>
+              <!-- Notify → Diamond2 -->
+              <line x1="220" y1="142" x2="220" y2="158" stroke="#a09a92" stroke-width="1" marker-end="url(#sfArr)"/>
+              <!-- Diamond2 YES left branch -->
+              <polyline points="175,178 150,178 150,214" fill="none" stroke="#a09a92" stroke-width="1" marker-end="url(#sfArr)"/>
+              <!-- Diamond2 NO right branch -->
+              <polyline points="265,178 265,214" fill="none" stroke="#a09a92" stroke-width="1" marker-end="url(#sfArr)"/>
+              <!-- YES / NO labels -->
+              <text x="58" y="63" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#a09a92" letter-spacing="1">YES</text>
+              <text x="218" y="63" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#a09a92" letter-spacing="1">NO</text>
+              <text x="155" y="173" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#a09a92" letter-spacing="1">YES</text>
+              <text x="270" y="173" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#a09a92" letter-spacing="1">NO</text>
+              <!-- Node: New task arrives -->
+              <rect x="88" y="8" width="124" height="24" rx="2" fill="#e9e4db" stroke="rgba(0,0,0,.14)" stroke-width="1"/>
+              <text x="150" y="24" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#5a5650" letter-spacing=".5">NEW TASK ARRIVES</text>
+              <!-- Diamond: Auto-approve? -->
+              <polygon points="150,48 208,68 150,88 92,68" fill="#f1ede6" stroke="rgba(0,0,0,.12)" stroke-width="1"/>
+              <text x="150" y="72" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#141210" letter-spacing=".3">AUTO-APPROVE?</text>
+              <!-- Node: Execute auto (YES) -->
+              <rect x="5" y="106" width="60" height="24" rx="2" fill="#141210"/>
+              <text x="35" y="122" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#f8f5ef" letter-spacing=".8">EXECUTE</text>
+              <!-- Node: Notify owner (NO) -->
+              <rect x="170" y="106" width="100" height="36" rx="2" fill="#f1ede6" stroke="rgba(0,0,0,.12)" stroke-width="1"/>
+              <text x="220" y="121" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#141210" letter-spacing=".3">NOTIFY OWNER</text>
+              <text x="220" y="134" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#5a5650" letter-spacing=".3">+ RECOMMEND</text>
+              <!-- Diamond: Owner approves? -->
+              <polygon points="220,158 265,178 220,198 175,178" fill="#f1ede6" stroke="rgba(0,0,0,.12)" stroke-width="1"/>
+              <text x="220" y="182" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7.5" fill="#141210" letter-spacing=".3">OWNER APPROVES?</text>
+              <!-- Node: Execute approved (YES) -->
+              <rect x="105" y="214" width="90" height="24" rx="2" fill="#141210"/>
+              <text x="150" y="230" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#f8f5ef" letter-spacing=".8">EXECUTE</text>
+              <!-- Node: Discard (NO) -->
+              <rect x="235" y="214" width="60" height="24" rx="2" fill="#e9e4db" stroke="rgba(0,0,0,.12)" stroke-width="1"/>
+              <text x="265" y="230" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#5a5650" letter-spacing=".5">DISCARD</text>
+            </svg>
+          </div>
+        </div>
+
       </div>
-    </div>
-    <div class="cta-strip reveal reveal-d4">
-      <a class="btn-primary" href="mailto:rodrigo@leanlog.ai">Book a Demo</a>
-      <a class="btn-outline" href="tel:+17733863801">(773) 386-3801</a>
     </div>
   </div>
 </section>
@@ -637,16 +799,6 @@ const cases = [
     ]
   },
   {
-    tab: "Delivery scheduling",
-    msgs: [
-      { role: "system", text: "Incoming call — Acme Foods", done: "Call received — Acme Foods", duration: 1600 },
-      { role: "agent", text: "Acme wants to deliver 500 cases Thursday at 2pm. Dock 3 is open. Confirm?" },
-      { role: "human", text: "Yes, lock it in." },
-      { role: "system", text: "Calling Acme Foods — will notify when confirmed…", done: "Called Acme Foods — confirmed", duration: 2600 },
-      { role: "agent", text: "Confirmed with Acme — Thursday 2pm, Dock 3. Receiving schedule updated. Floor team notified." }
-    ]
-  },
-  {
     tab: "Invoice dispute",
     msgs: [
       { role: "human", text: "I got 480 cases from Acme. Compare that number to the invoice they sent." },
@@ -669,6 +821,16 @@ const cases = [
       { role: "human", text: "Book LoneStar." },
       { role: "system", text: "Booking LoneStar Logistics…", done: "Booked LoneStar Logistics — confirmed", duration: 1400 },
       { role: "agent", text: "Booked. Pickup tomorrow 3pm, Dock 1. Confirmation sent to your phone." }
+    ]
+  },
+  {
+    tab: "Delivery scheduling",
+    msgs: [
+      { role: "system", text: "Incoming call — Acme Foods", done: "Call received — Acme Foods", duration: 1600 },
+      { role: "agent", text: "Acme wants to deliver 500 cases Thursday at 2pm. Dock 3 is open. Confirm?" },
+      { role: "human", text: "Yes, lock it in." },
+      { role: "system", text: "Calling Acme Foods — will notify when confirmed…", done: "Called Acme Foods — confirmed", duration: 2600 },
+      { role: "agent", text: "Confirmed with Acme — Thursday 2pm, Dock 3. Receiving schedule updated. Floor team notified." }
     ]
   },
   {
@@ -774,6 +936,20 @@ const demoTrigger = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.35 });
 demoTrigger.observe(document.querySelector('.demo-panel'));
+
+/* ── Solution visuals rotation ─────────────────────────────────── */
+const sfItems = document.querySelectorAll('.sf[data-visual]');
+const sfPanels = document.querySelectorAll('.sf-panel');
+let sfActive = 0, sfTimer;
+function showSfPanel(idx) {
+  sfActive = idx;
+  sfItems.forEach((s, i) => s.classList.toggle('sf-active', i === idx));
+  sfPanels.forEach((p, i) => p.classList.toggle('sf-panel-active', i === idx));
+  clearTimeout(sfTimer);
+  sfTimer = setTimeout(() => showSfPanel((idx + 1) % sfItems.length), 5000);
+}
+sfItems.forEach((s, i) => s.addEventListener('click', () => showSfPanel(i)));
+showSfPanel(0);
 </script>
 </body>
 </html>
