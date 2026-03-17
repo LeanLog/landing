@@ -161,7 +161,7 @@ body::before{
 .org-logo svg{height:30px;width:auto;max-width:120px;display:block}
 
 /* ── Demo section ──────────────────────────────────────────────── */
-#demo{background:var(--bg);padding:100px 0;position:relative;z-index:1}
+#demo{background:var(--bg);position:relative;z-index:1}
 .demo-section-header{text-align:center;margin-bottom:48px}
 .demo-section-header .tag{justify-content:center}
 .demo-section-header .section-title{max-width:none;text-align:center;margin:0 auto 18px}
@@ -253,7 +253,7 @@ body::before{
 @keyframes blink{50%{opacity:0}}
 
 /* ── Section commons ───────────────────────────────────────────── */
-section{padding:110px 0;position:relative;z-index:1}
+section{padding:50px 0;position:relative;z-index:1}
 .section-header{margin-bottom:56px}
 .section-title{
   font-family:var(--serif);font-size:clamp(28px,3.2vw,48px);
@@ -284,14 +284,14 @@ section{padding:110px 0;position:relative;z-index:1}
 .problem-card h3{font-size:15px;font-weight:500;margin-bottom:12px;line-height:1.4;color:var(--text)}
 .problem-card p{font-size:13px;color:var(--text2);line-height:1.75;font-weight:300}
 
-/* ── How it works ──────────────────────────────────────────────── */
-#how{background:var(--bg2)}
+/* ── Solution (merged: how it works + features) ────────────────── */
+#solution{background:var(--bg)}
 .how-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border)}
 .how-step{
-  background:var(--bg2);padding:40px 36px;display:flex;gap:24px;
+  background:var(--bg);padding:40px 36px;display:flex;gap:24px;
   align-items:flex-start;position:relative;transition:background .3s;
 }
-.how-step:hover{background:var(--bg3)}
+.how-step:hover{background:var(--bg2)}
 .how-num{
   font-family:var(--mono);font-size:28px;font-weight:500;
   color:var(--text3);line-height:1;flex-shrink:0;width:36px;
@@ -300,10 +300,12 @@ section{padding:110px 0;position:relative;z-index:1}
 .how-step:hover .how-num{color:var(--text2)}
 .how-content h4{font-size:15px;font-weight:500;color:var(--text);margin-bottom:10px}
 .how-content p{font-size:13px;color:var(--text2);line-height:1.75;font-weight:300}
-
-/* ── Solution ──────────────────────────────────────────────────── */
-#solution{background:var(--bg)}
-.solution-features{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border)}
+.section-divider{height:1px;background:var(--border);margin:56px 0 0}
+.solution-sub{
+  font-family:var(--mono);font-size:9px;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--text3);margin:56px 0 24px;
+}
+.solution-features{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
 .sf{
   background:var(--bg);padding:32px 36px;
   display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;
@@ -316,6 +318,7 @@ section{padding:110px 0;position:relative;z-index:1}
 }
 .sf h4{font-size:14px;font-weight:500;color:var(--text);margin-bottom:7px}
 .sf p{font-size:13px;color:var(--text2);line-height:1.75;font-weight:300}
+
 
 /* ── Team ──────────────────────────────────────────────────────── */
 #team{background:var(--bg2)}
@@ -349,7 +352,7 @@ section{padding:110px 0;position:relative;z-index:1}
 }
 .tm-link:hover{color:var(--text2);border-color:var(--border2)}
 
-/* ── CTA strip (merged into solution) ──────────────────────────── */
+/* ── CTA strip ─────────────────────────────────────────────────── */
 .cta-strip{
   display:flex;align-items:center;justify-content:center;gap:14px;
   margin-top:48px;flex-wrap:wrap;
@@ -381,7 +384,9 @@ footer{
   section{padding:80px 0}
   .problem-grid{grid-template-columns:1fr}
   .how-grid{grid-template-columns:1fr}
-  .solution-features{grid-template-columns:1fr}
+  .solution-features{grid-template-columns:1fr;background:transparent}
+  .sf{border-bottom:1px solid var(--border)}
+  .solution-sub{margin:40px 0 20px}
   .demo-panel{position:static}
   .team-grid{grid-template-columns:1fr}
   .hero-creds{margin-top:40px}
@@ -422,7 +427,6 @@ footer{
   <div class="nav-center">
     <a href="#demo">Demo</a>
     <a href="#problem">Problem</a>
-    <a href="#how">How it works</a>
     <a href="#solution">Solution</a>
   </div>
   <div class="nav-right">
@@ -511,9 +515,9 @@ footer{
 <section id="demo">
   <div class="container">
     <div class="demo-section-header">
-      <div class="tag reveal">01 — Live demo</div>
+      <div class="tag reveal">01 — See how it works</div>
       <h2 class="section-title reveal reveal-d1">See LeanLog handle real<br>warehouse scenarios.</h2>
-      <p class="section-desc reveal reveal-d2">Every conversation is handled end-to-end. You approve in one word — the agent does the rest.</p>
+      <p class="section-desc reveal reveal-d2">Every conversation is handled end-to-end. You approve in words — the agent does the rest.</p>
     </div>
     <div class="demo-panel reveal reveal-d3" style="max-width:720px;margin:0 auto;position:static">
       <div class="demo-header">
@@ -522,7 +526,7 @@ footer{
           <div class="demo-dot demo-dot-y"></div>
           <div class="demo-dot demo-dot-g"></div>
         </div>
-        <div class="demo-title-bar">leanlog — live demo</div>
+        <div class="demo-title-bar">leanlog</div>
       </div>
       <div class="demo-tabs" id="demoTabs"></div>
       <div class="demo-body" id="demoBody"></div>
@@ -545,7 +549,7 @@ footer{
           <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
         </div>
         <h3>Margins under siege</h3>
-        <p>Warehouses operate on 3–7% margins and face pressure from rising labor costs, SKU complexity, and rent inflation. Every dollar counts.</p>
+        <p>Warehouses operate on thin margins and face pressure from rising labor costs, SKU complexity, and rent inflation. Every $ counts.</p>
       </div>
       <div class="problem-card">
         <span class="pc-index">02 / 03</span>
@@ -567,82 +571,35 @@ footer{
   </div>
 </section>
 
-<!-- ── How it works ── -->
-<section id="how">
-  <div class="container">
-    <div class="section-header">
-      <div class="tag reveal">03 — How it works</div>
-      <h2 class="section-title reveal reveal-d1">The agent works the way you <em>already</em> work.</h2>
-      <p class="section-desc reveal reveal-d2">No training. No dashboards. LeanLog connects to your existing operation from day one — through voice and text.</p>
-    </div>
-    <div class="how-grid reveal reveal-d3">
-      <div class="how-step">
-        <div class="how-num">01</div>
-        <div class="how-content">
-          <h4>A call or message comes in</h4>
-          <p>Suppliers, carriers, or your own team reach out. The agent picks up, captures the details, and checks your operation's state in real time.</p>
-        </div>
-      </div>
-      <div class="how-step">
-        <div class="how-num">02</div>
-        <div class="how-content">
-          <h4>Agent checks and alerts you</h4>
-          <p>Before confirming anything, LeanLog texts or calls you with a summary and recommendation. You reply in one word.</p>
-        </div>
-      </div>
-      <div class="how-step">
-        <div class="how-num">03</div>
-        <div class="how-content">
-          <h4>You approve. Agent executes.</h4>
-          <p>The agent calls the third party, confirms, updates your schedule, and notifies your team — all without manual steps on your end.</p>
-        </div>
-      </div>
-      <div class="how-step">
-        <div class="how-num">04</div>
-        <div class="how-content">
-          <h4>Everything is logged</h4>
-          <p>Every call, invoice, PO, and schedule change is recorded automatically. Full audit trail, always up to date.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── Solution ── -->
+<!-- ── Solution (merged: how it works + what you get) ── -->
 <section id="solution">
   <div class="container">
     <div class="section-header">
-      <div class="tag reveal">04 — The solution</div>
-      <h2 class="section-title reveal reveal-d1">An AI agent that runs your back office.</h2>
-      <p class="section-desc reveal reveal-d2">LeanLog automates the conversations that eat your team's time. You approve. The agent handles the rest.</p>
+      <div class="tag reveal">03 — The solution</div>
+      <h2 class="section-title reveal reveal-d1">The agent works the way you <em>already</em> work.</h2>
+      <p class="section-desc reveal reveal-d2">No training. No dashboards. LeanLog connects to your existing operation from day one — through voice and text.</p>
     </div>
-    <div class="solution-features">
-      <div class="sf reveal reveal-d1">
+
+    <div class="solution-features reveal reveal-d1">
+      <div class="sf">
         <div class="sf-dot"></div>
         <div>
           <h4>Works by talking</h4>
           <p>No software to learn, no screens to check, no data to enter. Your team just talks or texts — the agent handles everything from there.</p>
         </div>
       </div>
-      <div class="sf reveal reveal-d2">
-        <div class="sf-dot"></div>
-        <div>
-          <h4>Starts working day one</h4>
-          <p>No lengthy setup, no consultants, no data migration. LeanLog plugs into your existing operation immediately.</p>
-        </div>
-      </div>
-      <div class="sf reveal reveal-d3">
+      <div class="sf">
         <div class="sf-dot"></div>
         <div>
           <h4>Full visibility</h4>
-          <p>The agent keeps records of every interaction — every call, invoice, and schedule change — logged and searchable.</p>
+          <p>The agent manages all records internally — every call, invoice, PO, and schedule change is logged and accessible to you at any time.</p>
         </div>
       </div>
-      <div class="sf reveal reveal-d4">
+      <div class="sf">
         <div class="sf-dot"></div>
         <div>
           <h4>You stay in control</h4>
-          <p>Nothing is confirmed without your approval. The agent checks in before acting on your behalf.</p>
+          <p>You decide which workflows require your approval. Some tasks execute automatically; others check in with you first — your call.</p>
         </div>
       </div>
     </div>
