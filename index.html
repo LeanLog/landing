@@ -95,7 +95,7 @@ body::before{
 /* ── Hero ──────────────────────────────────────────────────────── */
 .hero{
   min-height:100vh;display:flex;flex-direction:column;
-  justify-content:center;padding:120px 48px 80px;
+  justify-content:center;padding:120px 48px 100px;
   position:relative;overflow:hidden;
 }
 .hero-glow{
@@ -137,89 +137,33 @@ body::before{
 .hero-contact:hover{border-color:var(--border2);color:var(--text2)}
 .hero-contact svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.5}
 
-/* ── Stats bar ─────────────────────────────────────────────────── */
-.stats-wrap{
-  padding:0 48px;
-  opacity:0;animation:fadeUp .8s .65s forwards;
+/* ── Hero credentials ──────────────────────────────────────────── */
+.hero-creds{
+  margin-top:56px;
+  opacity:0;animation:fadeUp .8s .68s forwards;
 }
-.stats-inner{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  border:1px solid var(--border);background:var(--bg2);
+.cred-label{
+  font-family:var(--mono);font-size:9px;letter-spacing:2.5px;
+  text-transform:uppercase;color:var(--text3);margin-bottom:20px;
 }
-.stat{
-  padding:30px 28px;text-align:center;
+.org-logos{
+  display:flex;align-items:center;flex-wrap:wrap;
+}
+.org-logo{
+  padding:10px 24px;
   border-right:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
 }
-.stat:last-child{border-right:none}
-.stat-num{
-  font-family:var(--serif);font-size:40px;color:var(--text);
-  margin-bottom:6px;letter-spacing:-.5px;font-weight:400;
-}
-.stat-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:2px;font-family:var(--mono)}
+.org-logo:first-child{padding-left:0}
+.org-logo:last-child{border-right:none}
+.org-logo svg{height:30px;width:auto;max-width:120px;display:block}
 
-/* ── Section commons ───────────────────────────────────────────── */
-section{padding:110px 0;position:relative;z-index:1}
-.section-header{margin-bottom:56px}
-.section-title{
-  font-family:var(--serif);font-size:clamp(28px,3.2vw,48px);
-  line-height:1.12;max-width:640px;color:var(--text);
-  font-weight:400;letter-spacing:-.3px;margin-bottom:18px;
-}
-.section-title em{font-style:italic;color:var(--accent)}
-.section-desc{font-size:15px;line-height:1.8;color:var(--text2);max-width:500px;font-weight:300}
-
-/* ── Problem ───────────────────────────────────────────────────── */
-#problem{background:var(--bg)}
-.problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
-.problem-card{
-  background:var(--bg);padding:40px 32px;position:relative;
-  overflow:hidden;transition:background .3s;
-}
-.problem-card:hover{background:var(--bg2)}
-.pc-index{
-  font-family:var(--mono);font-size:10px;color:var(--text3);
-  letter-spacing:2px;margin-bottom:24px;display:block;
-}
-.pc-icon{
-  width:40px;height:40px;border:1px solid var(--border2);
-  display:flex;align-items:center;justify-content:center;margin-bottom:20px;
-}
-.pc-icon svg{width:18px;height:18px;stroke:var(--text);fill:none;stroke-width:1.5;opacity:.6}
-.problem-card:hover .pc-icon svg{opacity:1}
-.problem-card h3{font-size:15px;font-weight:500;margin-bottom:12px;line-height:1.4;color:var(--text)}
-.problem-card p{font-size:13px;color:var(--text2);line-height:1.75;font-weight:300}
-
-/* ── How it works ──────────────────────────────────────────────── */
-#how{background:var(--bg2)}
-.how-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border)}
-.how-step{
-  background:var(--bg2);padding:40px 36px;display:flex;gap:24px;
-  align-items:flex-start;position:relative;transition:background .3s;
-}
-.how-step:hover{background:var(--bg3)}
-.how-num{
-  font-family:var(--mono);font-size:28px;font-weight:500;
-  color:var(--text3);line-height:1;flex-shrink:0;width:36px;
-  transition:color .3s;
-}
-.how-step:hover .how-num{color:var(--text2)}
-.how-content h4{font-size:15px;font-weight:500;color:var(--text);margin-bottom:10px}
-.how-content p{font-size:13px;color:var(--text2);line-height:1.75;font-weight:300}
-
-/* ── Solution ──────────────────────────────────────────────────── */
-#solution{background:var(--bg)}
-.solution-block{display:grid;grid-template-columns:1fr 1.15fr;gap:80px;align-items:start}
-.solution-features{display:flex;flex-direction:column}
-.sf{
-  padding:24px 0;border-bottom:1px solid var(--border);
-  display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;
-}
-.sf-dot{
-  width:5px;height:5px;background:var(--text3);flex-shrink:0;
-  margin-top:8px;
-}
-.sf h4{font-size:14px;font-weight:500;color:var(--text);margin-bottom:7px}
-.sf p{font-size:13px;color:var(--text2);line-height:1.75;font-weight:300}
+/* ── Demo section ──────────────────────────────────────────────── */
+#demo{background:var(--bg);padding:100px 0;position:relative;z-index:1}
+.demo-section-header{text-align:center;margin-bottom:48px}
+.demo-section-header .tag{justify-content:center}
+.demo-section-header .section-title{max-width:none;text-align:center;margin:0 auto 18px}
+.demo-section-header .section-desc{max-width:480px;margin:0 auto;text-align:center}
 
 /* ── Demo Panel ────────────────────────────────────────────────── */
 .demo-panel{
@@ -300,14 +244,79 @@ section{padding:110px 0;position:relative;z-index:1}
 }
 @keyframes blink{50%{opacity:0}}
 
+/* ── Section commons ───────────────────────────────────────────── */
+section{padding:110px 0;position:relative;z-index:1}
+.section-header{margin-bottom:56px}
+.section-title{
+  font-family:var(--serif);font-size:clamp(28px,3.2vw,48px);
+  line-height:1.12;max-width:640px;color:var(--text);
+  font-weight:400;letter-spacing:-.3px;margin-bottom:18px;
+}
+.section-title em{font-style:italic;color:var(--accent)}
+.section-desc{font-size:15px;line-height:1.8;color:var(--text2);max-width:500px;font-weight:300}
+
+/* ── Problem ───────────────────────────────────────────────────── */
+#problem{background:var(--bg)}
+.problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+.problem-card{
+  background:var(--bg);padding:40px 32px;position:relative;
+  overflow:hidden;transition:background .3s;
+}
+.problem-card:hover{background:var(--bg2)}
+.pc-index{
+  font-family:var(--mono);font-size:10px;color:var(--text3);
+  letter-spacing:2px;margin-bottom:24px;display:block;
+}
+.pc-icon{
+  width:40px;height:40px;border:1px solid var(--border2);
+  display:flex;align-items:center;justify-content:center;margin-bottom:20px;
+}
+.pc-icon svg{width:18px;height:18px;stroke:var(--text);fill:none;stroke-width:1.5;opacity:.6}
+.problem-card:hover .pc-icon svg{opacity:1}
+.problem-card h3{font-size:15px;font-weight:500;margin-bottom:12px;line-height:1.4;color:var(--text)}
+.problem-card p{font-size:13px;color:var(--text2);line-height:1.75;font-weight:300}
+
+/* ── How it works ──────────────────────────────────────────────── */
+#how{background:var(--bg2)}
+.how-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border)}
+.how-step{
+  background:var(--bg2);padding:40px 36px;display:flex;gap:24px;
+  align-items:flex-start;position:relative;transition:background .3s;
+}
+.how-step:hover{background:var(--bg3)}
+.how-num{
+  font-family:var(--mono);font-size:28px;font-weight:500;
+  color:var(--text3);line-height:1;flex-shrink:0;width:36px;
+  transition:color .3s;
+}
+.how-step:hover .how-num{color:var(--text2)}
+.how-content h4{font-size:15px;font-weight:500;color:var(--text);margin-bottom:10px}
+.how-content p{font-size:13px;color:var(--text2);line-height:1.75;font-weight:300}
+
+/* ── Solution ──────────────────────────────────────────────────── */
+#solution{background:var(--bg)}
+.solution-features{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border)}
+.sf{
+  background:var(--bg);padding:32px 36px;
+  display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;
+  transition:background .3s;
+}
+.sf:hover{background:var(--bg2)}
+.sf-dot{
+  width:5px;height:5px;background:var(--text3);flex-shrink:0;
+  margin-top:8px;
+}
+.sf h4{font-size:14px;font-weight:500;color:var(--text);margin-bottom:7px}
+.sf p{font-size:13px;color:var(--text2);line-height:1.75;font-weight:300}
+
 /* ── Team ──────────────────────────────────────────────────────── */
-#team{background:var(--bg)}
+#team{background:var(--bg2)}
 .team-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border)}
 .team-card{
-  background:var(--bg);padding:44px 40px;
+  background:var(--bg2);padding:44px 40px;
   position:relative;overflow:hidden;transition:background .3s;
 }
-.team-card:hover{background:var(--bg2)}
+.team-card:hover{background:var(--bg3)}
 .team-card::after{
   content:'';position:absolute;bottom:0;left:0;right:0;height:1px;
   background:linear-gradient(90deg,var(--text3),transparent);
@@ -331,24 +340,6 @@ section{padding:110px 0;position:relative;z-index:1}
   transition:all .2s;
 }
 .tm-link:hover{color:var(--text2);border-color:var(--border2)}
-
-/* ── Org logo strip ────────────────────────────────────────────── */
-.org-strip{margin-top:0;padding-top:0;border-top:none}
-.org-strip-label{
-  font-family:var(--mono);font-size:10px;letter-spacing:2.5px;
-  text-transform:uppercase;color:var(--text3);text-align:center;margin-bottom:36px;
-}
-.org-logos{
-  display:flex;align-items:center;justify-content:center;
-  flex-wrap:wrap;gap:0;
-}
-.org-logo{
-  padding:20px 32px;border-right:1px solid var(--border);
-  color:var(--text3);transition:color .25s;display:flex;align-items:center;
-}
-.org-logo:last-child{border-right:none}
-.org-logo:hover{color:var(--text2)}
-.org-logo svg{height:36px;width:auto;display:block}
 
 /* ── CTA ───────────────────────────────────────────────────────── */
 #contact{
@@ -397,17 +388,21 @@ footer{
   .container{padding:0 24px}
   .nav{padding:0 24px}
   .nav-center,.nav-right .btn-ghost{display:none}
-  .hero{padding:100px 24px 60px}
+  .hero{padding:100px 24px 80px}
   section{padding:80px 0}
   #contact{padding:90px 24px}
   .problem-grid{grid-template-columns:1fr}
   .how-grid{grid-template-columns:1fr}
-  .solution-block{grid-template-columns:1fr;gap:48px}
+  .solution-features{grid-template-columns:1fr}
   .demo-panel{position:static}
   .team-grid{grid-template-columns:1fr}
-  .org-logos{gap:0}
-  .org-logo{padding:16px 20px}
+  .org-logos{flex-wrap:wrap}
+  .org-logo{padding:8px 16px}
   footer{padding:20px 24px;flex-direction:column;gap:6px;text-align:center}
+}
+@media(max-width:540px){
+  .org-logo{padding:6px 12px}
+  .org-logo svg{height:24px;max-width:80px}
 }
 </style>
 </head>
@@ -439,17 +434,99 @@ footer{
     <p class="hero-sub">LeanLog automates supplier communications, procurement, invoicing, and scheduling. No software to learn. No screens to check. Your team just talks.</p>
     <div class="hero-actions">
       <a class="btn-primary" href="mailto:rodrigo@leanlog.ai">Talk with a Founder</a>
-      <button class="btn-outline" onclick="document.getElementById('solution').scrollIntoView({behavior:'smooth'})">See the Demo</button>
+      <button class="btn-outline" onclick="document.getElementById('demo').scrollIntoView({behavior:'smooth'})">See the Demo</button>
+    </div>
+
+    <!-- Credentials -->
+    <div class="hero-creds">
+      <div class="cred-label">Experience &amp; credentials from</div>
+      <div class="org-logos">
+
+        <!-- University of Chicago -->
+        <div class="org-logo">
+          <svg viewBox="0 0 110 46" xmlns="http://www.w3.org/2000/svg">
+            <text x="55" y="16" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#800000" letter-spacing="2" font-weight="400">THE UNIVERSITY OF</text>
+            <text x="55" y="34" text-anchor="middle" font-family="Georgia,serif" font-size="15" fill="#800000" letter-spacing="0.5" font-weight="700">CHICAGO</text>
+          </svg>
+        </div>
+
+        <!-- Stanford -->
+        <div class="org-logo">
+          <svg viewBox="0 0 100 46" xmlns="http://www.w3.org/2000/svg">
+            <text x="50" y="20" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#8C1515" letter-spacing="2" font-weight="700">STANFORD</text>
+            <text x="50" y="35" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#8C1515" letter-spacing="1.5">UNIVERSITY</text>
+          </svg>
+        </div>
+
+        <!-- Amazon -->
+        <div class="org-logo">
+          <svg viewBox="0 0 110 46" xmlns="http://www.w3.org/2000/svg">
+            <text x="55" y="24" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="22" fill="#221F1F" font-weight="400" letter-spacing="-0.5">amazon</text>
+            <path d="M22 32 C44 43 66 43 88 32" stroke="#FF9900" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M85 28 L90 33 L83 34 Z" fill="#FF9900"/>
+          </svg>
+        </div>
+
+        <!-- Intel -->
+        <div class="org-logo">
+          <svg viewBox="0 0 90 46" xmlns="http://www.w3.org/2000/svg">
+            <text x="42" y="30" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="24" fill="#0068B5" font-weight="300" letter-spacing="-0.5">intel</text>
+            <circle cx="72" cy="12" r="5" fill="none" stroke="#0068B5" stroke-width="1.5"/>
+            <text x="72" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5" fill="#0068B5">R</text>
+          </svg>
+        </div>
+
+        <!-- U.S. Air Force -->
+        <div class="org-logo">
+          <svg viewBox="0 0 120 46" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10,22 L24,17 L34,22 L44,15 L60,22 L76,15 L86,22 L96,17 L110,22" stroke="#1C3C8C" stroke-width="1.1" fill="none" stroke-linejoin="round"/>
+            <polygon points="60,8 62,14.5 68.5,14.5 63.5,18.5 65.5,25 60,21 54.5,25 56.5,18.5 51.5,14.5 58,14.5" fill="#1C3C8C"/>
+            <text x="60" y="40" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="7.5" fill="#1C3C8C" letter-spacing="1.8" font-weight="700">U.S. AIR FORCE</text>
+          </svg>
+        </div>
+
+        <!-- Johnson & Johnson (vertical) -->
+        <div class="org-logo">
+          <svg viewBox="0 0 72 46" xmlns="http://www.w3.org/2000/svg">
+            <text x="36" y="14" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="12" fill="#D51F31" font-style="italic" font-weight="700">Johnson</text>
+            <text x="36" y="27" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="10" fill="#D51F31" font-style="italic">&amp;</text>
+            <text x="36" y="42" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="12" fill="#D51F31" font-style="italic" font-weight="700">Johnson</text>
+          </svg>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>
 
+<!-- ── Demo ── -->
+<section id="demo">
+  <div class="container">
+    <div class="demo-section-header">
+      <div class="tag reveal">01 — Live demo</div>
+      <h2 class="section-title reveal reveal-d1">See LeanLog handle real<br>warehouse scenarios.</h2>
+      <p class="section-desc reveal reveal-d2">Every conversation is handled end-to-end. You approve in one word — the agent does the rest.</p>
+    </div>
+    <div class="demo-panel reveal reveal-d3" style="max-width:720px;margin:0 auto;position:static">
+      <div class="demo-header">
+        <div class="demo-dots">
+          <div class="demo-dot demo-dot-r"></div>
+          <div class="demo-dot demo-dot-y"></div>
+          <div class="demo-dot demo-dot-g"></div>
+        </div>
+        <div class="demo-title-bar">leanlog — live demo</div>
+      </div>
+      <div class="demo-tabs" id="demoTabs"></div>
+      <div class="demo-body" id="demoBody"></div>
+    </div>
+  </div>
+</section>
 
 <!-- ── Problem ── -->
 <section id="problem">
   <div class="container">
     <div class="section-header">
-      <div class="tag reveal">01 — The problem</div>
+      <div class="tag reveal">02 — The problem</div>
       <h2 class="section-title reveal reveal-d1">Warehouses are the backbone of commerce. They're also being <em>crushed.</em></h2>
       <p class="section-desc reveal reveal-d2">Rising salaries, greater rent, and intense competition have squeezed margins to near zero. The software that's supposed to help costs more to implement than years of licensing.</p>
     </div>
@@ -486,7 +563,7 @@ footer{
 <section id="how">
   <div class="container">
     <div class="section-header">
-      <div class="tag reveal">02 — How it works</div>
+      <div class="tag reveal">03 — How it works</div>
       <h2 class="section-title reveal reveal-d1">The agent works the way you <em>already</em> work.</h2>
       <p class="section-desc reveal reveal-d2">No training. No dashboards. LeanLog connects to your existing operation from day one — through voice and text.</p>
     </div>
@@ -526,109 +603,43 @@ footer{
 <!-- ── Solution ── -->
 <section id="solution">
   <div class="container">
-    <div class="solution-block">
-      <div>
-        <div class="section-header">
-          <div class="tag reveal">03 — The solution</div>
-          <h2 class="section-title reveal reveal-d1">An AI agent that runs your back office.</h2>
-          <p class="section-desc reveal reveal-d2">LeanLog automates the conversations that eat your team's time. You approve. The agent handles the rest.</p>
-        </div>
-        <div class="solution-features">
-          <div class="sf reveal reveal-d1">
-            <div class="sf-dot"></div>
-            <div>
-              <h4>Works by talking</h4>
-              <p>No software to learn, no screens to check, no data to enter. Your team just talks or texts — the agent handles everything from there.</p>
-            </div>
-          </div>
-          <div class="sf reveal reveal-d2">
-            <div class="sf-dot"></div>
-            <div>
-              <h4>Starts working day one</h4>
-              <p>No lengthy setup, no consultants, no data migration. LeanLog plugs into your existing operation immediately.</p>
-            </div>
-          </div>
-          <div class="sf reveal reveal-d3">
-            <div class="sf-dot"></div>
-            <div>
-              <h4>Full visibility</h4>
-              <p>The agent keeps records of every interaction — every call, invoice, and schedule change — logged and searchable.</p>
-            </div>
-          </div>
-          <div class="sf reveal reveal-d4">
-            <div class="sf-dot"></div>
-            <div>
-              <h4>You stay in control</h4>
-              <p>Nothing is confirmed without your approval. The agent checks in before acting on your behalf.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Live Demo Panel -->
-      <div class="demo-panel reveal reveal-d2">
-        <div class="demo-header">
-          <div class="demo-dots">
-            <div class="demo-dot demo-dot-r"></div>
-            <div class="demo-dot demo-dot-y"></div>
-            <div class="demo-dot demo-dot-g"></div>
-          </div>
-          <div class="demo-title-bar">leanlog — live demo</div>
-        </div>
-        <div class="demo-tabs" id="demoTabs"></div>
-        <div class="demo-body" id="demoBody"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── Team ── -->
-<section id="team">
-  <div class="container">
     <div class="section-header">
-      <div class="tag reveal">04 — The team</div>
-      <h2 class="section-title reveal reveal-d1">Built by operators, for operators.</h2>
-      <p class="section-desc reveal reveal-d2">We've managed warehouses, scaled logistics operations, and built AI for the world's largest supply chains. We know this problem from the inside. Our fundamental mission is helping you succeed.</p>
+      <div class="tag reveal">04 — The solution</div>
+      <h2 class="section-title reveal reveal-d1">An AI agent that runs your back office.</h2>
+      <p class="section-desc reveal reveal-d2">LeanLog automates the conversations that eat your team's time. You approve. The agent handles the rest.</p>
     </div>
-    <!-- Org logos strip -->
-    <div class="org-strip reveal reveal-d2">
-      <div class="org-strip-label">Experience &amp; credentials from</div>
-      <div class="org-logos">
-        <div class="org-logo">
-          <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
-            <text x="60" y="28" text-anchor="middle" font-family="Georgia,serif" font-size="18" font-weight="700" fill="currentColor" letter-spacing="-0.5">UChicago</text>
-          </svg>
+    <div class="solution-features">
+      <div class="sf reveal reveal-d1">
+        <div class="sf-dot"></div>
+        <div>
+          <h4>Works by talking</h4>
+          <p>No software to learn, no screens to check, no data to enter. Your team just talks or texts — the agent handles everything from there.</p>
         </div>
-        <div class="org-logo">
-          <svg viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg">
-            <text x="50" y="28" text-anchor="middle" font-family="Georgia,serif" font-size="16" font-weight="400" font-style="italic" fill="currentColor" letter-spacing="0.5">Stanford</text>
-          </svg>
+      </div>
+      <div class="sf reveal reveal-d2">
+        <div class="sf-dot"></div>
+        <div>
+          <h4>Starts working day one</h4>
+          <p>No lengthy setup, no consultants, no data migration. LeanLog plugs into your existing operation immediately.</p>
         </div>
-        <div class="org-logo">
-          <svg viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg">
-            <text x="50" y="29" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="300" fill="currentColor" letter-spacing="2">amazon</text>
-          </svg>
+      </div>
+      <div class="sf reveal reveal-d3">
+        <div class="sf-dot"></div>
+        <div>
+          <h4>Full visibility</h4>
+          <p>The agent keeps records of every interaction — every call, invoice, and schedule change — logged and searchable.</p>
         </div>
-        <div class="org-logo">
-          <svg viewBox="0 0 80 40" xmlns="http://www.w3.org/2000/svg">
-            <text x="40" y="28" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="currentColor" letter-spacing="-1">intel</text>
-          </svg>
-        </div>
-        <div class="org-logo">
-          <svg viewBox="0 0 140 40" xmlns="http://www.w3.org/2000/svg">
-            <text x="70" y="26" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" font-weight="600" fill="currentColor" letter-spacing="2.5">U.S. AIR FORCE</text>
-          </svg>
-        </div>
-        <div class="org-logo">
-          <svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
-            <text x="30" y="28" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="700" fill="currentColor" letter-spacing="1">J&amp;J</text>
-          </svg>
+      </div>
+      <div class="sf reveal reveal-d4">
+        <div class="sf-dot"></div>
+        <div>
+          <h4>You stay in control</h4>
+          <p>Nothing is confirmed without your approval. The agent checks in before acting on your behalf.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
-
 
 <!-- ── CTA ── -->
 <section id="contact">
@@ -755,7 +766,6 @@ function animateMessages(msgs, idx) {
   const m = msgs[idx];
 
   if (m.role === 'system') {
-    // System / status message — appears instantly, stays for duration, then next
     const div = document.createElement('div');
     div.className = 'demo-msg system';
     div.innerHTML = `<div class="sys-pulse"><span></span><span></span><span></span></div><span>${m.text}</span>`;
@@ -766,7 +776,6 @@ function animateMessages(msgs, idx) {
     return;
   }
 
-  // Agent or human — type out character by character
   const div = document.createElement('div');
   div.className = 'demo-msg ' + m.role;
   const lbl = document.createElement('div'); lbl.className = 'msg-label';
