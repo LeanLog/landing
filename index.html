@@ -128,7 +128,8 @@ body::before{
   margin-bottom:44px;font-weight:300;
   opacity:0;animation:fadeUp .8s .38s forwards;
 }
-.hero-cycle{display:inline-block;min-width:13ch}
+.hero-cycle{display:inline}
+.hero-mobile-br{display:none}
 .hero-cycle.cycle-exit{animation:cycleOut .28s ease forwards}
 .hero-cycle.cycle-enter{animation:cycleEnter .32s ease forwards}
 @keyframes cycleOut{to{opacity:0;transform:translateY(-10px)}}
@@ -418,7 +419,7 @@ footer{
 /* Mobile logo grid — 3 columns × 2 rows */
 @media(max-width:680px){
   .hero h1{font-size:clamp(35px,10vw,52px);line-height:1.15}
-  .hero-cycle{min-width:0}
+  .hero-mobile-br{display:block}
   .org-logos{
     display:grid;
     grid-template-columns:repeat(3,1fr);
@@ -466,7 +467,7 @@ footer{
       <div class="eyebrow-badge">AI Agents for 3PLs &amp; Wholesale Distributors</div>
       <div class="eyebrow-line"></div>
     </div>
-    <h1><span class="hero-cycle" id="heroCycle">Run More Clients.</span><br>Without Hiring More People.</h1>
+    <h1><span class="hero-cycle" id="heroVerb">Run</span><br class="hero-mobile-br"><span class="hero-cycle" id="heroNoun"> More Clients.</span><br>Without Hiring More People.</h1>
     <p class="hero-sub">LeanLog handles customer orders, invoice disputes, carrier scheduling, vendor POs, reorder alerts, and other workflows. Automatically. Your team talks. The agent executes.</p>
     <div class="hero-actions">
       <a class="btn-primary" href="mailto:rodrigo@leanlog.ai">Talk with a Founder</a>
@@ -971,17 +972,21 @@ const sfTrigger = new IntersectionObserver((entries) => {
 sfTrigger.observe(document.querySelector('.sf-block'));
 
 /* ── Hero headline cycling ─────────────────────────────────────── */
-const cycleTexts = ['Run More Clients.', 'Manage More Suppliers.', 'Handle More Carriers.'];
+const cycleTexts = [
+  ['Run', ' More Clients.'],
+  ['Manage', ' More Suppliers.'],
+  ['Handle', ' More Carriers.'],
+];
 let cycleIdx = 0;
-const cycleEl = document.getElementById('heroCycle');
+const heroVerb = document.getElementById('heroVerb');
+const heroNoun = document.getElementById('heroNoun');
 setInterval(() => {
-  cycleEl.classList.remove('cycle-enter');
-  cycleEl.classList.add('cycle-exit');
+  [heroVerb, heroNoun].forEach(el => { el.classList.remove('cycle-enter'); el.classList.add('cycle-exit'); });
   setTimeout(() => {
     cycleIdx = (cycleIdx + 1) % cycleTexts.length;
-    cycleEl.textContent = cycleTexts[cycleIdx];
-    cycleEl.classList.remove('cycle-exit');
-    cycleEl.classList.add('cycle-enter');
+    heroVerb.textContent = cycleTexts[cycleIdx][0];
+    heroNoun.textContent = cycleTexts[cycleIdx][1];
+    [heroVerb, heroNoun].forEach(el => { el.classList.remove('cycle-exit'); el.classList.add('cycle-enter'); });
   }, 280);
 }, 3000);
 </script>
