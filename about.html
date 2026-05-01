@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/favicon.ico">
+<title>About LeanLog — The brain that runs your operation</title>
+<meta name="description" content="LeanLog is built by a small team of operators and AI engineers. We're building the operational brain for businesses where the actual logic of the work lives outside the system of record.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#f8f5ef;
+  --bg2:#f1ede6;
+  --bg3:#e9e4db;
+  --accent:#141210;
+  --text:#141210;
+  --text2:#5a5650;
+  --text3:#a09a92;
+  --border:rgba(0,0,0,.08);
+  --border2:rgba(0,0,0,.14);
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:radial-gradient(rgba(0,0,0,.06) 1px,transparent 1px);
+  background-size:32px 32px;
+}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--text3);border-radius:2px}
+
+.tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--text3);margin-bottom:22px}
+.tag::before{content:'//'}
+
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  padding:0 48px;height:60px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(248,245,239,.92);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{display:flex;align-items:center}
+.nav-logo img{height:28px;width:auto;display:block}
+.nav-center{display:flex;gap:32px}
+.nav-center a{font-size:13px;color:var(--text3);letter-spacing:.2px;transition:color .2s}
+.nav-center a:hover{color:var(--text2)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.btn-primary{
+  font-size:13px;font-weight:500;color:var(--bg);background:var(--accent);
+  padding:8px 20px;border:none;cursor:pointer;font-family:var(--sans);
+  transition:all .2s;letter-spacing:.2px;display:inline-flex;align-items:center;
+}
+.btn-primary:hover{background:#2e2b28;box-shadow:0 4px 20px rgba(0,0,0,.15)}
+.btn-outline{
+  font-size:13px;font-weight:500;color:var(--text);background:none;
+  padding:8px 20px;border:1px solid var(--border2);cursor:pointer;
+  font-family:var(--sans);transition:all .2s;letter-spacing:.2px;
+  display:inline-flex;align-items:center;gap:6px;
+}
+.btn-outline:hover{background:var(--bg2);border-color:var(--text3)}
+
+main{position:relative;z-index:1}
+.about-hero{
+  padding:160px 48px 80px;
+  max-width:1140px;margin:0 auto;
+}
+.about-hero h1{
+  font-family:var(--serif);font-size:clamp(36px,5vw,60px);line-height:1.1;
+  max-width:880px;color:var(--text);
+  font-weight:400;letter-spacing:-.5px;margin-bottom:36px;
+}
+.about-hero h1 em{font-style:italic;color:var(--accent)}
+.about-prose{max-width:680px}
+.about-prose p{
+  font-size:16px;line-height:1.85;color:var(--text2);
+  font-weight:300;margin-bottom:20px;
+}
+.about-prose p:last-child{margin-bottom:0}
+.about-prose strong{color:var(--text);font-weight:500}
+
+.about-section{padding:64px 48px;max-width:1140px;margin:0 auto;border-top:1px solid var(--border)}
+.about-section .tag{justify-content:flex-start;margin-bottom:20px}
+.about-section h2{
+  font-family:var(--serif);font-size:clamp(24px,3vw,36px);font-weight:400;
+  color:var(--text);line-height:1.2;letter-spacing:-.3px;margin-bottom:14px;max-width:680px;
+}
+.about-section .lede{font-size:14px;line-height:1.8;color:var(--text2);max-width:560px;font-weight:300;margin-bottom:36px}
+
+/* Credentials */
+.org-logos{
+  display:flex;align-items:center;flex-wrap:nowrap;
+  border:1px solid var(--border);
+}
+.org-logo{
+  padding:18px;
+  border-right:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  flex:1;min-width:0;
+}
+.org-logo:last-child{border-right:none}
+.org-logo img{height:34px;width:auto;max-width:100%;object-fit:contain;display:block;opacity:.78;transition:opacity .2s}
+.org-logo:hover img{opacity:1}
+.org-logo img[alt*="Georgia"]{height:50px}
+
+.about-cta{
+  padding:96px 48px 112px;text-align:center;
+  border-top:1px solid var(--border);
+}
+.about-cta h2{
+  font-family:var(--serif);font-size:clamp(28px,4vw,48px);font-weight:400;
+  color:var(--text);line-height:1.1;letter-spacing:-.5px;margin-bottom:32px;
+}
+.about-cta h2 em{font-style:italic}
+.about-cta-buttons{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.about-cta .btn-primary{padding:14px 36px;font-size:14px}
+.about-cta .btn-outline{padding:14px 36px;font-size:14px}
+
+footer{
+  border-top:1px solid var(--border);padding:28px 48px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:11px;color:var(--text3);background:var(--bg2);
+  font-family:var(--mono);letter-spacing:.5px;
+}
+
+@media(max-width:960px){
+  .nav{padding:0 24px}
+  .nav-center{display:none}
+  .about-hero{padding:120px 24px 56px}
+  .about-section{padding:48px 24px}
+  .about-cta{padding:64px 24px 80px}
+  footer{padding:20px 24px;flex-direction:column;gap:6px;text-align:center}
+  .about-cta-buttons{flex-direction:column;align-items:center;width:100%}
+  .about-cta .btn-primary,.about-cta .btn-outline{width:100%;justify-content:center;max-width:320px}
+}
+
+@media(max-width:680px){
+  .org-logos{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    flex-wrap:unset;
+  }
+  .org-logo{
+    border-right:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+    padding:14px 8px;
+  }
+  .org-logo:nth-child(4n){border-right:none}
+  .org-logo:nth-child(n+5){border-bottom:none}
+  .org-logo img{height:24px;max-width:90%}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="nav-logo"><img src="leanlog-final-light 2.png" alt="LeanLog"></a>
+  <div class="nav-center">
+    <a href="/#demo">Demo</a>
+    <a href="/#solution">Vision</a>
+    <a href="/about.html">About</a>
+  </div>
+  <div class="nav-right">
+    <a class="btn-primary" href="mailto:rodrigo@leanlog.ai">Talk to a Founder</a>
+  </div>
+</nav>
+
+<main>
+  <section class="about-hero">
+    <div class="tag">About LeanLog</div>
+    <h1>We've run logistics, scaled distribution, and shipped AI into <em>regulated environments.</em></h1>
+    <div class="about-prose">
+      <p>LeanLog is built by a small team of operators and AI engineers. We've scaled ecommerce operations from zero, deployed optimization and machine learning inside regulated industries, and built AI agents for the Department of Defense.</p>
+      <p>Across every operations-heavy business we've worked with or talked to, the same pattern shows up: <strong>the system of record holds the records, but the actual work happens between the systems.</strong> Spreadsheets. Email threads. Knowledge that lives in a few people's heads. Migrating to a new ERP doesn't fix it. It moves the pain.</p>
+      <p>So we're building the operational brain. A layer that captures the decisions that run the business today, executes them, and gets sharper over time. Models swap underneath. Systems migrate. The brain stays.</p>
+    </div>
+  </section>
+
+  <section class="about-section">
+    <div class="tag">Credentials</div>
+    <h2>Where we've worked and trained.</h2>
+    <p class="lede">Operations at scale, AI in regulated environments, and a few institutions along the way.</p>
+    <div class="org-logos">
+      <div class="org-logo"><img src="assets/logos/uchicago.svg" alt="The University of Chicago"></div>
+      <div class="org-logo"><img src="assets/logos/stanford.svg" alt="Stanford University"></div>
+      <div class="org-logo"><img src="assets/logos/gatech.svg" alt="Georgia Institute of Technology"></div>
+      <div class="org-logo"><img src="assets/logos/amazon.svg" alt="Amazon"></div>
+      <div class="org-logo"><img src="assets/logos/jnj.svg" alt="Johnson &amp; Johnson"></div>
+      <div class="org-logo"><img src="assets/logos/intel.svg" alt="Intel"></div>
+      <div class="org-logo"><img src="assets/logos/dod.svg" alt="U.S. Department of Defense"></div>
+    </div>
+  </section>
+
+  <section class="about-cta">
+    <h2>Want to see <em>what we're building?</em></h2>
+    <div class="about-cta-buttons">
+      <a class="btn-primary" href="mailto:rodrigo@leanlog.ai">Talk to a Founder</a>
+      <a class="btn-outline" href="/#demo">See the Demo</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>&copy; 2026 LeanLog, Inc.</span>
+  <span>The brain that runs your operation</span>
+</footer>
+
+</body>
+</html>

@@ -6,8 +6,8 @@
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="shortcut icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="/favicon.ico">
-<title>LeanLog — AI Agents for 3PLs and Distributors</title>
-<meta name="description" content="LeanLog automates supplier communications, procurement, invoicing, and scheduling. No software to learn. Your team just talks.">
+<title>LeanLog — The brain that runs your operation</title>
+<meta name="description" content="LeanLog captures the decisions that run operations-heavy businesses. The ones living today in people's heads, spreadsheets, and email threads. Codified, executable, compounding.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* ── Reset & Tokens ────────────────────────────────────────────── */
@@ -121,16 +121,10 @@ body::before{
 }
 .hero h1 em{font-style:italic;color:var(--accent)}
 .hero-sub{
-  font-size:16px;line-height:1.8;color:var(--text2);max-width:480px;
+  font-size:16px;line-height:1.8;color:var(--text2);max-width:560px;
   margin-bottom:44px;font-weight:300;
   opacity:0;animation:fadeUp .8s .38s forwards;
 }
-.hero-cycle{display:inline}
-.hero-mobile-br{display:none}
-.hero-cycle.cycle-exit{animation:cycleOut .28s ease forwards}
-.hero-cycle.cycle-enter{animation:cycleEnter .32s ease forwards}
-@keyframes cycleOut{to{opacity:0;transform:translateY(-10px)}}
-@keyframes cycleEnter{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 .hero-actions{
   display:flex;align-items:center;gap:14px;flex-wrap:wrap;
   opacity:0;animation:fadeUp .8s .52s forwards;
@@ -156,21 +150,24 @@ body::before{
   display:flex;align-items:center;flex-wrap:nowrap;
 }
 .org-logo{
-  padding:10px 22px;
+  padding:10px 18px;
   border-right:1px solid var(--border);
   display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;
+  flex-shrink:0;flex:1;min-width:0;
 }
 .org-logo:first-child{padding-left:0}
-.org-logo:last-child{border-right:none}
-.org-logo svg{height:30px;width:auto;max-width:120px;display:block}
+.org-logo:last-child{border-right:none;padding-right:0}
+.org-logo img{height:32px;width:auto;max-width:100%;object-fit:contain;display:block;opacity:.78;transition:opacity .2s}
+.org-logo:hover img{opacity:1}
+/* GT seal is square; bump height so visual mass matches the wordmarks */
+.org-logo img[alt*="Georgia"]{height:46px}
 
 /* ── Demo section ──────────────────────────────────────────────── */
 #demo{background:var(--bg);position:relative;z-index:1}
 .demo-section-header{text-align:center;margin-bottom:48px}
 .demo-section-header .tag{justify-content:center}
 .demo-section-header .section-title{max-width:none;text-align:center;margin:0 auto 18px}
-.demo-section-header .section-desc{max-width:480px;margin:0 auto;text-align:center}
+.demo-section-header .section-desc{max-width:520px;margin:0 auto;text-align:center}
 
 /* ── Demo Panel ────────────────────────────────────────────────── */
 .demo-panel{
@@ -264,11 +261,11 @@ section{padding:50px 0;position:relative;z-index:1}
 #problem .section-header{margin-bottom:39px}
 .section-title{
   font-family:var(--serif);font-size:clamp(28px,3.2vw,48px);
-  line-height:1.12;max-width:640px;color:var(--text);
+  line-height:1.12;max-width:720px;color:var(--text);
   font-weight:400;letter-spacing:-.3px;margin-bottom:18px;
 }
 .section-title em{font-style:italic;color:var(--accent)}
-.section-desc{font-size:15px;line-height:1.8;color:var(--text2);max-width:500px;font-weight:300}
+.section-desc{font-size:15px;line-height:1.8;color:var(--text2);max-width:560px;font-weight:300}
 
 /* ── Problem ───────────────────────────────────────────────────── */
 #problem{background:var(--bg)}
@@ -285,23 +282,8 @@ section{padding:50px 0;position:relative;z-index:1}
 .problem-card h3{font-size:15px;font-weight:500;margin-bottom:10px;line-height:1.4;color:var(--text)}
 .problem-card p{font-size:13px;color:var(--text2);line-height:1.75;font-weight:300}
 
-/* ── Solution (merged: how it works + features) ────────────────── */
+/* ── Solution (vision: today / with LeanLog / over time) ───────── */
 #solution{background:var(--bg)}
-.how-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border)}
-.how-step{
-  background:var(--bg);padding:40px 36px;display:flex;gap:24px;
-  align-items:flex-start;position:relative;transition:background .3s;
-}
-.how-step:hover{background:var(--bg2)}
-.how-num{
-  font-family:var(--mono);font-size:28px;font-weight:500;
-  color:var(--text3);line-height:1;flex-shrink:0;width:36px;
-  transition:color .3s;
-}
-.how-step:hover .how-num{color:var(--text2)}
-.how-content h4{font-size:15px;font-weight:500;color:var(--text);margin-bottom:10px}
-.how-content p{font-size:13px;color:var(--text2);line-height:1.75;font-weight:300}
-/* ── Solution rows (Cursor-style alternating) ──────────────────── */
 .sf-rows{display:flex;flex-direction:column;gap:56px;background:transparent;margin-top:48px}
 .sf-row{display:grid;grid-template-columns:1fr 1.5fr;gap:1px;background:var(--border);align-items:stretch;border:1px solid var(--border)}
 .sf-row-flip{grid-template-columns:1.5fr 1fr}
@@ -315,7 +297,7 @@ section{padding:50px 0;position:relative;z-index:1}
 .sf-row-visual{background:var(--bg);overflow:hidden;display:flex;flex-direction:column;min-height:300px}
 /* Chat body */
 .sf-demo-body{padding:20px;flex:1;display:flex;flex-direction:column;gap:10px;background:var(--bg)}
-/* Scheduling / approval tables */
+/* Tables */
 .sf-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
 .sf-table{width:100%;border-collapse:collapse;font-size:12px}
 .sf-table thead tr{background:var(--bg3)}
@@ -342,28 +324,35 @@ section{padding:50px 0;position:relative;z-index:1}
 .sf-status{font-family:var(--mono);font-size:9px;letter-spacing:.5px;text-transform:uppercase}
 .sf-status-done{color:#28a745}
 .sf-status-pend{color:var(--text3)}
-/* Approval pills */
 .sf-pill{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:8px;letter-spacing:.8px;text-transform:uppercase;padding:3px 9px;border-radius:20px}
 .sf-pill::before{content:'●';font-size:6px}
 .sf-pill-on{background:rgba(40,167,69,.1);color:#1e9440;border:1px solid rgba(40,167,69,.2)}
 .sf-pill-req{background:rgba(210,110,0,.1);color:#b86a00;border:1px solid rgba(210,110,0,.2)}
 
-
-
-/* ── Footer ────────────────────────────────────────────────────── */
-/* ── Bottom CTA ────────────────────────────────────────────────── */
+/* ── Closing pillars ───────────────────────────────────────────── */
 #cta{background:var(--bg);border-top:1px solid var(--border)}
 .cta-inner{
-  max-width:1140px;margin:0 auto;padding:120px 48px 128px;
+  max-width:1140px;margin:0 auto;padding:96px 48px 112px;
   display:flex;flex-direction:column;align-items:center;text-align:center;
 }
 .cta-inner h2{
-  font-family:var(--serif);font-size:clamp(36px,5vw,72px);font-weight:400;
-  color:var(--text);line-height:1.08;letter-spacing:-.5px;margin-bottom:48px;
+  font-family:var(--serif);font-size:clamp(32px,4.4vw,56px);font-weight:400;
+  color:var(--text);line-height:1.1;letter-spacing:-.5px;margin-bottom:18px;max-width:780px;
 }
 .cta-inner h2 em{font-style:italic}
-.cta-buttons{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:24px}
-.cta-inner .btn-primary{padding:18px 48px;font-size:15px;letter-spacing:.3px}
+.cta-lede{font-size:15px;line-height:1.8;color:var(--text2);max-width:540px;font-weight:300;margin-bottom:56px}
+.pillars{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:var(--border);border:1px solid var(--border);
+  width:100%;max-width:1080px;margin-bottom:56px;text-align:left;
+}
+.pillar{background:var(--bg);padding:28px 26px;display:flex;flex-direction:column}
+.pillar-num{font-family:var(--mono);font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--text3);margin-bottom:14px}
+.pillar h3{font-family:var(--serif);font-size:18px;font-weight:400;color:var(--text);margin-bottom:10px;line-height:1.3}
+.pillar p{font-size:13px;color:var(--text2);line-height:1.75;font-weight:300}
+.cta-buttons{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.cta-inner .btn-primary{padding:14px 36px;font-size:14px;letter-spacing:.3px}
+.cta-inner .btn-outline{padding:14px 36px;font-size:14px;letter-spacing:.3px}
 
 footer{
   border-top:1px solid var(--border);padding:28px 48px;
@@ -387,43 +376,42 @@ footer{
   section{padding:80px 0}
   #problem{padding:56px 0}
   .problem-grid{grid-template-columns:1fr}
-  .how-grid{grid-template-columns:1fr}
   .sf-row,.sf-row-flip{grid-template-columns:1fr;gap:10px;background:transparent;border:none}
   .sf-row-text{border:1px solid var(--border);padding:40px 28px}
   .sf-row-visual{border:1px solid var(--border)}
   .sf-row-flip .sf-row-text{order:-1}
   .demo-panel{position:static}
   .hero-creds{margin-top:40px}
+  .pillars{grid-template-columns:repeat(2,1fr);max-width:560px}
   footer{padding:20px 24px;flex-direction:column;gap:6px;text-align:center}
-  .cta-inner{padding:80px 24px 88px}
-  .cta-buttons{flex-direction:column;align-items:center}
+  .cta-inner{padding:72px 24px 80px}
+  .cta-buttons{flex-direction:column;align-items:center;width:100%}
+  .cta-inner .btn-primary,.cta-inner .btn-outline{width:100%;justify-content:center}
 }
 
-/* Mobile logo grid — 3 columns × 2 rows */
+/* Mobile logo grid — 4 columns × 2 rows (7 logos, last cell empty) */
 @media(max-width:680px){
-  .hero h1{font-size:clamp(35px,10vw,52px);line-height:1.15}
-  .hero-mobile-br{display:block}
+  .hero h1{font-size:clamp(35px,9vw,52px);line-height:1.15}
   .org-logos{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:repeat(4,1fr);
     flex-wrap:unset;
     gap:0;
     border:1px solid var(--border);
   }
   .org-logo{
-    flex-shrink:unset;
+    flex-shrink:unset;flex:unset;
     border-right:1px solid var(--border);
     border-bottom:1px solid var(--border);
     padding:14px 8px;
     background:transparent;
   }
-  /* Remove right border on every 3rd logo */
-  .org-logo:nth-child(3n){border-right:none}
-  /* Remove bottom border on last row (logos 4-6) */
-  .org-logo:nth-child(n+4){border-bottom:none}
-  /* Reset desktop first-child left padding override */
+  .org-logo:nth-child(4n){border-right:none}
+  .org-logo:nth-child(n+5){border-bottom:none}
   .org-logo:first-child{padding-left:8px}
-  .org-logo svg{height:26px;max-width:90px}
+  .org-logo:last-child{padding-right:8px}
+  .org-logo img{height:24px;max-width:90%}
+  .pillars{grid-template-columns:1fr;max-width:420px}
 }
 </style>
 </head>
@@ -434,11 +422,11 @@ footer{
   <a href="#" class="nav-logo"><img src="leanlog-final-light 2.png" alt="LeanLog"></a>
   <div class="nav-center">
     <a href="#demo">Demo</a>
-    <a href="#problem">Problem</a>
-    <a href="#solution">Solution</a>
+    <a href="#solution">Vision</a>
+    <a href="/about.html">About</a>
   </div>
   <div class="nav-right">
-    <a class="btn-primary" href="mailto:rodrigo@leanlog.ai">Book a Demo</a>
+    <a class="btn-primary" href="mailto:rodrigo@leanlog.ai">Talk to a Founder</a>
   </div>
 </nav>
 
@@ -447,13 +435,13 @@ footer{
   <div class="hero-glow"></div>
   <div class="hero-inner">
     <div class="hero-eyebrow">
-      <div class="eyebrow-badge">AI Agents for 3PLs &amp; Wholesale Distributors</div>
+      <div class="eyebrow-badge">AI for operations-heavy businesses</div>
       <div class="eyebrow-line"></div>
     </div>
-    <h1><span class="hero-cycle" id="heroVerb">Run</span><br class="hero-mobile-br"><span class="hero-cycle" id="heroNoun"> More Clients.</span><br>Without Hiring More People.</h1>
-    <p class="hero-sub">LeanLog handles customer orders, invoice disputes, carrier scheduling, vendor POs, reorder alerts, and other workflows. Automatically. Your team talks. The agent executes.</p>
+    <h1>The brain that runs <em>your operation.</em></h1>
+    <p class="hero-sub">The decisions that run your operation today live in people's heads, spreadsheets, and email threads. LeanLog captures them, executes them, and compounds them. So the brain stays, even as systems migrate and people change.</p>
     <div class="hero-actions">
-      <a class="btn-primary" href="mailto:rodrigo@leanlog.ai">Talk with a Founder</a>
+      <a class="btn-primary" href="mailto:rodrigo@leanlog.ai">Talk to a Founder</a>
       <button class="btn-outline" onclick="document.getElementById('demo').scrollIntoView({behavior:'smooth'})">See the Demo</button>
     </div>
 
@@ -461,59 +449,13 @@ footer{
     <div class="hero-creds">
       <div class="cred-label">Experience &amp; credentials from</div>
       <div class="org-logos">
-
-        <!-- University of Chicago -->
-        <div class="org-logo">
-          <svg viewBox="0 0 110 46" xmlns="http://www.w3.org/2000/svg">
-            <text x="55" y="16" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#800000" letter-spacing="2" font-weight="400">THE UNIVERSITY OF</text>
-            <text x="55" y="34" text-anchor="middle" font-family="Georgia,serif" font-size="15" fill="#800000" letter-spacing="0.5" font-weight="700">CHICAGO</text>
-          </svg>
-        </div>
-
-        <!-- Stanford -->
-        <div class="org-logo">
-          <svg viewBox="0 0 100 46" xmlns="http://www.w3.org/2000/svg">
-            <text x="50" y="20" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#8C1515" letter-spacing="2" font-weight="700">STANFORD</text>
-            <text x="50" y="35" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#8C1515" letter-spacing="1.5">UNIVERSITY</text>
-          </svg>
-        </div>
-
-        <!-- Amazon -->
-        <div class="org-logo">
-          <svg viewBox="0 0 110 46" xmlns="http://www.w3.org/2000/svg">
-            <text x="55" y="24" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="22" fill="#221F1F" font-weight="400" letter-spacing="-0.5">amazon</text>
-            <path d="M22 32 C44 43 66 43 88 32" stroke="#FF9900" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            <path d="M85 28 L90 33 L83 34 Z" fill="#FF9900"/>
-          </svg>
-        </div>
-
-        <!-- Intel -->
-        <div class="org-logo">
-          <svg viewBox="0 0 90 46" xmlns="http://www.w3.org/2000/svg">
-            <text x="42" y="30" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="24" fill="#0068B5" font-weight="300" letter-spacing="-0.5">intel</text>
-            <circle cx="72" cy="12" r="5" fill="none" stroke="#0068B5" stroke-width="1.5"/>
-            <text x="72" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5" fill="#0068B5">R</text>
-          </svg>
-        </div>
-
-        <!-- Johnson & Johnson (vertical) -->
-        <div class="org-logo">
-          <svg viewBox="0 0 72 46" xmlns="http://www.w3.org/2000/svg">
-            <text x="36" y="14" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="12" fill="#D51F31" font-style="italic" font-weight="700">Johnson</text>
-            <text x="36" y="27" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="10" fill="#D51F31" font-style="italic">&amp;</text>
-            <text x="36" y="42" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="12" fill="#D51F31" font-style="italic" font-weight="700">Johnson</text>
-          </svg>
-        </div>
-
-        <!-- U.S. Air Force -->
-        <div class="org-logo">
-          <svg viewBox="0 0 120 46" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10,22 L24,17 L34,22 L44,15 L60,22 L76,15 L86,22 L96,17 L110,22" stroke="#1C3C8C" stroke-width="1.1" fill="none" stroke-linejoin="round"/>
-            <polygon points="60,8 62,14.5 68.5,14.5 63.5,18.5 65.5,25 60,21 54.5,25 56.5,18.5 51.5,14.5 58,14.5" fill="#1C3C8C"/>
-            <text x="60" y="40" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="7.5" fill="#1C3C8C" letter-spacing="1.8" font-weight="700">U.S. AIR FORCE</text>
-          </svg>
-        </div>
-
+        <div class="org-logo"><img src="assets/logos/uchicago.svg" alt="The University of Chicago"></div>
+        <div class="org-logo"><img src="assets/logos/stanford.svg" alt="Stanford University"></div>
+        <div class="org-logo"><img src="assets/logos/gatech.svg" alt="Georgia Institute of Technology"></div>
+        <div class="org-logo"><img src="assets/logos/amazon.svg" alt="Amazon"></div>
+        <div class="org-logo"><img src="assets/logos/jnj.svg" alt="Johnson &amp; Johnson"></div>
+        <div class="org-logo"><img src="assets/logos/intel.svg" alt="Intel"></div>
+        <div class="org-logo"><img src="assets/logos/dod.svg" alt="U.S. Department of Defense"></div>
       </div>
     </div>
   </div>
@@ -523,9 +465,9 @@ footer{
 <section id="demo">
   <div class="container">
     <div class="demo-section-header">
-      <div class="tag reveal">01 — See how it works</div>
-      <h2 class="section-title reveal reveal-d1">See LeanLog handle real<br>warehouse scenarios.</h2>
-      <p class="section-desc reveal reveal-d2">Every conversation is handled end-to-end. You approve in words. The agent does the rest.</p>
+      <div class="tag reveal">01 — See it work</div>
+      <h2 class="section-title reveal reveal-d1">Watch the brain in action.</h2>
+      <p class="section-desc reveal reveal-d2">End-to-end handling, in plain language. You make the calls. The agent executes.</p>
     </div>
     <div class="demo-panel reveal reveal-d3" style="max-width:720px;margin:0 auto;position:static">
       <div class="demo-header">
@@ -546,47 +488,47 @@ footer{
 <section id="problem">
   <div class="container">
     <div class="section-header">
-      <div class="tag reveal">02 — The problem</div>
-      <h2 class="section-title reveal reveal-d1">Your Volume Grows.<br>Your Headcount Grows <em>Faster.</em></h2>
-      <p class="section-desc reveal reveal-d2">Every shipment triggers calls, emails, and follow-ups. You can't grow without growing headcount — until now.</p>
+      <div class="tag reveal">02 — How operations run today</div>
+      <h2 class="section-title reveal reveal-d1">Your systems hold the records. <em>Your team holds the work.</em></h2>
+      <p class="section-desc reveal reveal-d2">In every operations-heavy business, the actual logic of the business lives outside the system of record. Migrating won't fix it.</p>
     </div>
     <div class="problem-grid reveal reveal-d3">
       <div class="problem-card">
         <span class="pc-index">01 / 03</span>
-        <h3>Margins under siege</h3>
-        <p>You win business on thin margins, then lose it to increasing headcount or back-office errors. One disputed invoice, one missed reorder, one scheduling mixup — and the job becomes unprofitable.</p>
+        <h3>Your systems don't talk to each other.</h3>
+        <p>Bespoke ERPs, spreadsheets, email threads. The integration layer is your team's inbox, and it grows every time you add a customer or a supplier.</p>
       </div>
       <div class="problem-card">
         <span class="pc-index">02 / 03</span>
-        <h3>Labor is your biggest cost</h3>
-        <p>A single shipment triggers 5–10 manual touches: a scheduling call, a supplier follow-up, an invoice check. Multiply that by 50 shipments a day. That's not a process — that's a full-time job that repeats forever.</p>
+        <h3>The work lives between the systems.</h3>
+        <p>PO handling, supplier coordination, change propagation. Operators weave between email, sheets, and your ERP, holding the operational logic in their heads. None of it lives in the system of record.</p>
       </div>
       <div class="problem-card">
         <span class="pc-index">03 / 03</span>
-        <h3>The tools you have weren't built for this</h3>
-        <p>Your WMS tracks pallets. Your ERP tracks financials. Neither one calls the carrier, chases a credit memo, or follows up on a late PO. That gap lives in your team's inbox — and it grows every time you add a client.</p>
+        <h3>Knowledge walks out the door.</h3>
+        <p>When somebody leaves, part of the brain goes with them. The spreadsheets stay. The reasons behind them, why this supplier, why this lane, why this exception, do not.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── Solution (merged: how it works + what you get) ── -->
+<!-- ── Solution (vision) ── -->
 <section id="solution">
   <div class="container">
     <div class="section-header">
-      <div class="tag reveal">03 — The solution</div>
-      <h2 class="section-title reveal reveal-d1">Runs your back office the way a great ops hire <em>would.</em></h2>
-      <p class="section-desc reveal reveal-d2">No new software to learn. No process changes. LeanLog slots into how your team already operates, through voice and text, from day one.</p>
+      <div class="tag reveal">03 — The vision</div>
+      <h2 class="section-title reveal reveal-d1">From scattered, to one place, <em>to compounding.</em></h2>
+      <p class="section-desc reveal reveal-d2">LeanLog captures the operational brain, runs it, and gets sharper over time. Your systems can migrate. The brain stays.</p>
     </div>
 
     <div class="sf-rows reveal reveal-d3">
 
-      <!-- Row 1: Works by talking — text left, chat right -->
+      <!-- Row 1: Today — text left, chat-snippet visual right -->
       <div class="sf-row">
         <div class="sf-row-text">
-          <div class="sf-row-num">01 — works by talking</div>
-          <h4>Your team talks. The agent handles everything else.</h4>
-          <p>Your dispatcher, ops manager, or buyer just sends a message — "schedule Dock 3 for Tuesday," "dispute the Acme invoice," "reorder SKU 4821." The agent handles the rest: calls, emails, records, follow-ups.</p>
+          <div class="sf-row-num">01 — today</div>
+          <h4>The brain is scattered.</h4>
+          <p>Distributed across people, spreadsheets, and emails. When somebody leaves, part of the brain walks out the door. Migrating to a new system of record does not fix it. It moves the pain.</p>
         </div>
         <div class="sf-row-visual">
           <div class="demo-header">
@@ -595,7 +537,7 @@ footer{
               <div class="demo-dot demo-dot-y"></div>
               <div class="demo-dot demo-dot-g"></div>
             </div>
-            <div class="demo-title-bar">invoice dispute · acme foods</div>
+            <div class="demo-title-bar">supplier confirmation · acme foods</div>
           </div>
           <div class="sf-demo-body">
             <div class="demo-msg human visible">
@@ -603,7 +545,7 @@ footer{
               <div>I got 480 cases from Acme. Compare that to the invoice they sent.</div>
             </div>
             <div class="demo-msg system visible settled">
-              <span class="sys-text">Found invoice #AC-8821</span>
+              <span class="sys-text">Pulled invoice from email; cross-checked against ERP record</span>
             </div>
             <div class="demo-msg agent visible">
               <div class="msg-label">LeanLog Agent</div>
@@ -614,17 +556,17 @@ footer{
               <div>Yes, handle it.</div>
             </div>
             <div class="demo-msg system visible settled">
-              <span class="sys-text">Called Acme Foods — credit memo issued</span>
+              <span class="sys-text">Called Acme Foods. Credit memo issued, ERP and ledger updated</span>
             </div>
             <div class="demo-msg agent visible">
               <div class="msg-label">LeanLog Agent</div>
-              <div>A $248 credit memo is being issued. Records updated — adjusted total is $5,952.</div>
+              <div>$248 credit memo issued. Records updated. Adjusted total: $5,952.</div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Row 2: Full visibility — table left, text right -->
+      <!-- Row 2: With LeanLog — table visual left, text right -->
       <div class="sf-row sf-row-flip">
         <div class="sf-row-visual">
           <div class="demo-header">
@@ -633,60 +575,60 @@ footer{
               <div class="demo-dot demo-dot-y"></div>
               <div class="demo-dot demo-dot-g"></div>
             </div>
-            <div class="demo-title-bar">scheduling database</div>
+            <div class="demo-title-bar">operational ledger</div>
           </div>
           <div class="sf-table-wrap"><table class="sf-table">
             <thead>
-              <tr><th>#</th><th>Dock</th><th>Carrier</th><th>Date</th><th>Time</th><th>Type</th><th>Status</th></tr>
+              <tr><th>#</th><th>Workflow</th><th>Counterparty</th><th>Date</th><th>Channel</th><th>Status</th></tr>
             </thead>
             <tbody>
               <tr>
                 <td class="sf-id">001</td>
-                <td>1</td><td>LoneStar Logistics</td><td>Mar 18</td><td>3:00 PM</td>
-                <td><span class="sf-tag sf-tag-out">Outbound</span></td>
-                <td><span class="sf-status sf-status-done">Confirmed</span></td>
+                <td>PO confirmation</td><td>Acme Foods</td><td>Mar 18</td>
+                <td><span class="sf-tag sf-tag-out">Email</span></td>
+                <td><span class="sf-status sf-status-done">Closed</span></td>
               </tr>
               <tr>
                 <td class="sf-id">002</td>
-                <td>3</td><td>Rivera Restaurants</td><td>Mar 19</td><td>8:00 AM</td>
-                <td><span class="sf-tag sf-tag-out">Outbound</span></td>
-                <td><span class="sf-status sf-status-done">Confirmed</span></td>
+                <td>Invoice reconciliation</td><td>Acme Foods</td><td>Mar 19</td>
+                <td><span class="sf-tag sf-tag-out">Phone</span></td>
+                <td><span class="sf-status sf-status-done">Closed</span></td>
               </tr>
               <tr>
                 <td class="sf-id">003</td>
-                <td>2</td><td>Acme Foods</td><td>Mar 20</td><td>2:00 PM</td>
-                <td><span class="sf-tag sf-tag-in">Inbound</span></td>
-                <td><span class="sf-status sf-status-done">Confirmed</span></td>
+                <td>Carrier scheduling</td><td>LoneStar Logistics</td><td>Mar 20</td>
+                <td><span class="sf-tag sf-tag-in">Portal</span></td>
+                <td><span class="sf-status sf-status-done">Closed</span></td>
               </tr>
               <tr>
                 <td class="sf-id">004</td>
-                <td>4</td><td>BoxCo Supply</td><td>Mar 24</td><td>10:00 AM</td>
-                <td><span class="sf-tag sf-tag-in">Inbound</span></td>
-                <td><span class="sf-status sf-status-pend">Scheduled</span></td>
+                <td>Change propagation</td><td>BoxCo Supply</td><td>Mar 24</td>
+                <td><span class="sf-tag sf-tag-in">Email</span></td>
+                <td><span class="sf-status sf-status-pend">Pending</span></td>
               </tr>
               <tr>
                 <td class="sf-id">005</td>
-                <td>1</td><td>FastFreight</td><td>Mar 25</td><td>1:00 PM</td>
-                <td><span class="sf-tag sf-tag-out">Outbound</span></td>
-                <td><span class="sf-status sf-status-pend">Scheduled</span></td>
+                <td>Reorder, SKU 4412</td><td>Pacific Supply</td><td>Mar 25</td>
+                <td><span class="sf-tag sf-tag-out">Portal</span></td>
+                <td><span class="sf-status sf-status-pend">Pending</span></td>
               </tr>
             </tbody>
           </table></div>
-          <div class="sf-table-footer">5 rows · updated just now</div>
+          <div class="sf-table-footer">5 decisions logged today &middot; sync'd with ERP</div>
         </div>
         <div class="sf-row-text">
-          <div class="sf-row-num">02 — full visibility</div>
-          <h4>Every record, updated automatically.</h4>
-          <p>Every carrier call, vendor negotiation, PO, and invoice is logged without anyone touching a keyboard. Your team and your clients always know where things stand — no chasing updates.</p>
+          <div class="sf-row-num">02 — with leanlog</div>
+          <h4>The brain lives in one place.</h4>
+          <p>Codified, executable. The agent reads your systems, drafts the emails, calls the suppliers, files the records. Models swap underneath. Your systems migrate. The brain stays.</p>
         </div>
       </div>
 
-      <!-- Row 3: You stay in control — text left, approval table right -->
+      <!-- Row 3: Over time — text left, approval-rules visual right -->
       <div class="sf-row">
         <div class="sf-row-text">
-          <div class="sf-row-num">03 — you stay in control</div>
-          <h4>You decide what runs automatically and what needs a sign-off.</h4>
-          <p>Set rules once. Routine reorders and scheduling run on their own. High-value POs, invoice disputes, and cancellations wait for your approval before executing.</p>
+          <div class="sf-row-num">03 — over time</div>
+          <h4>The brain compounds.</h4>
+          <p>Set rules once. Routine work runs on its own; exceptions surface for review. Better models execute more reliably, cleaner data sharpens decisions, and constant feedback keeps the brain aligned with how the operation really runs.</p>
         </div>
         <div class="sf-row-visual">
           <div class="demo-header">
@@ -695,7 +637,7 @@ footer{
               <div class="demo-dot demo-dot-y"></div>
               <div class="demo-dot demo-dot-g"></div>
             </div>
-            <div class="demo-title-bar">approval settings</div>
+            <div class="demo-title-bar">decision rules</div>
           </div>
           <table class="sf-table">
             <thead>
@@ -707,15 +649,15 @@ footer{
                 <td class="center"><span class="sf-pill sf-pill-on">Auto</span></td>
               </tr>
               <tr>
-                <td>Schedule delivery</td>
+                <td>Supplier confirmation (routine)</td>
                 <td class="center"><span class="sf-pill sf-pill-on">Auto</span></td>
               </tr>
               <tr>
-                <td>Send carrier quote</td>
+                <td>Carrier scheduling</td>
                 <td class="center"><span class="sf-pill sf-pill-on">Auto</span></td>
               </tr>
               <tr>
-                <td>Dispute invoice</td>
+                <td>Invoice dispute</td>
                 <td class="center"><span class="sf-pill sf-pill-req">Approval</span></td>
               </tr>
               <tr>
@@ -735,12 +677,36 @@ footer{
   </div>
 </section>
 
-<!-- ── Bottom CTA ── -->
+<!-- ── Bottom CTA: four pillars ── -->
 <section id="cta">
   <div class="cta-inner">
-    <h2>Try LeanLog <em>now.</em></h2>
+    <h2>Built together. <em>Designed for you.</em></h2>
+    <p class="cta-lede">A short, hands-on engagement. No setup fees, no integration fees. Specifics in the conversation.</p>
+    <div class="pillars">
+      <div class="pillar">
+        <span class="pillar-num">01 — partnership</span>
+        <h3>Built together.</h3>
+        <p>Tailored to your systems, your processes, your team. Hands-on, on-site. We'd rather learn how it works today before suggesting changes.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-num">02 — approach</span>
+        <h3>Quick value.</h3>
+        <p>We pick the highest-leverage manual workflows in your operation and have agents run them autonomously, end to end.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-num">03 — values</span>
+        <h3>Long-term solutions.</h3>
+        <p>Grounded in your operational context, not in any one AI model or system of record. The brain keeps working as models improve and ERPs migrate.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-num">04 — terms</span>
+        <h3>Designed for you.</h3>
+        <p>An engagement structure that earns the partnership: short term, clear walk-away points, full attention of the founding team.</p>
+      </div>
+    </div>
     <div class="cta-buttons">
-      <a class="btn-primary reveal" href="mailto:rodrigo@leanlog.ai">Get Started →</a>
+      <a class="btn-primary" href="mailto:rodrigo@leanlog.ai">Talk to a Founder</a>
+      <a class="btn-outline" href="/about.html">About LeanLog</a>
     </div>
   </div>
 </section>
@@ -748,7 +714,7 @@ footer{
 <!-- ── Footer ── -->
 <footer>
   <span>&copy; 2026 LeanLog, Inc.</span>
-  <span>AI Agents for 3PLs and Distributors</span>
+  <span>The brain that runs your operation</span>
 </footer>
 
 <script>
@@ -762,61 +728,61 @@ document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 /* ── Demo cases ────────────────────────────────────────────────── */
 const cases = [
   {
-    tab: "Customer order",
+    tab: "PO confirmation",
     msgs: [
-      { role: "human", text: "Rivera Restaurants just called. They want 200 cases of SKU #1142 by Wednesday — can we do it?" },
-      { role: "system", text: "Checking stock levels and outbound capacity…", done: "Checked stock — 340 units available", duration: 2000 },
-      { role: "agent", text: "You have 340 units of SKU #1142 on hand. Wednesday delivery is doable if we ship tomorrow. Want me to confirm with Rivera and generate the sales order?" },
-      { role: "human", text: "Yes, confirm it." },
-      { role: "system", text: "Calling Rivera Restaurants…", done: "Called Rivera Restaurants — confirmed", duration: 2400 },
-      { role: "agent", text: "Done. Rivera confirmed for Wednesday delivery. Sales order #4821 generated — $6,200. Outbound scheduled for tomorrow 8am. Your shipping team has been notified." }
+      { role: "human", text: "Send the FY27 buy plan POs to the suppliers. Same shape as last cycle." },
+      { role: "system", text: "Drafting 312 supplier emails from the buy plan…", done: "Drafted 312 emails: 287 routine, 25 flagged for review", duration: 2400 },
+      { role: "agent", text: "287 are routine and ready to send. 25 have changes vs. last cycle (volume, price, or lane) and are queued for your review. Send the 287?" },
+      { role: "human", text: "Yes, send the 287. Show me the 25." },
+      { role: "system", text: "Sending 287 PO emails, 1 per supplier…", done: "Sent 287 PO emails; ERP rows created", duration: 2200 },
+      { role: "agent", text: "Done. 287 POs filed and sent; ERP rows created. The 25 flagged ones are in your queue with a one-line diff each." }
     ]
   },
   {
-    tab: "Invoice dispute",
+    tab: "Invoice reconciliation",
     msgs: [
-      { role: "human", text: "I got 480 cases from Acme. Compare that number to the invoice they sent." },
-      { role: "system", text: "Looking up Acme invoice in system…", done: "Found invoice #AC-8821", duration: 1800 },
-      { role: "agent", text: "Found it — Invoice #AC-8821: 500 cases at $12.40 = $6,200. You received 480, so there's a $248 discrepancy. Want me to call Acme and request a corrected invoice?" },
+      { role: "human", text: "I got 480 cases from Acme. Compare that to the invoice they sent." },
+      { role: "system", text: "Pulled invoice from email; cross-checked against ERP record…", done: "Found invoice #AC-8821; $248 discrepancy", duration: 1800 },
+      { role: "agent", text: "Invoice #AC-8821: 500 cases at $12.40 = $6,200. You received 480, so there's a $248 discrepancy. Want me to call Acme and request a corrected invoice?" },
       { role: "human", text: "Yes, handle it." },
-      { role: "system", text: "Calling Acme Foods — will notify when resolved…", done: "Called Acme Foods — credit memo issued", duration: 2800 },
-      { role: "agent", text: "Acme confirmed the short delivery. A $248 credit memo is being issued. Records updated — adjusted total is $5,952." }
+      { role: "system", text: "Calling Acme Foods…", done: "Called Acme Foods. Credit memo issued", duration: 2800 },
+      { role: "agent", text: "Acme confirmed the short delivery. $248 credit memo issued. Records updated. Adjusted total is $5,952." }
     ]
   },
   {
-    tab: "Carrier quotes",
+    tab: "Carrier scheduling",
     msgs: [
       { role: "human", text: "I need to ship 12 pallets to Dallas by Friday. Get me some quotes." },
-      { role: "system", text: "Contacting FastFreight, LoneStar, and RoadRunner…", done: "Contacted 3 carriers — quotes received", duration: 2200 },
-      { role: "agent", text: "Three quotes back: FastFreight $1,840 (Thu), LoneStar $1,620 (Fri AM), RoadRunner $2,100 (Wed). Want me to try negotiating?" },
+      { role: "system", text: "Contacting FastFreight, LoneStar, and RoadRunner…", done: "Contacted 3 carriers; quotes received", duration: 2200 },
+      { role: "agent", text: "Three quotes back: FastFreight $1,840 (Thu), LoneStar $1,620 (Fri AM), RoadRunner $2,100 (Wed). Want me to negotiate?" },
       { role: "human", text: "Yes, push them down." },
-      { role: "system", text: "Negotiating with FastFreight and LoneStar…", done: "Negotiated — FastFreight dropped to $1,680", duration: 2600 },
-      { role: "agent", text: "FastFreight dropped to $1,680. LoneStar held at $1,620 — still cheapest, Friday morning. Book LoneStar?" },
+      { role: "system", text: "Negotiating with FastFreight and LoneStar…", done: "Negotiated. FastFreight dropped to $1,680", duration: 2600 },
+      { role: "agent", text: "FastFreight dropped to $1,680. LoneStar held at $1,620, still cheapest, Friday morning. Book LoneStar?" },
       { role: "human", text: "Book LoneStar." },
-      { role: "system", text: "Booking LoneStar Logistics…", done: "Booked LoneStar Logistics — confirmed", duration: 1400 },
-      { role: "agent", text: "Booked. Pickup tomorrow 3pm, Dock 1. Confirmation sent to your phone." }
+      { role: "system", text: "Booking LoneStar Logistics…", done: "Booked LoneStar Logistics; confirmed", duration: 1400 },
+      { role: "agent", text: "Booked. Pickup tomorrow 3pm, Dock 1. Confirmation sent." }
     ]
   },
   {
-    tab: "Delivery scheduling",
+    tab: "Change propagation",
     msgs: [
-      { role: "system", text: "Incoming call — Acme Foods", done: "Call received — Acme Foods", duration: 1600 },
-      { role: "agent", text: "Acme wants to deliver 500 cases Thursday at 2pm. Dock 3 is open. Confirm?" },
-      { role: "human", text: "Yes, lock it in." },
-      { role: "system", text: "Calling Acme Foods — will notify when confirmed…", done: "Called Acme Foods — confirmed", duration: 2600 },
-      { role: "agent", text: "Confirmed with Acme — Thursday 2pm, Dock 3. Receiving schedule updated. Floor team notified." }
+      { role: "system", text: "Supplier delay flagged: BoxCo, SKU 4412, +5 day slip", done: "Detected delay. Calculating downstream impact", duration: 1800 },
+      { role: "agent", text: "BoxCo is 5 days late on SKU 4412. Three downstream effects: warehouse low-stock alert pulls forward by 8 days, 2 customer commits at risk, FastFreight pickup needs reschedule. Stage the comms?" },
+      { role: "human", text: "Yes, stage everything." },
+      { role: "system", text: "Drafting 4 emails: BoxCo expedite, 2 customer notifications, FastFreight reschedule…", done: "Staged 4 emails for review", duration: 2400 },
+      { role: "agent", text: "Drafts ready in your queue: BoxCo expedite request, 2 customer holds, FastFreight reschedule. One review, four sends. Want me to walk you through them?" }
     ]
   },
   {
-    tab: "Low stock reorder",
+    tab: "Reorder",
     msgs: [
-      { role: "agent", text: "SKU #4412 (kraft mailer boxes) is down to 120 units — below your 200-unit threshold. Reorder?" },
+      { role: "agent", text: "SKU #4412 (kraft mailer boxes) is down to 120 units, below your 200-unit threshold. Reorder?" },
       { role: "human", text: "Yeah, what are the options? Check if there's something cheaper than Pacific." },
-      { role: "system", text: "Searching market — comparing suppliers and live pricing…", done: "Searched market — 3 suppliers found", duration: 2400 },
-      { role: "agent", text: "Found 3 suppliers: Pacific Supply $0.82/unit (your usual), BoxCo $0.74/unit (new), WebPack $0.79/unit. BoxCo saves $40 on a 500-unit order, same 3-day lead time." },
+      { role: "system", text: "Comparing suppliers and live pricing…", done: "Searched market; 3 suppliers found", duration: 2400 },
+      { role: "agent", text: "Three suppliers: Pacific Supply $0.82/unit (your usual), BoxCo $0.74/unit (new), WebPack $0.79/unit. BoxCo saves $40 on a 500-unit order, same 3-day lead time." },
       { role: "human", text: "Go with BoxCo." },
-      { role: "system", text: "Placing PO with BoxCo…", done: "Placed PO with BoxCo — $370 total", duration: 1600 },
-      { role: "agent", text: "PO sent to BoxCo — 500 units at $0.74, total $370. Saves $40 vs. Pacific. Expected delivery Monday. I'll track it." }
+      { role: "system", text: "Placing PO with BoxCo…", done: "Placed PO with BoxCo. $370 total", duration: 1600 },
+      { role: "agent", text: "PO sent to BoxCo: 500 units at $0.74, total $370. Saves $40 vs. Pacific. Expected delivery Monday. Tracking it." }
     ]
   }
 ];
@@ -861,7 +827,7 @@ function animateMessages(msgs, idx) {
     animTimeout = setTimeout(() => {
       if (m.done) {
         div.querySelector('.sys-pulse').remove();
-        div.querySelector('.sys-text').textContent = m.done;
+        div.querySelector('.sys-text').innerHTML = m.done;
         div.classList.add('settled');
       }
       animateMessages(msgs, idx + 1);
@@ -910,26 +876,6 @@ const demoTrigger = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.35 });
 demoTrigger.observe(document.querySelector('.demo-panel'));
-
-
-/* ── Hero headline cycling ─────────────────────────────────────── */
-const cycleTexts = [
-  ['Run', ' More Clients.'],
-  ['Manage', ' More Suppliers.'],
-  ['Handle', ' More Carriers.'],
-];
-let cycleIdx = 0;
-const heroVerb = document.getElementById('heroVerb');
-const heroNoun = document.getElementById('heroNoun');
-setInterval(() => {
-  [heroVerb, heroNoun].forEach(el => { el.classList.remove('cycle-enter'); el.classList.add('cycle-exit'); });
-  setTimeout(() => {
-    cycleIdx = (cycleIdx + 1) % cycleTexts.length;
-    heroVerb.textContent = cycleTexts[cycleIdx][0];
-    heroNoun.textContent = cycleTexts[cycleIdx][1];
-    [heroVerb, heroNoun].forEach(el => { el.classList.remove('cycle-exit'); el.classList.add('cycle-enter'); });
-  }, 280);
-}, 3000);
 </script>
 </body>
 </html>
