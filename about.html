@@ -6,8 +6,8 @@
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="shortcut icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="/favicon.ico">
-<title>About LeanLog — The brain that runs your operation</title>
-<meta name="description" content="LeanLog is built by a small team of operators and AI engineers. We're building the operational brain for businesses where the actual logic of the work lives outside the system of record.">
+<title>About LeanLog — AI agents for operations-heavy businesses</title>
+<meta name="description" content="LeanLog is built by a small team of operators and AI engineers. We build AI agents for businesses where the actual logic of the work lives outside the system of record.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -109,7 +109,8 @@ main{position:relative;z-index:1}
 .org-logo:last-child{border-right:none}
 .org-logo img{height:34px;width:auto;max-width:100%;object-fit:contain;display:block;opacity:.78;transition:opacity .2s}
 .org-logo:hover img{opacity:1}
-.org-logo img[alt*="Georgia"]{height:50px}
+/* GT mark stacks Georgia/Tech vertically; bump height for parity */
+.org-logo img[alt*="Georgia"]{height:60px}
 
 .about-cta{
   padding:96px 48px 112px;text-align:center;
@@ -155,6 +156,7 @@ footer{
   .org-logo:nth-child(4n){border-right:none}
   .org-logo:nth-child(n+5){border-bottom:none}
   .org-logo img{height:24px;max-width:90%}
+  .org-logo img[alt*="Georgia"]{height:42px}
 }
 </style>
 </head>
@@ -179,7 +181,7 @@ footer{
     <div class="about-prose">
       <p>LeanLog is built by a small team of operators and AI engineers. We've scaled ecommerce operations from zero, deployed optimization and machine learning inside regulated industries, and built AI agents for the Department of Defense.</p>
       <p>Across every operations-heavy business we've worked with or talked to, the same pattern shows up: <strong>the system of record holds the records, but the actual work happens between the systems.</strong> Spreadsheets. Email threads. Knowledge that lives in a few people's heads. Migrating to a new ERP doesn't fix it. It moves the pain.</p>
-      <p>So we're building the operational brain. A layer that captures the decisions that run the business today, executes them, and gets sharper over time. Models swap underneath. Systems migrate. The brain stays.</p>
+      <p>So we're building the layer that captures those decisions, executes them, and gets sharper over time. Models swap underneath. Systems migrate. The work keeps running.</p>
     </div>
   </section>
 
@@ -190,11 +192,11 @@ footer{
     <div class="org-logos">
       <div class="org-logo"><img src="assets/logos/uchicago.svg" alt="The University of Chicago"></div>
       <div class="org-logo"><img src="assets/logos/stanford.svg" alt="Stanford University"></div>
-      <div class="org-logo"><img src="assets/logos/gatech.svg" alt="Georgia Institute of Technology"></div>
+      <div class="org-logo"><img src="assets/logos/gatech.png" alt="Georgia Tech"></div>
       <div class="org-logo"><img src="assets/logos/amazon.svg" alt="Amazon"></div>
       <div class="org-logo"><img src="assets/logos/jnj.svg" alt="Johnson &amp; Johnson"></div>
       <div class="org-logo"><img src="assets/logos/intel.svg" alt="Intel"></div>
-      <div class="org-logo"><img src="assets/logos/dod.svg" alt="U.S. Department of Defense"></div>
+      <div class="org-logo"><img src="assets/logos/mitre.svg" alt="MITRE Corporation"></div>
     </div>
   </section>
 
@@ -209,7 +211,7 @@ footer{
 
 <footer>
   <span>&copy; 2026 LeanLog, Inc.</span>
-  <span>The brain that runs your operation</span>
+  <span>AI agents for operations-heavy businesses</span>
 </footer>
 
 </body>
