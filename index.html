@@ -157,12 +157,11 @@ body::before{
 }
 .org-logo{
   padding:10px 18px;
-  border-right:1px solid var(--border);
   display:flex;align-items:center;justify-content:center;
   flex-shrink:0;flex:1;min-width:0;
 }
 .org-logo:first-child{padding-left:0}
-.org-logo:last-child{border-right:none;padding-right:0}
+.org-logo:last-child{padding-right:0}
 .org-logo img{height:32px;width:auto;max-width:100%;object-fit:contain;display:block;opacity:.78;transition:opacity .2s}
 .org-logo:hover img{opacity:1}
 /* GT mark stacks Georgia/Tech vertically; bump height for parity */
@@ -390,18 +389,13 @@ footer{
     display:grid;
     grid-template-columns:repeat(4,1fr);
     flex-wrap:unset;
-    gap:0;
-    border:1px solid var(--border);
+    gap:8px 4px;
   }
   .org-logo{
     flex-shrink:unset;flex:unset;
-    border-right:1px solid var(--border);
-    border-bottom:1px solid var(--border);
     padding:14px 8px;
     background:transparent;
   }
-  .org-logo:nth-child(4n){border-right:none}
-  .org-logo:nth-child(n+5){border-bottom:none}
   .org-logo:first-child{padding-left:8px}
   .org-logo:last-child{padding-right:8px}
   .org-logo img{height:24px;max-width:90%}
