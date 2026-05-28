@@ -559,7 +559,7 @@ footer{
           <div class="sf-demo-body">
             <div class="demo-msg human visible">
               <div class="msg-label">You</div>
-              <div>Quote Apex on 500 units of SKU #4421 to Phoenix, 3 weeks.</div>
+              <div>Quote customer Apex on 500 units of SKU #4421 to Phoenix, 3 weeks.</div>
             </div>
             <div class="demo-msg system visible settled">
               <span class="sys-text">Pulled costs, capacity, Apex's history</span>
@@ -600,23 +600,23 @@ footer{
             </thead>
             <tbody>
               <tr>
-                <td>Marlow</td>
+                <td>Customer Marlow</td>
                 <td>Floor $11.80 on SKU 6112; never walks over price; AP contact Sarah for terms</td>
               </tr>
               <tr>
-                <td>Cosmo</td>
+                <td>Supplier Cosmo</td>
                 <td>Net 30 negotiated; FOB Destination required; billing contact Janet (fast on credit memos)</td>
               </tr>
               <tr>
-                <td>Vega</td>
+                <td>Customer Vega</td>
                 <td>Q1 MSA stepped up 4%; cached pricing common; warehouse mgr Tom asks for accelerated leads</td>
               </tr>
               <tr>
-                <td>Northpoint</td>
+                <td>Supplier Northpoint</td>
                 <td>3 steel delays in 6 months; call Dan (not email) when late</td>
               </tr>
               <tr>
-                <td>Apex</td>
+                <td>Customer Apex</td>
                 <td>Buys ~500/quarter; anchoring-sensitive on price drops</td>
               </tr>
             </tbody>
@@ -726,7 +726,7 @@ const cases = [
     tab: "Quoting",
     side: "customer",
     msgs: [
-      { role: "human", text: "Got an RFQ from Apex for 500 units of SKU #4421 to Phoenix, 3 weeks. Run the numbers." },
+      { role: "human", text: "Got an RFQ from customer Apex for 500 units of SKU #4421 to Phoenix, 3 weeks. Run the numbers." },
       { role: "system", text: "Checking inventory, production capacity, and Apex's history…", done: "200 in stock; 300 to make; Line 2 light next week", duration: 2400 },
       { role: "agent", text: "Cost build: $4.32/unit blended, standard 28% margin = $6.00/unit, total $3,000, 3-week lead, Net 30. Worth noting — Line 2 is only 60% booked next week. We pay the operators either way, so marginal cost on the 300 we'd run is close to zero. You could quote $4.80/unit ($2,400 total) on a 1-week lead and still clear ~70% on this run. Want me to model that?" },
       { role: "human", text: "What's the risk?" },
@@ -742,7 +742,7 @@ const cases = [
     tab: "Negotiating",
     side: "customer",
     msgs: [
-      { role: "human", text: "Marlow came back on quote #Q-2026-0392 — they're at $11.40, we're at $13.20. What do I say?" },
+      { role: "human", text: "Customer Marlow came back on quote #Q-2026-0392 — they're at $11.40, we're at $13.20. What do I say?" },
       { role: "system", text: "Pulling Marlow's negotiation history and margin floor…", done: "5 prior negotiations; never killed a deal over price; floor $11.80 on this SKU", duration: 2400 },
       { role: "agent", text: "They've never killed a deal over price in 5 prior negotiations — typically land within 8% of opening counter. Two ways to play it: (a) Hold $13.20, counter with Net 45 (they're on Net 30). Marlow tightened cash last summer per their AP rep, so 15 extra days reads as concession without touching unit price. Anchoring intact. (b) Meet at $12.40 (~20% margin). Signals flexibility but sets a softer ceiling for next round. I'd go (a). Want me to draft?" },
       { role: "human", text: "What if they don't budge on price?" },
@@ -758,7 +758,7 @@ const cases = [
     tab: "Order entry",
     side: "customer",
     msgs: [
-      { role: "human", text: "PO from Vega Industries just hit. Process it." },
+      { role: "human", text: "PO from customer Vega Industries just hit. Process it." },
       { role: "system", text: "Parsing PO; cross-checking against quote #Q-2026-0381 and Vega's MSA…", done: "PO parsed; 2 discrepancies found", duration: 2400 },
       { role: "agent", text: "PO is mostly clean — 800 units of SKU #6112, ship to their Reno DC by Apr 18. Two things flagged:\n\n• PO line price is $9.40; we quoted $9.80. Looks like they applied last year's pricing — Vega's MSA stepped up 4% in Q1.\n\n• Delivery date is 2 weeks earlier than the quoted lead time (4 weeks). Either they're testing what's possible or there's a misunderstanding.\n\nWant me to (a) flag both back to Vega before entering, or (b) enter at quoted terms and send a confirmation noting the MSA pricing and current lead time?" },
       { role: "human", text: "What's the relationship like? Will they push back?" },
@@ -774,7 +774,7 @@ const cases = [
     tab: "Production & delivery scheduling",
     side: "customer",
     msgs: [
-      { role: "human", text: "Vega's asking if SO #7821 can ship a week earlier than the May 2 confirmation. Can we?" },
+      { role: "human", text: "Customer Vega is asking if SO #7821 can ship a week earlier than the May 2 confirmation. Can we?" },
       { role: "system", text: "Pulling production schedule for SKU #6112; checking dock and carrier availability…", done: "Line 4 has slot Apr 24-25; outbound carrier slots tight Apr 26-27", duration: 2400 },
       { role: "agent", text: "We can hit Apr 25 if we shift two things:\n\n• Pull Vega's run forward to Apr 24-25 on Line 4. That displaces Helix's Apr 24 build (300 units, currently 2 weeks of buffer to their May 8 ship — safe to move to Apr 28).\n\n• Lock a carrier slot for Apr 26 outbound — three carriers have capacity but rates are 12% above standard this week.\n\nNet cost to accommodate: ~$240 in expedited freight, no production overtime. Want to proceed or push back to Vega?" },
       { role: "human", text: "What if Helix complains about the shift?" },
@@ -822,7 +822,7 @@ const cases = [
     tab: "Negotiating",
     side: "supplier",
     msgs: [
-      { role: "human", text: "Northpoint just sent a 6% price hike notice on the BX series effective May 1. What do I do?" },
+      { role: "human", text: "Supplier Northpoint just sent a 6% price hike notice on the BX series effective May 1. What do I do?" },
       { role: "system", text: "Checking market trends and Northpoint's pricing history…", done: "3 of 4 commodity suppliers raised 4-6% Q1; Northpoint last raised price 9 months ago (3.5%)", duration: 2400 },
       { role: "agent", text: "This is market-wide, not Northpoint being opportunistic — copper and steel inputs are up materially across the cohort. Their increase is in the middle of the pack and overdue by historical cadence. Pushing for zero will likely fail. What's worth pushing for: cap the increase at 4% in exchange for a 90-day extension on the supply agreement. Northpoint values predictability — their sales rep flagged it twice last quarter — and 90 days locked is cheap for us. I'd open at \"We understand the market move, can you hold at 4% if we commit through October?\"" },
       { role: "human", text: "What if they hold firm at 6%?" },
@@ -838,7 +838,7 @@ const cases = [
     tab: "PO entry",
     side: "supplier",
     msgs: [
-      { role: "human", text: "Issue the PO to Cosmo for the BX-208 order we agreed on." },
+      { role: "human", text: "Issue the PO to supplier Cosmo for the BX-208 order we agreed on." },
       { role: "system", text: "Drafting PO from quote Q-2026-0411 and Cosmo's standard terms; cross-checking…", done: "Draft ready; 1 flag", duration: 2200 },
       { role: "agent", text: "PO drafted at the negotiated terms — 1,200 units BX-208, $7.90 landed, 21-day lead, Net 30, ship to our Reno DC. One flag: Cosmo's standard PO template defaults to FOB Origin (we pay freight from their dock). Our negotiated landed cost assumes FOB Destination (Cosmo includes freight). Worth correcting before sending, otherwise we'll get billed twice for freight when their invoice hits. Want me to fix the FOB term and send, or do you want to review the full draft first?" },
       { role: "human", text: "How often do you catch stuff like this on PO templates?" },
@@ -854,7 +854,7 @@ const cases = [
     tab: "Supplier follow-ups",
     side: "supplier",
     msgs: [
-      { role: "human", text: "Where are we on the Northpoint PO #PO-2026-1098? Expected last week." },
+      { role: "human", text: "Where are we on the supplier Northpoint PO #PO-2026-1098? Expected last week." },
       { role: "system", text: "Pulling PO status; checking for shipping confirmation or carrier scan…", done: "No shipping confirmation; last contact was Mar 4 PO acknowledgment", duration: 2000 },
       { role: "agent", text: "6 days past ETA, no contact. Dan (their rep) typically responds to email within a day; if he's silent past 48 hours that usually means the production-side hit a snag he doesn't have the answer to yet. Pattern from prior late POs: 4 out of 5 cleared up with a direct call to his desk, not email. Want me to call Dan now? If he's out, I'll try Marcie in their planning group — she's faster on production-status questions." },
       { role: "human", text: "Call him." },
@@ -870,7 +870,7 @@ const cases = [
     tab: "Invoice reconciliation",
     side: "supplier",
     msgs: [
-      { role: "human", text: "Cosmo's invoice INV-CSM-2278 just came in. Reconcile." },
+      { role: "human", text: "Supplier Cosmo's invoice INV-CSM-2278 just came in. Reconcile." },
       { role: "system", text: "Cross-checking invoice against PO #PO-2026-1142, GRN, and Cosmo's contract terms…", done: "Invoice parsed; 3 discrepancies flagged", duration: 2400 },
       { role: "agent", text: "Invoice claims $9,792 for the BX-208 order. Three issues:\n\n• Quantity: invoice bills 1,200 units; we received 1,180 (GRN dated Mar 19, signed by Maria at receiving). 20 units short — $158 over.\n\n• Freight: $312 freight line; should be $0 per the FOB Destination term we locked when sending the PO. $312 over.\n\n• Payment terms: invoice says Net 15; PO says Net 30. Not a dollar issue but it'll trigger our AP to pay early.\n\nTotal over-bill: $470, plus terms correction. Want me to dispute formally, or call Cosmo's billing lead Janet first? She's been quick to issue credit memos in the past — usually resolves within 24h on a call." },
       { role: "human", text: "How much was the original PO?" },
@@ -942,6 +942,10 @@ function switchCase(idx) {
 
 buildChildTabs();
 
+function isAtBottom(el) {
+  return el.scrollHeight - el.scrollTop - el.clientHeight < 30;
+}
+
 function animateMessages(msgs, idx) {
   if (idx >= msgs.length) {
     animating = false;
@@ -952,12 +956,13 @@ function animateMessages(msgs, idx) {
   const m = msgs[idx];
 
   if (m.role === 'system') {
+    const wasAtBottom = isAtBottom(bodyEl);
     const div = document.createElement('div');
     div.className = 'demo-msg system';
     div.innerHTML = `<div class="sys-pulse"><span></span><span></span><span></span></div><span class="sys-text">${m.text}</span>`;
     bodyEl.appendChild(div);
     requestAnimationFrame(() => div.classList.add('visible'));
-    bodyEl.scrollTop = bodyEl.scrollHeight;
+    if (wasAtBottom) bodyEl.scrollTop = bodyEl.scrollHeight;
     animTimeout = setTimeout(() => {
       if (m.done) {
         div.querySelector('.sys-pulse').remove();
@@ -969,6 +974,7 @@ function animateMessages(msgs, idx) {
     return;
   }
 
+  const wasAtBottomBefore = isAtBottom(bodyEl);
   const div = document.createElement('div');
   div.className = 'demo-msg ' + m.role;
   const lbl = document.createElement('div'); lbl.className = 'msg-label';
@@ -977,6 +983,7 @@ function animateMessages(msgs, idx) {
   div.appendChild(lbl); div.appendChild(txt);
   bodyEl.appendChild(div);
   requestAnimationFrame(() => div.classList.add('visible'));
+  if (wasAtBottomBefore) bodyEl.scrollTop = bodyEl.scrollHeight;
 
   const cursor = document.createElement('span'); cursor.className = 'typing-cursor';
   txt.appendChild(cursor);
@@ -987,8 +994,9 @@ function animateMessages(msgs, idx) {
 
   function typeChar() {
     if (ci < m.text.length) {
+      const wasAtBottom = isAtBottom(bodyEl);
       node.textContent += m.text[ci++];
-      bodyEl.scrollTop = bodyEl.scrollHeight;
+      if (wasAtBottom) bodyEl.scrollTop = bodyEl.scrollHeight;
       animTimeout = setTimeout(typeChar, speed + Math.random() * 8);
     } else {
       cursor.remove();

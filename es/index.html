@@ -559,7 +559,7 @@ footer{
           <div class="sf-demo-body">
             <div class="demo-msg human visible">
               <div class="msg-label">Tú</div>
-              <div>Cotiza a Solano 500 unidades del SKU #4421 a Phoenix, 3 semanas.</div>
+              <div>Cotiza al cliente Solano 500 unidades del SKU #4421 a Monterrey, 3 semanas.</div>
             </div>
             <div class="demo-msg system visible settled">
               <span class="sys-text">Costos, capacidad e historial de Solano traídos</span>
@@ -600,23 +600,23 @@ footer{
             </thead>
             <tbody>
               <tr>
-                <td>Galindo</td>
+                <td>Cliente Galindo</td>
                 <td>Piso de $11.80 en SKU 6112; nunca abandona por precio; Sofía es contacto de AP para condiciones</td>
               </tr>
               <tr>
-                <td>Castellanos</td>
+                <td>Proveedor Castellanos</td>
                 <td>Net 30 negociado; requiere FOB Destino; Jimena es contacto de facturación (rápida con notas de crédito)</td>
               </tr>
               <tr>
-                <td>Vega</td>
+                <td>Cliente Vega</td>
                 <td>MSA Q1 subió 4%; precios en caché son comunes; Tomás (gerente de almacén) pide plazos acelerados</td>
               </tr>
               <tr>
-                <td>Cordillera</td>
+                <td>Proveedor Cordillera</td>
                 <td>3 retrasos de acero en 6 meses; llamar a Daniel (no email) cuando se atrase</td>
               </tr>
               <tr>
-                <td>Solano</td>
+                <td>Cliente Solano</td>
                 <td>Compra ~500/trimestre; sensible al anclaje en bajadas de precio</td>
               </tr>
             </tbody>
@@ -689,7 +689,7 @@ footer{
   <div class="container">
     <div class="security-inner reveal">
       <div class="tag reveal">04 — Seguridad y cumplimiento</div>
-      <h2 class="security-title reveal reveal-d1">Seguridad diseñada por un equipo que ha desplegado agentes de IA dentro del <em>Departamento de Defensa.</em></h2>
+      <h2 class="security-title reveal reveal-d1">Seguridad diseñada por un equipo que ha desplegado agentes de IA dentro del <em>Departamento de Defensa de Estados Unidos.</em></h2>
       <p class="security-desc reveal reveal-d2">Nuestros ingenieros han construido y desplegado sistemas de IA bajo cumplimiento federal de seguridad — entornos donde el estándar no es "grado empresarial," es seguridad nacional. La misma disciplina de ingeniería define cómo LeanLog maneja tus datos.</p>
     </div>
   </div>
@@ -726,7 +726,7 @@ const cases = [
     tab: "Cotización",
     side: "customer",
     msgs: [
-      { role: "human", text: "Llegó una solicitud de cotización de Solano por 500 unidades del SKU #4421 a Phoenix, 3 semanas. Haz los números." },
+      { role: "human", text: "Llegó una solicitud de cotización del cliente Solano por 500 unidades del SKU #4421 a Monterrey, 3 semanas. Haz los números." },
       { role: "system", text: "Revisando inventario, capacidad de producción e historial de Solano…", done: "200 en stock; 300 por producir; Línea 2 con holgura la próxima semana", duration: 2400 },
       { role: "agent", text: "Costo combinado: $4.32/unidad, margen estándar del 28% = $6.00/unidad, total $3,000, plazo 3 semanas, Net 30. Cabe mencionar — la Línea 2 está al 60% de ocupación la próxima semana. Pagamos a los operarios de todas formas, así que el costo marginal de producir las 300 está cerca de cero. Podrías cotizar $4.80/unidad ($2,400 total) con 1 semana de plazo y aún sacar ~70% en esta corrida. ¿Quieres que modele ese escenario?" },
       { role: "human", text: "¿Cuál es el riesgo?" },
@@ -742,7 +742,7 @@ const cases = [
     tab: "Negociación",
     side: "customer",
     msgs: [
-      { role: "human", text: "Galindo contestó la cotización #Q-2026-0392 — ellos están en $11.40, nosotros en $13.20. ¿Qué les digo?" },
+      { role: "human", text: "El cliente Galindo contestó la cotización #Q-2026-0392 — ellos están en $11.40, nosotros en $13.20. ¿Qué les digo?" },
       { role: "system", text: "Trayendo el historial de negociación de Galindo y el piso de margen…", done: "5 negociaciones previas; nunca cerraron un trato por precio; piso $11.80 en este SKU", duration: 2400 },
       { role: "agent", text: "Nunca han matado un trato por precio en 5 negociaciones previas — generalmente cierran dentro del 8% de la contraoferta inicial. Dos formas de jugarlo: (a) Mantener $13.20, contraofertar con Net 45 (están en Net 30). Galindo apretó la caja el verano pasado según su contacto de AP, así que 15 días extras se lee como concesión sin tocar el precio unitario. Anclaje intacto. (b) Encontrarse en $12.40 (~20% margen). Muestra flexibilidad pero pone un techo más suave para la próxima ronda. Yo iría con (a). ¿Te redacto la respuesta?" },
       { role: "human", text: "¿Y si no se mueven en el precio?" },
@@ -758,9 +758,9 @@ const cases = [
     tab: "Ingreso de pedido",
     side: "customer",
     msgs: [
-      { role: "human", text: "Acaba de llegar una OC de Vega Industries. Procésala." },
+      { role: "human", text: "Acaba de llegar una OC del cliente Vega Industries. Procésala." },
       { role: "system", text: "Leyendo la OC; cruzando contra cotización #Q-2026-0381 y el MSA de Vega…", done: "OC procesada; 2 discrepancias encontradas", duration: 2400 },
-      { role: "agent", text: "La OC está mayormente limpia — 800 unidades del SKU #6112, envío a su CD de Reno para el 18 de abril. Dos cosas marcadas:\n\n• Precio en la línea de la OC es $9.40; nosotros cotizamos $9.80. Parece que aplicaron el precio del año pasado — el MSA de Vega subió 4% en Q1.\n\n• La fecha de entrega es 2 semanas antes del plazo cotizado (4 semanas). O están tanteando qué es posible, o hay un malentendido.\n\n¿Quieres que (a) marque ambos puntos con Vega antes de ingresar, o (b) ingrese con las condiciones cotizadas y envíe una confirmación notando el precio del MSA y el plazo actual?" },
+      { role: "agent", text: "La OC está mayormente limpia — 800 unidades del SKU #6112, envío a su CD de Bogotá para el 18 de abril. Dos cosas marcadas:\n\n• Precio en la línea de la OC es $9.40; nosotros cotizamos $9.80. Parece que aplicaron el precio del año pasado — el MSA de Vega subió 4% en Q1.\n\n• La fecha de entrega es 2 semanas antes del plazo cotizado (4 semanas). O están tanteando qué es posible, o hay un malentendido.\n\n¿Quieres que (a) marque ambos puntos con Vega antes de ingresar, o (b) ingrese con las condiciones cotizadas y envíe una confirmación notando el precio del MSA y el plazo actual?" },
       { role: "human", text: "¿Cómo está la relación? ¿Van a presionar?" },
       { role: "agent", text: "Vega ha sido limpia con las condiciones — 14 OCs en los últimos 18 meses, sin disputas. Sobre el precio, a veces usan el precio guardado en caché de su sistema de compras sin revisar el MSA. Un correo rápido suele resolverlo. Sobre la fecha, Tomás (su gerente de almacén) pide plazos acelerados todos los meses; nunca lo hemos aceptado y nunca lo han escalado." },
       { role: "human", text: "Ve con (b). Ingresa a $9.80, plazo normal de 4 semanas, nota de confirmación a Tomás." },
@@ -774,14 +774,14 @@ const cases = [
     tab: "Programación de producción y entrega",
     side: "customer",
     msgs: [
-      { role: "human", text: "Vega pregunta si la OV #7821 puede salir una semana antes de la confirmación del 2 de mayo. ¿Podemos?" },
+      { role: "human", text: "El cliente Vega pregunta si la OV #7821 puede salir una semana antes de la confirmación del 2 de mayo. ¿Podemos?" },
       { role: "system", text: "Trayendo el calendario de producción para el SKU #6112; revisando disponibilidad de andén y transportista…", done: "Línea 4 tiene espacio 24-25 de abril; cupos de transportistas ajustados 26-27 de abril", duration: 2400 },
       { role: "agent", text: "Podemos llegar al 25 de abril si movemos dos cosas:\n\n• Adelantar la corrida de Vega al 24-25 de abril en la Línea 4. Eso desplaza la producción de Espiga del 24 de abril (300 unidades, actualmente con 2 semanas de holgura a su envío del 8 de mayo — seguro moverlo al 28 de abril).\n\n• Asegurar un cupo de transportista para salida el 26 de abril — hay capacidad en tres transportistas pero las tarifas están 12% por encima del estándar esta semana.\n\nCosto neto de acomodarlo: ~$240 en flete acelerado, sin tiempo extra de producción. ¿Procedemos o le respondemos que no a Vega?" },
       { role: "human", text: "¿Y si Espiga se queja por el cambio?" },
       { role: "agent", text: "Bajo riesgo — el pedido de Espiga ya fue reprogramado dos veces este trimestre a petición nuestra, las dos veces lo absorbieron sin comentarios. Su OC tiene 3 semanas de holgura sobre el compromiso con el cliente. Si lo marcan, podemos ofrecer Net 45 en el próximo pedido como gesto. Yo asumiría el riesgo." },
       { role: "human", text: "Hazlo. Confirma Vega para el 25 de abril, mueve Espiga al 28 de abril, reserva el transportista." },
       { role: "system", text: "Actualizando calendario de producción; reservando transportista; notificando al ejecutivo de cuenta de Espiga…", done: "Calendario actualizado; transportista confirmado; Espiga notificado", duration: 2200 },
-      { role: "agent", text: "Listo. La OV #7821 de Vega ahora sale el 25 de abril desde Reno con FastFreight (reservado a $1,840). La corrida de Espiga se movió al 28 de abril, sin impacto en su fecha de envío del 8 de mayo — su ejecutivo ya fue notificado con la nueva fecha de producción. ¿Confirmo la nueva fecha de envío con Vega?" },
+      { role: "agent", text: "Listo. La OV #7821 de Vega ahora sale el 25 de abril desde Bogotá con FastFreight (reservado a $1,840). La corrida de Espiga se movió al 28 de abril, sin impacto en su fecha de envío del 8 de mayo — su ejecutivo ya fue notificado con la nueva fecha de producción. ¿Confirmo la nueva fecha de envío con Vega?" },
       { role: "human", text: "Sí, y pregunta si necesitan opciones de envío acelerado de su lado." },
       { role: "system", text: "Enviando confirmación a Vega; con copia a Tomás (su líder de compras)…", done: "Confirmación enviada; transportista asegurado; tablero de producción actualizado", duration: 1800 }
     ]
@@ -822,7 +822,7 @@ const cases = [
     tab: "Negociación",
     side: "supplier",
     msgs: [
-      { role: "human", text: "Cordillera acaba de enviar un aviso de alza de precio del 6% en la serie BX, efectivo 1 de mayo. ¿Qué hago?" },
+      { role: "human", text: "El proveedor Cordillera acaba de enviar un aviso de alza de precio del 6% en la serie BX, efectivo 1 de mayo. ¿Qué hago?" },
       { role: "system", text: "Revisando tendencias de mercado y el historial de precios de Cordillera…", done: "3 de 4 proveedores de commodity subieron 4-6% en Q1; Cordillera subió su último precio hace 9 meses (3.5%)", duration: 2400 },
       { role: "agent", text: "Esto es algo del mercado, no es que Cordillera sea oportunista — los insumos de cobre y acero subieron significativamente en todo el sector. Su aumento está a la mitad del rango y ya tocaba según la cadencia histórica. Presionar por cero probablemente va a fallar. Lo que vale presionar: limitar el aumento al 4% a cambio de una extensión de 90 días en el acuerdo de suministro. Cordillera valora la predecibilidad — su representante de ventas lo mencionó dos veces el trimestre pasado — y 90 días bloqueados es barato para nosotros. Abriría con \"Entendemos el movimiento del mercado, ¿pueden mantenerlo en 4% si nos comprometemos hasta octubre?\"" },
       { role: "human", text: "¿Y si se mantienen firmes en 6%?" },
@@ -838,14 +838,14 @@ const cases = [
     tab: "Emisión de OC",
     side: "supplier",
     msgs: [
-      { role: "human", text: "Emite la OC a Castellanos por el pedido BX-208 que acordamos." },
+      { role: "human", text: "Emite la OC al proveedor Castellanos por el pedido BX-208 que acordamos." },
       { role: "system", text: "Redactando OC desde la cotización Q-2026-0411 y las condiciones estándar de Castellanos; verificando…", done: "Borrador listo; 1 alerta", duration: 2200 },
-      { role: "agent", text: "OC redactada con las condiciones negociadas — 1,200 unidades BX-208, $7.90 puesto, plazo 21 días, Net 30, envío a nuestro CD de Reno. Una alerta: la plantilla estándar de OC de Castellanos viene por defecto en FOB Origen (nosotros pagamos flete desde su andén). Nuestro costo negociado puesto asume FOB Destino (Castellanos incluye el flete). Vale corregirlo antes de enviar, si no nos van a facturar el flete dos veces cuando llegue su factura. ¿Corrijo el término FOB y envío, o quieres revisar el borrador completo primero?" },
+      { role: "agent", text: "OC redactada con las condiciones negociadas — 1,200 unidades BX-208, $7.90 puesto, plazo 21 días, Net 30, envío a nuestro CD de Bogotá. Una alerta: la plantilla estándar de OC de Castellanos viene por defecto en FOB Origen (nosotros pagamos flete desde su andén). Nuestro costo negociado puesto asume FOB Destino (Castellanos incluye el flete). Vale corregirlo antes de enviar, si no nos van a facturar el flete dos veces cuando llegue su factura. ¿Corrijo el término FOB y envío, o quieres revisar el borrador completo primero?" },
       { role: "human", text: "¿Qué tan seguido encuentras cosas así en las plantillas de OC?" },
       { role: "agent", text: "En los últimos 6 meses: aproximadamente 1 de cada 8 OCs salientes tenía un error de desviación en términos si se redactaba desde las plantillas por defecto del proveedor sin cruzar contra la cotización negociada. Los más comunes son términos FOB (este), condiciones de pago (Net X por defecto en Net 60 cuando acordamos Net 30), y plazos por defecto. El costo de no detectarlos corre $50-$400 en facturas disputadas y uno o dos correos para resolver. Barato detectarlo de entrada." },
       { role: "human", text: "Arregla el FOB y envía. No necesito revisar." },
       { role: "system", text: "Actualizando FOB a Destino; enviando OC a Castellanos; registrando en cola de AP…", done: "OC #PO-2026-1142 enviada; Castellanos acusó recibo; ETA 18 de marzo guardada", duration: 2000 },
-      { role: "agent", text: "OC #PO-2026-1142 enviada a Castellanos con FOB Destino bloqueado. Acusaron recibo automáticamente. Recepción esperada 18 de marzo en CD Reno. Inicio la cadencia de seguimiento al proveedor en el día 14 si no he visto confirmación de envío para entonces." },
+      { role: "agent", text: "OC #PO-2026-1142 enviada a Castellanos con FOB Destino bloqueado. Acusaron recibo automáticamente. Recepción esperada 18 de marzo en CD Bogotá. Inicio la cadencia de seguimiento al proveedor en el día 14 si no he visto confirmación de envío para entonces." },
       { role: "human", text: "Bien. ¿Algo más pendiente con ellos?" },
       { role: "system", text: "Revisando el pipeline de Castellanos…", done: "Una solicitud de cotización pendiente de respuesta (parte #BX-310, cant. 600); sin otras OCs abiertas", duration: 1400 }
     ]
@@ -854,7 +854,7 @@ const cases = [
     tab: "Seguimiento a proveedores",
     side: "supplier",
     msgs: [
-      { role: "human", text: "¿Cómo vamos con la OC #PO-2026-1098 de Cordillera? Esperada la semana pasada." },
+      { role: "human", text: "¿Cómo vamos con la OC #PO-2026-1098 del proveedor Cordillera? Esperada la semana pasada." },
       { role: "system", text: "Trayendo estado de la OC; revisando confirmación de envío o escaneo del transportista…", done: "Sin confirmación de envío; último contacto fue el acuse de OC del 4 de marzo", duration: 2000 },
       { role: "agent", text: "6 días pasados del ETA, sin contacto. Daniel (su representante) suele responder al correo dentro de un día; si está callado más de 48 horas, suele significar que producción tiene un problema para el que aún no tiene respuesta. Patrón de OCs atrasadas previas: 4 de 5 se resolvieron con una llamada directa, no correo. ¿Llamo a Daniel ahora? Si no está, intento con Mónica en su grupo de planeación — ella es más rápida en preguntas de estado de producción." },
       { role: "human", text: "Llámalo." },
@@ -870,7 +870,7 @@ const cases = [
     tab: "Conciliación de facturas",
     side: "supplier",
     msgs: [
-      { role: "human", text: "Acaba de llegar la factura INV-CSM-2278 de Castellanos. Concilia." },
+      { role: "human", text: "Acaba de llegar la factura INV-CSM-2278 del proveedor Castellanos. Concilia." },
       { role: "system", text: "Cruzando la factura contra la OC #PO-2026-1142, el GRN, y las condiciones contractuales de Castellanos…", done: "Factura procesada; 3 discrepancias marcadas", duration: 2400 },
       { role: "agent", text: "La factura reclama $9,792 por el pedido BX-208. Tres temas:\n\n• Cantidad: la factura cobra 1,200 unidades; recibimos 1,180 (GRN del 19 de marzo, firmado por María en recepción). Faltan 20 unidades — $158 de más.\n\n• Flete: línea de flete por $312; debería ser $0 según el término FOB Destino que bloqueamos al enviar la OC. $312 de más.\n\n• Condiciones de pago: la factura dice Net 15; la OC dice Net 30. No es un tema de dinero pero va a hacer que nuestra AP pague antes.\n\nSobrecargo total: $470, más la corrección de condiciones. ¿Disputo formalmente, o llamo primero a Jimena (líder de facturación de Castellanos)? Ha sido rápida con notas de crédito en el pasado — suele resolverse en 24h con una llamada." },
       { role: "human", text: "¿De cuánto era la OC original?" },
@@ -942,6 +942,10 @@ function switchCase(idx) {
 
 buildChildTabs();
 
+function isAtBottom(el) {
+  return el.scrollHeight - el.scrollTop - el.clientHeight < 30;
+}
+
 function animateMessages(msgs, idx) {
   if (idx >= msgs.length) {
     animating = false;
@@ -952,12 +956,13 @@ function animateMessages(msgs, idx) {
   const m = msgs[idx];
 
   if (m.role === 'system') {
+    const wasAtBottom = isAtBottom(bodyEl);
     const div = document.createElement('div');
     div.className = 'demo-msg system';
     div.innerHTML = `<div class="sys-pulse"><span></span><span></span><span></span></div><span class="sys-text">${m.text}</span>`;
     bodyEl.appendChild(div);
     requestAnimationFrame(() => div.classList.add('visible'));
-    bodyEl.scrollTop = bodyEl.scrollHeight;
+    if (wasAtBottom) bodyEl.scrollTop = bodyEl.scrollHeight;
     animTimeout = setTimeout(() => {
       if (m.done) {
         div.querySelector('.sys-pulse').remove();
@@ -969,6 +974,7 @@ function animateMessages(msgs, idx) {
     return;
   }
 
+  const wasAtBottomBefore = isAtBottom(bodyEl);
   const div = document.createElement('div');
   div.className = 'demo-msg ' + m.role;
   const lbl = document.createElement('div'); lbl.className = 'msg-label';
@@ -977,6 +983,7 @@ function animateMessages(msgs, idx) {
   div.appendChild(lbl); div.appendChild(txt);
   bodyEl.appendChild(div);
   requestAnimationFrame(() => div.classList.add('visible'));
+  if (wasAtBottomBefore) bodyEl.scrollTop = bodyEl.scrollHeight;
 
   const cursor = document.createElement('span'); cursor.className = 'typing-cursor';
   txt.appendChild(cursor);
@@ -987,8 +994,9 @@ function animateMessages(msgs, idx) {
 
   function typeChar() {
     if (ci < m.text.length) {
+      const wasAtBottom = isAtBottom(bodyEl);
       node.textContent += m.text[ci++];
-      bodyEl.scrollTop = bodyEl.scrollHeight;
+      if (wasAtBottom) bodyEl.scrollTop = bodyEl.scrollHeight;
       animTimeout = setTimeout(typeChar, speed + Math.random() * 8);
     } else {
       cursor.remove();
