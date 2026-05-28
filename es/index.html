@@ -927,6 +927,7 @@ function switchSide(sideId) {
   });
   buildChildTabs();
   bodyEl.innerHTML = '';
+  userScrolledUp = false;
   animating = true;
   animateMessages(activeCases()[0].msgs, 0);
 }
@@ -936,14 +937,29 @@ function switchCase(idx) {
   activeCase = idx;
   tabsEl.querySelectorAll('.demo-tab').forEach((t, i) => t.classList.toggle('active', i === idx));
   bodyEl.innerHTML = '';
+  userScrolledUp = false;
   animating = true;
   animateMessages(activeCases()[idx].msgs, 0);
 }
 
 buildChildTabs();
 
+let userScrolledUp = false;
+
 function isAtBottom(el) {
-  return el.scrollHeight - el.scrollTop - el.clientHeight < 30;
+  return el.scrollHeight - el.scrollTop - el.clientHeight < 5;
+}
+
+function onUserScroll() {
+  requestAnimationFrame(() => {
+    userScrolledUp = !isAtBottom(bodyEl);
+  });
+}
+bodyEl.addEventListener('wheel', onUserScroll, { passive: true });
+bodyEl.addEventListener('touchmove', onUserScroll, { passive: true });
+
+function maybeAutoScroll() {
+  if (!userScrolledUp) bodyEl.scrollTop = bodyEl.scrollHeight;
 }
 
 function animateMessages(msgs, idx) {
@@ -956,13 +972,12 @@ function animateMessages(msgs, idx) {
   const m = msgs[idx];
 
   if (m.role === 'system') {
-    const wasAtBottom = isAtBottom(bodyEl);
     const div = document.createElement('div');
     div.className = 'demo-msg system';
     div.innerHTML = `<div class="sys-pulse"><span></span><span></span><span></span></div><span class="sys-text">${m.text}</span>`;
     bodyEl.appendChild(div);
     requestAnimationFrame(() => div.classList.add('visible'));
-    if (wasAtBottom) bodyEl.scrollTop = bodyEl.scrollHeight;
+    maybeAutoScroll();
     animTimeout = setTimeout(() => {
       if (m.done) {
         div.querySelector('.sys-pulse').remove();
@@ -974,7 +989,6 @@ function animateMessages(msgs, idx) {
     return;
   }
 
-  const wasAtBottomBefore = isAtBottom(bodyEl);
   const div = document.createElement('div');
   div.className = 'demo-msg ' + m.role;
   const lbl = document.createElement('div'); lbl.className = 'msg-label';
@@ -983,7 +997,7 @@ function animateMessages(msgs, idx) {
   div.appendChild(lbl); div.appendChild(txt);
   bodyEl.appendChild(div);
   requestAnimationFrame(() => div.classList.add('visible'));
-  if (wasAtBottomBefore) bodyEl.scrollTop = bodyEl.scrollHeight;
+  maybeAutoScroll();
 
   const cursor = document.createElement('span'); cursor.className = 'typing-cursor';
   txt.appendChild(cursor);
@@ -994,9 +1008,8 @@ function animateMessages(msgs, idx) {
 
   function typeChar() {
     if (ci < m.text.length) {
-      const wasAtBottom = isAtBottom(bodyEl);
       node.textContent += m.text[ci++];
-      if (wasAtBottom) bodyEl.scrollTop = bodyEl.scrollHeight;
+      maybeAutoScroll();
       animTimeout = setTimeout(typeChar, speed + Math.random() * 8);
     } else {
       cursor.remove();
