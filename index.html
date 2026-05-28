@@ -218,8 +218,8 @@ body::before{
 .demo-msg{
   font-size:13px;line-height:1.6;max-width:92%;
   opacity:0;transform:translateY(5px);transition:opacity .3s,transform .3s;
-  white-space:pre-line;
 }
+.demo-msg > div:nth-of-type(2){white-space:pre-line}
 .demo-msg.visible{opacity:1;transform:translateY(0)}
 .demo-msg.agent{
   padding:12px 16px;background:var(--bg3);
@@ -549,30 +549,30 @@ footer{
               <div class="demo-dot demo-dot-y"></div>
               <div class="demo-dot demo-dot-g"></div>
             </div>
-            <div class="demo-title-bar">invoice reconciliation · cosmo</div>
+            <div class="demo-title-bar">quoting · apex</div>
           </div>
           <div class="sf-demo-body">
             <div class="demo-msg human visible">
               <div class="msg-label">You</div>
-              <div>Cosmo's invoice came in. Reconcile.</div>
+              <div>Quote Apex on 500 units of SKU #4421 to Phoenix, 3 weeks.</div>
             </div>
             <div class="demo-msg system visible settled">
-              <span class="sys-text">Cross-checked invoice against PO and GRN</span>
+              <span class="sys-text">Pulled costs, capacity, Apex's history</span>
             </div>
             <div class="demo-msg agent visible">
               <div class="msg-label">LeanLog Agent</div>
-              <div>3 issues flagged: 20-unit short delivery, freight billed against FOB Destination, Net 15 vs PO Net 30. Total over-bill: $470. Call Janet (their billing lead) or dispute formally?</div>
+              <div>$6.00/unit standard, $3,000 total, 3-week lead. Line 2 is light next week — could drop to $4.80 ($2,400) on a 1-week lead and clear ~70%. Anchoring risk. Hold standard?</div>
             </div>
             <div class="demo-msg human visible">
               <div class="msg-label">You</div>
-              <div>Call Janet.</div>
+              <div>Hold standard.</div>
             </div>
             <div class="demo-msg system visible settled">
-              <span class="sys-text">Called Cosmo. Credit memo + corrected invoice in queue</span>
+              <span class="sys-text">Sent quote; logged to CRM</span>
             </div>
             <div class="demo-msg agent visible">
               <div class="msg-label">LeanLog Agent</div>
-              <div>$470 credit memo issued. Reissue at Net 30 expected within 24h. Payment held until corrected invoice lands.</div>
+              <div>Sent. Apex's account updated; 7-day follow-up flagged.</div>
             </div>
           </div>
         </div>
@@ -587,46 +587,36 @@ footer{
               <div class="demo-dot demo-dot-y"></div>
               <div class="demo-dot demo-dot-g"></div>
             </div>
-            <div class="demo-title-bar">operational ledger</div>
+            <div class="demo-title-bar">captured operating knowledge</div>
           </div>
           <div class="sf-table-wrap"><table class="sf-table">
             <thead>
-              <tr><th>#</th><th>Workflow</th><th>Counterparty</th><th>Date</th><th>Channel</th><th>Status</th></tr>
+              <tr><th>Entity</th><th>What the agent has learned</th></tr>
             </thead>
             <tbody>
               <tr>
-                <td class="sf-id">001</td>
-                <td>Quoting</td><td>Apex</td><td>Mar 18</td>
-                <td><span class="sf-tag sf-tag-in">Email</span></td>
-                <td><span class="sf-status sf-status-done">Closed</span></td>
+                <td>Marlow</td>
+                <td>Floor $11.80 on SKU 6112; never walks over price; AP contact Sarah for terms</td>
               </tr>
               <tr>
-                <td class="sf-id">002</td>
-                <td>Invoice reconciliation</td><td>Cosmo</td><td>Mar 19</td>
-                <td><span class="sf-tag sf-tag-out">Phone</span></td>
-                <td><span class="sf-status sf-status-done">Closed</span></td>
+                <td>Cosmo</td>
+                <td>Net 30 negotiated; FOB Destination required; billing contact Janet (fast on credit memos)</td>
               </tr>
               <tr>
-                <td class="sf-id">003</td>
-                <td>PO entry</td><td>Marquez Industrial</td><td>Mar 20</td>
-                <td><span class="sf-tag sf-tag-in">Email</span></td>
-                <td><span class="sf-status sf-status-done">Closed</span></td>
+                <td>Vega</td>
+                <td>Q1 MSA stepped up 4%; cached pricing common; warehouse mgr Tom asks for accelerated leads</td>
               </tr>
               <tr>
-                <td class="sf-id">004</td>
-                <td>Production scheduling</td><td>Vega</td><td>Mar 24</td>
-                <td><span class="sf-tag sf-tag-out">Phone</span></td>
-                <td><span class="sf-status sf-status-pend">Pending</span></td>
+                <td>Northpoint</td>
+                <td>3 steel delays in 6 months; call Dan (not email) when late</td>
               </tr>
               <tr>
-                <td class="sf-id">005</td>
-                <td>Supplier follow-up</td><td>Northpoint</td><td>Mar 25</td>
-                <td><span class="sf-tag sf-tag-out">Phone</span></td>
-                <td><span class="sf-status sf-status-pend">Pending</span></td>
+                <td>Apex</td>
+                <td>Buys ~500/quarter; anchoring-sensitive on price drops</td>
               </tr>
             </tbody>
           </table></div>
-          <div class="sf-table-footer">5 decisions logged today &middot; sync'd with ERP</div>
+          <div class="sf-table-footer">5 entities captured &middot; always available to your next hire</div>
         </div>
         <div class="sf-row-text">
           <div class="sf-row-num">02 — capture</div>
