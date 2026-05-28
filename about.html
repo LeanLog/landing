@@ -100,6 +100,23 @@ main{position:relative;z-index:1}
 }
 .about-section .lede{font-size:14px;line-height:1.8;color:var(--text2);max-width:560px;font-weight:300;margin-bottom:36px}
 
+.stat-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);
+  border:1px solid var(--border);margin-top:8px;
+}
+.stat-card{
+  background:var(--bg);padding:36px 28px;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.stat-figure{
+  font-family:var(--serif);font-size:clamp(28px,3vw,38px);font-weight:400;
+  color:var(--accent);line-height:1.1;letter-spacing:-.5px;margin-bottom:14px;
+}
+.stat-desc{font-size:13px;color:var(--text2);line-height:1.7;font-weight:300}
+@media(max-width:680px){
+  .stat-grid{grid-template-columns:1fr}
+}
+
 /* Credentials */
 .org-logos{
   display:flex;align-items:center;flex-wrap:nowrap;
@@ -184,6 +201,25 @@ footer{
       <p>LeanLog is built by a small team of operators and AI engineers. We've scaled ecommerce operations from zero, deployed optimization and machine learning inside regulated industries, and built AI agents for the Department of Defense.</p>
       <p>Across every operations-heavy business we've worked with or talked to, the same pattern shows up: <strong>the system of record holds the records, but the actual work happens between the systems.</strong> Spreadsheets. Email threads. Knowledge that lives in a few people's heads. Migrating to a new ERP doesn't fix it. It moves the pain.</p>
       <p>So we're building the layer that captures those decisions, executes them, and gets sharper over time. Models swap underneath. Systems migrate. The work keeps running.</p>
+    </div>
+  </section>
+
+  <section class="about-section">
+    <div class="tag">Track record</div>
+    <h2>What we built before LeanLog.</h2>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-figure">$60M</div>
+        <div class="stat-desc">Scaled an ecommerce company from zero to $60M in revenue.</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-figure">100K orders / mo</div>
+        <div class="stat-desc">Led operations moving 10K SKUs and 100K orders per month.</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-figure">J&amp;J · Intel</div>
+        <div class="stat-desc">Deployed optimization and deep learning models inside regulated industries.</div>
+      </div>
     </div>
   </section>
 

@@ -483,7 +483,7 @@ footer{
   <div class="container">
     <div class="demo-section-header">
       <div class="tag reveal">01 — Velo en acción</div>
-      <h2 class="section-title reveal reveal-d1">Ve a LeanLog manejar flujos reales de operaciones.</h2>
+      <h2 class="section-title reveal reveal-d1">Mira cómo LeanLog maneja flujos reales de operaciones.</h2>
       <p class="section-desc reveal reveal-d2">Cada flujo manejado de principio a fin. Tú apruebas con palabras. El agente hace el resto.</p>
     </div>
     <div class="demo-panel reveal reveal-d3" style="max-width:720px;margin:0 auto;position:static">
@@ -507,13 +507,13 @@ footer{
   <div class="container">
     <div class="section-header">
       <div class="tag reveal">02 — Cómo operan las empresas hoy</div>
-      <h2 class="section-title reveal reveal-d1">Tus sistemas guardan los registros. <em>Tu equipo carga el trabajo.</em></h2>
+      <h2 class="section-title reveal reveal-d1">Tus sistemas guardan los registros. <em>Tu equipo carga con el trabajo.</em></h2>
       <p class="section-desc reveal reveal-d2">En cada empresa con operaciones intensivas, la lógica real del negocio vive fuera del sistema de registros. Migrar no lo soluciona.</p>
     </div>
     <div class="problem-grid reveal reveal-d3">
       <div class="problem-card">
         <span class="pc-index">01 / 03</span>
-        <h3>Tu ERP conoce a tus clientes. Pero no opera el trabajo para ellos.</h3>
+        <h3>Tu ERP conoce a tus clientes. Pero no ejecuta el trabajo en torno a ellos.</h3>
         <p>Clientes, proveedores, productos, precios — todo en el sistema. Pero el trabajo real — cotizar un pedido, programar producción, perseguir a un proveedor, conciliar una factura — sucede afuera, en el correo, las hojas de cálculo y las llamadas de tu equipo.</p>
       </div>
       <div class="problem-card">
@@ -535,7 +535,7 @@ footer{
   <div class="container">
     <div class="section-header">
       <div class="tag reveal">03 — Cómo funciona</div>
-      <h2 class="section-title reveal reveal-d1">Opera tu back office como lo <em>haría</em> tu mejor contratación operativa.</h2>
+      <h2 class="section-title reveal reveal-d1">Opera tu back office como lo <em>haría</em> tu mejor analista de operaciones.</h2>
       <p class="section-desc reveal reveal-d2">Sin nuevo software que aprender. Sin cambios de proceso. El agente trabaja a través de tus canales existentes — teléfono, correo, ERP, hojas de cálculo — y encaja junto a tu equipo.</p>
     </div>
 
@@ -545,8 +545,8 @@ footer{
       <div class="sf-row">
         <div class="sf-row-text">
           <div class="sf-row-num">01 — hablar</div>
-          <h4>Tú tomas las decisiones. El agente hace los movimientos.</h4>
-          <p>Mándale una tarea al agente — "cotiza a Apex," "concilia la factura de Cosmo," "pide más BX-208" — y consigue los datos, expone las alternativas, y te presenta la decisión que tienes que tomar. Tú decides; después el agente maneja las llamadas, los correos, los papeles y los seguimientos. Cada tarea es una conversación corta, no un proceso de varios pasos.</p>
+          <h4>Tú tomas las decisiones. El agente hace el trabajo.</h4>
+          <p>Mándale una tarea al agente — "cotiza a Apex," "concilia la factura de Cosmo," "pide más BX-208" — y consigue los datos, expone las alternativas, y te presenta la decisión que tienes que tomar. Tú decides; después el agente maneja las llamadas, los correos, el papeleo y los seguimientos. Cada tarea es una conversación corta, no un proceso de varios pasos.</p>
         </div>
         <div class="sf-row-visual">
           <div class="demo-header">
@@ -691,7 +691,7 @@ footer{
     <div class="security-inner reveal">
       <div class="tag reveal">04 — Seguridad y cumplimiento</div>
       <h2 class="security-title reveal reveal-d1">Seguridad diseñada por un equipo que ha desplegado agentes de IA dentro del <em>Departamento de Defensa.</em></h2>
-      <p class="security-desc reveal reveal-d2">Nuestros ingenieros han construido y desplegado sistemas de IA bajo cumplimiento federal de seguridad — entornos donde el estándar no es "nivel empresarial," es seguridad nacional. La misma disciplina de ingeniería define cómo LeanLog maneja tus datos.</p>
+      <p class="security-desc reveal reveal-d2">Nuestros ingenieros han construido y desplegado sistemas de IA bajo cumplimiento federal de seguridad — entornos donde el estándar no es "grado empresarial," es seguridad nacional. La misma disciplina de ingeniería define cómo LeanLog maneja tus datos.</p>
     </div>
   </div>
 </section>
@@ -726,9 +726,9 @@ const cases = [
     tab: "Cotización",
     side: "customer",
     msgs: [
-      { role: "human", text: "Llegó una solicitud de cotización de Apex por 500 unidades del SKU #4421 a Phoenix, 3 semanas. Corre los números." },
+      { role: "human", text: "Llegó una solicitud de cotización de Apex por 500 unidades del SKU #4421 a Phoenix, 3 semanas. Haz los números." },
       { role: "system", text: "Revisando inventario, capacidad de producción e historial de Apex…", done: "200 en stock; 300 por producir; Línea 2 con holgura la próxima semana", duration: 2400 },
-      { role: "agent", text: "Costo combinado: $4.32/unidad, margen estándar del 28% = $6.00/unidad, total $3,000, plazo 3 semanas, Net 30. Vale notar — la Línea 2 está al 60% de ocupación la próxima semana. Pagamos a los operarios igual, así que el costo marginal de producir las 300 está cerca de cero. Podrías cotizar $4.80/unidad ($2,400 total) con 1 semana de plazo y aún sacar ~70% en esta corrida. ¿Quieres que modele ese escenario?" },
+      { role: "agent", text: "Costo combinado: $4.32/unidad, margen estándar del 28% = $6.00/unidad, total $3,000, plazo 3 semanas, Net 30. Cabe mencionar — la Línea 2 está al 60% de ocupación la próxima semana. Pagamos a los operarios de todas formas, así que el costo marginal de producir las 300 está cerca de cero. Podrías cotizar $4.80/unidad ($2,400 total) con 1 semana de plazo y aún sacar ~70% en esta corrida. ¿Quieres que modele ese escenario?" },
       { role: "human", text: "¿Cuál es el riesgo?" },
       { role: "agent", text: "Anclaje. Apex compró 320 el trimestre pasado a $6.00 — si bajas a $4.80, fijas un nuevo techo. En el próximo pedido a costo normal van a presionar por ese precio. Yo mantendría $6.00 a menos que esto abra un arreglo de múltiples pedidos." },
       { role: "human", text: "¿Cómo se vería un arreglo de múltiples pedidos?" },
@@ -744,9 +744,9 @@ const cases = [
     msgs: [
       { role: "human", text: "Marlow contestó la cotización #Q-2026-0392 — ellos están en $11.40, nosotros en $13.20. ¿Qué les digo?" },
       { role: "system", text: "Trayendo el historial de negociación de Marlow y el piso de margen…", done: "5 negociaciones previas; nunca cerraron un trato por precio; piso $11.80 en este SKU", duration: 2400 },
-      { role: "agent", text: "Nunca han matado un trato por precio en 5 negociaciones previas — generalmente cierran dentro del 8% de la contraoferta inicial. Dos formas de jugarlo: (a) Mantener $13.20, contraofertar con Net 45 (están en Net 30). Marlow apretó la caja el verano pasado según su persona de AP, así que 15 días extras se lee como concesión sin tocar el precio unitario. Anclaje intacto. (b) Encontrarse en $12.40 (~20% margen). Muestra flexibilidad pero pone un techo más suave para la próxima ronda. Yo iría con (a). ¿Te redacto la respuesta?" },
+      { role: "agent", text: "Nunca han matado un trato por precio en 5 negociaciones previas — generalmente cierran dentro del 8% de la contraoferta inicial. Dos formas de jugarlo: (a) Mantener $13.20, contraofertar con Net 45 (están en Net 30). Marlow apretó la caja el verano pasado según su contacto de AP, así que 15 días extras se lee como concesión sin tocar el precio unitario. Anclaje intacto. (b) Encontrarse en $12.40 (~20% margen). Muestra flexibilidad pero pone un techo más suave para la próxima ronda. Yo iría con (a). ¿Te redacto la respuesta?" },
       { role: "human", text: "¿Y si no se mueven en el precio?" },
-      { role: "agent", text: "$11.80 es el piso — 12% de margen después del flete, punto de equilibrio en gastos generales. Por debajo de eso movemos inventario con pérdida. Si presionan más allá, las opciones son retirarse o reestructurar (sacarlos del escalón de volumen el próximo trimestre). Yo no me retiraría — Marlow está en el top-10 por GP del año y es un canal estable." },
+      { role: "agent", text: "$11.80 es el piso — 12% de margen después del flete, punto de equilibrio en gastos generales. Por debajo de eso movemos inventario con pérdida. Si presionan más allá, las opciones son retirarse o reestructurar (sacarlos del escalón de volumen el próximo trimestre). Yo no me retiraría — Marlow está en el top-10 por margen bruto del año y es un canal estable." },
       { role: "human", text: "Intenta primero con las condiciones. Envía (a)." },
       { role: "system", text: "Redactando contraoferta; trayendo contacto e historial de condiciones de Marlow…", done: "Contraoferta redactada; lista para enviar", duration: 1800 },
       { role: "agent", text: "Contraoferta lista: \"Mantenemos $13.20/unidad. Encantados de extender a Net 45 dado el volumen — beneficio significativo de flujo de caja en el pedido.\" Enviando a Sarah (su líder de AP, contacto principal para condiciones). Doy seguimiento si no hay respuesta en 3 días hábiles." },
@@ -776,9 +776,9 @@ const cases = [
     msgs: [
       { role: "human", text: "Vega pregunta si la OV #7821 puede salir una semana antes de la confirmación del 2 de mayo. ¿Podemos?" },
       { role: "system", text: "Trayendo el calendario de producción para el SKU #6112; revisando disponibilidad de andén y transportista…", done: "Línea 4 tiene espacio 24-25 de abril; cupos de transportistas ajustados 26-27 de abril", duration: 2400 },
-      { role: "agent", text: "Podemos llegar al 25 de abril si movemos dos cosas:\n\n• Adelantar la corrida de Vega al 24-25 de abril en la Línea 4. Eso desplaza la producción de Helix del 24 de abril (300 unidades, actualmente con 2 semanas de holgura a su envío del 8 de mayo — seguro moverlo al 28 de abril).\n\n• Asegurar un cupo de transportista para salida el 26 de abril — hay capacidad en tres transportistas pero las tarifas están 12% arriba del estándar esta semana.\n\nCosto neto de acomodarlo: ~$240 en flete acelerado, sin tiempo extra de producción. ¿Procedemos o le devolvemos a Vega?" },
+      { role: "agent", text: "Podemos llegar al 25 de abril si movemos dos cosas:\n\n• Adelantar la corrida de Vega al 24-25 de abril en la Línea 4. Eso desplaza la producción de Helix del 24 de abril (300 unidades, actualmente con 2 semanas de holgura a su envío del 8 de mayo — seguro moverlo al 28 de abril).\n\n• Asegurar un cupo de transportista para salida el 26 de abril — hay capacidad en tres transportistas pero las tarifas están 12% por encima del estándar esta semana.\n\nCosto neto de acomodarlo: ~$240 en flete acelerado, sin tiempo extra de producción. ¿Procedemos o le respondemos que no a Vega?" },
       { role: "human", text: "¿Y si Helix se queja por el cambio?" },
-      { role: "agent", text: "Bajo riesgo — el pedido de Helix ya fue reprogramado dos veces este trimestre a petición nuestra, las dos veces lo absorbieron sin comentarios. Su OC tiene 3 semanas de holgura sobre el compromiso del lado cliente. Si lo marcan, podemos ofrecer Net 45 en el próximo pedido como gesto. Yo asumiría el riesgo." },
+      { role: "agent", text: "Bajo riesgo — el pedido de Helix ya fue reprogramado dos veces este trimestre a petición nuestra, las dos veces lo absorbieron sin comentarios. Su OC tiene 3 semanas de holgura sobre el compromiso con el cliente. Si lo marcan, podemos ofrecer Net 45 en el próximo pedido como gesto. Yo asumiría el riesgo." },
       { role: "human", text: "Hazlo. Confirma Vega para el 25 de abril, mueve Helix al 28 de abril, reserva el transportista." },
       { role: "system", text: "Actualizando calendario de producción; reservando transportista; notificando al ejecutivo de cuenta de Helix…", done: "Calendario actualizado; transportista confirmado; Helix notificado", duration: 2200 },
       { role: "agent", text: "Listo. La OV #7821 de Vega ahora sale el 25 de abril desde Reno con FastFreight (reservado a $1,840). La corrida de Helix se movió al 28 de abril, sin impacto en su fecha de envío del 8 de mayo — su ejecutivo ya fue notificado con la nueva fecha de producción. ¿Confirmo la nueva fecha de envío con Vega?" },
@@ -791,11 +791,11 @@ const cases = [
     side: "customer",
     msgs: [
       { role: "human", text: "Revisión de cuentas por cobrar — ¿quién está atrasado?" },
-      { role: "system", text: "Revisando cuentas por cobrar vencidas; trayendo historiales de pago…", done: "8 facturas vencidas arriba de $1k; 3 vale la pena marcar", duration: 2200 },
-      { role: "agent", text: "Tres para accionar:\n\n• Marlow — $9,900 (15 días tarde, INV-4421). Paga en 35-45 días de manera confiable; aún no es preocupación, no se requiere acción.\n\n• Sentinel Corp — $14,200 (32 días tarde, INV-4398). Cuenta nueva, solo 1 factura previa (pagada Net 28). ¿Envío un primer recordatorio amistoso?\n\n• Cresta — $7,800 (47 días tarde, INV-4287). Pagador lento históricamente; suele responder a una llamada directa. Vale la pena un toque telefónico tuyo, no un correo mío.\n\n¿Manejo a Sentinel y agrego a Cresta a tu lista de llamadas?" },
+      { role: "system", text: "Revisando cuentas por cobrar vencidas; trayendo historiales de pago…", done: "8 facturas vencidas arriba de $1k; 3 que vale la pena marcar", duration: 2200 },
+      { role: "agent", text: "Tres para tomar acción:\n\n• Marlow — $9,900 (15 días de atraso, INV-4421). Paga en 35-45 días de manera confiable; aún no es preocupación, no se requiere acción.\n\n• Sentinel Corp — $14,200 (32 días de atraso, INV-4398). Cuenta nueva, solo 1 factura previa (pagada Net 28). ¿Envío un primer recordatorio amistoso?\n\n• Cresta — $7,800 (47 días de atraso, INV-4287). Pagador lento históricamente; suele responder a una llamada directa. Vale la pena una llamada de tu parte, no un correo mío.\n\n¿Manejo a Sentinel y agrego a Cresta a tu lista de llamadas?" },
       { role: "human", text: "¿Cuál es la ruta de escalamiento si Sentinel no responde?" },
-      { role: "agent", text: "Escalera estándar: recordatorio amistoso hoy (día 32) → recordatorio firme día 39 → cobranza formal + retención de AR día 46 → escalamiento a finanzas + involucrar al CFO día 60. Su contacto de AP es Lisa según su formulario de proveedores. Si quieres un primer toque más suave, puedo enmarcar el recordatorio de hoy como un \"asegurándonos de que nada se haya perdido\" en vez de una cobranza — típico para una cuenta nueva donde queremos preservar la relación." },
-      { role: "human", text: "Toque más suave. Envíalo. Y sí, agrega a Cresta para mí." },
+      { role: "agent", text: "Secuencia estándar: recordatorio amistoso hoy (día 32) → recordatorio firme día 39 → cobranza formal + retención de AR día 46 → escalamiento a finanzas + involucrar al CFO día 60. Su contacto de AP es Lisa según su formulario de proveedores. Si quieres un primer contacto más suave, puedo enmarcar el recordatorio de hoy como un \"asegurándonos de que nada se haya perdido\" en vez de una cobranza — típico para una cuenta nueva donde queremos preservar la relación." },
+      { role: "human", text: "Contacto más suave. Envíalo. Y sí, agrega a Cresta para mí." },
       { role: "system", text: "Redactando recordatorio a Sentinel; agregando llamada a Cresta en tu CRM…", done: "Recordatorio redactado; Cresta agregada a tu lista de llamadas de hoy", duration: 1800 },
       { role: "agent", text: "Recordatorio a Sentinel listo: \"Hola Lisa — solo dando seguimiento a INV-4398 ($14,200, enviada el 18 de feb). Quiero asegurarme de que no se haya quedado atorada en una carpeta. Avísame si necesitan algo de nuestro lado.\" Enviando a Lisa, con copia a su AP@. Voy a estar pendiente de la respuesta y escalo si no hay respuesta para el día 39." },
       { role: "human", text: "Envíalo." },
@@ -808,9 +808,9 @@ const cases = [
     msgs: [
       { role: "human", text: "Necesitamos 1,200 unidades de la parte #BX-208 en 3 semanas. Consíguela." },
       { role: "system", text: "Enviando solicitudes de cotización a proveedores calificados; siguiendo respuestas…", done: "8 proveedores contactados; 6 respuestas recibidas (promedio 4 horas); 2 pendientes", duration: 2600 },
-      { role: "agent", text: "Seis cotizaciones de regreso, normalizadas a costo puesto (unidad + flete + aranceles):\n\n• Northpoint — $8.40 puesto, plazo 18 días, Net 30. Nuestro primario; sin sorpresas.\n\n• Cosmo Metalworks — $7.90 puesto, plazo 21 días, anticipo. Proveedor nuevo; calificado en lista Mil-spec desde enero.\n\n• Marquez Industrial — $9.20 puesto, plazo 12 días, Net 45. Rápido pero premium.\n\n• Otros tres $8.60-$10.10, plazos más largos. Vale ignorar a menos que necesitemos respaldo.\n\nCosmo es el más barato por ~$600 total pero quiere anticipo. ¿Negocio Net 30 antes de recomendar?" },
+      { role: "agent", text: "Recibimos seis cotizaciones, normalizadas a costo puesto (unidad + flete + aranceles):\n\n• Northpoint — $8.40 puesto, plazo 18 días, Net 30. Nuestro primario; sin sorpresas.\n\n• Cosmo Metalworks — $7.90 puesto, plazo 21 días, anticipo. Proveedor nuevo; calificado en lista Mil-spec desde enero.\n\n• Marquez Industrial — $9.20 puesto, plazo 12 días, Net 45. Rápido pero premium.\n\n• Otros tres $8.60-$10.10, plazos más largos. Vale ignorar a menos que necesitemos respaldo.\n\nCosmo es el más barato por ~$600 total pero quiere anticipo. ¿Negocio Net 30 antes de recomendar?" },
       { role: "human", text: "Sí, presiona a Cosmo. ¿Y por qué Northpoint está arriba de Cosmo si son nuestro primario?" },
-      { role: "agent", text: "Northpoint ha estado cotizando ajustado en materiales desde su consolidación de proveedores en febrero — mismo patrón con otras tres partes commodity este trimestre. Aún no es una bandera roja, pero la diferencia es real. Cosmo es proveedor nuevo; una primera OC también sería una señal de lealtad pequeña que podríamos usar después. Recomendaría Cosmo si aceptan Net 30, si no, quedarse con Northpoint y te traigo la tendencia de precios por separado." },
+      { role: "agent", text: "Northpoint ha estado cotizando alto en materiales desde su consolidación de proveedores en febrero — mismo patrón con otras tres partes de commodity este trimestre. Aún no es una bandera roja, pero la diferencia es real. Cosmo es proveedor nuevo; una primera OC también sería una pequeña señal de lealtad que podríamos usar después. Recomendaría Cosmo si aceptan Net 30, si no, quedarse con Northpoint y te muestro la tendencia de precios por separado." },
       { role: "human", text: "Ve a negociar. Yo espero." },
       { role: "system", text: "Contactando a Cosmo para negociar condiciones Net 30…", done: "Cosmo aceptó Net 30 en esta OC (anticipo en la próxima); revisamos condiciones a las 3 OCs", duration: 2800 },
       { role: "agent", text: "Cosmo aceptó Net 30 en este pedido. Cotización final: $7.90 puesto × 1,200 = $9,480, plazo 21 días, Net 30. ¿Redacto la OC?" },
@@ -823,8 +823,8 @@ const cases = [
     side: "supplier",
     msgs: [
       { role: "human", text: "Northpoint acaba de enviar un aviso de alza de precio del 6% en la serie BX, efectivo 1 de mayo. ¿Qué hago?" },
-      { role: "system", text: "Revisando tendencias de mercado y el historial de precios de Northpoint…", done: "3 de 4 proveedores commodity subieron 4-6% en Q1; Northpoint subió su último precio hace 9 meses (3.5%)", duration: 2400 },
-      { role: "agent", text: "Esto es algo del mercado, no es Northpoint siendo oportunista — los insumos de cobre y acero subieron significativamente en todo el sector. Su aumento está a la mitad del rango y es esperado por la cadencia histórica. Presionar por cero probablemente va a fallar. Lo que vale presionar: limitar el aumento al 4% a cambio de una extensión de 90 días en el acuerdo de suministro. Northpoint valora la predecibilidad — su representante de ventas lo mencionó dos veces el trimestre pasado — y 90 días bloqueados es barato para nosotros. Abriría con \"Entendemos el movimiento del mercado, ¿pueden mantenerlo en 4% si nos comprometemos hasta octubre?\"" },
+      { role: "system", text: "Revisando tendencias de mercado y el historial de precios de Northpoint…", done: "3 de 4 proveedores de commodity subieron 4-6% en Q1; Northpoint subió su último precio hace 9 meses (3.5%)", duration: 2400 },
+      { role: "agent", text: "Esto es algo del mercado, no es que Northpoint sea oportunista — los insumos de cobre y acero subieron significativamente en todo el sector. Su aumento está a la mitad del rango y ya tocaba según la cadencia histórica. Presionar por cero probablemente va a fallar. Lo que vale presionar: limitar el aumento al 4% a cambio de una extensión de 90 días en el acuerdo de suministro. Northpoint valora la predecibilidad — su representante de ventas lo mencionó dos veces el trimestre pasado — y 90 días bloqueados es barato para nosotros. Abriría con \"Entendemos el movimiento del mercado, ¿pueden mantenerlo en 4% si nos comprometemos hasta octubre?\"" },
       { role: "human", text: "¿Y si se mantienen firmes en 6%?" },
       { role: "agent", text: "Entonces las opciones son (a) aceptar y absorber el golpe de 1.5% de margen en nuestros SKUs afectados, (b) mover algo de volumen a Cosmo que es más barato pero más nuevo, o (c) reajustar nuestras cotizaciones del lado cliente para los productos derivados del BX en ~3% en la próxima revisión. (c) es la más limpia — los costos se trasladan a los clientes en un trimestre y mantenemos margen. Retirarnos de Northpoint en esta parte sería prematuro; cubren el 60% de nuestro volumen BX y los costos de cambio en todo el catálogo son reales." },
       { role: "human", text: "Intenta el compromiso 4% / 90 días. Si se mantienen, vamos con (c)." },
@@ -841,8 +841,8 @@ const cases = [
       { role: "human", text: "Emite la OC a Cosmo por el pedido BX-208 que acordamos." },
       { role: "system", text: "Redactando OC desde la cotización Q-2026-0411 y las condiciones estándar de Cosmo; verificando…", done: "Borrador listo; 1 alerta", duration: 2200 },
       { role: "agent", text: "OC redactada con las condiciones negociadas — 1,200 unidades BX-208, $7.90 puesto, plazo 21 días, Net 30, envío a nuestro CD de Reno. Una alerta: la plantilla estándar de OC de Cosmo viene por defecto en FOB Origen (nosotros pagamos flete desde su andén). Nuestro costo negociado puesto asume FOB Destino (Cosmo incluye el flete). Vale corregirlo antes de enviar, si no nos van a facturar el flete dos veces cuando llegue su factura. ¿Corrijo el término FOB y envío, o quieres revisar el borrador completo primero?" },
-      { role: "human", text: "¿Qué tan seguido cachas cosas así en las plantillas de OC?" },
-      { role: "agent", text: "En los últimos 6 meses: aproximadamente 1 de cada 8 OCs salientes tenía un error de desviación en términos si se redactaba desde las plantillas por defecto del proveedor sin cruzar contra la cotización negociada. Los más comunes son términos FOB (este), condiciones de pago (Net X por defecto en Net 60 cuando acordamos Net 30), y plazos por defecto. El costo de no detectarlos corre $50-$400 en facturas disputadas y uno o dos correos para resolver. Barato cacharlo de entrada." },
+      { role: "human", text: "¿Qué tan seguido encuentras cosas así en las plantillas de OC?" },
+      { role: "agent", text: "En los últimos 6 meses: aproximadamente 1 de cada 8 OCs salientes tenía un error de desviación en términos si se redactaba desde las plantillas por defecto del proveedor sin cruzar contra la cotización negociada. Los más comunes son términos FOB (este), condiciones de pago (Net X por defecto en Net 60 cuando acordamos Net 30), y plazos por defecto. El costo de no detectarlos corre $50-$400 en facturas disputadas y uno o dos correos para resolver. Barato detectarlo de entrada." },
       { role: "human", text: "Arregla el FOB y envía. No necesito revisar." },
       { role: "system", text: "Actualizando FOB a Destino; enviando OC a Cosmo; registrando en cola de AP…", done: "OC #PO-2026-1142 enviada; Cosmo acusó recibo; ETA 18 de marzo guardada", duration: 2000 },
       { role: "agent", text: "OC #PO-2026-1142 enviada a Cosmo con FOB Destino bloqueado. Acusaron recibo automáticamente. Recepción esperada 18 de marzo en CD Reno. Inicio la cadencia de seguimiento al proveedor en el día 14 si no he visto confirmación de envío para entonces." },
@@ -856,14 +856,14 @@ const cases = [
     msgs: [
       { role: "human", text: "¿Cómo vamos con la OC #PO-2026-1098 de Northpoint? Esperada la semana pasada." },
       { role: "system", text: "Trayendo estado de la OC; revisando confirmación de envío o escaneo del transportista…", done: "Sin confirmación de envío; último contacto fue el acuse de OC del 4 de marzo", duration: 2000 },
-      { role: "agent", text: "6 días pasados del ETA, sin contacto. Dan (su representante) suele responder al correo dentro de un día; si está callado más de 48 horas, suele significar que producción tiene un problema para el que aún no tiene respuesta. Patrón de OCs atrasadas previas: 4 de 5 se resolvieron con una llamada directa a su escritorio, no correo. ¿Llamo a Dan ahora? Si no está, intento con Marcie en su grupo de planeación — ella es más rápida en preguntas de estado de producción." },
+      { role: "agent", text: "6 días pasados del ETA, sin contacto. Dan (su representante) suele responder al correo dentro de un día; si está callado más de 48 horas, suele significar que producción tiene un problema para el que aún no tiene respuesta. Patrón de OCs atrasadas previas: 4 de 5 se resolvieron con una llamada directa, no correo. ¿Llamo a Dan ahora? Si no está, intento con Marcie en su grupo de planeación — ella es más rápida en preguntas de estado de producción." },
       { role: "human", text: "Llámalo." },
-      { role: "system", text: "Llamando a Dan en Northpoint…", done: "Hablé con Dan — retraso de material; nuevo ETA 22 de marzo (7 días adicionales)", duration: 2600 },
-      { role: "agent", text: "Northpoint tuvo un retraso de insumo de acero de su proveedor arriba — afectando a 4 clientes incluyéndonos. Dan ofreció partir el envío: 60% el 22 de marzo, 40% el 29 de marzo. Neto: recibimos la mayoría del pedido una semana antes que si esperáramos el lote completo. Para nuestro lado — esas 1,200 unidades eran para colchón de inventario, no para una fecha de envío específica de cliente. El colchón no es crítico; podemos absorber el retraso sin atrasar compromisos con clientes. Pero sí come nuestro margen de seguridad para próximas reordenadas. ¿Aceptamos el envío partido o esperamos el completo?" },
-      { role: "human", text: "Acepta el partido. ¿Y qué hay del riesgo futuro con Northpoint en esta parte?" },
+      { role: "system", text: "Llamando a Dan de Northpoint…", done: "Hablé con Dan — retraso de material; nuevo ETA 22 de marzo (7 días adicionales)", duration: 2600 },
+      { role: "agent", text: "Northpoint tuvo un retraso de insumo de acero de su proveedor de origen — afectando a 4 clientes incluyéndonos. Dan ofreció partir el envío: 60% el 22 de marzo, 40% el 29 de marzo. Neto: recibimos la mayoría del pedido una semana antes que si esperáramos el lote completo. De nuestro lado — esas 1,200 unidades eran para colchón de inventario, no para una fecha de envío específica de cliente. El colchón no es crítico; podemos absorber el retraso sin atrasar compromisos con clientes. Pero sí come nuestro margen de seguridad para futuros pedidos. ¿Aceptamos el envío parcial o esperamos el completo?" },
+      { role: "human", text: "Acepta el envío parcial. ¿Y qué hay del riesgo futuro con Northpoint en esta parte?" },
       { role: "agent", text: "Este es el tercer retraso menor de ellos en 6 meses — patrón, no ruido. Recomendaría correr una solicitud de cotización en paralelo a dos de nuestros respaldos calificados en BX-208 durante el próximo trimestre, para tener alternativas calificadas listas si llega un cuarto retraso. Aún no es un cambio, solo diversificación. ¿Lo agrego a la cola?" },
-      { role: "human", text: "Sí, agrégalo. Acepta el envío partido de Dan." },
-      { role: "system", text: "Confirmando envío partido con Dan; agregando solicitud de cotización paralela en BX-208; notificando al planeador de producción de los nuevos ETAs…", done: "Partido confirmado (22 mar / 29 mar); tarea de cotización agendada para la próxima semana; producción actualizada", duration: 2200 }
+      { role: "human", text: "Sí, agrégalo. Acepta el envío parcial de Dan." },
+      { role: "system", text: "Confirmando envío parcial con Dan; agregando solicitud de cotización paralela en BX-208; notificando al planeador de producción de los nuevos ETAs…", done: "Parcial confirmado (22 mar / 29 mar); tarea de cotización agendada para la próxima semana; producción actualizada", duration: 2200 }
     ]
   },
   {
@@ -876,10 +876,10 @@ const cases = [
       { role: "human", text: "¿De cuánto era la OC original?" },
       { role: "agent", text: "$9,480 ($7.90 × 1,200 con flete incluido por FOB Destino). Después de corregir el faltante de 20 unidades, la factura objetivo es $9,322 con condiciones Net 30. Entonces estamos disputando $470 de sobrecargo y una desviación de 15 días en condiciones." },
       { role: "human", text: "Llama a Janet." },
-      { role: "system", text: "Llamando a Janet en facturación de Cosmo…", done: "Hablé con Janet — confirmó los tres; nota de crédito + factura corregida en cola", duration: 2800 },
-      { role: "agent", text: "Janet confirmó los tres: va a emitir una nota de crédito de $470 hoy y reemitir a Net 30. Se disculpó por la línea de flete — su plantilla de facturación viene por defecto en FOB Origen y el equipo no lo cachó en esta OC porque somos nuevos en su sistema. Está marcando nuestra cuenta para FOB Destino de aquí en adelante. ¿Detengo el pago hasta que llegue la factura corregida, o pago el monto corregido ($9,322) por adelantado?" },
+      { role: "system", text: "Llamando a Janet de facturación de Cosmo…", done: "Hablé con Janet — confirmó los tres; nota de crédito + factura corregida en cola", duration: 2800 },
+      { role: "agent", text: "Janet confirmó los tres: va a emitir una nota de crédito de $470 hoy y reemitir a Net 30. Se disculpó por la línea de flete — su plantilla de facturación viene por defecto en FOB Origen y el equipo no lo detectó en esta OC porque somos nuevos en su sistema. Está marcando nuestra cuenta para FOB Destino de aquí en adelante. ¿Detengo el pago hasta que llegue la factura corregida, o pago el monto corregido ($9,322) por adelantado?" },
       { role: "human", text: "Espera a la factura corregida. No pagues antes." },
-      { role: "system", text: "Deteniendo pago; registrando resolución de disputa; agregando nota a cuenta de Cosmo para capacitación del equipo de facturación…", done: "Pago detenido; nota de crédito esperada en 24h; alerta de cuenta puesta", duration: 2200 }
+      { role: "system", text: "Deteniendo pago; registrando resolución de disputa; agregando nota a cuenta de Cosmo para capacitación del equipo de facturación…", done: "Pago detenido; nota de crédito esperada en 24h; alerta agregada a la cuenta", duration: 2200 }
     ]
   }
 ];
