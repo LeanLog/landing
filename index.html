@@ -7,7 +7,7 @@
 <link rel="shortcut icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="/favicon.ico">
 <title>LeanLog — AI agents for operations-heavy businesses</title>
-<meta name="description" content="LeanLog handles the work that lives between your systems — POs, supplier follow-ups, invoice reconciliation, scheduling. End-to-end. Your team makes the calls; the agent executes.">
+<meta name="description" content="LeanLog runs your back office end-to-end. Customer-side: quoting, order entry, scheduling. Supplier-side: purchasing, PO entry, invoice reconciliation. Run more clients without hiring more people.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* ── Reset & Tokens ────────────────────────────────────────────── */
@@ -153,12 +153,11 @@ body::before{
   text-transform:uppercase;color:var(--text3);margin-bottom:20px;
 }
 .org-logos{
-  display:flex;align-items:center;flex-wrap:nowrap;
+  display:flex;align-items:center;justify-content:center;flex-wrap:nowrap;gap:48px;
 }
 .org-logo{
-  padding:14px 18px;
+  padding:14px 0;
   display:flex;align-items:center;justify-content:center;
-  flex:1;min-width:0;
 }
 .org-logo img{height:32px;width:auto;max-width:100%;object-fit:contain;display:block;opacity:.78;transition:opacity .2s}
 .org-logo:hover img{opacity:1}
@@ -190,6 +189,15 @@ body::before{
   flex:1;font-family:var(--mono);font-size:10px;color:var(--text3);
   text-align:center;letter-spacing:.8px;
 }
+.demo-parent-tabs{display:flex;border-bottom:1px solid var(--border);background:var(--bg)}
+.demo-parent-tab{
+  flex:1;padding:13px 18px;font-family:var(--mono);font-size:10px;letter-spacing:1.5px;
+  color:var(--text3);cursor:pointer;transition:all .2s;
+  text-transform:uppercase;text-align:center;
+  border-bottom:2px solid transparent;
+}
+.demo-parent-tab:hover{color:var(--text2)}
+.demo-parent-tab.active{color:var(--text);border-bottom-color:var(--text);background:var(--bg2)}
 .demo-tabs{display:flex;border-bottom:1px solid var(--border);overflow-x:auto}
 .demo-tabs::-webkit-scrollbar{height:2px}
 .demo-tab{
@@ -210,6 +218,7 @@ body::before{
 .demo-msg{
   font-size:13px;line-height:1.6;max-width:92%;
   opacity:0;transform:translateY(5px);transition:opacity .3s,transform .3s;
+  white-space:pre-line;
 }
 .demo-msg.visible{opacity:1;transform:translateY(0)}
 .demo-msg.agent{
@@ -332,6 +341,24 @@ section{padding:50px 0;position:relative;z-index:1}
 .sf-pill-on{background:rgba(40,167,69,.1);color:#1e9440;border:1px solid rgba(40,167,69,.2)}
 .sf-pill-req{background:rgba(210,110,0,.1);color:#b86a00;border:1px solid rgba(210,110,0,.2)}
 
+/* ── Security & compliance ────────────────────────────────────── */
+#security{background:var(--bg);position:relative;z-index:1}
+.security-inner{
+  max-width:720px;margin:0 auto;
+  text-align:center;
+}
+.security-inner .tag{justify-content:center;margin-bottom:24px}
+.security-title{
+  font-family:var(--serif);font-size:clamp(26px,3vw,40px);
+  line-height:1.2;color:var(--text);
+  font-weight:400;letter-spacing:-.3px;margin-bottom:24px;
+}
+.security-title em{font-style:italic;color:var(--accent)}
+.security-desc{
+  font-size:15px;line-height:1.85;color:var(--text2);
+  max-width:600px;margin:0 auto;font-weight:300;
+}
+
 /* ── Closing CTA ───────────────────────────────────────────────── */
 #cta{background:var(--bg);border-top:1px solid var(--border)}
 .cta-inner{
@@ -419,11 +446,11 @@ footer{
   <div class="hero-glow"></div>
   <div class="hero-inner">
     <div class="hero-eyebrow">
-      <div class="eyebrow-badge">AI for operations-heavy businesses</div>
+      <div class="eyebrow-badge">AI for operations-heavy back offices</div>
       <div class="eyebrow-line"></div>
     </div>
     <h1><span class="hero-cycle" id="heroVerb">Run</span><br class="hero-mobile-br"><span class="hero-cycle" id="heroNoun"> More Clients.</span><br><em>Without hiring more people.</em></h1>
-    <p class="hero-sub">LeanLog handles the work that today lives in spreadsheets, email, and people's heads — POs, supplier follow-ups, invoice reconciliation, scheduling. End-to-end. You make the calls.</p>
+    <p class="hero-sub">LeanLog handles the work that today lives in spreadsheets, email, and people's heads — quoting, order entry, production scheduling, supplier follow-ups, invoice reconciliation. End-to-end. You make the calls.</p>
     <div class="hero-actions">
       <a class="btn-primary" href="mailto:rodrigo@leanlog.ai">Talk to a Founder</a>
       <button class="btn-outline" onclick="document.getElementById('demo').scrollIntoView({behavior:'smooth'})">See the Demo</button>
@@ -462,6 +489,7 @@ footer{
         </div>
         <div class="demo-title-bar">leanlog</div>
       </div>
+      <div class="demo-parent-tabs" id="demoParentTabs"></div>
       <div class="demo-tabs" id="demoTabs"></div>
       <div class="demo-body" id="demoBody"></div>
     </div>
@@ -479,13 +507,13 @@ footer{
     <div class="problem-grid reveal reveal-d3">
       <div class="problem-card">
         <span class="pc-index">01 / 03</span>
-        <h3>Your systems don't talk to each other.</h3>
-        <p>Bespoke ERPs, spreadsheets, email threads. The integration layer is your team's inbox, and it grows every time you add a customer or a supplier.</p>
+        <h3>Your ERP knows your customers. It doesn't run the work for them.</h3>
+        <p>Customers, suppliers, products, prices — all in the system. But the actual work — quoting an order, scheduling production, chasing a supplier, reconciling an invoice — happens outside it, in your team's email, spreadsheets, and phone calls.</p>
       </div>
       <div class="problem-card">
         <span class="pc-index">02 / 03</span>
         <h3>The work lives between the systems.</h3>
-        <p>PO handling, supplier coordination, change propagation. Operators weave between email, sheets, and your ERP, holding the operational logic in their heads. None of it lives in the system of record.</p>
+        <p>A PO arrives by email. Your team keys it in, calls the supplier, updates the spreadsheet, follows up. The PO ends up in the system. The decisions — which supplier, why this exception, when to escalate — stay outside it.</p>
       </div>
       <div class="problem-card">
         <span class="pc-index">03 / 03</span>
@@ -511,8 +539,8 @@ footer{
       <div class="sf-row">
         <div class="sf-row-text">
           <div class="sf-row-num">01 — talk</div>
-          <h4>Your team talks. The agent handles the rest.</h4>
-          <p>Your dispatcher, ops manager, or buyer just sends a message — "dispute the Acme invoice," "reorder SKU 4821," "schedule Dock 3 for Tuesday." The agent handles the calls, emails, records, and follow-ups.</p>
+          <h4>You make the decisions. The agent makes the moves.</h4>
+          <p>Send the agent a task — "quote Apex," "reconcile Cosmo's invoice," "reorder BX-208" — and it sources the data, surfaces the trade-offs, and presents the call you need to make. You decide; the agent then handles the calls, emails, paperwork, and follow-ups. Every task is a short conversation, not a workflow handoff.</p>
         </div>
         <div class="sf-row-visual">
           <div class="demo-header">
@@ -521,30 +549,30 @@ footer{
               <div class="demo-dot demo-dot-y"></div>
               <div class="demo-dot demo-dot-g"></div>
             </div>
-            <div class="demo-title-bar">supplier confirmation · acme foods</div>
+            <div class="demo-title-bar">invoice reconciliation · cosmo</div>
           </div>
           <div class="sf-demo-body">
             <div class="demo-msg human visible">
               <div class="msg-label">You</div>
-              <div>I got 480 cases from Acme. Compare that to the invoice they sent.</div>
+              <div>Cosmo's invoice came in. Reconcile.</div>
             </div>
             <div class="demo-msg system visible settled">
-              <span class="sys-text">Pulled invoice from email; cross-checked against ERP record</span>
+              <span class="sys-text">Cross-checked invoice against PO and GRN</span>
             </div>
             <div class="demo-msg agent visible">
               <div class="msg-label">LeanLog Agent</div>
-              <div>Invoice #AC-8821: 500 cases at $12.40 = $6,200. You received 480, so there's a $248 discrepancy. Want me to call Acme and request a corrected invoice?</div>
+              <div>3 issues flagged: 20-unit short delivery, freight billed against FOB Destination, Net 15 vs PO Net 30. Total over-bill: $470. Call Janet (their billing lead) or dispute formally?</div>
             </div>
             <div class="demo-msg human visible">
               <div class="msg-label">You</div>
-              <div>Yes, handle it.</div>
+              <div>Call Janet.</div>
             </div>
             <div class="demo-msg system visible settled">
-              <span class="sys-text">Called Acme Foods. Credit memo issued, ERP and ledger updated</span>
+              <span class="sys-text">Called Cosmo. Credit memo + corrected invoice in queue</span>
             </div>
             <div class="demo-msg agent visible">
               <div class="msg-label">LeanLog Agent</div>
-              <div>$248 credit memo issued. Records updated. Adjusted total: $5,952.</div>
+              <div>$470 credit memo issued. Reissue at Net 30 expected within 24h. Payment held until corrected invoice lands.</div>
             </div>
           </div>
         </div>
@@ -568,32 +596,32 @@ footer{
             <tbody>
               <tr>
                 <td class="sf-id">001</td>
-                <td>Customer order</td><td>Rivera Restaurants</td><td>Mar 18</td>
-                <td><span class="sf-tag sf-tag-out">Phone</span></td>
+                <td>Quoting</td><td>Apex</td><td>Mar 18</td>
+                <td><span class="sf-tag sf-tag-in">Email</span></td>
                 <td><span class="sf-status sf-status-done">Closed</span></td>
               </tr>
               <tr>
                 <td class="sf-id">002</td>
-                <td>Invoice dispute</td><td>Acme Foods</td><td>Mar 19</td>
+                <td>Invoice reconciliation</td><td>Cosmo</td><td>Mar 19</td>
                 <td><span class="sf-tag sf-tag-out">Phone</span></td>
                 <td><span class="sf-status sf-status-done">Closed</span></td>
               </tr>
               <tr>
                 <td class="sf-id">003</td>
-                <td>Carrier quotes</td><td>LoneStar Logistics</td><td>Mar 20</td>
-                <td><span class="sf-tag sf-tag-in">Portal</span></td>
+                <td>PO entry</td><td>Marquez Industrial</td><td>Mar 20</td>
+                <td><span class="sf-tag sf-tag-in">Email</span></td>
                 <td><span class="sf-status sf-status-done">Closed</span></td>
               </tr>
               <tr>
                 <td class="sf-id">004</td>
-                <td>Delivery scheduling</td><td>Acme Foods</td><td>Mar 24</td>
+                <td>Production scheduling</td><td>Vega</td><td>Mar 24</td>
                 <td><span class="sf-tag sf-tag-out">Phone</span></td>
                 <td><span class="sf-status sf-status-pend">Pending</span></td>
               </tr>
               <tr>
                 <td class="sf-id">005</td>
-                <td>Low stock reorder</td><td>Pacific Supply</td><td>Mar 25</td>
-                <td><span class="sf-tag sf-tag-out">Portal</span></td>
+                <td>Supplier follow-up</td><td>Northpoint</td><td>Mar 25</td>
+                <td><span class="sf-tag sf-tag-out">Phone</span></td>
                 <td><span class="sf-status sf-status-pend">Pending</span></td>
               </tr>
             </tbody>
@@ -601,9 +629,9 @@ footer{
           <div class="sf-table-footer">5 decisions logged today &middot; sync'd with ERP</div>
         </div>
         <div class="sf-row-text">
-          <div class="sf-row-num">02 — log</div>
-          <h4>Every workflow logged automatically.</h4>
-          <p>Every supplier call, vendor negotiation, PO, and invoice is recorded without anyone touching a keyboard. Your team and your customers always know where things stand — no chasing updates.</p>
+          <div class="sf-row-num">02 — capture</div>
+          <h4>Knowledge stays — even when people leave.</h4>
+          <p>Every supplier choice, every exception, every decision rule the agent learns becomes part of your operation's codified logic. The next hire inherits both the data and the operating instructions. Turnover stops being a knowledge crisis.</p>
         </div>
       </div>
 
@@ -637,11 +665,11 @@ footer{
                 <td class="center"><span class="sf-pill sf-pill-on">Auto</span></td>
               </tr>
               <tr>
-                <td>Carrier scheduling</td>
+                <td>Delivery scheduling</td>
                 <td class="center"><span class="sf-pill sf-pill-on">Auto</span></td>
               </tr>
               <tr>
-                <td>Invoice dispute</td>
+                <td>Invoice reconciliation</td>
                 <td class="center"><span class="sf-pill sf-pill-req">Approval</span></td>
               </tr>
               <tr>
@@ -657,6 +685,17 @@ footer{
         </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- ── Security & compliance ── -->
+<section id="security">
+  <div class="container">
+    <div class="security-inner reveal">
+      <div class="tag reveal">04 — Security & compliance</div>
+      <h2 class="security-title reveal reveal-d1">Security designed by a team that's shipped AI agents inside the <em>Department of Defense.</em></h2>
+      <p class="security-desc reveal reveal-d2">Our engineers have built and deployed AI systems under federal security compliance — environments where the bar isn't "enterprise-grade," it's national security. The same engineering discipline shapes how LeanLog handles your data.</p>
     </div>
   </div>
 </section>
@@ -688,76 +727,213 @@ document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 /* ── Demo cases ────────────────────────────────────────────────── */
 const cases = [
   {
-    tab: "Customer order",
+    tab: "Quoting",
+    side: "customer",
     msgs: [
-      { role: "human", text: "Rivera Restaurants just called. They want 200 cases of SKU #1142 by Wednesday — can we do it?" },
-      { role: "system", text: "Checking stock levels and outbound capacity…", done: "Checked stock — 340 units available", duration: 2000 },
-      { role: "agent", text: "You have 340 units of SKU #1142 on hand. Wednesday delivery is doable if we ship tomorrow. Want me to confirm with Rivera and generate the sales order?" },
-      { role: "human", text: "Yes, confirm it." },
-      { role: "system", text: "Calling Rivera Restaurants…", done: "Called Rivera Restaurants — confirmed", duration: 2400 },
-      { role: "agent", text: "Done. Rivera confirmed for Wednesday delivery. Sales order #4821 generated — $6,200. Outbound scheduled for tomorrow 8am. Your shipping team has been notified." }
+      { role: "human", text: "Got an RFQ from Apex for 500 units of SKU #4421 to Phoenix, 3 weeks. Run the numbers." },
+      { role: "system", text: "Checking inventory, production capacity, and Apex's history…", done: "200 in stock; 300 to make; Line 2 light next week", duration: 2400 },
+      { role: "agent", text: "Cost build: $4.32/unit blended, standard 28% margin = $6.00/unit, total $3,000, 3-week lead, Net 30. Worth noting — Line 2 is only 60% booked next week. We pay the operators either way, so marginal cost on the 300 we'd run is close to zero. You could quote $4.80/unit ($2,400 total) on a 1-week lead and still clear ~70% on this run. Want me to model that?" },
+      { role: "human", text: "What's the risk?" },
+      { role: "agent", text: "Anchoring. Apex bought 320 last quarter at $6.00 — drop to $4.80 and you've set a new ceiling. Next normal-cost order they'll push for it. I'd hold $6.00 unless this opens a multi-order arrangement." },
+      { role: "human", text: "What would a multi-order arrangement look like?" },
+      { role: "agent", text: "If Apex commits to 1,500 units over the next quarter — they've averaged ~500/quarter for the last three — I'd quote $5.40/unit on a standing basis. 10% off, 20% margin instead of 28%. We get predictable volume to schedule against; they get the lower price they're pushing for. Structure it as a tier (≥1,500 cumulative within 90 days), not a flat discount, so we're protected if they under-commit. Want me to add it as an optional tier on the quote?" },
+      { role: "human", text: "Yeah, add the tier. Send it." },
+      { role: "system", text: "Drafting quote with tier; pulling Apex's standard terms…", done: "Quote #Q-2026-0418 ready", duration: 1800 },
+      { role: "agent", text: "Sending: 500 units @ $6.00 standard ($3,000); tier at $5.40 if cumulative ≥1,500 within 90 days. Net 30, valid 14 days, 3-week lead. Logged to Apex. I'll nudge in 7 days." }
     ]
   },
   {
-    tab: "Invoice dispute",
+    tab: "Negotiating",
+    side: "customer",
     msgs: [
-      { role: "human", text: "I got 480 cases from Acme. Compare that to the invoice they sent." },
-      { role: "system", text: "Pulled invoice from email; cross-checked against ERP record…", done: "Found invoice #AC-8821; $248 discrepancy", duration: 1800 },
-      { role: "agent", text: "Invoice #AC-8821: 500 cases at $12.40 = $6,200. You received 480, so there's a $248 discrepancy. Want me to call Acme and request a corrected invoice?" },
-      { role: "human", text: "Yes, handle it." },
-      { role: "system", text: "Calling Acme Foods…", done: "Called Acme Foods. Credit memo issued", duration: 2800 },
-      { role: "agent", text: "Acme confirmed the short delivery. $248 credit memo issued. Records updated. Adjusted total is $5,952." }
+      { role: "human", text: "Marlow came back on quote #Q-2026-0392 — they're at $11.40, we're at $13.20. What do I say?" },
+      { role: "system", text: "Pulling Marlow's negotiation history and margin floor…", done: "5 prior negotiations; never killed a deal over price; floor $11.80 on this SKU", duration: 2400 },
+      { role: "agent", text: "They've never killed a deal over price in 5 prior negotiations — typically land within 8% of opening counter. Two ways to play it: (a) Hold $13.20, counter with Net 45 (they're on Net 30). Marlow tightened cash last summer per their AP rep, so 15 extra days reads as concession without touching unit price. Anchoring intact. (b) Meet at $12.40 (~20% margin). Signals flexibility but sets a softer ceiling for next round. I'd go (a). Want me to draft?" },
+      { role: "human", text: "What if they don't budge on price?" },
+      { role: "agent", text: "$11.80 is the floor — 12% margin after freight, breakeven on overhead. Below that we're moving inventory at a loss. If they push past, options are walk away or restructure (move them off the volume tier next quarter). I wouldn't walk — Marlow is top-10 by GP YTD and a steady channel." },
+      { role: "human", text: "Try the terms first. Send (a)." },
+      { role: "system", text: "Drafting counter; pulling Marlow's contact and terms history…", done: "Counter drafted; ready to send", duration: 1800 },
+      { role: "agent", text: "Counter ready: \"Holding $13.20/unit. Happy to extend to Net 45 given the volume — meaningful cash-flow benefit on the order.\" Sending to Sarah (their AP lead, primary on terms). I'll flag follow-up if no reply in 3 business days." },
+      { role: "human", text: "Send it." },
+      { role: "system", text: "Sending counter to Marlow; logging to CRM…", done: "Counter sent; 3-day follow-up flagged", duration: 1400 }
     ]
   },
   {
-    tab: "Carrier quotes",
+    tab: "Order entry",
+    side: "customer",
     msgs: [
-      { role: "human", text: "I need to ship 12 pallets to Dallas by Friday. Get me some quotes." },
-      { role: "system", text: "Contacting FastFreight, LoneStar, and RoadRunner…", done: "Contacted 3 carriers; quotes received", duration: 2200 },
-      { role: "agent", text: "Three quotes back: FastFreight $1,840 (Thu), LoneStar $1,620 (Fri AM), RoadRunner $2,100 (Wed). Want me to negotiate?" },
-      { role: "human", text: "Yes, push them down." },
-      { role: "system", text: "Negotiating with FastFreight and LoneStar…", done: "Negotiated. FastFreight dropped to $1,680", duration: 2600 },
-      { role: "agent", text: "FastFreight dropped to $1,680. LoneStar held at $1,620, still cheapest, Friday morning. Book LoneStar?" },
-      { role: "human", text: "Book LoneStar." },
-      { role: "system", text: "Booking LoneStar Logistics…", done: "Booked LoneStar Logistics; confirmed", duration: 1400 },
-      { role: "agent", text: "Booked. Pickup tomorrow 3pm, Dock 1. Confirmation sent." }
+      { role: "human", text: "PO from Vega Industries just hit. Process it." },
+      { role: "system", text: "Parsing PO; cross-checking against quote #Q-2026-0381 and Vega's MSA…", done: "PO parsed; 2 discrepancies found", duration: 2400 },
+      { role: "agent", text: "PO is mostly clean — 800 units of SKU #6112, ship to their Reno DC by Apr 18. Two things flagged:\n\n• PO line price is $9.40; we quoted $9.80. Looks like they applied last year's pricing — Vega's MSA stepped up 4% in Q1.\n\n• Delivery date is 2 weeks earlier than the quoted lead time (4 weeks). Either they're testing what's possible or there's a misunderstanding.\n\nWant me to (a) flag both back to Vega before entering, or (b) enter at quoted terms and send a confirmation noting the MSA pricing and current lead time?" },
+      { role: "human", text: "What's the relationship like? Will they push back?" },
+      { role: "agent", text: "Vega has been clean on terms — 14 POs in the last 18 months, no disputes. On the price, they sometimes use their procurement system's cached pricing without checking the MSA. Quick email usually resolves. On the date, their warehouse manager Tom asks for accelerated lead times monthly; we've never accommodated and they've never escalated." },
+      { role: "human", text: "Go with (b). Enter at $9.80, normal 4-week lead, confirmation note to Tom." },
+      { role: "system", text: "Entering SO; drafting confirmation…", done: "SO #7821 created; confirmation drafted", duration: 1800 },
+      { role: "agent", text: "SO #7821 entered: 800 units @ $9.80 = $7,840, 4-week lead (May 2 ship). Confirmation note to Tom explains the MSA pricing step-up and current lead time. Want to review before sending?" },
+      { role: "human", text: "Send it." },
+      { role: "system", text: "Sending confirmation; logging to CRM…", done: "Confirmation sent; SO booked; 2-day follow-up flagged if no acknowledgment", duration: 1400 }
     ]
   },
   {
-    tab: "Delivery scheduling",
+    tab: "Production & delivery scheduling",
+    side: "customer",
     msgs: [
-      { role: "system", text: "Incoming call — Acme Foods", done: "Call received — Acme Foods", duration: 1600 },
-      { role: "agent", text: "Acme wants to deliver 500 cases Thursday at 2pm. Dock 3 is open. Confirm?" },
-      { role: "human", text: "Yes, lock it in." },
-      { role: "system", text: "Calling Acme Foods to confirm…", done: "Called Acme Foods — confirmed", duration: 2600 },
-      { role: "agent", text: "Confirmed with Acme — Thursday 2pm, Dock 3. Receiving schedule updated. Floor team notified." }
+      { role: "human", text: "Vega's asking if SO #7821 can ship a week earlier than the May 2 confirmation. Can we?" },
+      { role: "system", text: "Pulling production schedule for SKU #6112; checking dock and carrier availability…", done: "Line 4 has slot Apr 24-25; outbound carrier slots tight Apr 26-27", duration: 2400 },
+      { role: "agent", text: "We can hit Apr 25 if we shift two things:\n\n• Pull Vega's run forward to Apr 24-25 on Line 4. That displaces Helix's Apr 24 build (300 units, currently 2 weeks of buffer to their May 8 ship — safe to move to Apr 28).\n\n• Lock a carrier slot for Apr 26 outbound — three carriers have capacity but rates are 12% above standard this week.\n\nNet cost to accommodate: ~$240 in expedited freight, no production overtime. Want to proceed or push back to Vega?" },
+      { role: "human", text: "What if Helix complains about the shift?" },
+      { role: "agent", text: "Low risk — Helix's order has been re-dated twice already this quarter at our request, both times silently absorbed. Their PO has 3 weeks of pad on the customer-side commitment. If they do flag it, we can offer Net 45 on the next order as goodwill. I'd take the risk." },
+      { role: "human", text: "Do it. Lock Vega Apr 25, move Helix to Apr 28, book the carrier." },
+      { role: "system", text: "Updating production schedule; booking carrier; notifying Helix's account rep…", done: "Schedule updated; carrier confirmed; Helix notified", duration: 2200 },
+      { role: "agent", text: "Done. Vega SO #7821 now ships Apr 25 from Reno via FastFreight (booked $1,840). Helix's run moved to Apr 28, no impact on their May 8 ship date — their rep has been notified with the new build date. Want me to confirm the new ship date back to Vega?" },
+      { role: "human", text: "Yes, and ask if they need any expedited shipping options on their end." },
+      { role: "system", text: "Sending confirmation to Vega; CC'ing their procurement lead Tom…", done: "Confirmation sent; carrier locked; production board updated", duration: 1800 }
     ]
   },
   {
-    tab: "Low stock reorder",
+    tab: "Invoicing & collections",
+    side: "customer",
     msgs: [
-      { role: "agent", text: "SKU #4412 (kraft mailer boxes) is down to 120 units, below your 200-unit threshold. Reorder?" },
-      { role: "human", text: "Yeah, what are the options? Check if there's something cheaper than Pacific." },
-      { role: "system", text: "Comparing suppliers and live pricing…", done: "Searched market; 3 suppliers found", duration: 2400 },
-      { role: "agent", text: "Three suppliers: Pacific Supply $0.82/unit (your usual), BoxCo $0.74/unit (new), WebPack $0.79/unit. BoxCo saves $40 on a 500-unit order, same 3-day lead time." },
-      { role: "human", text: "Go with BoxCo." },
-      { role: "system", text: "Placing PO with BoxCo…", done: "Placed PO with BoxCo. $370 total", duration: 1600 },
-      { role: "agent", text: "PO sent to BoxCo: 500 units at $0.74, total $370. Saves $40 vs. Pacific. Expected delivery Monday. Tracking it." }
+      { role: "human", text: "AR check — who's late?" },
+      { role: "system", text: "Scanning aged receivables; pulling payment histories…", done: "8 invoices past due over $1k; 3 worth flagging", duration: 2200 },
+      { role: "agent", text: "Three to action:\n\n• Marlow — $9,900 (15 days late, INV-4421). Pays in 35-45 days reliably; not a concern yet, no action needed.\n\n• Sentinel Corp — $14,200 (32 days late, INV-4398). New account, only 1 prior invoice (paid Net 28). Send a friendly first nudge?\n\n• Cresta — $7,800 (47 days late, INV-4287). Slow payer historically; usually responds to a direct call. Worth a phone touch from you, not an email from me.\n\nWant me to handle Sentinel and queue Cresta for your call list?" },
+      { role: "human", text: "What's the escalation path if Sentinel doesn't respond?" },
+      { role: "agent", text: "Standard ladder: friendly nudge today (day 32) → firm reminder day 39 → formal dunning + AR hold day 46 → finance escalation + CFO loop day 60. Their AP contact is Lisa per their procurement form. If you want a softer first touch, I can frame today's nudge as a \"checking nothing fell through the cracks\" rather than a payment chase — typical for a new account where we want to preserve the relationship." },
+      { role: "human", text: "Softer touch. Send it. And yes, queue Cresta for me." },
+      { role: "system", text: "Drafting nudge to Sentinel; queuing Cresta callback in your CRM…", done: "Nudge drafted; Cresta queued for today's call list", duration: 1800 },
+      { role: "agent", text: "Sentinel nudge ready: \"Hi Lisa — just checking in on INV-4398 ($14,200, sent Feb 18). Want to make sure it didn't get caught in a folder. Let me know if you need anything from our side.\" Sending to Lisa, CC'ing their AP@. I'll watch for a reply and ladder up if no response by day 39." },
+      { role: "human", text: "Send it." },
+      { role: "system", text: "Sending to Sentinel; logging; Cresta on your call list…", done: "Sent; AR dashboard updated; Cresta callback flagged for today", duration: 1400 }
+    ]
+  },
+  {
+    tab: "RFQs",
+    side: "supplier",
+    msgs: [
+      { role: "human", text: "Need 1,200 units of part #BX-208 in 3 weeks. Source it." },
+      { role: "system", text: "Sending RFQs to qualified suppliers; tracking responses…", done: "8 suppliers contacted; 6 responses in (avg 4 hours); 2 pending", duration: 2600 },
+      { role: "agent", text: "Six quotes back, normalized for delivered cost (unit + freight + tariffs):\n\n• Northpoint — $8.40 landed, 18-day lead, Net 30. Our primary; no surprises.\n\n• Cosmo Metalworks — $7.90 landed, 21-day lead, prepay. New supplier; qualified on Mil-spec list since Jan.\n\n• Marquez Industrial — $9.20 landed, 12-day lead, Net 45. Fast but premium.\n\n• Three others $8.60-$10.10, longer leads. Worth ignoring unless we need a backup.\n\nCosmo's the cheapest by ~$600 total but they want prepay. Want me to push for Net 30 before recommending?" },
+      { role: "human", text: "Yes, push Cosmo. And why is Northpoint above Cosmo if they're our primary?" },
+      { role: "agent", text: "Northpoint's been quoting tight on materials since their February supplier consolidation — same pattern with three other commodity parts this quarter. Not a red flag yet, but the gap is real. Cosmo's a new vendor; first PO would also be a small loyalty signal we could use later. I'd recommend Cosmo if they'll move to Net 30, otherwise stick with Northpoint and surface the pricing trend to you separately." },
+      { role: "human", text: "Go negotiate. I'll wait." },
+      { role: "system", text: "Contacting Cosmo to negotiate Net 30 terms…", done: "Cosmo agreed to Net 30 on this PO (prepay on the next); will revisit terms at 3 POs", duration: 2800 },
+      { role: "agent", text: "Cosmo accepted Net 30 on this order. Final quote: $7.90 landed × 1,200 = $9,480, 21-day lead, Net 30. Want me to draft the PO?" },
+      { role: "human", text: "Yes, draft it." },
+      { role: "system", text: "Drafting PO; pulling Cosmo's standard PO terms template…", done: "PO #PO-2026-1142 drafted; ready for your approval", duration: 1800 }
+    ]
+  },
+  {
+    tab: "Negotiating",
+    side: "supplier",
+    msgs: [
+      { role: "human", text: "Northpoint just sent a 6% price hike notice on the BX series effective May 1. What do I do?" },
+      { role: "system", text: "Checking market trends and Northpoint's pricing history…", done: "3 of 4 commodity suppliers raised 4-6% Q1; Northpoint last raised price 9 months ago (3.5%)", duration: 2400 },
+      { role: "agent", text: "This is market-wide, not Northpoint being opportunistic — copper and steel inputs are up materially across the cohort. Their increase is in the middle of the pack and overdue by historical cadence. Pushing for zero will likely fail. What's worth pushing for: cap the increase at 4% in exchange for a 90-day extension on the supply agreement. Northpoint values predictability — their sales rep flagged it twice last quarter — and 90 days locked is cheap for us. I'd open at \"We understand the market move, can you hold at 4% if we commit through October?\"" },
+      { role: "human", text: "What if they hold firm at 6%?" },
+      { role: "agent", text: "Then options are (a) accept and absorb the 1.5% margin hit on our affected SKUs, (b) shift some volume to Cosmo who's cheaper but newer, or (c) re-price our customer-side quotes for the BX-derived products by ~3% on next refresh. (c) is the cleanest — costs roll through to customers within a quarter and we hold margin. Walking from Northpoint on this part would be premature; they cover 60% of our BX volume and switching costs across the catalog are real." },
+      { role: "human", text: "Try the 4% / 90-day commit. If they hold, we go with (c)." },
+      { role: "system", text: "Drafting counter to Northpoint; pulling their rep contact and last contract terms…", done: "Counter drafted; ready to send", duration: 1800 },
+      { role: "agent", text: "Counter ready to Dan at Northpoint: \"Got your May 1 update. We understand the market move. Can you hold the increase at 4% if we commit volume through October? We'd want pricing locked, with a quarterly true-up if inputs move materially.\" Sending. I'll flag the response." },
+      { role: "human", text: "Send it." },
+      { role: "system", text: "Sending to Northpoint; flagging response for your review…", done: "Counter sent; response expected within 2 business days", duration: 1400 }
+    ]
+  },
+  {
+    tab: "PO entry",
+    side: "supplier",
+    msgs: [
+      { role: "human", text: "Issue the PO to Cosmo for the BX-208 order we agreed on." },
+      { role: "system", text: "Drafting PO from quote Q-2026-0411 and Cosmo's standard terms; cross-checking…", done: "Draft ready; 1 flag", duration: 2200 },
+      { role: "agent", text: "PO drafted at the negotiated terms — 1,200 units BX-208, $7.90 landed, 21-day lead, Net 30, ship to our Reno DC. One flag: Cosmo's standard PO template defaults to FOB Origin (we pay freight from their dock). Our negotiated landed cost assumes FOB Destination (Cosmo includes freight). Worth correcting before sending, otherwise we'll get billed twice for freight when their invoice hits. Want me to fix the FOB term and send, or do you want to review the full draft first?" },
+      { role: "human", text: "How often do you catch stuff like this on PO templates?" },
+      { role: "agent", text: "Across our last 6 months: about 1 in 8 outbound POs had a term-drift error if drafted from supplier-default templates without cross-checking against the negotiated quote. Most common are FOB terms (this one), payment terms (Net X defaulting to Net 60 when we agreed Net 30), and lead-time defaults. Cost of missing each runs $50-$400 in disputed invoices and one or two emails to resolve. Cheap to catch up front." },
+      { role: "human", text: "Fix the FOB and send. Don't need to review." },
+      { role: "system", text: "Updating FOB to Destination; sending PO to Cosmo; logging to AP queue…", done: "PO #PO-2026-1142 sent; Cosmo acknowledged receipt; ETA Mar 18 stored", duration: 2000 },
+      { role: "agent", text: "PO #PO-2026-1142 sent to Cosmo with FOB Destination locked. They auto-acknowledged. Expected receipt Mar 18 at Reno DC. I'll start the supplier-follow-up cadence at day 14 if I haven't seen a shipping confirmation by then." },
+      { role: "human", text: "Good. Anything else queued for them?" },
+      { role: "system", text: "Checking Cosmo pipeline…", done: "One open RFQ pending response (part #BX-310, qty 600); no other open POs", duration: 1400 }
+    ]
+  },
+  {
+    tab: "Supplier follow-ups",
+    side: "supplier",
+    msgs: [
+      { role: "human", text: "Where are we on the Northpoint PO #PO-2026-1098? Expected last week." },
+      { role: "system", text: "Pulling PO status; checking for shipping confirmation or carrier scan…", done: "No shipping confirmation; last contact was Mar 4 PO acknowledgment", duration: 2000 },
+      { role: "agent", text: "6 days past ETA, no contact. Dan (their rep) typically responds to email within a day; if he's silent past 48 hours that usually means the production-side hit a snag he doesn't have the answer to yet. Pattern from prior late POs: 4 out of 5 cleared up with a direct call to his desk, not email. Want me to call Dan now? If he's out, I'll try Marcie in their planning group — she's faster on production-status questions." },
+      { role: "human", text: "Call him." },
+      { role: "system", text: "Calling Dan at Northpoint…", done: "Reached Dan — material delay; new ETA Mar 22 (7 days additional)", duration: 2600 },
+      { role: "agent", text: "Northpoint had a steel-input delay from their upstream — affecting 4 customers including us. Dan offered to split the shipment: 60% Mar 22, 40% Mar 29. Net: we get most of the order a week earlier than waiting for the full lot. For our side — that 1,200 units was meant for inventory buffer, not a specific customer ship date. Cushion isn't critical; we can absorb the delay without slipping any customer commits. But it does eat into our re-order safety margin going forward. Take the split shipment, or wait for full?" },
+      { role: "human", text: "Take the split. And what about future risk with Northpoint on this part?" },
+      { role: "agent", text: "This is the third minor delay from them in 6 months — pattern, not noise. I'd recommend running a parallel RFQ to two of our qualified backups on BX-208 over the next quarter, so we have qualified alternates ready if a fourth delay lands. Not a switch yet, just diversification. Want me to queue that?" },
+      { role: "human", text: "Yes, queue it. Take the split shipment from Dan." },
+      { role: "system", text: "Confirming split shipment with Dan; queuing parallel RFQ on BX-208; notifying our production planner of the new ETAs…", done: "Split confirmed (Mar 22 / Mar 29); RFQ task queued for next week; production updated", duration: 2200 }
+    ]
+  },
+  {
+    tab: "Invoice reconciliation",
+    side: "supplier",
+    msgs: [
+      { role: "human", text: "Cosmo's invoice INV-CSM-2278 just came in. Reconcile." },
+      { role: "system", text: "Cross-checking invoice against PO #PO-2026-1142, GRN, and Cosmo's contract terms…", done: "Invoice parsed; 3 discrepancies flagged", duration: 2400 },
+      { role: "agent", text: "Invoice claims $9,792 for the BX-208 order. Three issues:\n\n• Quantity: invoice bills 1,200 units; we received 1,180 (GRN dated Mar 19, signed by Maria at receiving). 20 units short — $158 over.\n\n• Freight: $312 freight line; should be $0 per the FOB Destination term we locked when sending the PO. $312 over.\n\n• Payment terms: invoice says Net 15; PO says Net 30. Not a dollar issue but it'll trigger our AP to pay early.\n\nTotal over-bill: $470, plus terms correction. Want me to dispute formally, or call Cosmo's billing lead Janet first? She's been quick to issue credit memos in the past — usually resolves within 24h on a call." },
+      { role: "human", text: "How much was the original PO?" },
+      { role: "agent", text: "$9,480 ($7.90 × 1,200 with freight included per FOB Destination). After correcting the 20-unit short delivery, target invoice is $9,322 with Net 30 terms. So we're disputing $470 over-bill and a 15-day terms drift." },
+      { role: "human", text: "Call Janet." },
+      { role: "system", text: "Calling Janet at Cosmo billing…", done: "Reached Janet — confirmed all three; credit memo + corrected invoice in queue", duration: 2800 },
+      { role: "agent", text: "Janet confirmed all three: she'll issue a $470 credit memo today and reissue at Net 30. She apologized for the freight line — their billing template defaulted to FOB Origin and the team didn't catch it on this PO since we're new to their system. She's flagging our account for FOB Destination going forward. Want me to hold payment until the corrected invoice lands, or pay the corrected amount ($9,322) preemptively?" },
+      { role: "human", text: "Wait for the corrected invoice. Don't pay early." },
+      { role: "system", text: "Holding payment; logging dispute resolution; flagging Cosmo account note for billing-team training…", done: "Payment held; credit memo expected within 24h; account flag set", duration: 2200 }
     ]
   }
 ];
 
+const parentTabsEl = document.getElementById('demoParentTabs');
 const tabsEl = document.getElementById('demoTabs');
 const bodyEl = document.getElementById('demoBody');
-let activeCase = 0, animTimeout = null, animating = false;
+const sides = [
+  { id: "customer", label: "Customer-side" },
+  { id: "supplier", label: "Supplier-side" }
+];
+let activeSide = "customer";
+let activeCase = 0;
+let animTimeout = null, animating = false;
 
-cases.forEach((c, i) => {
+function activeCases() {
+  return cases.filter(c => c.side === activeSide);
+}
+
+sides.forEach((s) => {
   const t = document.createElement('div');
-  t.className = 'demo-tab' + (i === 0 ? ' active' : '');
-  t.textContent = c.tab;
-  t.onclick = () => switchCase(i);
-  tabsEl.appendChild(t);
+  t.className = 'demo-parent-tab' + (s.id === activeSide ? ' active' : '');
+  t.textContent = s.label;
+  t.onclick = () => switchSide(s.id);
+  parentTabsEl.appendChild(t);
 });
+
+function buildChildTabs() {
+  tabsEl.innerHTML = '';
+  activeCases().forEach((c, i) => {
+    const t = document.createElement('div');
+    t.className = 'demo-tab' + (i === activeCase ? ' active' : '');
+    t.textContent = c.tab;
+    t.onclick = () => switchCase(i);
+    tabsEl.appendChild(t);
+  });
+}
+
+function switchSide(sideId) {
+  if (animTimeout) { clearTimeout(animTimeout); animTimeout = null; }
+  activeSide = sideId;
+  activeCase = 0;
+  parentTabsEl.querySelectorAll('.demo-parent-tab').forEach((t, i) => {
+    t.classList.toggle('active', sides[i].id === sideId);
+  });
+  buildChildTabs();
+  bodyEl.innerHTML = '';
+  animating = true;
+  animateMessages(activeCases()[0].msgs, 0);
+}
 
 function switchCase(idx) {
   if (animTimeout) { clearTimeout(animTimeout); animTimeout = null; }
@@ -765,13 +941,15 @@ function switchCase(idx) {
   tabsEl.querySelectorAll('.demo-tab').forEach((t, i) => t.classList.toggle('active', i === idx));
   bodyEl.innerHTML = '';
   animating = true;
-  animateMessages(cases[idx].msgs, 0);
+  animateMessages(activeCases()[idx].msgs, 0);
 }
+
+buildChildTabs();
 
 function animateMessages(msgs, idx) {
   if (idx >= msgs.length) {
     animating = false;
-    animTimeout = setTimeout(() => switchCase((activeCase + 1) % cases.length), 4000);
+    animTimeout = setTimeout(() => switchCase((activeCase + 1) % activeCases().length), 4000);
     return;
   }
 
@@ -841,7 +1019,6 @@ demoTrigger.observe(document.querySelector('.demo-panel'));
 const cycleTexts = [
   ['Run', ' More Clients.'],
   ['Manage', ' More Suppliers.'],
-  ['Handle', ' More Carriers.'],
 ];
 let cycleIdx = 0;
 const heroVerb = document.getElementById('heroVerb');
