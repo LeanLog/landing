@@ -506,8 +506,8 @@ footer{
   <div class="container">
     <div class="section-header">
       <div class="tag reveal">02 — Cómo operan las empresas hoy</div>
-      <h2 class="section-title reveal reveal-d1">Tus sistemas guardan los registros. <em>Tu equipo carga con el trabajo.</em></h2>
-      <p class="section-desc reveal reveal-d2">En cada empresa con operaciones intensivas, la lógica real del negocio vive fuera del sistema de registros. Migrar no lo soluciona.</p>
+      <h2 class="section-title reveal reveal-d1">Tus sistemas guardan data. <em>Tu equipo hace el trabajo.</em></h2>
+      <p class="section-desc reveal reveal-d2">En cada empresa con operaciones intensivas, la lógica real del negocio vive fuera del ERP. Agregar o migrar de sistema no acelera tu trabajo.</p>
     </div>
     <div class="problem-grid reveal reveal-d3">
       <div class="problem-card">
@@ -559,7 +559,7 @@ footer{
           <div class="sf-demo-body">
             <div class="demo-msg human visible">
               <div class="msg-label">Tú</div>
-              <div>Cotiza al cliente Solano 500 unidades del SKU #4421 a Monterrey, 3 semanas.</div>
+              <div>Cotiza al cliente Solano 500 unidades del SKU #4421 a Lima, 3 semanas.</div>
             </div>
             <div class="demo-msg system visible settled">
               <span class="sys-text">Costos, capacidad e historial de Solano traídos</span>
@@ -726,7 +726,7 @@ const cases = [
     tab: "Cotización",
     side: "customer",
     msgs: [
-      { role: "human", text: "Llegó una solicitud de cotización del cliente Solano por 500 unidades del SKU #4421 a Monterrey, 3 semanas. Haz los números." },
+      { role: "human", text: "Llegó una solicitud de cotización del cliente Solano por 500 unidades del SKU #4421 a Lima, 3 semanas. Haz los números." },
       { role: "system", text: "Revisando inventario, capacidad de producción e historial de Solano…", done: "200 en stock; 300 por producir; Línea 2 con holgura la próxima semana", duration: 2400 },
       { role: "agent", text: "Costo combinado: $4.32/unidad, margen estándar del 28% = $6.00/unidad, total $3,000, plazo 3 semanas, Net 30. Cabe mencionar — la Línea 2 está al 60% de ocupación la próxima semana. Pagamos a los operarios de todas formas, así que el costo marginal de producir las 300 está cerca de cero. Podrías cotizar $4.80/unidad ($2,400 total) con 1 semana de plazo y aún sacar ~70% en esta corrida. ¿Quieres que modele ese escenario?" },
       { role: "human", text: "¿Cuál es el riesgo?" },
@@ -760,7 +760,7 @@ const cases = [
     msgs: [
       { role: "human", text: "Acaba de llegar una OC del cliente Vega Industries. Procésala." },
       { role: "system", text: "Leyendo la OC; cruzando contra cotización #Q-2026-0381 y el MSA de Vega…", done: "OC procesada; 2 discrepancias encontradas", duration: 2400 },
-      { role: "agent", text: "La OC está mayormente limpia — 800 unidades del SKU #6112, envío a su CD de Bogotá para el 18 de abril. Dos cosas marcadas:\n\n• Precio en la línea de la OC es $9.40; nosotros cotizamos $9.80. Parece que aplicaron el precio del año pasado — el MSA de Vega subió 4% en Q1.\n\n• La fecha de entrega es 2 semanas antes del plazo cotizado (4 semanas). O están tanteando qué es posible, o hay un malentendido.\n\n¿Quieres que (a) marque ambos puntos con Vega antes de ingresar, o (b) ingrese con las condiciones cotizadas y envíe una confirmación notando el precio del MSA y el plazo actual?" },
+      { role: "agent", text: "La OC está mayormente limpia — 800 unidades del SKU #6112, envío a su CD de CDMX para el 18 de abril. Dos cosas marcadas:\n\n• Precio en la línea de la OC es $9.40; nosotros cotizamos $9.80. Parece que aplicaron el precio del año pasado — el MSA de Vega subió 4% en Q1.\n\n• La fecha de entrega es 2 semanas antes del plazo cotizado (4 semanas). O están tanteando qué es posible, o hay un malentendido.\n\n¿Quieres que (a) marque ambos puntos con Vega antes de ingresar, o (b) ingrese con las condiciones cotizadas y envíe una confirmación notando el precio del MSA y el plazo actual?" },
       { role: "human", text: "¿Cómo está la relación? ¿Van a presionar?" },
       { role: "agent", text: "Vega ha sido limpia con las condiciones — 14 OCs en los últimos 18 meses, sin disputas. Sobre el precio, a veces usan el precio guardado en caché de su sistema de compras sin revisar el MSA. Un correo rápido suele resolverlo. Sobre la fecha, Tomás (su gerente de almacén) pide plazos acelerados todos los meses; nunca lo hemos aceptado y nunca lo han escalado." },
       { role: "human", text: "Ve con (b). Ingresa a $9.80, plazo normal de 4 semanas, nota de confirmación a Tomás." },
