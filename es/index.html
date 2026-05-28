@@ -554,7 +554,7 @@ footer{
               <div class="demo-dot demo-dot-y"></div>
               <div class="demo-dot demo-dot-g"></div>
             </div>
-            <div class="demo-title-bar">cotización · apex</div>
+            <div class="demo-title-bar">cotización · solano</div>
           </div>
           <div class="sf-demo-body">
             <div class="demo-msg human visible">
@@ -743,8 +743,8 @@ const cases = [
     side: "customer",
     msgs: [
       { role: "human", text: "El cliente Galindo contestó la cotización #Q-2026-0392 — ellos están en $11.40, nosotros en $13.20. ¿Qué les digo?" },
-      { role: "system", text: "Trayendo el historial de negociación de Galindo y el piso de margen…", done: "5 negociaciones previas; nunca cerraron un trato por precio; piso $11.80 en este SKU", duration: 2400 },
-      { role: "agent", text: "Nunca han matado un trato por precio en 5 negociaciones previas — generalmente cierran dentro del 8% de la contraoferta inicial. Dos formas de jugarlo: (a) Mantener $13.20, contraofertar con Net 45 (están en Net 30). Galindo apretó la caja el verano pasado según su contacto de AP, así que 15 días extras se lee como concesión sin tocar el precio unitario. Anclaje intacto. (b) Encontrarse en $12.40 (~20% margen). Muestra flexibilidad pero pone un techo más suave para la próxima ronda. Yo iría con (a). ¿Te redacto la respuesta?" },
+      { role: "system", text: "Trayendo el historial de negociación de Galindo y el piso de margen…", done: "5 negociaciones previas; nunca abandonaron un trato por precio; piso $11.80 en este SKU", duration: 2400 },
+      { role: "agent", text: "Nunca han abandonado un trato por precio en 5 negociaciones previas — generalmente cierran dentro del 8% de la contraoferta inicial. Dos formas de jugarlo: (a) Mantener $13.20, contraofertar con Net 45 (están en Net 30). Galindo apretó la caja el verano pasado según su contacto de AP, así que 15 días extras se lee como concesión sin tocar el precio unitario. Anclaje intacto. (b) Encontrarse en $12.40 (~20% margen). Muestra flexibilidad pero pone un techo más suave para la próxima ronda. Yo iría con (a). ¿Te redacto la respuesta?" },
       { role: "human", text: "¿Y si no se mueven en el precio?" },
       { role: "agent", text: "$11.80 es el piso — 12% de margen después del flete, punto de equilibrio en gastos generales. Por debajo de eso movemos inventario con pérdida. Si presionan más allá, las opciones son retirarse o reestructurar (sacarlos del escalón de volumen el próximo trimestre). Yo no me retiraría — Galindo está en el top-10 por margen bruto del año y es un canal estable." },
       { role: "human", text: "Intenta primero con las condiciones. Envía (a)." },
