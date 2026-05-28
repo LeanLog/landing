@@ -56,8 +56,8 @@ body::before{
 .nav-center{display:flex;gap:32px}
 .nav-center a{font-size:13px;color:var(--text3);letter-spacing:.2px;transition:color .2s}
 .nav-center a:hover{color:var(--text2)}
-.nav-lang{font-size:13px;color:var(--text3);letter-spacing:.2px;padding:0 8px;transition:color .2s}
-.nav-lang:hover{color:var(--text2)}
+.footer-lang{color:var(--text3);transition:color .2s}
+.footer-lang:hover{color:var(--text2)}
 .nav-right{display:flex;align-items:center;gap:12px}
 .btn-primary{
   font-size:13px;font-weight:500;color:var(--bg);background:var(--accent);
@@ -164,13 +164,14 @@ footer{
 
 @media(max-width:680px){
   .org-logos{
-    display:grid;grid-template-columns:repeat(4,1fr);
-    flex-wrap:unset;
-    gap:8px 4px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:12px 16px;
   }
   .org-logo{
-    flex:unset;
-    padding:14px 8px;
+    flex:0 0 calc(25% - 12px);
+    padding:8px 4px;
     background:transparent;
   }
   .org-logo img{height:24px;max-width:90%}
@@ -188,7 +189,6 @@ footer{
     <a href="/about.html">About</a>
   </div>
   <div class="nav-right">
-    <a href="/es/about.html" class="nav-lang">ES</a>
     <a class="btn-primary" href="mailto:rodrigo@leanlog.ai">Talk to a Founder</a>
   </div>
 </nav>
@@ -250,6 +250,7 @@ footer{
 <footer>
   <span>&copy; 2026 LeanLog, Inc.</span>
   <span>AI agents for operations-heavy businesses</span>
+  <a href="/es/about.html" class="footer-lang">Español</a>
 </footer>
 
 </body>
