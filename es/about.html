@@ -100,23 +100,6 @@ main{position:relative;z-index:1}
 }
 .about-section .lede{font-size:14px;line-height:1.8;color:var(--text2);max-width:560px;font-weight:300;margin-bottom:36px}
 
-.stat-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);
-  border:1px solid var(--border);margin-top:8px;
-}
-.stat-card{
-  background:var(--bg);padding:36px 28px;
-  display:flex;flex-direction:column;justify-content:center;
-}
-.stat-figure{
-  font-family:var(--serif);font-size:clamp(28px,3vw,38px);font-weight:400;
-  color:var(--accent);line-height:1.1;letter-spacing:-.5px;margin-bottom:14px;
-}
-.stat-desc{font-size:13px;color:var(--text2);line-height:1.7;font-weight:300}
-@media(max-width:680px){
-  .stat-grid{grid-template-columns:1fr}
-}
-
 /* Credentials */
 .org-logos{
   display:flex;align-items:center;flex-wrap:nowrap;
@@ -198,28 +181,9 @@ footer{
     <div class="tag">Acerca de LeanLog</div>
     <h1>Hemos operado logística, escalado distribución, y desplegado AI en <em>entornos regulados.</em></h1>
     <div class="about-prose">
-      <p>LeanLog está construido por un pequeño equipo de operadores e ingenieros de AI. Hemos escalado operaciones de ecommerce desde cero, desplegado optimización y machine learning dentro de industrias reguladas, y construido agentes de AI para el Departamento de Defensa.</p>
+      <p>LeanLog está construido por un pequeño equipo de operadores e ingenieros de AI. Hemos escalado una empresa de ecommerce desde cero hasta $60M en ingresos, con 100K pedidos al mes en 10K SKUs. Hemos desplegado optimización y machine learning dentro de industrias reguladas, y construido agentes de AI para el Departamento de Defensa de Estados Unidos.</p>
       <p>En cada empresa intensiva en operaciones con la que hemos trabajado o hablado, aparece el mismo patrón: <strong>el ERP guarda data, pero el trabajo real sucede entre los sistemas.</strong> Hojas de cálculo. Hilos de correo. Conocimiento que vive en la cabeza de unas pocas personas. Agregar o migrar de sistema no acelera tu trabajo. Solo cambia el lugar del problema.</p>
       <p>Por eso estamos construyendo la capa que captura esas decisiones, las ejecuta, y se vuelve más precisa con el tiempo. Los modelos cambian por debajo. Los sistemas migran. El trabajo sigue corriendo.</p>
-    </div>
-  </section>
-
-  <section class="about-section">
-    <div class="tag">Trayectoria</div>
-    <h2>Lo que construimos antes de LeanLog.</h2>
-    <div class="stat-grid">
-      <div class="stat-card">
-        <div class="stat-figure">$60M</div>
-        <div class="stat-desc">Escalamos una empresa de ecommerce desde cero hasta $60M en ingresos.</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-figure">100K pedidos / mes</div>
-        <div class="stat-desc">Lideramos operaciones moviendo 10K SKUs y 100K pedidos al mes.</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-figure">J&amp;J · Intel</div>
-        <div class="stat-desc">Desplegamos modelos de optimización y deep learning en industrias reguladas.</div>
-      </div>
     </div>
   </section>
 
