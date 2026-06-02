@@ -3,14 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
-<link rel="shortcut icon" href="/favicon.ico">
-<link rel="apple-touch-icon" href="/favicon.ico">
-<title>LeanLog — Agentes de AI para empresas intensivas en operaciones</title>
-<meta name="description" content="LeanLog opera tu back office de principio a fin. Lado cliente: cotizaciones, ingreso de pedidos, programación. Lado proveedor: compras, emisión de OC, conciliación de facturas. Atiende más clientes sin contratar más personal.">
-<link rel="alternate" hreflang="en" href="https://leanlog.ai/">
-<link rel="alternate" hreflang="es" href="https://leanlog.ai/es/">
-<link rel="alternate" hreflang="x-default" href="https://leanlog.ai/">
+<link rel="icon" type="image/x-icon" href="../../favicon.ico">
+<title>LeanLog — Presentación</title>
+<meta name="description" content="Landing page de LeanLog en modo presentación — navega con las flechas.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* ── Reset & Tokens ────────────────────────────────────────────── */
@@ -21,8 +16,6 @@
   --bg3:#e9e4db;
   --bg4:#e1dbd0;
   --accent:#141210;
-  --accent-dim:rgba(0,0,0,.04);
-  --accent-glow:rgba(0,0,0,.08);
   --text:#141210;
   --text2:#5a5650;
   --text3:#a09a92;
@@ -32,8 +25,7 @@
   --sans:'Inter',system-ui,sans-serif;
   --mono:'JetBrains Mono',monospace;
 }
-html{scroll-behavior:smooth}
-body{font-family:var(--sans);background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);overflow:hidden;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
 
@@ -44,472 +36,230 @@ body::before{
   background-size:32px 32px;
 }
 
-/* ── Scrollbar ─────────────────────────────────────────────────── */
-::-webkit-scrollbar{width:4px}
-::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:var(--text3);border-radius:2px}
+/* ── Presentation shell ────────────────────────────────────────── */
+.slide{
+  position:fixed;inset:0;z-index:1;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  padding:84px 56px;overflow-y:auto;
+  opacity:0;visibility:hidden;transform:translateY(10px);
+  transition:opacity .45s ease,transform .45s ease;
+}
+.slide.active{opacity:1;visibility:visible;transform:translateY(0);z-index:2}
+.slide::-webkit-scrollbar{width:4px}
+.slide::-webkit-scrollbar-thumb{background:var(--text3);border-radius:2px}
+.slide-inner{width:100%;max-width:1140px;margin:0 auto}
 
-/* ── Utility ───────────────────────────────────────────────────── */
-.container{max-width:1140px;margin:0 auto;padding:0 48px}
-.tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--text3);margin-bottom:22px}
-.tag::before{content:'//'}
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
-.reveal-d1{transition-delay:.08s}
-.reveal-d2{transition-delay:.16s}
-.reveal-d3{transition-delay:.24s}
-.reveal-d4{transition-delay:.32s}
+/* neutralize landing scroll/entrance animations — slides reveal themselves */
+.reveal{opacity:1!important;transform:none!important}
 
-/* ── Navigation ────────────────────────────────────────────────── */
-.nav{
-  position:fixed;top:0;left:0;right:0;z-index:200;
-  padding:0 48px;height:60px;
-  display:flex;align-items:center;justify-content:space-between;
-  background:rgba(248,245,239,.92);backdrop-filter:blur(20px);
-  border-bottom:1px solid var(--border);
-}
-.nav-logo{display:flex;align-items:center}
-.nav-logo img{height:28px;width:auto;display:block}
-.nav-center{display:flex;gap:32px}
-.nav-center a{font-size:13px;color:var(--text3);letter-spacing:.2px;transition:color .2s}
-.nav-center a:hover{color:var(--text2)}
-.footer-lang{color:var(--text3);transition:color .2s}
-.footer-lang:hover{color:var(--text2)}
-.nav-right{display:flex;align-items:center;gap:12px}
-.btn-ghost{
-  font-size:13px;color:var(--text3);padding:7px 16px;
-  border:1px solid var(--border2);background:none;cursor:pointer;
-  font-family:var(--sans);transition:all .2s;letter-spacing:.1px;
-}
-.btn-ghost:hover{color:var(--text2);border-color:var(--text3)}
-.btn-primary{
-  font-size:13px;font-weight:500;color:var(--bg);background:var(--accent);
-  padding:8px 20px;border:none;cursor:pointer;font-family:var(--sans);
-  transition:all .2s;letter-spacing:.2px;
-  display:inline-flex;align-items:center;
-}
-.btn-primary:hover{background:#2e2b28;box-shadow:0 4px 20px rgba(0,0,0,.15)}
-.btn-outline{
-  font-size:13px;font-weight:500;color:var(--text);background:none;
-  padding:8px 20px;border:1px solid var(--border2);cursor:pointer;
-  font-family:var(--sans);transition:all .2s;letter-spacing:.2px;
-  display:inline-flex;align-items:center;gap:6px;
-}
-.btn-outline:hover{background:var(--bg2);border-color:var(--text3)}
-
-/* ── Hero ──────────────────────────────────────────────────────── */
-.hero{
-  min-height:100vh;display:flex;flex-direction:column;
-  justify-content:center;padding:120px 48px 100px;
-  position:relative;overflow:hidden;
-}
-.hero-glow{
-  position:absolute;top:-20%;right:-10%;width:800px;height:800px;
-  background:radial-gradient(circle,rgba(0,0,0,.03) 0%,transparent 65%);
+/* ── Top bar ───────────────────────────────────────────────────── */
+.deck-top{
+  position:fixed;top:0;left:0;right:0;height:60px;z-index:250;
+  display:flex;align-items:center;justify-content:space-between;padding:0 32px;
   pointer-events:none;
 }
-.hero-inner{max-width:1140px;margin:0 auto;width:100%}
-.hero-eyebrow{
-  display:flex;align-items:center;gap:12px;margin-bottom:32px;
-  opacity:0;animation:fadeUp .8s .1s forwards;
+.deck-top a{pointer-events:auto}
+.deck-top img{height:24px;width:auto}
+.deck-lang{
+  font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--text3);border:1px solid var(--border2);padding:6px 12px;transition:all .2s;
 }
-.eyebrow-badge{
-  font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;
-  color:var(--text3);padding:5px 14px;border:1px solid var(--border2);
+.deck-lang:hover{color:var(--text);border-color:var(--text3)}
+
+/* ── Progress + nav chrome ─────────────────────────────────────── */
+.deck-progress{position:fixed;top:0;left:0;height:2px;background:var(--accent);z-index:400;transition:width .4s ease;width:0}
+.deck-dots{position:fixed;bottom:34px;left:50%;transform:translateX(-50%);z-index:300;display:flex;gap:9px}
+.deck-dot{width:7px;height:7px;border-radius:50%;background:var(--border2);cursor:pointer;transition:all .2s;border:none;padding:0}
+.deck-dot.active{background:var(--text);transform:scale(1.3)}
+.deck-nav{position:fixed;bottom:26px;right:32px;z-index:300;display:flex;align-items:center;gap:14px}
+.deck-counter{font-family:var(--mono);font-size:11px;letter-spacing:1.5px;color:var(--text3);min-width:46px;text-align:center}
+.deck-arrow{
+  width:42px;height:42px;border:1px solid var(--border2);
+  background:rgba(248,245,239,.82);backdrop-filter:blur(10px);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+  transition:all .2s;color:var(--text2);
 }
+.deck-arrow:hover{border-color:var(--text3);color:var(--text);background:var(--bg2)}
+.deck-arrow:disabled{opacity:.28;cursor:default}
+.deck-arrow svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.6}
+
+/* ── Tag / titles ──────────────────────────────────────────────── */
+.tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--text3);margin-bottom:22px}
+.tag::before{content:'//'}
+.section-header{margin-bottom:40px}
+.section-title{font-family:var(--serif);font-size:clamp(28px,3.2vw,46px);line-height:1.12;max-width:780px;color:var(--text);font-weight:400;letter-spacing:-.3px;margin-bottom:18px}
+.section-title em{font-style:italic;color:var(--accent)}
+.section-desc{font-size:15px;line-height:1.8;color:var(--text2);max-width:600px;font-weight:300}
+
+/* ── Hero ──────────────────────────────────────────────────────── */
+.hero-inner{width:100%;max-width:1140px;margin:0 auto}
+.hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:32px}
+.eyebrow-badge{font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);padding:5px 14px;border:1px solid var(--border2)}
 .eyebrow-line{width:36px;height:1px;background:var(--border2)}
-.hero h1{
-  font-family:var(--serif);font-size:clamp(38px,5vw,62px);line-height:1.07;
-  max-width:1000px;margin-bottom:24px;color:var(--text);
-  font-weight:400;letter-spacing:-.5px;
-  opacity:0;animation:fadeUp .8s .22s forwards;
-}
-.hero h1 em{font-style:italic;color:var(--accent)}
+[data-slide="hero"] h1{font-family:var(--serif);font-size:clamp(38px,5vw,60px);line-height:1.07;max-width:1000px;margin-bottom:24px;color:var(--text);font-weight:400;letter-spacing:-.5px}
+[data-slide="hero"] h1 em{font-style:italic;color:var(--accent)}
 .hero-cycle{display:inline}
-.hero-mobile-br{display:none}
 .hero-cycle.cycle-exit{animation:cycleOut .28s ease forwards}
 .hero-cycle.cycle-enter{animation:cycleEnter .32s ease forwards}
 @keyframes cycleOut{to{opacity:0;transform:translateY(-10px)}}
 @keyframes cycleEnter{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.hero-sub{
-  font-size:16px;line-height:1.8;color:var(--text2);max-width:560px;
-  margin-bottom:44px;font-weight:300;
-  opacity:0;animation:fadeUp .8s .38s forwards;
-}
-.hero-actions{
-  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
-  opacity:0;animation:fadeUp .8s .52s forwards;
-}
-.hero-actions .btn-primary,.hero-actions .btn-outline{padding:12px 28px;font-size:14px}
-.hero-contact{
-  display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text3);
-  padding:11px 22px;border:1px solid var(--border2);transition:all .2s;
-}
-.hero-contact:hover{border-color:var(--border2);color:var(--text2)}
-.hero-contact svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.5}
-
-/* ── Hero credentials ──────────────────────────────────────────── */
-.hero-creds{
-  margin-top:56px;
-  opacity:0;animation:fadeUp .8s .68s forwards;
-}
-.cred-label{
-  font-family:var(--mono);font-size:9px;letter-spacing:2.5px;
-  text-transform:uppercase;color:var(--text3);margin-bottom:20px;
-}
-.org-logos{
-  display:flex;align-items:center;justify-content:center;flex-wrap:nowrap;gap:48px;
-}
-.org-logo{
-  padding:14px 0;
-  display:flex;align-items:center;justify-content:center;
-}
-.org-logo img{height:32px;width:auto;max-width:100%;object-fit:contain;display:block;opacity:.78;transition:opacity .2s}
+.hero-sub{font-size:16px;line-height:1.8;color:var(--text2);max-width:560px;margin-bottom:40px;font-weight:300}
+.hero-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.btn-primary{font-size:14px;font-weight:500;color:var(--bg);background:var(--accent);padding:12px 28px;border:none;cursor:pointer;font-family:var(--sans);transition:all .2s;letter-spacing:.2px;display:inline-flex;align-items:center}
+.btn-primary:hover{background:#2e2b28;box-shadow:0 4px 20px rgba(0,0,0,.15)}
+.btn-outline{font-size:14px;font-weight:500;color:var(--text);background:none;padding:12px 28px;border:1px solid var(--border2);cursor:pointer;font-family:var(--sans);transition:all .2s;letter-spacing:.2px;display:inline-flex;align-items:center;gap:6px}
+.btn-outline:hover{background:var(--bg2);border-color:var(--text3)}
+.hero-creds{margin-top:48px}
+.cred-label{font-family:var(--mono);font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--text3);margin-bottom:20px}
+.org-logos{display:flex;align-items:center;flex-wrap:wrap;gap:40px}
+.org-logo{display:flex;align-items:center}
+.org-logo img{height:30px;width:auto;object-fit:contain;opacity:.78;transition:opacity .2s}
 .org-logo:hover img{opacity:1}
-/* GT mark stacks Georgia/Tech vertically; bump height for parity */
-.org-logo img[alt*="Georgia"]{height:60px}
+.org-logo img[alt*="Georgia"]{height:56px}
 
-/* ── Demo section ──────────────────────────────────────────────── */
-#demo{background:var(--bg);position:relative;z-index:1;scroll-margin-top:80px}
-.demo-section-header{text-align:center;margin-bottom:48px}
+/* ── Problem ───────────────────────────────────────────────────── */
+.problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+.problem-card{background:var(--bg);padding:28px;transition:background .3s}
+.problem-card:hover{background:var(--bg2)}
+.pc-index{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:2px;margin-bottom:14px;display:block}
+.problem-card h3{font-size:15px;font-weight:500;margin-bottom:10px;line-height:1.4;color:var(--text)}
+.problem-card p{font-size:13px;color:var(--text2);line-height:1.75;font-weight:300}
+
+/* ── Demo panel ────────────────────────────────────────────────── */
+.demo-section-header{text-align:center;margin-bottom:30px}
 .demo-section-header .tag{justify-content:center}
-.demo-section-header .section-title{max-width:none;text-align:center;margin:0 auto 18px}
+.demo-section-header .section-title{max-width:none;text-align:center;margin:0 auto 14px}
 .demo-section-header .section-desc{max-width:520px;margin:0 auto;text-align:center}
-
-/* ── Demo Panel ────────────────────────────────────────────────── */
-.demo-panel{
-  border:1px solid var(--border);background:var(--bg2);
-  position:sticky;top:80px;overflow:hidden;
-}
-.demo-header{
-  padding:12px 18px;border-bottom:1px solid var(--border);
-  display:flex;align-items:center;gap:8px;
-}
+.demo-panel{border:1px solid var(--border);background:var(--bg2);overflow:hidden;max-width:720px;margin:0 auto}
+.demo-header{padding:12px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
 .demo-dots{display:flex;gap:5px}
 .demo-dot{width:9px;height:9px;border-radius:50%}
-.demo-dot-r{background:#ff5f57}
-.demo-dot-y{background:#febc2e}
-.demo-dot-g{background:#28c840}
-.demo-title-bar{
-  flex:1;font-family:var(--mono);font-size:10px;color:var(--text3);
-  text-align:center;letter-spacing:.8px;
-}
+.demo-dot-r{background:#ff5f57}.demo-dot-y{background:#febc2e}.demo-dot-g{background:#28c840}
+.demo-title-bar{flex:1;font-family:var(--mono);font-size:10px;color:var(--text3);text-align:center;letter-spacing:.8px}
 .demo-parent-tabs{display:flex;border-bottom:1px solid var(--border);background:var(--bg)}
-.demo-parent-tab{
-  flex:1;padding:13px 18px;font-family:var(--mono);font-size:10px;letter-spacing:1.5px;
-  color:var(--text3);cursor:pointer;transition:all .2s;
-  text-transform:uppercase;text-align:center;
-  border-bottom:2px solid transparent;
-}
+.demo-parent-tab{flex:1;padding:13px 18px;font-family:var(--mono);font-size:10px;letter-spacing:1.5px;color:var(--text3);cursor:pointer;transition:all .2s;text-transform:uppercase;text-align:center;border-bottom:2px solid transparent}
 .demo-parent-tab:hover{color:var(--text2)}
 .demo-parent-tab.active{color:var(--text);border-bottom-color:var(--text);background:var(--bg2)}
 .demo-tabs{display:flex;border-bottom:1px solid var(--border);overflow-x:auto}
 .demo-tabs::-webkit-scrollbar{height:2px}
-.demo-tab{
-  padding:10px 14px;font-family:var(--mono);font-size:9px;letter-spacing:.5px;
-  color:var(--text3);cursor:pointer;transition:all .2s;white-space:nowrap;
-  border-bottom:2px solid transparent;text-transform:uppercase;flex-shrink:0;
-}
+.demo-tab{padding:10px 14px;font-family:var(--mono);font-size:9px;letter-spacing:.5px;color:var(--text3);cursor:pointer;transition:all .2s;white-space:nowrap;border-bottom:2px solid transparent;text-transform:uppercase;flex-shrink:0}
 .demo-tab:hover{color:var(--text2)}
 .demo-tab.active{color:var(--text);border-bottom-color:var(--text2)}
-.demo-body{
-  padding:24px;height:420px;display:flex;flex-direction:column;
-  gap:12px;overflow-y:auto;
-}
+.demo-body{padding:24px;height:360px;display:flex;flex-direction:column;gap:12px;overflow-y:auto}
 .demo-body::-webkit-scrollbar{width:3px}
 .demo-body::-webkit-scrollbar-thumb{background:var(--border2)}
-
-/* message types */
-.demo-msg{
-  font-size:13px;line-height:1.6;max-width:92%;
-  opacity:0;transform:translateY(5px);transition:opacity .3s,transform .3s;
-}
+.demo-msg{font-size:13px;line-height:1.6;max-width:92%;opacity:0;transform:translateY(5px);transition:opacity .3s,transform .3s}
 .demo-msg > div:nth-of-type(2){white-space:pre-line}
 .demo-msg.visible{opacity:1;transform:translateY(0)}
-.demo-msg.agent{
-  padding:12px 16px;background:var(--bg3);
-  border-left:2px solid rgba(0,0,0,.22);color:var(--text);
-}
-.demo-msg.human{
-  padding:12px 16px;background:var(--bg);
-  border:1px solid var(--border2);color:var(--text2);
-  align-self:flex-end;
-}
-.demo-msg.system{
-  display:flex;align-items:center;gap:10px;
-  padding:10px 14px;background:rgba(0,0,0,.03);
-  border:1px solid var(--border);color:var(--text3);
-  font-family:var(--mono);font-size:11px;letter-spacing:.5px;
-  align-self:center;max-width:none;width:100%;
-}
-.demo-msg.system.settled{
-  color:var(--text2);background:transparent;border-color:transparent;
-}
-.demo-msg.system.settled::before{
-  content:'✓';font-size:10px;margin-right:6px;opacity:.5;
-}
-.sys-pulse{
-  display:flex;align-items:center;gap:3px;flex-shrink:0;
-}
-.sys-pulse span{
-  width:3px;height:3px;background:var(--text3);border-radius:50%;
-  animation:pulse-bar 1.1s ease-in-out infinite;
-}
-.sys-pulse span:nth-child(2){animation-delay:.18s}
-.sys-pulse span:nth-child(3){animation-delay:.36s}
-@keyframes pulse-bar{
-  0%,60%,100%{transform:scaleY(1);opacity:.4}
-  30%{transform:scaleY(2.2);opacity:1}
-}
-.msg-label{
-  font-family:var(--mono);font-size:9px;letter-spacing:2px;
-  text-transform:uppercase;color:var(--text3);margin-bottom:5px;
-}
-.typing-cursor{
-  display:inline-block;width:1.5px;height:12px;background:var(--text3);
-  margin-left:1px;vertical-align:text-bottom;animation:blink .55s step-end infinite;
-}
+.demo-msg.agent{padding:12px 16px;background:var(--bg3);border-left:2px solid rgba(0,0,0,.22);color:var(--text)}
+.demo-msg.human{padding:12px 16px;background:var(--bg);border:1px solid var(--border2);color:var(--text2);align-self:flex-end}
+.demo-msg.system{display:flex;align-items:center;gap:10px;padding:10px 14px;background:rgba(0,0,0,.03);border:1px solid var(--border);color:var(--text3);font-family:var(--mono);font-size:11px;letter-spacing:.5px;align-self:center;max-width:none;width:100%}
+.demo-msg.system.settled{color:var(--text2);background:transparent;border-color:transparent}
+.demo-msg.system.settled::before{content:'✓';font-size:10px;margin-right:6px;opacity:.5}
+.sys-pulse{display:flex;align-items:center;gap:3px;flex-shrink:0}
+.sys-pulse span{width:3px;height:3px;background:var(--text3);border-radius:50%;animation:pulse-bar 1.1s ease-in-out infinite}
+.sys-pulse span:nth-child(2){animation-delay:.18s}.sys-pulse span:nth-child(3){animation-delay:.36s}
+@keyframes pulse-bar{0%,60%,100%{transform:scaleY(1);opacity:.4}30%{transform:scaleY(2.2);opacity:1}}
+.msg-label{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin-bottom:5px}
+.typing-cursor{display:inline-block;width:1.5px;height:12px;background:var(--text3);margin-left:1px;vertical-align:text-bottom;animation:blink .55s step-end infinite}
 @keyframes blink{50%{opacity:0}}
 
-/* ── Section commons ───────────────────────────────────────────── */
-section{padding:50px 0;position:relative;z-index:1}
-#problem{padding:35px 0}
-.section-header{margin-bottom:56px}
-#problem .section-header{margin-bottom:39px}
-.section-title{
-  font-family:var(--serif);font-size:clamp(28px,3.2vw,48px);
-  line-height:1.12;max-width:720px;color:var(--text);
-  font-weight:400;letter-spacing:-.3px;margin-bottom:18px;
-}
-.section-title em{font-style:italic;color:var(--accent)}
-.section-desc{font-size:15px;line-height:1.8;color:var(--text2);max-width:560px;font-weight:300}
-
-/* ── Problem ───────────────────────────────────────────────────── */
-#problem{background:var(--bg)}
-.problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
-.problem-card{
-  background:var(--bg);padding:28px 28px;position:relative;
-  overflow:hidden;transition:background .3s;
-}
-.problem-card:hover{background:var(--bg2)}
-.pc-index{
-  font-family:var(--mono);font-size:10px;color:var(--text3);
-  letter-spacing:2px;margin-bottom:14px;display:block;
-}
-.problem-card h3{font-size:15px;font-weight:500;margin-bottom:10px;line-height:1.4;color:var(--text)}
-.problem-card p{font-size:13px;color:var(--text2);line-height:1.75;font-weight:300}
-
-/* ── Solution (vision: today / with LeanLog / over time) ───────── */
-#solution{background:var(--bg)}
-.sf-rows{display:flex;flex-direction:column;gap:56px;background:transparent;margin-top:48px}
-.sf-row{display:grid;grid-template-columns:1fr 1.5fr;gap:1px;background:var(--border);align-items:stretch;border:1px solid var(--border)}
+/* ── Solution rows ─────────────────────────────────────────────── */
+.sf-row{display:grid;grid-template-columns:1fr 1.5fr;gap:1px;background:var(--border);align-items:stretch;border:1px solid var(--border);width:100%;max-width:980px;margin:0 auto}
 .sf-row-flip{grid-template-columns:1.5fr 1fr}
-.sf-row-text{
-  background:var(--bg);padding:56px 52px;
-  display:flex;flex-direction:column;justify-content:center;
-}
+.sf-row-text{background:var(--bg);padding:48px 46px;display:flex;flex-direction:column;justify-content:center}
 .sf-row-num{font-family:var(--mono);font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--text3);margin-bottom:20px}
 .sf-row-text h4{font-family:var(--serif);font-size:24px;font-weight:400;color:var(--text);margin-bottom:14px;line-height:1.25}
 .sf-row-text p{font-size:13px;color:var(--text2);line-height:1.9;font-weight:300}
 .sf-row-visual{background:var(--bg);overflow:hidden;display:flex;flex-direction:column;min-height:300px}
-/* Chat body */
 .sf-demo-body{padding:20px;flex:1;display:flex;flex-direction:column;gap:10px;background:var(--bg)}
-/* Tables */
 .sf-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
 .sf-table{width:100%;border-collapse:collapse;font-size:12px}
 .sf-table thead tr{background:var(--bg3)}
-.sf-table th{
-  padding:9px 12px;text-align:left;font-family:var(--mono);font-size:8.5px;
-  letter-spacing:1.5px;text-transform:uppercase;color:var(--text2);
-  border-bottom:1px solid var(--border2);font-weight:500;
-}
+.sf-table th{padding:9px 12px;text-align:left;font-family:var(--mono);font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text2);border-bottom:1px solid var(--border2);font-weight:500}
 .sf-table th.center,.sf-table td.center{text-align:center}
 .sf-table tbody tr:nth-child(even){background:var(--bg2)}
 .sf-table tbody tr:nth-child(odd){background:var(--bg)}
 .sf-table td{padding:9px 12px;color:var(--text2);border-bottom:1px solid var(--border);font-size:11.5px;font-family:var(--mono)}
 .sf-table tr:last-child td{border-bottom:none}
-.sf-table td.sf-id{color:var(--text3);font-size:10px;letter-spacing:.5px;user-select:none}
-.sf-table-footer{
-  padding:7px 12px;font-family:var(--mono);font-size:9px;color:var(--text3);
-  letter-spacing:.5px;border-top:1px solid var(--border);background:var(--bg3);
-  display:flex;align-items:center;gap:6px;
-}
+.sf-table-footer{padding:7px 12px;font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:.5px;border-top:1px solid var(--border);background:var(--bg3);display:flex;align-items:center;gap:6px}
 .sf-table-footer::before{content:'';width:5px;height:5px;background:#28c840;border-radius:50%;flex-shrink:0}
-.sf-tag{font-family:var(--mono);font-size:9px;letter-spacing:.5px;text-transform:uppercase;padding:2px 6px;border:1px solid var(--border)}
-.sf-tag-in{color:#1C3C8C;border-color:rgba(28,60,140,.25)}
-.sf-tag-out{color:var(--text3)}
-.sf-status{font-family:var(--mono);font-size:9px;letter-spacing:.5px;text-transform:uppercase}
-.sf-status-done{color:#28a745}
-.sf-status-pend{color:var(--text3)}
 .sf-pill{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:8px;letter-spacing:.8px;text-transform:uppercase;padding:3px 9px;border-radius:20px}
 .sf-pill::before{content:'●';font-size:6px}
 .sf-pill-on{background:rgba(40,167,69,.1);color:#1e9440;border:1px solid rgba(40,167,69,.2)}
 .sf-pill-req{background:rgba(210,110,0,.1);color:#b86a00;border:1px solid rgba(210,110,0,.2)}
 
-/* ── Security & compliance ────────────────────────────────────── */
-#security{background:var(--bg);position:relative;z-index:1}
-.security-inner{
-  max-width:720px;margin:0 auto;
-  text-align:center;
-}
-.security-inner .tag{justify-content:center;margin-bottom:24px}
-.security-title{
-  font-family:var(--serif);font-size:clamp(26px,3vw,40px);
-  line-height:1.2;color:var(--text);
-  font-weight:400;letter-spacing:-.3px;margin-bottom:24px;
-}
-.security-title em{font-style:italic;color:var(--accent)}
-.security-desc{
-  font-size:15px;line-height:1.85;color:var(--text2);
-  max-width:600px;margin:0 auto;font-weight:300;
-}
-
-/* ── Closing CTA ───────────────────────────────────────────────── */
-#cta{background:var(--bg);border-top:1px solid var(--border)}
-.cta-inner{
-  max-width:1140px;margin:0 auto;padding:120px 48px 128px;
-  display:flex;flex-direction:column;align-items:center;text-align:center;
-}
-.cta-inner h2{
-  font-family:var(--serif);font-size:clamp(36px,5vw,72px);font-weight:400;
-  color:var(--text);line-height:1.08;letter-spacing:-.5px;margin-bottom:48px;
-}
-.cta-inner h2 em{font-style:italic}
-.cta-buttons{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:24px}
-.cta-inner .btn-primary{padding:18px 48px;font-size:15px;letter-spacing:.3px}
-
-footer{
-  border-top:1px solid var(--border);padding:28px 48px;
-  display:flex;justify-content:space-between;align-items:center;
-  font-size:11px;color:var(--text3);background:var(--bg2);
-  font-family:var(--mono);letter-spacing:.5px;
-}
-
-/* ── Animations ────────────────────────────────────────────────── */
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(20px)}
-  to{opacity:1;transform:translateY(0)}
-}
+/* ── Proposal grid ─────────────────────────────────────────────── */
+.proposal-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);width:100%;max-width:1140px;margin:0 auto}
+.proposal-quad{background:var(--bg);padding:30px 34px}
+.pq-num{font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin-bottom:10px}
+.proposal-quad h4{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--text);margin-bottom:16px;line-height:1.2}
+.proposal-quad ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.proposal-quad li{font-size:13px;line-height:1.7;color:var(--text2);font-weight:300;padding-left:15px;position:relative}
+.proposal-quad li::before{content:'•';position:absolute;left:0;color:var(--text3)}
+.proposal-quad li strong{color:var(--text);font-weight:600}
 
 /* ── Responsive ────────────────────────────────────────────────── */
-@media(max-width:960px){
-  .container{padding:0 24px}
-  .nav{padding:0 24px}
-  .nav-center,.nav-right .btn-ghost{display:none}
-  .hero{padding:100px 24px 72px}
-  section{padding:80px 0}
-  #problem{padding:56px 0}
+@media(max-width:900px){
+  .slide{padding:72px 24px}
   .problem-grid{grid-template-columns:1fr}
-  .sf-row,.sf-row-flip{grid-template-columns:1fr;gap:10px;background:transparent;border:none}
-  .sf-row-text{border:1px solid var(--border);padding:40px 28px}
-  .sf-row-visual{border:1px solid var(--border)}
+  .proposal-grid{grid-template-columns:1fr}
+  .sf-row,.sf-row-flip{grid-template-columns:1fr}
   .sf-row-flip .sf-row-text{order:-1}
-  .demo-panel{position:static}
-  .hero-creds{margin-top:40px}
-  footer{padding:20px 24px;flex-direction:column;gap:6px;text-align:center}
-  .cta-inner{padding:80px 24px 88px}
-  .cta-buttons{flex-direction:column;align-items:center}
-}
-
-/* Mobile logo grid — 4 columns × 2 rows (7 logos, last cell empty) */
-@media(max-width:680px){
-  .hero h1{font-size:clamp(35px,9vw,52px);line-height:1.15}
-  .hero-mobile-br{display:block}
-  .org-logos{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:12px 16px;
-  }
-  .org-logo{
-    flex:0 0 calc(25% - 12px);
-    padding:8px 4px;
-    background:transparent;
-  }
-  .org-logo img{height:24px;max-width:90%}
+  .org-logos{gap:20px}
+  .org-logo img{height:24px}
   .org-logo img[alt*="Georgia"]{height:42px}
 }
 </style>
 </head>
 <body>
 
-<!-- ── Navigation ── -->
-<nav class="nav">
-  <a href="/es/" class="nav-logo"><img src="/leanlog-final-light 2.png" alt="LeanLog"></a>
-  <div class="nav-center">
-    <a href="/es/">Producto</a>
-    <a href="/es/#demo">Demo</a>
-    <a href="/es/about.html">Nosotros</a>
-  </div>
-  <div class="nav-right">
-    <a class="btn-primary" href="mailto:rodrigo@leanlog.ai">Habla con un fundador</a>
-  </div>
-</nav>
+<!-- Progress bar -->
+<div class="deck-progress" id="deckProgress"></div>
 
-<!-- ── Hero ── -->
-<section class="hero">
-  <div class="hero-glow"></div>
+<!-- Top bar -->
+<div class="deck-top">
+  <a href="../../es/"><img src="../../leanlog-final-light 2.png" alt="LeanLog"></a>
+  <a href="../" class="deck-lang">English</a>
+</div>
+
+<!-- ── Slide 1 — Hero ── -->
+<section class="slide" data-slide="hero">
   <div class="hero-inner">
     <div class="hero-eyebrow">
       <div class="eyebrow-badge">AI para empresas intensivas en operaciones</div>
       <div class="eyebrow-line"></div>
     </div>
-    <h1><span class="hero-cycle" id="heroVerb">Atiende</span><br class="hero-mobile-br"><span class="hero-cycle" id="heroNoun"> a más clientes.</span><br><em>Sin contratar más personal.</em></h1>
+    <h1><span class="hero-cycle" id="heroVerb">Atiende</span><span class="hero-cycle" id="heroNoun"> a más clientes.</span><br><em>Sin contratar más personal.</em></h1>
     <p class="hero-sub">LeanLog se encarga del trabajo que hoy vive en hojas de cálculo, correos y la cabeza de las personas — cotizaciones, ingreso de pedidos, programación de producción, seguimiento a proveedores, conciliación de facturas. De principio a fin. Tú tomas las decisiones.</p>
     <div class="hero-actions">
       <a class="btn-primary" href="mailto:rodrigo@leanlog.ai">Habla con un fundador</a>
-      <button class="btn-outline" onclick="document.getElementById('demo').scrollIntoView({behavior:'smooth'})">Ve la demo</button>
+      <button class="btn-outline" onclick="window.deckGoto('demo')">Ve la demo</button>
     </div>
-
-    <!-- Credentials -->
     <div class="hero-creds">
       <div class="cred-label">Experiencia y credenciales de</div>
       <div class="org-logos">
-        <div class="org-logo"><img src="/assets/logos/uchicago.svg" alt="The University of Chicago"></div>
-        <div class="org-logo"><img src="/assets/logos/stanford.svg" alt="Stanford University"></div>
-        <div class="org-logo"><img src="/assets/logos/gatech.png" alt="Georgia Tech"></div>
-        <div class="org-logo"><img src="/assets/logos/amazon.svg" alt="Amazon"></div>
-        <div class="org-logo"><img src="/assets/logos/jnj.svg" alt="Johnson &amp; Johnson"></div>
-        <div class="org-logo"><img src="/assets/logos/intel.svg" alt="Intel"></div>
-        <div class="org-logo"><img src="/assets/logos/mitre.svg" alt="MITRE Corporation"></div>
+        <div class="org-logo"><img src="../../assets/logos/uchicago.svg" alt="The University of Chicago"></div>
+        <div class="org-logo"><img src="../../assets/logos/stanford.svg" alt="Stanford University"></div>
+        <div class="org-logo"><img src="../../assets/logos/gatech.png" alt="Georgia Tech"></div>
+        <div class="org-logo"><img src="../../assets/logos/amazon.svg" alt="Amazon"></div>
+        <div class="org-logo"><img src="../../assets/logos/jnj.svg" alt="Johnson &amp; Johnson"></div>
+        <div class="org-logo"><img src="../../assets/logos/intel.svg" alt="Intel"></div>
+        <div class="org-logo"><img src="../../assets/logos/mitre.svg" alt="MITRE Corporation"></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── Demo ── -->
-<section id="demo">
-  <div class="container">
-    <div class="demo-section-header">
-      <div class="tag reveal">01 — Velo en acción</div>
-      <h2 class="section-title reveal reveal-d1">Mira cómo LeanLog maneja flujos reales de operaciones.</h2>
-      <p class="section-desc reveal reveal-d2">Cada flujo manejado de principio a fin. Tú apruebas con palabras. El agente hace el resto.</p>
-    </div>
-    <div class="demo-panel reveal reveal-d3" style="max-width:720px;margin:0 auto;position:static">
-      <div class="demo-header">
-        <div class="demo-dots">
-          <div class="demo-dot demo-dot-r"></div>
-          <div class="demo-dot demo-dot-y"></div>
-          <div class="demo-dot demo-dot-g"></div>
-        </div>
-        <div class="demo-title-bar">leanlog</div>
-      </div>
-      <div class="demo-parent-tabs" id="demoParentTabs"></div>
-      <div class="demo-tabs" id="demoTabs"></div>
-      <div class="demo-body" id="demoBody"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ── Problem ── -->
-<section id="problem">
-  <div class="container">
+<!-- ── Slide 2 — Problem ── -->
+<section class="slide" data-slide="problem">
+  <div class="slide-inner">
     <div class="section-header">
-      <div class="tag reveal">02 — Cómo operan las empresas hoy</div>
-      <h2 class="section-title reveal reveal-d1">Tus sistemas guardan data. <em>Tu equipo hace el trabajo.</em></h2>
-      <p class="section-desc reveal reveal-d2">En cada empresa intensiva en operaciones, la lógica real del negocio vive fuera del ERP. Agregar o migrar de sistema no acelera tu trabajo.</p>
+      <div class="tag">02 — Cómo operan las empresas hoy</div>
+      <h2 class="section-title">Tus sistemas guardan data. <em>Tu equipo hace el trabajo.</em></h2>
+      <p class="section-desc">En cada empresa intensiva en operaciones, la lógica real del negocio vive fuera del ERP. Agregar o migrar de sistema no acelera tu trabajo.</p>
     </div>
-    <div class="problem-grid reveal reveal-d3">
+    <div class="problem-grid">
       <div class="problem-card">
         <span class="pc-index">01 / 03</span>
         <h3>Tu ERP guarda la data de tus clientes y proveedores. Pero no te ayuda a manejarlos.</h3>
@@ -529,198 +279,266 @@ footer{
   </div>
 </section>
 
-<!-- ── Solution (vision) ── -->
-<section id="solution">
-  <div class="container">
+<!-- ── Slide 3 — Demo ── -->
+<section class="slide" data-slide="demo">
+  <div class="slide-inner">
+    <div class="demo-section-header">
+      <div class="tag">01 — Velo en acción</div>
+      <h2 class="section-title">Mira cómo LeanLog maneja flujos reales de operaciones.</h2>
+      <p class="section-desc">Cada flujo manejado de principio a fin. Tú apruebas con palabras. El agente hace el resto.</p>
+    </div>
+    <div class="demo-panel">
+      <div class="demo-header">
+        <div class="demo-dots">
+          <div class="demo-dot demo-dot-r"></div>
+          <div class="demo-dot demo-dot-y"></div>
+          <div class="demo-dot demo-dot-g"></div>
+        </div>
+        <div class="demo-title-bar">leanlog</div>
+      </div>
+      <div class="demo-parent-tabs" id="demoParentTabs"></div>
+      <div class="demo-tabs" id="demoTabs"></div>
+      <div class="demo-body" id="demoBody"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Slide 4 — Solution · Talk ── -->
+<section class="slide" data-slide="talk">
+  <div class="slide-inner">
+    <div class="section-header" style="text-align:center">
+      <div class="tag" style="justify-content:center">03 — Cómo funciona</div>
+      <h2 class="section-title" style="margin:0 auto;text-align:center;max-width:760px">Opera tu back office como lo <em>haría</em> tu mejor analista de operaciones.</h2>
+    </div>
+    <div class="sf-row">
+      <div class="sf-row-text">
+        <div class="sf-row-num">01 — hablar</div>
+        <h4>Tú tomas las decisiones. El agente hace el trabajo.</h4>
+        <p>Mándale una tarea al agente — "cotiza a Solano," "concilia la factura de Castellanos," "pide más BX-208" — y consigue los datos, expone las alternativas, y te presenta la decisión que tienes que tomar. Tú decides; después el agente maneja las llamadas, los correos, el papeleo y los seguimientos. Cada tarea es una conversación corta, no un proceso de varios pasos.</p>
+      </div>
+      <div class="sf-row-visual">
+        <div class="demo-header">
+          <div class="demo-dots">
+            <div class="demo-dot demo-dot-r"></div>
+            <div class="demo-dot demo-dot-y"></div>
+            <div class="demo-dot demo-dot-g"></div>
+          </div>
+          <div class="demo-title-bar">cotización · solano</div>
+        </div>
+        <div class="sf-demo-body">
+          <div class="demo-msg human visible"><div class="msg-label">Tú</div><div>Cotiza al cliente Solano 500 unidades del SKU #4421 a Lima, 3 semanas.</div></div>
+          <div class="demo-msg system visible settled"><span class="sys-text">Costos, capacidad e historial de Solano traídos</span></div>
+          <div class="demo-msg agent visible"><div class="msg-label">Agente LeanLog</div><div>$6.00/unidad estándar, $3,000 total, plazo 3 semanas. La Línea 2 está con holgura la próxima semana — podríamos bajar a $4.80 ($2,400) con 1 semana de plazo y sacar ~70%. Riesgo de anclaje. ¿Mantenemos el estándar?</div></div>
+          <div class="demo-msg human visible"><div class="msg-label">Tú</div><div>Mantén el estándar.</div></div>
+          <div class="demo-msg system visible settled"><span class="sys-text">Cotización enviada; registrada en CRM</span></div>
+          <div class="demo-msg agent visible"><div class="msg-label">Agente LeanLog</div><div>Enviada. Cuenta de Solano actualizada; seguimiento en 7 días agendado.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Slide 5 — Solution · Capture ── -->
+<section class="slide" data-slide="capture">
+  <div class="slide-inner">
+    <div class="section-header" style="text-align:center">
+      <div class="tag" style="justify-content:center">03 — Cómo funciona</div>
+      <h2 class="section-title" style="margin:0 auto;text-align:center;max-width:760px">Opera tu back office como lo <em>haría</em> tu mejor analista de operaciones.</h2>
+    </div>
+    <div class="sf-row sf-row-flip">
+      <div class="sf-row-visual">
+        <div class="demo-header">
+          <div class="demo-dots">
+            <div class="demo-dot demo-dot-r"></div>
+            <div class="demo-dot demo-dot-y"></div>
+            <div class="demo-dot demo-dot-g"></div>
+          </div>
+          <div class="demo-title-bar">conocimiento operativo capturado</div>
+        </div>
+        <div class="sf-table-wrap"><table class="sf-table">
+          <thead><tr><th>Entidad</th><th>Lo que ha aprendido el agente</th></tr></thead>
+          <tbody>
+            <tr><td>Cliente Galindo</td><td>Piso de $11.80 en SKU 6112; nunca abandona por precio; Sofía es contacto de AP para condiciones</td></tr>
+            <tr><td>Proveedor Castellanos</td><td>Net 30 negociado; requiere FOB Destino; Jimena es contacto de facturación (rápida con notas de crédito)</td></tr>
+            <tr><td>Cliente Vega</td><td>MSA Q1 subió 4%; precios en caché son comunes; Tomás (gerente de almacén) pide plazos acelerados</td></tr>
+            <tr><td>Proveedor Cordillera</td><td>3 retrasos de acero en 6 meses; llamar a Daniel (no email) cuando se atrase</td></tr>
+            <tr><td>Cliente Solano</td><td>Compra ~500/trimestre; sensible al anclaje en bajadas de precio</td></tr>
+          </tbody>
+        </table></div>
+        <div class="sf-table-footer">5 entidades capturadas &middot; siempre disponibles para tu próxima contratación</div>
+      </div>
+      <div class="sf-row-text">
+        <div class="sf-row-num">02 — capturar</div>
+        <h4>El conocimiento se queda — incluso cuando la gente se va.</h4>
+        <p>Cada elección de proveedor, cada excepción, cada regla de decisión que aprende el agente se vuelve parte de la lógica codificada de tu operación. La próxima persona que contrates hereda tanto los datos como las instrucciones operativas. La rotación deja de ser una crisis de conocimiento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Slide 6 — Solution · Control ── -->
+<section class="slide" data-slide="control">
+  <div class="slide-inner">
+    <div class="section-header" style="text-align:center">
+      <div class="tag" style="justify-content:center">03 — Cómo funciona</div>
+      <h2 class="section-title" style="margin:0 auto;text-align:center;max-width:760px">Opera tu back office como lo <em>haría</em> tu mejor analista de operaciones.</h2>
+    </div>
+    <div class="sf-row">
+      <div class="sf-row-text">
+        <div class="sf-row-num">03 — controlar</div>
+        <h4>Tú decides qué corre automáticamente.</h4>
+        <p>Define las reglas una vez. Las recompras rutinarias y la programación corren solas. Las OC de alto valor, las disputas de factura y las cancelaciones esperan tu aprobación antes de ejecutarse.</p>
+      </div>
+      <div class="sf-row-visual">
+        <div class="demo-header">
+          <div class="demo-dots">
+            <div class="demo-dot demo-dot-r"></div>
+            <div class="demo-dot demo-dot-y"></div>
+            <div class="demo-dot demo-dot-g"></div>
+          </div>
+          <div class="demo-title-bar">reglas de decisión</div>
+        </div>
+        <table class="sf-table">
+          <thead><tr><th>Flujo</th><th class="center">Estado</th></tr></thead>
+          <tbody>
+            <tr><td>Recompra de inventario (&lt; $2,000)</td><td class="center"><span class="sf-pill sf-pill-on">Auto</span></td></tr>
+            <tr><td>Confirmación con proveedor (rutinaria)</td><td class="center"><span class="sf-pill sf-pill-on">Auto</span></td></tr>
+            <tr><td>Programación de entrega</td><td class="center"><span class="sf-pill sf-pill-on">Auto</span></td></tr>
+            <tr><td>Conciliación de facturas</td><td class="center"><span class="sf-pill sf-pill-req">Aprobación</span></td></tr>
+            <tr><td>Crear OC &gt; $5,000</td><td class="center"><span class="sf-pill sf-pill-req">Aprobación</span></td></tr>
+            <tr><td>Cancelar envío</td><td class="center"><span class="sf-pill sf-pill-req">Aprobación</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Slide 7 — Security ── -->
+<section class="slide" data-slide="security">
+  <div class="slide-inner" style="max-width:780px;text-align:center;margin:0 auto">
+    <div class="tag" style="justify-content:center">04 — Seguridad y cumplimiento</div>
+    <h2 class="section-title" style="margin:0 auto 24px;text-align:center;max-width:780px">Seguridad diseñada por un equipo que ha desplegado agentes de AI dentro del <em>Departamento de Defensa de Estados Unidos.</em></h2>
+    <p class="section-desc" style="margin:0 auto;max-width:600px">Nuestros ingenieros han construido y desplegado sistemas de AI bajo cumplimiento federal de seguridad — entornos donde el estándar no es "grado empresarial," es seguridad nacional. La misma disciplina de ingeniería define cómo LeanLog maneja tus datos.</p>
+  </div>
+</section>
+
+<!-- ── Slide 8 — Proposal ── -->
+<section class="slide" data-slide="proposal">
+  <div class="slide-inner">
     <div class="section-header">
-      <div class="tag reveal">03 — Cómo funciona</div>
-      <h2 class="section-title reveal reveal-d1">Opera tu back office como lo <em>haría</em> tu mejor analista de operaciones.</h2>
-      <p class="section-desc reveal reveal-d2">Sin nuevo software que aprender. Sin cambios de proceso. El agente trabaja a través de tus canales existentes — teléfono, correo, ERP, hojas de cálculo — y encaja junto a tu equipo.</p>
+      <div class="tag">05 — Propuesta</div>
+      <h2 class="section-title">Nuestra propuesta</h2>
+      <p class="section-desc">Bajo riesgo, práctica y construida para durar.</p>
     </div>
-
-    <div class="sf-rows reveal reveal-d3">
-
-      <!-- Row 1: Today — text left, chat-snippet visual right -->
-      <div class="sf-row">
-        <div class="sf-row-text">
-          <div class="sf-row-num">01 — hablar</div>
-          <h4>Tú tomas las decisiones. El agente hace el trabajo.</h4>
-          <p>Mándale una tarea al agente — "cotiza a Solano," "concilia la factura de Castellanos," "pide más BX-208" — y consigue los datos, expone las alternativas, y te presenta la decisión que tienes que tomar. Tú decides; después el agente maneja las llamadas, los correos, el papeleo y los seguimientos. Cada tarea es una conversación corta, no un proceso de varios pasos.</p>
-        </div>
-        <div class="sf-row-visual">
-          <div class="demo-header">
-            <div class="demo-dots">
-              <div class="demo-dot demo-dot-r"></div>
-              <div class="demo-dot demo-dot-y"></div>
-              <div class="demo-dot demo-dot-g"></div>
-            </div>
-            <div class="demo-title-bar">cotización · solano</div>
-          </div>
-          <div class="sf-demo-body">
-            <div class="demo-msg human visible">
-              <div class="msg-label">Tú</div>
-              <div>Cotiza al cliente Solano 500 unidades del SKU #4421 a Lima, 3 semanas.</div>
-            </div>
-            <div class="demo-msg system visible settled">
-              <span class="sys-text">Costos, capacidad e historial de Solano traídos</span>
-            </div>
-            <div class="demo-msg agent visible">
-              <div class="msg-label">Agente LeanLog</div>
-              <div>$6.00/unidad estándar, $3,000 total, plazo 3 semanas. La Línea 2 está con holgura la próxima semana — podríamos bajar a $4.80 ($2,400) con 1 semana de plazo y sacar ~70%. Riesgo de anclaje. ¿Mantenemos el estándar?</div>
-            </div>
-            <div class="demo-msg human visible">
-              <div class="msg-label">Tú</div>
-              <div>Mantén el estándar.</div>
-            </div>
-            <div class="demo-msg system visible settled">
-              <span class="sys-text">Cotización enviada; registrada en CRM</span>
-            </div>
-            <div class="demo-msg agent visible">
-              <div class="msg-label">Agente LeanLog</div>
-              <div>Enviada. Cuenta de Solano actualizada; seguimiento en 7 días agendado.</div>
-            </div>
-          </div>
-        </div>
+    <div class="proposal-grid">
+      <div class="proposal-quad">
+        <div class="pq-num">01 — Alianza</div>
+        <h4>Construido en conjunto</h4>
+        <ul>
+          <li><strong>Específico:</strong> Hecho a la medida de tus sistemas, tus procesos, tu equipo.</li>
+          <li><strong>Práctico:</strong> La mejor forma de construir algo útil es aprender cómo funciona hoy. Queremos tiempo regular con tu equipo — todas las reuniones que necesiten — aprendiendo cómo sucede el trabajo antes de sugerir cambios.</li>
+        </ul>
       </div>
-
-      <!-- Row 2: With LeanLog — table visual left, text right -->
-      <div class="sf-row sf-row-flip">
-        <div class="sf-row-visual">
-          <div class="demo-header">
-            <div class="demo-dots">
-              <div class="demo-dot demo-dot-r"></div>
-              <div class="demo-dot demo-dot-y"></div>
-              <div class="demo-dot demo-dot-g"></div>
-            </div>
-            <div class="demo-title-bar">conocimiento operativo capturado</div>
-          </div>
-          <div class="sf-table-wrap"><table class="sf-table">
-            <thead>
-              <tr><th>Entidad</th><th>Lo que ha aprendido el agente</th></tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Cliente Galindo</td>
-                <td>Piso de $11.80 en SKU 6112; nunca abandona por precio; Sofía es contacto de AP para condiciones</td>
-              </tr>
-              <tr>
-                <td>Proveedor Castellanos</td>
-                <td>Net 30 negociado; requiere FOB Destino; Jimena es contacto de facturación (rápida con notas de crédito)</td>
-              </tr>
-              <tr>
-                <td>Cliente Vega</td>
-                <td>MSA Q1 subió 4%; precios en caché son comunes; Tomás (gerente de almacén) pide plazos acelerados</td>
-              </tr>
-              <tr>
-                <td>Proveedor Cordillera</td>
-                <td>3 retrasos de acero en 6 meses; llamar a Daniel (no email) cuando se atrase</td>
-              </tr>
-              <tr>
-                <td>Cliente Solano</td>
-                <td>Compra ~500/trimestre; sensible al anclaje en bajadas de precio</td>
-              </tr>
-            </tbody>
-          </table></div>
-          <div class="sf-table-footer">5 entidades capturadas &middot; siempre disponibles para tu próxima contratación</div>
-        </div>
-        <div class="sf-row-text">
-          <div class="sf-row-num">02 — capturar</div>
-          <h4>El conocimiento se queda — incluso cuando la gente se va.</h4>
-          <p>Cada elección de proveedor, cada excepción, cada regla de decisión que aprende el agente se vuelve parte de la lógica codificada de tu operación. La próxima persona que contrates hereda tanto los datos como las instrucciones operativas. La rotación deja de ser una crisis de conocimiento.</p>
-        </div>
+      <div class="proposal-quad">
+        <div class="pq-num">02 — Enfoque</div>
+        <h4>Valor rápido</h4>
+        <ul>
+          <li><strong>Práctico:</strong> Construiremos agentes que operan de forma autónoma los tres flujos manuales de mayor impacto en tu operación.</li>
+          <li><strong>Bien acotado:</strong> Candidatos probables: manejo de OC, coordinación de producción y conciliación de facturas. El primer paso es entender tus prioridades.</li>
+        </ul>
       </div>
-
-      <!-- Row 3: Over time — text left, approval-rules visual right -->
-      <div class="sf-row">
-        <div class="sf-row-text">
-          <div class="sf-row-num">03 — controlar</div>
-          <h4>Tú decides qué corre automáticamente.</h4>
-          <p>Define las reglas una vez. Las recompras rutinarias y la programación corren solas. Las OC de alto valor, las disputas de factura y las cancelaciones esperan tu aprobación antes de ejecutarse.</p>
-        </div>
-        <div class="sf-row-visual">
-          <div class="demo-header">
-            <div class="demo-dots">
-              <div class="demo-dot demo-dot-r"></div>
-              <div class="demo-dot demo-dot-y"></div>
-              <div class="demo-dot demo-dot-g"></div>
-            </div>
-            <div class="demo-title-bar">reglas de decisión</div>
-          </div>
-          <table class="sf-table">
-            <thead>
-              <tr><th>Flujo</th><th class="center">Estado</th></tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Recompra de inventario (&lt; $2,000)</td>
-                <td class="center"><span class="sf-pill sf-pill-on">Auto</span></td>
-              </tr>
-              <tr>
-                <td>Confirmación con proveedor (rutinaria)</td>
-                <td class="center"><span class="sf-pill sf-pill-on">Auto</span></td>
-              </tr>
-              <tr>
-                <td>Programación de entrega</td>
-                <td class="center"><span class="sf-pill sf-pill-on">Auto</span></td>
-              </tr>
-              <tr>
-                <td>Conciliación de facturas</td>
-                <td class="center"><span class="sf-pill sf-pill-req">Aprobación</span></td>
-              </tr>
-              <tr>
-                <td>Crear OC &gt; $5,000</td>
-                <td class="center"><span class="sf-pill sf-pill-req">Aprobación</span></td>
-              </tr>
-              <tr>
-                <td>Cancelar envío</td>
-                <td class="center"><span class="sf-pill sf-pill-req">Aprobación</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <div class="proposal-quad">
+        <div class="pq-num">03 — Valores</div>
+        <h4>Soluciones de largo plazo</h4>
+        <ul>
+          <li><strong>Escalabilidad:</strong> Nuestra solución generalizable agrega valor rápido y de forma continua a medida que tus sistemas evolucionan. La anclamos en tu contexto operativo, no en un solo modelo de AI ni sistema de registro — así sigue funcionando a medida que los modelos mejoran o tu ERP migra.</li>
+          <li><strong>Seguridad:</strong> Preparación para SOC 2 como objetivo del proyecto. Nos tomamos en serio la seguridad y el manejo de datos, habiendo trabajado para el Departamento de Defensa de EE. UU. en la intersección de ciberseguridad y AI.</li>
+        </ul>
       </div>
-
+      <div class="proposal-quad">
+        <div class="pq-num">04 — Condiciones</div>
+        <h4>Diseñado para ti</h4>
+        <ul>
+          <li><strong>Costo:</strong> $2K/mes por 2 meses. Viajes incluidos. Sin cargos de configuración, implementación ni integración.</li>
+          <li><strong>Confidencialidad:</strong> NDA mutuo. Nada de lo que observemos se menciona externamente sin tu aprobación explícita.</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ── Security & compliance ── -->
-<section id="security">
-  <div class="container">
-    <div class="security-inner reveal">
-      <div class="tag reveal">04 — Seguridad y cumplimiento</div>
-      <h2 class="security-title reveal reveal-d1">Seguridad diseñada por un equipo que ha desplegado agentes de AI dentro del <em>Departamento de Defensa de Estados Unidos.</em></h2>
-      <p class="security-desc reveal reveal-d2">Nuestros ingenieros han construido y desplegado sistemas de AI bajo cumplimiento federal de seguridad — entornos donde el estándar no es "grado empresarial," es seguridad nacional. La misma disciplina de ingeniería define cómo LeanLog maneja tus datos.</p>
-    </div>
-  </div>
-</section>
+<!-- Dots -->
+<div class="deck-dots" id="deckDots"></div>
 
-<!-- ── Bottom CTA ── -->
-<section id="cta">
-  <div class="cta-inner">
-    <h2>Prueba LeanLog <em>ahora.</em></h2>
-    <div class="cta-buttons">
-      <a class="btn-primary reveal" href="mailto:rodrigo@leanlog.ai">Comienza →</a>
-    </div>
-  </div>
-</section>
-
-<!-- ── Footer ── -->
-<footer>
-  <span>&copy; 2026 LeanLog, Inc.</span>
-  <span>Agentes de AI para empresas intensivas en operaciones</span>
-  <a href="/" class="footer-lang">English</a>
-</footer>
+<!-- Nav -->
+<div class="deck-nav">
+  <button class="deck-arrow" id="deckPrev" aria-label="Anterior"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+  <span class="deck-counter" id="deckCounter">1 / 8</span>
+  <button class="deck-arrow" id="deckNext" aria-label="Siguiente"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+</div>
 
 <script>
-if (history.scrollRestoration) history.scrollRestoration = 'manual';
-/* ── Scroll reveal ─────────────────────────────────────────────── */
-const ro = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+/* ════ Deck navigation ════ */
+const slides = [...document.querySelectorAll('.slide')];
+const prevBtn = document.getElementById('deckPrev');
+const nextBtn = document.getElementById('deckNext');
+const counter = document.getElementById('deckCounter');
+const progress = document.getElementById('deckProgress');
+const dotsEl = document.getElementById('deckDots');
+let cur = 0;
 
-/* ── Demo cases ────────────────────────────────────────────────── */
+slides.forEach((s, i) => {
+  const d = document.createElement('button');
+  d.className = 'deck-dot';
+  d.setAttribute('aria-label', 'Diapositiva ' + (i + 1));
+  d.onclick = () => show(i);
+  dotsEl.appendChild(d);
+});
+const dots = [...dotsEl.children];
+
+function show(i) {
+  i = Math.max(0, Math.min(slides.length - 1, i));
+  slides[cur].classList.remove('active');
+  dots[cur].classList.remove('active');
+  cur = i;
+  slides[cur].classList.add('active');
+  dots[cur].classList.add('active');
+  counter.textContent = (cur + 1) + ' / ' + slides.length;
+  progress.style.width = ((cur + 1) / slides.length * 100) + '%';
+  prevBtn.disabled = cur === 0;
+  nextBtn.disabled = cur === slides.length - 1;
+  if (slides[cur].dataset.slide === 'demo') startDemo(); else stopDemo();
+}
+function next() { show(cur + 1); }
+function prev() { show(cur - 1); }
+window.deckGoto = (name) => { const i = slides.findIndex(s => s.dataset.slide === name); if (i >= 0) show(i); };
+
+nextBtn.onclick = next;
+prevBtn.onclick = prev;
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); next(); }
+  else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); prev(); }
+  else if (e.key === 'Home') { e.preventDefault(); show(0); }
+  else if (e.key === 'End') { e.preventDefault(); show(slides.length - 1); }
+});
+
+/* ════ Hero headline cycling ════ */
+const cycleTexts = [['Atiende', ' a más clientes.'], ['Gestiona', ' más proveedores.']];
+let cycleIdx = 0;
+const heroVerb = document.getElementById('heroVerb');
+const heroNoun = document.getElementById('heroNoun');
+setInterval(() => {
+  [heroVerb, heroNoun].forEach(el => { el.classList.remove('cycle-enter'); el.classList.add('cycle-exit'); });
+  setTimeout(() => {
+    cycleIdx = (cycleIdx + 1) % cycleTexts.length;
+    heroVerb.textContent = cycleTexts[cycleIdx][0];
+    heroNoun.textContent = cycleTexts[cycleIdx][1];
+    [heroVerb, heroNoun].forEach(el => { el.classList.remove('cycle-exit'); el.classList.add('cycle-enter'); });
+  }, 280);
+}, 3000);
+
+/* ════ Demo cases ════ */
 const cases = [
   {
     tab: "Cotización",
@@ -893,11 +711,9 @@ const sides = [
 ];
 let activeSide = "customer";
 let activeCase = 0;
-let animTimeout = null, animating = false;
+let animTimeout = null;
 
-function activeCases() {
-  return cases.filter(c => c.side === activeSide);
-}
+function activeCases() { return cases.filter(c => c.side === activeSide); }
 
 sides.forEach((s) => {
   const t = document.createElement('div');
@@ -928,7 +744,6 @@ function switchSide(sideId) {
   buildChildTabs();
   bodyEl.innerHTML = '';
   userScrolledUp = false;
-  animating = true;
   animateMessages(activeCases()[0].msgs, 0);
 }
 
@@ -938,39 +753,24 @@ function switchCase(idx) {
   tabsEl.querySelectorAll('.demo-tab').forEach((t, i) => t.classList.toggle('active', i === idx));
   bodyEl.innerHTML = '';
   userScrolledUp = false;
-  animating = true;
   animateMessages(activeCases()[idx].msgs, 0);
 }
 
 buildChildTabs();
 
 let userScrolledUp = false;
-
-function isAtBottom(el) {
-  return el.scrollHeight - el.scrollTop - el.clientHeight < 5;
-}
-
-function onUserScroll() {
-  requestAnimationFrame(() => {
-    userScrolledUp = !isAtBottom(bodyEl);
-  });
-}
+function isAtBottom(el) { return el.scrollHeight - el.scrollTop - el.clientHeight < 5; }
+function onUserScroll() { requestAnimationFrame(() => { userScrolledUp = !isAtBottom(bodyEl); }); }
 bodyEl.addEventListener('wheel', onUserScroll, { passive: true });
 bodyEl.addEventListener('touchmove', onUserScroll, { passive: true });
-
-function maybeAutoScroll() {
-  if (!userScrolledUp) bodyEl.scrollTop = bodyEl.scrollHeight;
-}
+function maybeAutoScroll() { if (!userScrolledUp) bodyEl.scrollTop = bodyEl.scrollHeight; }
 
 function animateMessages(msgs, idx) {
   if (idx >= msgs.length) {
-    animating = false;
     animTimeout = setTimeout(() => switchCase((activeCase + 1) % activeCases().length), 4000);
     return;
   }
-
   const m = msgs[idx];
-
   if (m.role === 'system') {
     const div = document.createElement('div');
     div.className = 'demo-msg system';
@@ -988,7 +788,6 @@ function animateMessages(msgs, idx) {
     }, m.duration);
     return;
   }
-
   const div = document.createElement('div');
   div.className = 'demo-msg ' + m.role;
   const lbl = document.createElement('div'); lbl.className = 'msg-label';
@@ -998,14 +797,12 @@ function animateMessages(msgs, idx) {
   bodyEl.appendChild(div);
   requestAnimationFrame(() => div.classList.add('visible'));
   maybeAutoScroll();
-
   const cursor = document.createElement('span'); cursor.className = 'typing-cursor';
   txt.appendChild(cursor);
   let ci = 0;
   const speed = m.role === 'agent' ? 14 : 10;
   const node = document.createTextNode('');
   txt.insertBefore(node, cursor);
-
   function typeChar() {
     if (ci < m.text.length) {
       node.textContent += m.text[ci++];
@@ -1019,36 +816,20 @@ function animateMessages(msgs, idx) {
   animTimeout = setTimeout(typeChar, m.role === 'human' ? 320 : 420);
 }
 
-/* ── Start demo on scroll into view ────────────────────────────── */
-let demoStarted = false;
-const demoTrigger = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting && !demoStarted) {
-      demoStarted = true;
-      switchCase(0);
-      demoTrigger.disconnect();
-    }
-  });
-}, { threshold: 0.35 });
-demoTrigger.observe(document.querySelector('.demo-panel'));
+function startDemo() {
+  if (animTimeout) { clearTimeout(animTimeout); animTimeout = null; }
+  activeSide = 'customer';
+  activeCase = 0;
+  parentTabsEl.querySelectorAll('.demo-parent-tab').forEach((t, i) => t.classList.toggle('active', sides[i].id === 'customer'));
+  buildChildTabs();
+  bodyEl.innerHTML = '';
+  userScrolledUp = false;
+  switchCase(0);
+}
+function stopDemo() { if (animTimeout) { clearTimeout(animTimeout); animTimeout = null; } }
 
-/* ── Hero headline cycling ─────────────────────────────────────── */
-const cycleTexts = [
-  ['Atiende', ' a más clientes.'],
-  ['Gestiona', ' más proveedores.'],
-];
-let cycleIdx = 0;
-const heroVerb = document.getElementById('heroVerb');
-const heroNoun = document.getElementById('heroNoun');
-setInterval(() => {
-  [heroVerb, heroNoun].forEach(el => { el.classList.remove('cycle-enter'); el.classList.add('cycle-exit'); });
-  setTimeout(() => {
-    cycleIdx = (cycleIdx + 1) % cycleTexts.length;
-    heroVerb.textContent = cycleTexts[cycleIdx][0];
-    heroNoun.textContent = cycleTexts[cycleIdx][1];
-    [heroVerb, heroNoun].forEach(el => { el.classList.remove('cycle-exit'); el.classList.add('cycle-enter'); });
-  }, 280);
-}, 3000);
+/* init */
+show(0);
 </script>
 </body>
 </html>
