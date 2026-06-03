@@ -119,8 +119,8 @@ body::before{
 }
 .eyebrow-line{width:36px;height:1px;background:var(--border2)}
 .hero h1{
-  font-family:var(--serif);font-size:clamp(30px,4.2vw,46px);line-height:1.12;
-  max-width:1000px;margin-bottom:24px;color:var(--text);
+  font-family:var(--serif);font-size:clamp(38px,5.4vw,74px);line-height:1.05;
+  max-width:1200px;margin-bottom:24px;color:var(--text);white-space:nowrap;text-align:center;
   font-weight:400;letter-spacing:-.5px;
   opacity:0;animation:fadeUp .8s .22s forwards;
 }
@@ -145,6 +145,17 @@ body::before{
   display:flex;align-items:center;gap:14px;flex-wrap:wrap;
   opacity:0;animation:fadeUp .8s .7s forwards;
 }
+.hero-scroll{
+  display:flex;flex-direction:column;align-items:center;gap:12px;
+  margin:52px auto 0;background:none;border:none;padding:0;cursor:pointer;
+  font-family:var(--mono);font-size:10px;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--text3);transition:color .2s;
+  opacity:0;animation:fadeUp .8s .8s forwards;
+}
+.hero-scroll:hover{color:var(--text2)}
+.hero-scroll-arrow{stroke:currentColor;animation:scrollBounce 1.8s ease-in-out infinite}
+@keyframes scrollBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+@media(max-width:680px){.hero h1{white-space:normal}}
 .hero-actions .btn-primary,.hero-actions .btn-outline{padding:12px 28px;font-size:14px}
 .hero-contact{
   display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text3);
@@ -160,7 +171,7 @@ body::before{
 }
 .cred-label{
   font-family:var(--mono);font-size:9px;letter-spacing:2.5px;
-  text-transform:uppercase;color:var(--text3);margin-bottom:20px;
+  text-transform:uppercase;color:var(--text3);margin-bottom:20px;text-align:center;
 }
 .org-logos{
   display:flex;align-items:center;justify-content:center;flex-wrap:nowrap;gap:48px;
@@ -463,7 +474,7 @@ footer{
 
 /* Mobile logo grid — 4 columns × 2 rows (7 logos, last cell empty) */
 @media(max-width:680px){
-  .hero h1{font-size:clamp(26px,6.6vw,34px);line-height:1.2}
+  .hero h1{font-size:clamp(40px,12vw,60px);line-height:1.08}
   .hero-mobile-br{display:block}
   .org-logos{
     display:flex;
@@ -500,17 +511,7 @@ footer{
 <section class="hero">
   <div class="hero-glow"></div>
   <div class="hero-inner">
-    <div class="hero-eyebrow">
-      <div class="eyebrow-badge">AI for operations-heavy businesses</div>
-      <div class="eyebrow-line"></div>
-    </div>
-    <h1>Put AI to work across your operation,<br>starting wherever it hurts most.</h1>
-    <p class="hero-lead">So you take on more clients and suppliers, without hiring to keep up.</p>
-    <p class="hero-sub">Everyone's pushing AI. The hard part is knowing where it fits in your operation, and trusting it to run. LeanLog finds where it fits, then runs the work end to end: quoting, order entry, scheduling, supplier follow-ups, invoice reconciliation. You make the calls.</p>
-    <div class="hero-actions">
-      <a class="btn-primary" href="mailto:rodrigo@leanlog.ai">Talk to a Founder</a>
-      <button class="btn-outline" onclick="document.getElementById('demo').scrollIntoView({behavior:'smooth'})">See the Demo</button>
-    </div>
+    <h1>Run your operation on AI.</h1>
 
     <!-- Credentials -->
     <div class="hero-creds">
@@ -525,6 +526,10 @@ footer{
         <div class="org-logo"><img src="assets/logos/mitre.svg" alt="MITRE Corporation"></div>
       </div>
     </div>
+    <button class="hero-scroll" onclick="document.getElementById('demo').scrollIntoView({behavior:'smooth'})">
+      <span>Scroll to explore</span>
+      <svg class="hero-scroll-arrow" viewBox="0 0 28 16" width="26" height="15" aria-hidden="true"><path d="M2 3 L14 13 L26 3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
   </div>
 </section>
 
