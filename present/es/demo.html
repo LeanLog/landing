@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LeanLog — Demo</title>
+<meta name="description" content="LeanLog — el agente que opera tu empresa. Demostración interactiva.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#f8f5ef;
+  --bg2:#f1ede6;
+  --bg3:#e9e4db;
+  --bg4:#e1dbd0;
+  --accent:#141210;
+  --text:#141210;
+  --text2:#5a5650;
+  --text3:#a09a92;
+  --border:rgba(0,0,0,.08);
+  --border2:rgba(0,0,0,.14);
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:56px 24px}
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:radial-gradient(rgba(0,0,0,.06) 1px,transparent 1px);
+  background-size:32px 32px;
+}
+.stage{position:relative;z-index:1;width:100%;max-width:1140px;margin:0 auto}
+
+/* ── Tag / titles ── */
+.tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--text3);margin-bottom:22px}
+.tag::before{content:'//'}
+.section-title{font-family:var(--serif);font-size:clamp(28px,3.2vw,46px);line-height:1.12;max-width:780px;color:var(--text);font-weight:400;letter-spacing:-.3px;margin-bottom:18px}
+.section-title em{font-style:italic;color:var(--accent)}
+.section-desc{font-size:15px;line-height:1.8;color:var(--text2);max-width:600px;font-weight:300}
+
+/* ── Demo panel ── */
+.demo-section-header{text-align:center;margin-bottom:30px}
+.demo-section-header .tag{justify-content:center}
+.demo-section-header .section-title{max-width:none;text-align:center;margin:0 auto 14px}
+.demo-section-header .section-desc{max-width:520px;margin:0 auto;text-align:center}
+.demo-panel{border:1px solid var(--border);background:var(--bg2);overflow:hidden;max-width:720px;margin:0 auto}
+.demo-header{padding:12px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+.demo-dots{display:flex;gap:5px}
+.demo-dot{width:9px;height:9px;border-radius:50%}
+.demo-dot-r{background:#ff5f57}.demo-dot-y{background:#febc2e}.demo-dot-g{background:#28c840}
+.demo-title-bar{flex:1;font-family:var(--mono);font-size:10px;color:var(--text3);text-align:center;letter-spacing:.8px}
+.demo-parent-tabs{display:flex;border-bottom:1px solid var(--border);background:var(--bg)}
+.demo-parent-tab{flex:1;padding:13px 18px;font-family:var(--mono);font-size:10px;letter-spacing:1.5px;color:var(--text3);cursor:pointer;transition:all .2s;text-transform:uppercase;text-align:center;border-bottom:2px solid transparent}
+.demo-parent-tab:hover{color:var(--text2)}
+.demo-parent-tab.active{color:var(--text);border-bottom-color:var(--text);background:var(--bg2)}
+.demo-tabs{display:flex;border-bottom:1px solid var(--border);overflow-x:auto}
+.demo-tabs::-webkit-scrollbar{height:2px}
+.demo-tab{padding:10px 14px;font-family:var(--mono);font-size:9px;letter-spacing:.5px;color:var(--text3);cursor:pointer;transition:all .2s;white-space:nowrap;border-bottom:2px solid transparent;text-transform:uppercase;flex-shrink:0}
+.demo-tab:hover{color:var(--text2)}
+.demo-tab.active{color:var(--text);border-bottom-color:var(--text2)}
+.demo-tab-empty{opacity:.42}
+.demo-tab-empty.active{opacity:1}
+.demo-empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:11px;padding:24px}
+.demo-empty-tag{font-family:var(--mono);font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--text3)}
+.demo-empty-title{font-family:var(--serif);font-size:23px;font-weight:400;color:var(--text);letter-spacing:-.2px}
+.demo-empty-text{font-size:12.5px;line-height:1.75;color:var(--text2);max-width:360px;font-weight:300}
+.demo-body{padding:24px;height:360px;display:flex;flex-direction:column;gap:12px;overflow-y:auto}
+.demo-body::-webkit-scrollbar{width:3px}
+.demo-body::-webkit-scrollbar-thumb{background:var(--border2)}
+.demo-msg{font-size:13px;line-height:1.6;max-width:92%;opacity:0;transform:translateY(5px);transition:opacity .3s,transform .3s}
+.demo-msg > div:nth-of-type(2){white-space:pre-line}
+.demo-msg.visible{opacity:1;transform:translateY(0)}
+.demo-msg.agent{padding:12px 16px;background:var(--bg3);border-left:2px solid rgba(0,0,0,.22);color:var(--text)}
+.demo-msg.human{padding:12px 16px;background:var(--bg);border:1px solid var(--border2);color:var(--text2);align-self:flex-end}
+.demo-msg.system{display:flex;align-items:center;gap:10px;padding:10px 14px;background:rgba(0,0,0,.03);border:1px solid var(--border);color:var(--text3);font-family:var(--mono);font-size:11px;letter-spacing:.5px;align-self:center;max-width:none;width:100%}
+.demo-msg.system.settled{color:var(--text2);background:transparent;border-color:transparent}
+.demo-msg.system.settled::before{content:'\2713';font-size:10px;margin-right:6px;opacity:.5}
+.sys-pulse{display:flex;align-items:center;gap:3px;flex-shrink:0}
+.sys-pulse span{width:3px;height:3px;background:var(--text3);border-radius:50%;animation:pulse-bar 1.1s ease-in-out infinite}
+.sys-pulse span:nth-child(2){animation-delay:.18s}.sys-pulse span:nth-child(3){animation-delay:.36s}
+@keyframes pulse-bar{0%,60%,100%{transform:scaleY(1);opacity:.4}30%{transform:scaleY(2.2);opacity:1}}
+.msg-label{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin-bottom:5px}
+.typing-cursor{display:inline-block;width:1.5px;height:12px;background:var(--text3);margin-left:1px;vertical-align:text-bottom;animation:blink .55s step-end infinite}
+@keyframes blink{50%{opacity:0}}
+@media(max-width:900px){body{padding:32px 16px}}
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <div class="demo-section-header">
+    <div class="tag">Velo en acción</div>
+    <h2 class="section-title">Mira cómo las compañías de HVAC están repensando sus procesos con la IA.</h2>
+  </div>
+  <div class="demo-panel">
+    <div class="demo-header">
+      <div class="demo-dots">
+        <div class="demo-dot demo-dot-r"></div>
+        <div class="demo-dot demo-dot-y"></div>
+        <div class="demo-dot demo-dot-g"></div>
+      </div>
+      <div class="demo-title-bar">leanlog</div>
+    </div>
+    <div class="demo-parent-tabs" id="demoParentTabs"></div>
+    <div class="demo-tabs" id="demoTabs"></div>
+    <div class="demo-body" id="demoBody"></div>
+  </div>
+</div>
+
+<script>
+/* ════ Demo cases ════ */
+const cases = [
+  /* ════ Comercial ════ */
+  {
+    tab: "Originación y oferta",
+    side: "comercial",
+    msgs: [
+      { role: "human", text: "Repasa el radar comercial de esta semana — correo, llamadas y lo que entre." },
+      { role: "system", text: "Revisando el correo comercial, las peticiones de presupuesto sin cerrar y los avisos de las constructoras con las que trabajamos…", done: "6 peticiones nuevas (correo y relación); 2 seguimientos vencidos", duration: 2600 },
+      { role: "agent", text: "Lo más fuerte de la semana: una constructora con la que ya trabajamos nos pide oferta para el paquete de climatización + PCI de la ampliación del Hospital de Hellín — unos 420.000 €, lo quieren en 9 días. Además, un promotor pregunta por una residencial en Almansa, hay una nave industrial y tres peticiones más pequeñas. Dos llevan tiempo sin respuesta: al promotor de Almansa le contestamos hace 3 semanas y no cerramos, y la constructora de Airbus lleva en silencio desde marzo. ¿Lo ordeno todo en el pipeline?" },
+      { role: "human", text: "Sí. Pero no me da la mano para presupuestar todo esta semana — ¿por cuál empiezo?" },
+      { role: "agent", text: "El número real de cada una sale al hacer las mediciones; todavía no lo tenemos. Para decidir dónde meto las horas de oficina técnica, las ordeno con comparables: tamaño aproximado de la petición, el margen que solemos sacar en ese tipo de obra y nuestra tasa de cierre. Hellín va primera con diferencia: la constructora apunta a ~420.000 €, los paquetes de clima + PCI como este nos han dejado de media un 14-16%, y con PCI incluido cerramos en torno al 38% (frente al 17% a clima sola). La nave industrial, más pequeña y a clima sola, queda por detrás. Las tres peticiones pequeñas no cubren el tiempo de presupuestar; las saco con plantilla o las declino. Empezaría por Hellín — el número de verdad saldrá al valorarla. ¿Arranco con Hellín y persigo de paso los dos seguimientos?" },
+      { role: "human", text: "Sí, adelante." },
+      { role: "system", text: "Registrando las oportunidades en el pipeline, priorizadas con los comparables; redactando los dos seguimientos para tu revisión…", done: "6 oportunidades registradas y priorizadas; 2 seguimientos redactados", duration: 2000 },
+      { role: "agent", text: "Hellín está en el pipeline como prioridad, plazo controlado. El resto, ordenado con el mismo criterio. Seguimientos redactados al promotor de Almansa y a la constructora de Airbus, listos para enviar. El pipeline ahora muestra 9 oportunidades vivas por ~2,1 M€. ¿Envío los seguimientos?" },
+      { role: "human", text: "Envíalos. Y prepara ya la oferta de Hellín." },
+      { role: "system", text: "Leyendo el proyecto que pasó la constructora; midiendo y montando un presupuesto valorado…", done: "Proyecto analizado; presupuesto de 240 líneas; 3 dudas de proyecto marcadas", duration: 2800 },
+      { role: "agent", text: "Mediciones hechas — 240 líneas, con mucho peso de climatización como esperábamos. Tres puntos del proyecto necesitan una decisión antes de valorar: (1) especifica VRF \"o equivalente\" pero el anexo técnico nombra un modelo de un fabricante concreto — valoro el nombrado y llevo el equivalente como alternativa; (2) la sección de ventilación da caudales pero no el grado de material del conducto, así que he asumido galvanizado según RITE; (3) no queda claro si las ayudas de albañilería entran en nuestro alcance o en el de la constructora. Ese último es un riesgo real de coste. ¿Asumo que las hace la constructora, o lo valoro nosotros?" },
+      { role: "human", text: "Asume que las ayudas las hace la constructora, pero añade una nota marcándolo. Valóralo." },
+      { role: "system", text: "Valorando las mediciones con precios de proveedor actuales y datos reales de Perpetuo Socorro…", done: "Valorado en 398.000 €; 2 líneas de riesgo marcadas", duration: 2600 },
+      { role: "agent", text: "398.000 € al 15% de margen bruto. Dos riesgos que conviene cubrir: (1) solo un distribuidor cotizó el equipo VRF a 3 semanas de plazo, así que el calendario depende de él — buscaría una segunda fuente antes de comprometernos; (2) la ventana de 7 meses solapa dos meses de mucha carga de mantenimiento, y con la cuadrilla actual nos falta ~1 técnico en el mes 4. ¿Subcontrato ese mes, o cargo 1,5 puntos de margen para pagar horas extra?" },
+      { role: "human", text: "Subcontrata el mes 4. Monta la oferta." },
+      { role: "system", text: "Montando la oferta: oferta económica, memoria técnica y comparativo de partidas…", done: "Oferta lista; 2 partidas a tu criterio", duration: 2400 },
+      { role: "agent", text: "Oferta montada — 398.000 €, la salvedad de las ayudas anotada en la memoria técnica, lista para enviar a la constructora. Te dejo marcadas las dos partidas de riesgo por si quieres ajustarlas antes. La quieren para el día 19; te aviso 3 días antes. ¿La revisamos juntos o la envío para tu visto bueno?" }
+    ]
+  },
+  { tab: "Cotización y propuestas", side: "comercial" },
+  { tab: "Seguimiento y CRM de cliente", side: "comercial" },
+  {
+    tab: "Conversión a mantenimiento",
+    side: "comercial",
+    msgs: [
+      { role: "human", text: "Acabamos de terminar la instalación de climatización del laboratorio de la UCLM. ¿Hay algo que hacer más allá de la entrega?" },
+      { role: "system", text: "Sacando el cierre de la obra; comprobando estado de legalización y conversión a mantenimiento…", done: "Instalación completa; boletines pendientes; sin contrato de mantenimiento asociado", duration: 2200 },
+      { role: "agent", text: "Dos cosas en la entrega. (1) Legalización: los boletines y el certificado del técnico hay que presentarlos en industria antes de que el cliente pueda operar la instalación — ya tengo el expediente preparado, solo falta la firma de tu ingeniero. (2) La instalación está ahora obligada por RITE a tener mantenimiento, y no hay contrato que lo cubra, así que se nos cae del radar en cuanto cerremos la obra. ¿Redacto una propuesta de mantenimiento para adjuntar a la entrega?" },
+      { role: "human", text: "¿Cuánto valdría el contrato de mantenimiento?" },
+      { role: "agent", text: "Por el equipo instalado — dos rooftop más el sistema VRF — un contrato RITE sale unos 2.400 €/año a tarifa estándar, recurrente. Conviene proponerlo ahora que seguimos en obra. ¿Lo redacto en condiciones estándar?" },
+      { role: "human", text: "Sí, y si tienen PCI, incluye también el mantenimiento de incendios." },
+      { role: "agent", text: "Lo tienen — hay un sistema PCI en el mismo edificio, ahora mismo sin mantenedor registrado. Lo agrupo RITE + RIPCI en un solo contrato: ~3.600 €/año combinado, un único calendario de visitas, más sencillo para ellos. La propuesta más el expediente de legalización van al responsable de mantenimiento del cliente. ¿Envío?" },
+      { role: "human", text: "Envíalo." },
+      { role: "system", text: "Presentando legalización; enviando la propuesta de mantenimiento; registrando la oportunidad en el pipeline…", done: "Legalización presentada; propuesta enviada; seguimiento en 5 días", duration: 1800 },
+      { role: "agent", text: "Hecho. Expediente de legalización presentado, propuesta RITE + RIPCI a 3.600 €/año adjunta a la entrega, registrada con seguimiento en 5 días. Si firman, la instalación pasa directa a la base de mantenimiento." }
+    ]
+  },
+  /* ════ Operaciones ════ */
+  { tab: "Ingeniería y planos", side: "operaciones" },
+  { tab: "Compras y almacén", side: "operaciones" },
+  { tab: "Ejecución de obra", side: "operaciones" },
+  { tab: "Programación normativa", side: "operaciones" },
+  { tab: "Planificación de cuadrillas", side: "operaciones" },
+  /* ════ Back office ════ */
+  {
+    tab: "Costes y rentabilidad por obra",
+    side: "backoffice",
+    msgs: [
+      { role: "human", text: "¿Cómo va de margen la obra de climatización del hotel de Alicante?" },
+      { role: "system", text: "Reuniendo costes de la obra: facturas de proveedor, partes de horas y albaranes de almacén contra el presupuesto adjudicado…", done: "Adjudicada a 245.000 €; coste comprometido a fecha 198.000 €; un desajuste", duration: 2600 },
+      { role: "agent", text: "Sobre el papel parece un 19% de margen. Pero a esta obra no le veo imputadas las horas de los técnicos ni del jefe de obra — solo materiales y subcontratas. Con las horas cargadas, baja a ~11%. ¿Quieres que impute la mano de obra en todas las obras vivas?" },
+      { role: "human", text: "Sí. ¿Y por qué se desvió esta?" },
+      { role: "agent", text: "Dos causas. (1) El equipo VRF entró un 8% por encima del presupuesto — el distribuidor subió precio entre la oferta y el pedido, y no lo recogimos en una revisión. (2) Dos jornadas extra de cuadrilla para recuperar un retraso de la constructora en las ayudas de albañilería — horas que probablemente son reclamables como sobrecoste, pero nadie abrió la reclamación. Puedo redactar esa reclamación a la constructora con los partes como soporte. ¿La preparo?" },
+      { role: "human", text: "Prepárala. Y cárgame la mano de obra en todas las obras vivas." },
+      { role: "system", text: "Imputando partes de horas a las obras vivas; redactando la reclamación de sobrecoste a la constructora…", done: "Margen real recalculado en 12 obras; reclamación redactada", duration: 2800 },
+      { role: "agent", text: "Listo. Con la mano de obra cargada, el margen medio real de las 12 obras vivas es 13,5% — frente al 21% que se veía sin imputarla. Tres obras están por debajo del 8% y conviene mirarlas. Reclamación a la constructora del hotel redactada por ~2.400 € con los partes adjuntos, lista para tu revisión. ¿Envío la reclamación?" }
+    ]
+  },
+  { tab: "Facturación y certificaciones", side: "backoffice" },
+  { tab: "Tesorería y pagos a proveedores", side: "backoffice" },
+  { tab: "Nóminas y contratación", side: "backoffice" },
+  { tab: "Calidad, PRL y medio ambiente", side: "backoffice" }
+];
+
+const parentTabsEl = document.getElementById('demoParentTabs');
+const tabsEl = document.getElementById('demoTabs');
+const bodyEl = document.getElementById('demoBody');
+const sides = [
+  { id: "comercial", label: "Comercial" },
+  { id: "operaciones", label: "Operaciones" },
+  { id: "backoffice", label: "Back office" }
+];
+let activeSide = "comercial";
+let activeCase = 0;
+let animTimeout = null;
+
+function activeCases() { return cases.filter(c => c.side === activeSide); }
+
+sides.forEach((s) => {
+  const t = document.createElement('div');
+  t.className = 'demo-parent-tab' + (s.id === activeSide ? ' active' : '');
+  t.textContent = s.label;
+  t.onclick = () => switchSide(s.id);
+  parentTabsEl.appendChild(t);
+});
+
+function buildChildTabs() {
+  tabsEl.innerHTML = '';
+  activeCases().forEach((c, i) => {
+    const t = document.createElement('div');
+    t.className = 'demo-tab' + (c.msgs ? '' : ' demo-tab-empty') + (i === activeCase ? ' active' : '');
+    t.textContent = c.tab;
+    t.onclick = () => switchCase(i);
+    tabsEl.appendChild(t);
+  });
+}
+
+function firstBuilt() { const cs = activeCases(); const i = cs.findIndex(c => c.msgs); return i < 0 ? 0 : i; }
+function nextBuilt(from) { const cs = activeCases(); let n = from; for (let k = 0; k < cs.length; k++) { n = (n + 1) % cs.length; if (cs[n].msgs) return n; } return from; }
+function renderBody(idx) {
+  if (animTimeout) { clearTimeout(animTimeout); animTimeout = null; }
+  bodyEl.innerHTML = '';
+  userScrolledUp = false;
+  const c = activeCases()[idx];
+  if (!c.msgs) {
+    bodyEl.innerHTML = '<div class="demo-empty"><div class="demo-empty-tag">En tu operación</div><div class="demo-empty-title">' + c.tab + '</div><div class="demo-empty-text">Ya mapeamos este paso de tu operación. Empezamos donde la IA rinde primero y extendemos desde ahí — este está en el camino, no fuera de alcance.</div></div>';
+    return;
+  }
+  animateMessages(c.msgs, 0);
+}
+function switchSide(sideId) {
+  activeSide = sideId;
+  activeCase = firstBuilt();
+  parentTabsEl.querySelectorAll('.demo-parent-tab').forEach((t, i) => {
+    t.classList.toggle('active', sides[i].id === sideId);
+  });
+  buildChildTabs();
+  renderBody(activeCase);
+}
+
+function switchCase(idx) {
+  activeCase = idx;
+  tabsEl.querySelectorAll('.demo-tab').forEach((t, i) => t.classList.toggle('active', i === idx));
+  renderBody(idx);
+}
+
+buildChildTabs();
+
+let userScrolledUp = false;
+function isAtBottom(el) { return el.scrollHeight - el.scrollTop - el.clientHeight < 5; }
+function onUserScroll() { requestAnimationFrame(() => { userScrolledUp = !isAtBottom(bodyEl); }); }
+bodyEl.addEventListener('wheel', onUserScroll, { passive: true });
+bodyEl.addEventListener('touchmove', onUserScroll, { passive: true });
+function maybeAutoScroll() { if (!userScrolledUp) bodyEl.scrollTop = bodyEl.scrollHeight; }
+
+function animateMessages(msgs, idx) {
+  if (idx >= msgs.length) {
+    return; // stay on this scenario — no auto-advance
+  }
+  const m = msgs[idx];
+  if (m.role === 'system') {
+    const div = document.createElement('div');
+    div.className = 'demo-msg system';
+    div.innerHTML = `<div class="sys-pulse"><span></span><span></span><span></span></div><span class="sys-text">${m.text}</span>`;
+    bodyEl.appendChild(div);
+    requestAnimationFrame(() => div.classList.add('visible'));
+    maybeAutoScroll();
+    animTimeout = setTimeout(() => {
+      if (m.done) {
+        div.querySelector('.sys-pulse').remove();
+        div.querySelector('.sys-text').innerHTML = m.done;
+        div.classList.add('settled');
+      }
+      animateMessages(msgs, idx + 1);
+    }, m.duration);
+    return;
+  }
+  const div = document.createElement('div');
+  div.className = 'demo-msg ' + m.role;
+  const lbl = document.createElement('div'); lbl.className = 'msg-label';
+  lbl.textContent = m.role === 'agent' ? 'Agente LeanLog' : 'Tú';
+  const txt = document.createElement('div');
+  div.appendChild(lbl); div.appendChild(txt);
+  bodyEl.appendChild(div);
+  requestAnimationFrame(() => div.classList.add('visible'));
+  maybeAutoScroll();
+  const cursor = document.createElement('span'); cursor.className = 'typing-cursor';
+  txt.appendChild(cursor);
+  let ci = 0;
+  const speed = m.role === 'agent' ? 22 : 18;
+  const node = document.createTextNode('');
+  txt.insertBefore(node, cursor);
+  function typeChar() {
+    if (ci < m.text.length) {
+      node.textContent += m.text[ci++];
+      maybeAutoScroll();
+      animTimeout = setTimeout(typeChar, speed + Math.random() * 11);
+    } else {
+      cursor.remove();
+      animTimeout = setTimeout(() => animateMessages(msgs, idx + 1), 960);
+    }
+  }
+  animTimeout = setTimeout(typeChar, m.role === 'human' ? 520 : 640);
+}
+
+function startDemo() {
+  if (animTimeout) { clearTimeout(animTimeout); animTimeout = null; }
+  activeSide = 'comercial';
+  activeCase = firstBuilt();
+  parentTabsEl.querySelectorAll('.demo-parent-tab').forEach((t, i) => t.classList.toggle('active', sides[i].id === 'comercial'));
+  buildChildTabs();
+  renderBody(activeCase);
+}
+function stopDemo() { if (animTimeout) { clearTimeout(animTimeout); animTimeout = null; } }
+
+/* init — standalone autoplay */
+startDemo();
+</script>
+</body>
+</html>
