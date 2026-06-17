@@ -6,8 +6,8 @@
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="shortcut icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="/favicon.ico">
-<title>LeanLog — AI agents for operations-heavy businesses</title>
-<meta name="description" content="LeanLog runs your back office end-to-end. Customer-side: quoting, order entry, scheduling. Supplier-side: purchasing, PO entry, invoice reconciliation. Run more clients without hiring more people.">
+<title>LeanLog — Run your operation on AI</title>
+<meta name="description" content="Consultants are slow and the software you buy never fits. LeanLog is the third option: a dedicated team that learns your operation and builds a working system around how you actually run, and where you pay mostly on results.">
 <link rel="alternate" hreflang="en" href="https://leanlog.ai/">
 <link rel="alternate" hreflang="es" href="https://leanlog.ai/es/">
 <link rel="alternate" hreflang="x-default" href="https://leanlog.ai/">
@@ -109,15 +109,6 @@ body::before{
   pointer-events:none;
 }
 .hero-inner{max-width:1140px;margin:0 auto;width:100%}
-.hero-eyebrow{
-  display:flex;align-items:center;gap:12px;margin-bottom:32px;
-  opacity:0;animation:fadeUp .8s .1s forwards;
-}
-.eyebrow-badge{
-  font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;
-  color:var(--text3);padding:5px 14px;border:1px solid var(--border2);
-}
-.eyebrow-line{width:36px;height:1px;background:var(--border2)}
 .hero h1{
   font-family:var(--serif);font-size:clamp(38px,5.4vw,74px);line-height:1.05;
   max-width:1200px;margin-bottom:24px;color:var(--text);white-space:nowrap;text-align:center;
@@ -125,26 +116,7 @@ body::before{
   opacity:0;animation:fadeUp .8s .22s forwards;
 }
 .hero h1 em{font-style:italic;color:var(--accent)}
-.hero-cycle{display:inline}
-.hero-mobile-br{display:none}
-.hero-cycle.cycle-exit{animation:cycleOut .28s ease forwards}
-.hero-cycle.cycle-enter{animation:cycleEnter .32s ease forwards}
-@keyframes cycleOut{to{opacity:0;transform:translateY(-10px)}}
-@keyframes cycleEnter{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.hero-lead{
-  font-size:19px;line-height:1.55;color:var(--text);max-width:760px;
-  margin-bottom:24px;font-weight:400;
-  opacity:0;animation:fadeUp .8s .4s forwards;
-}
-.hero-sub{
-  font-size:16px;line-height:1.8;color:var(--text2);max-width:560px;
-  margin-bottom:44px;font-weight:300;
-  opacity:0;animation:fadeUp .8s .56s forwards;
-}
-.hero-actions{
-  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
-  opacity:0;animation:fadeUp .8s .7s forwards;
-}
+@media(max-width:680px){.hero h1{white-space:normal}}
 .hero-scroll{
   display:flex;flex-direction:column;align-items:center;gap:12px;
   margin:52px auto 0;background:none;border:none;padding:0;cursor:pointer;
@@ -155,14 +127,6 @@ body::before{
 .hero-scroll:hover{color:var(--text2)}
 .hero-scroll-arrow{stroke:currentColor;animation:scrollBounce 1.8s ease-in-out infinite}
 @keyframes scrollBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
-@media(max-width:680px){.hero h1{white-space:normal}}
-.hero-actions .btn-primary,.hero-actions .btn-outline{padding:12px 28px;font-size:14px}
-.hero-contact{
-  display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text3);
-  padding:11px 22px;border:1px solid var(--border2);transition:all .2s;
-}
-.hero-contact:hover{border-color:var(--border2);color:var(--text2)}
-.hero-contact svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.5}
 
 /* ── Hero credentials ──────────────────────────────────────────── */
 .hero-creds{
@@ -185,226 +149,55 @@ body::before{
 /* GT mark stacks Georgia/Tech vertically; bump height for parity */
 .org-logo img[alt*="Georgia"]{height:60px}
 
-/* ── Demo section ──────────────────────────────────────────────── */
-#demo{background:var(--bg);position:relative;z-index:1;scroll-margin-top:80px}
-.demo-section-header{text-align:center;margin-bottom:48px}
-.demo-section-header .tag{justify-content:center}
-.demo-section-header .section-title{max-width:none;text-align:center;margin:0 auto 18px}
-.demo-section-header .section-desc{max-width:520px;margin:0 auto;text-align:center}
-
-/* ── Demo Panel ────────────────────────────────────────────────── */
-.demo-panel{
-  border:1px solid var(--border);background:var(--bg2);
-  position:sticky;top:80px;overflow:hidden;
-}
-.demo-header{
-  padding:12px 18px;border-bottom:1px solid var(--border);
-  display:flex;align-items:center;gap:8px;
-}
-.demo-dots{display:flex;gap:5px}
-.demo-dot{width:9px;height:9px;border-radius:50%}
-.demo-dot-r{background:#ff5f57}
-.demo-dot-y{background:#febc2e}
-.demo-dot-g{background:#28c840}
-.demo-title-bar{
-  flex:1;font-family:var(--mono);font-size:10px;color:var(--text3);
-  text-align:center;letter-spacing:.8px;
-}
-.demo-parent-tabs{display:flex;border-bottom:1px solid var(--border);background:var(--bg)}
-.demo-parent-tab{
-  flex:1;padding:13px 18px;font-family:var(--mono);font-size:10px;letter-spacing:1.5px;
-  color:var(--text3);cursor:pointer;transition:all .2s;
-  text-transform:uppercase;text-align:center;
-  border-bottom:2px solid transparent;
-}
-.demo-parent-tab:hover{color:var(--text2)}
-.demo-parent-tab.active{color:var(--text);border-bottom-color:var(--text);background:var(--bg2)}
-.demo-tabs{display:flex;border-bottom:1px solid var(--border);overflow-x:auto}
-.demo-tabs::-webkit-scrollbar{height:2px}
-.demo-tab{
-  padding:10px 14px;font-family:var(--mono);font-size:9px;letter-spacing:.5px;
-  color:var(--text3);cursor:pointer;transition:all .2s;white-space:nowrap;
-  border-bottom:2px solid transparent;text-transform:uppercase;flex-shrink:0;
-}
-.demo-tab:hover{color:var(--text2)}
-.demo-tab.active{color:var(--text);border-bottom-color:var(--text2)}
-.demo-body{
-  padding:24px;height:420px;display:flex;flex-direction:column;
-  gap:12px;overflow-y:auto;
-}
-.demo-body::-webkit-scrollbar{width:3px}
-.demo-body::-webkit-scrollbar-thumb{background:var(--border2)}
-
-/* message types */
-.demo-msg{
-  font-size:13px;line-height:1.6;max-width:92%;
-  opacity:0;transform:translateY(5px);transition:opacity .3s,transform .3s;
-}
-.demo-msg > div:nth-of-type(2){white-space:pre-line}
-.demo-msg.visible{opacity:1;transform:translateY(0)}
-.demo-msg.agent{
-  padding:12px 16px;background:var(--bg3);
-  border-left:2px solid rgba(0,0,0,.22);color:var(--text);
-}
-.demo-msg.human{
-  padding:12px 16px;background:var(--bg);
-  border:1px solid var(--border2);color:var(--text2);
-  align-self:flex-end;
-}
-.demo-msg.system{
-  display:flex;align-items:center;gap:10px;
-  padding:10px 14px;background:rgba(0,0,0,.03);
-  border:1px solid var(--border);color:var(--text3);
-  font-family:var(--mono);font-size:11px;letter-spacing:.5px;
-  align-self:center;max-width:none;width:100%;
-}
-.demo-msg.system.settled{
-  color:var(--text2);background:transparent;border-color:transparent;
-}
-.demo-msg.system.settled::before{
-  content:'✓';font-size:10px;margin-right:6px;opacity:.5;
-}
-.sys-pulse{
-  display:flex;align-items:center;gap:3px;flex-shrink:0;
-}
-.sys-pulse span{
-  width:3px;height:3px;background:var(--text3);border-radius:50%;
-  animation:pulse-bar 1.1s ease-in-out infinite;
-}
-.sys-pulse span:nth-child(2){animation-delay:.18s}
-.sys-pulse span:nth-child(3){animation-delay:.36s}
-@keyframes pulse-bar{
-  0%,60%,100%{transform:scaleY(1);opacity:.4}
-  30%{transform:scaleY(2.2);opacity:1}
-}
-.msg-label{
-  font-family:var(--mono);font-size:9px;letter-spacing:2px;
-  text-transform:uppercase;color:var(--text3);margin-bottom:5px;
-}
-.typing-cursor{
-  display:inline-block;width:1.5px;height:12px;background:var(--text3);
-  margin-left:1px;vertical-align:text-bottom;animation:blink .55s step-end infinite;
-}
-@keyframes blink{50%{opacity:0}}
-
 /* ── Section commons ───────────────────────────────────────────── */
-section{padding:50px 0;position:relative;z-index:1}
-#problem{padding:35px 0}
-.section-header{margin-bottom:56px}
-#problem .section-header{margin-bottom:39px}
+section{padding:64px 0;position:relative;z-index:1}
+#problem,#solution,#process,#who{background:var(--bg);scroll-margin-top:70px}
+.section-header{margin-bottom:48px}
+.section-header.center{text-align:center}
+.section-header.center .section-title{margin-left:auto;margin-right:auto;max-width:880px}
+.section-header.center .section-desc{margin-left:auto;margin-right:auto}
 .section-title{
   font-family:var(--serif);font-size:clamp(22px,3vw,44px);
   line-height:1.14;max-width:820px;color:var(--text);
   font-weight:400;letter-spacing:-.3px;margin-bottom:18px;
 }
 .section-title em{font-style:italic;color:var(--accent)}
-.section-desc{font-size:15px;line-height:1.8;color:var(--text2);max-width:560px;font-weight:300}
+.section-desc{font-size:15px;line-height:1.8;color:var(--text2);max-width:600px;font-weight:300}
 
-/* ── Problem ───────────────────────────────────────────────────── */
-#problem{background:var(--bg)}
-.problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+/* ── Card grids (problem · process) ────────────────────────────── */
+.opt-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+.problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
 .problem-card{
-  background:var(--bg);padding:28px 28px;position:relative;
+  background:var(--bg);padding:32px 30px;position:relative;
   overflow:hidden;transition:background .3s;
 }
 .problem-card:hover{background:var(--bg2)}
 .pc-index{
   font-family:var(--mono);font-size:10px;color:var(--text3);
-  letter-spacing:2px;margin-bottom:14px;display:block;
+  letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;display:block;
 }
-.problem-card h3{font-size:15px;font-weight:500;margin-bottom:10px;line-height:1.4;color:var(--text)}
-.problem-card p{font-size:13px;color:var(--text2);line-height:1.75;font-weight:300}
+.problem-card h3{font-family:var(--serif);font-size:21px;font-weight:400;margin-bottom:12px;line-height:1.25;color:var(--text);letter-spacing:-.2px}
+.problem-card p{font-size:13.5px;color:var(--text2);line-height:1.8;font-weight:300}
 
-/* ── Problem split panel (records vs reality) ──────────────────── */
-.split-panel{border:1px solid var(--border);background:var(--bg2);margin-top:44px;overflow:hidden}
-.split-grid{display:grid;grid-template-columns:1fr 1fr}
-.split-side{padding:26px 26px 30px}
-.split-side-real{border-left:1px solid var(--border)}
-.split-label{
-  font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;
-  color:var(--text3);margin-bottom:20px;display:flex;align-items:center;gap:8px;
-}
-.split-label::before{content:'';width:6px;height:6px;border-radius:50%;flex-shrink:0}
-.split-side-erp .split-label::before{background:#28c840}
-.split-side-real .split-label::before{background:#febc2e}
-.split-side-erp .sf-table{font-size:11.5px}
-.notes{display:flex;flex-direction:column;gap:13px;padding:4px 6px}
-.note{
-  background:var(--bg);border:1px solid var(--border2);padding:11px 13px;
-  font-size:12px;line-height:1.5;color:var(--text2);
-  box-shadow:0 2px 10px rgba(0,0,0,.05);
-}
-.note-from{
-  font-family:var(--mono);font-size:8.5px;letter-spacing:1px;text-transform:uppercase;
-  color:var(--text3);display:block;margin-bottom:5px;
-}
-.note-mono{font-family:var(--mono);font-size:11px}
-.note-sticky{background:#f4ecd6;border-color:rgba(170,140,70,.28)}
-.note-rot1{transform:rotate(-1.1deg)}
-.note-rot2{transform:rotate(.9deg)}
-.note-rot3{transform:rotate(-.5deg)}
-.split-caption{
-  max-width:680px;margin:26px auto 0;text-align:center;
-  font-size:14px;line-height:1.75;color:var(--text2);font-weight:300;
-}
-@media(max-width:760px){
-  .split-grid{grid-template-columns:1fr}
-  .split-side-real{border-left:none;border-top:1px solid var(--border)}
-}
-
-/* ── Solution (vision: today / with LeanLog / over time) ───────── */
-#solution{background:var(--bg)}
-.sf-rows{display:flex;flex-direction:column;gap:56px;background:transparent;margin-top:48px}
-.sf-row{display:grid;grid-template-columns:1fr 1.5fr;gap:1px;background:var(--border);align-items:stretch;border:1px solid var(--border)}
-.sf-row-flip{grid-template-columns:1.5fr 1fr}
-.sf-row-text{
-  background:var(--bg);padding:56px 52px;
-  display:flex;flex-direction:column;justify-content:center;
-}
-.sf-row-num{font-family:var(--mono);font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--text3);margin-bottom:20px}
-.sf-row-text h4{font-family:var(--serif);font-size:24px;font-weight:400;color:var(--text);margin-bottom:14px;line-height:1.25}
-.sf-row-text p{font-size:13px;color:var(--text2);line-height:1.9;font-weight:300}
-.sf-row-visual{background:var(--bg);overflow:hidden;display:flex;flex-direction:column;min-height:300px}
-/* Chat body */
-.sf-demo-body{padding:20px;flex:1;display:flex;flex-direction:column;gap:10px;background:var(--bg)}
-/* Tables */
-.sf-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
-.sf-table{width:100%;border-collapse:collapse;font-size:12px}
-.sf-table thead tr{background:var(--bg3)}
-.sf-table th{
-  padding:9px 12px;text-align:left;font-family:var(--mono);font-size:8.5px;
-  letter-spacing:1.5px;text-transform:uppercase;color:var(--text2);
-  border-bottom:1px solid var(--border2);font-weight:500;
-}
-.sf-table th.center,.sf-table td.center{text-align:center}
-.sf-table tbody tr:nth-child(even){background:var(--bg2)}
-.sf-table tbody tr:nth-child(odd){background:var(--bg)}
-.sf-table td{padding:9px 12px;color:var(--text2);border-bottom:1px solid var(--border);font-size:11.5px;font-family:var(--mono)}
-.sf-table tr:last-child td{border-bottom:none}
-.sf-table td.sf-id{color:var(--text3);font-size:10px;letter-spacing:.5px;user-select:none}
-.sf-table-footer{
-  padding:7px 12px;font-family:var(--mono);font-size:9px;color:var(--text3);
-  letter-spacing:.5px;border-top:1px solid var(--border);background:var(--bg3);
-  display:flex;align-items:center;gap:6px;
-}
-.sf-table-footer::before{content:'';width:5px;height:5px;background:#28c840;border-radius:50%;flex-shrink:0}
-.sf-tag{font-family:var(--mono);font-size:9px;letter-spacing:.5px;text-transform:uppercase;padding:2px 6px;border:1px solid var(--border)}
-.sf-tag-in{color:#1C3C8C;border-color:rgba(28,60,140,.25)}
-.sf-tag-out{color:var(--text3)}
-.sf-status{font-family:var(--mono);font-size:9px;letter-spacing:.5px;text-transform:uppercase}
-.sf-status-done{color:#28a745}
-.sf-status-pend{color:var(--text3)}
-.sf-pill{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:8px;letter-spacing:.8px;text-transform:uppercase;padding:3px 9px;border-radius:20px}
-.sf-pill::before{content:'●';font-size:6px}
-.sf-pill-on{background:rgba(40,167,69,.1);color:#1e9440;border:1px solid rgba(40,167,69,.2)}
-.sf-pill-req{background:rgba(210,110,0,.1);color:#b86a00;border:1px solid rgba(210,110,0,.2)}
+/* ── Third option (consulting vs software vs LeanLog) ──────────── */
+.cmp{display:grid;grid-template-columns:1.9fr 1fr 1.15fr 1fr;max-width:980px;margin:0 auto;border:1px solid var(--border);background:var(--bg)}
+.cmp>div{padding:15px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:center}
+.cmp>div:nth-last-child(-n+4){border-bottom:none}
+.cmp .c-lbl{justify-content:flex-start;text-align:left;font-size:14.5px;color:var(--text);font-weight:400;line-height:1.35}
+.c-head{border-bottom:1px solid var(--border2);font-family:var(--mono);font-size:9.5px;letter-spacing:1.2px;text-transform:uppercase;color:var(--text3);text-align:center;line-height:1.4}
+.c-head.c-us{font-family:var(--serif);font-size:16px;letter-spacing:0;text-transform:none;color:var(--text);font-weight:400}
+.c-us{background:var(--bg2)}
+.yes{color:var(--text);font-size:18px;line-height:1;font-weight:700}
+.no{color:var(--text3);font-size:16px;line-height:1}
+.c-wedge{font-weight:600}
+.yes.win{color:#1e9440;font-weight:700}
+.cmp .c-us .yes{color:#1e9440}
 
 /* ── How we work (stepper) ─────────────────────────────────────── */
-#howwework{background:var(--bg)}
 .hww-steps{
   display:grid;grid-template-columns:repeat(4,1fr);
   gap:1px;background:var(--border);
-  margin-top:48px;border:1px solid var(--border);
+  margin-top:56px;border:1px solid var(--border);
 }
 .hww-step{
   background:var(--bg);padding:28px 24px;
@@ -416,14 +209,24 @@ section{padding:50px 0;position:relative;z-index:1}
 }
 .hww-num::after{content:'';flex:1;height:1px;background:var(--border2)}
 .hww-step h3{
-  font-family:var(--serif);font-size:19px;font-weight:400;color:var(--text);
-  margin-bottom:10px;line-height:1.25;letter-spacing:-.2px;
+  font-family:var(--serif);font-size:18px;font-weight:400;color:var(--text);
+  margin-bottom:10px;line-height:1.3;letter-spacing:-.2px;
 }
 .hww-step p{
   font-size:13px;color:var(--text2);line-height:1.75;font-weight:300;
 }
-@media(max-width:860px){.hww-steps{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){.hww-steps{grid-template-columns:1fr}}
+/* ── First process (empty pain slots) ─────────────────────────── */
+.pain-slots{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);max-width:1000px;margin:0 auto}
+.pain-slot{background:var(--bg);padding:34px 28px;min-height:150px}
+.pain-num{font-family:var(--serif);font-size:38px;font-weight:400;color:var(--bg4);line-height:1}
+
+/* ── Who we are (secondary aside — two-column band) ── */
+#who{padding:52px 0;border-top:1px solid var(--border)}
+.who-grid{max-width:1040px;margin:0 auto;display:grid;grid-template-columns:1fr 1.5fr;gap:56px;align-items:start}
+.who-left .tag{justify-content:flex-start;margin-bottom:14px}
+.who-title{font-family:var(--serif);font-size:24px;font-weight:400;color:var(--text);line-height:1.28;letter-spacing:-.2px}
+.who-prose{font-size:14px;line-height:1.85;color:var(--text2);font-weight:300}
+@media(max-width:760px){.who-grid{grid-template-columns:1fr;gap:18px}}
 
 /* ── Closing CTA ───────────────────────────────────────────────── */
 #cta{background:var(--bg);border-top:1px solid var(--border)}
@@ -459,24 +262,26 @@ footer{
   .nav{padding:0 24px}
   .nav-center,.nav-right .btn-ghost{display:none}
   .hero{padding:100px 24px 72px}
-  section{padding:80px 0}
-  #problem{padding:56px 0}
-  .problem-grid{grid-template-columns:1fr}
-  .sf-row,.sf-row-flip{grid-template-columns:1fr;gap:10px;background:transparent;border:none}
-  .sf-row-text{border:1px solid var(--border);padding:40px 28px}
-  .sf-row-visual{border:1px solid var(--border)}
-  .sf-row-flip .sf-row-text{order:-1}
-  .demo-panel{position:static}
+  section{padding:72px 0}
+  .opt-grid,.problem-grid,.pain-slots{grid-template-columns:1fr}
+  .hww-steps{grid-template-columns:repeat(2,1fr)}
   .hero-creds{margin-top:40px}
   footer{padding:20px 24px;flex-direction:column;gap:6px;text-align:center}
   .cta-inner{padding:80px 24px 88px}
   .cta-buttons{flex-direction:column;align-items:center}
 }
 
+@media(max-width:760px){
+  .cmp{grid-template-columns:1.5fr .7fr .9fr .7fr}
+  .cmp>div{padding:11px 9px}
+  .cmp .c-lbl{font-size:12px}
+}
+
+@media(max-width:520px){.hww-steps{grid-template-columns:1fr}}
+
 /* Mobile logo grid — 4 columns × 2 rows (7 logos, last cell empty) */
 @media(max-width:680px){
   .hero h1{font-size:clamp(40px,12vw,60px);line-height:1.08}
-  .hero-mobile-br{display:block}
   .org-logos{
     display:flex;
     flex-wrap:wrap;
@@ -499,12 +304,11 @@ footer{
 <nav class="nav">
   <a href="/" class="nav-logo"><img src="leanlog-final-light 2.png" alt="LeanLog"></a>
   <div class="nav-center">
-    <a href="/">Product</a>
-    <a href="/#demo">Demo</a>
-    <a href="/about.html">About</a>
+    <a href="/#solution">How we work</a>
+    <a href="/#who">Who we are</a>
   </div>
   <div class="nav-right">
-    <a class="btn-primary" href="mailto:rodrigo@leanlog.ai">Talk to a Founder</a>
+    <a class="btn-primary" href="mailto:rodrigo@leanlog.ai">Talk to a founder</a>
   </div>
 </nav>
 
@@ -527,34 +331,10 @@ footer{
         <div class="org-logo"><img src="assets/logos/mitre.svg" alt="MITRE Corporation"></div>
       </div>
     </div>
-    <button class="hero-scroll" onclick="document.getElementById('demo').scrollIntoView({behavior:'smooth'})">
+    <button class="hero-scroll" onclick="document.getElementById('problem').scrollIntoView({behavior:'smooth'})">
       <span>Scroll to explore</span>
       <svg class="hero-scroll-arrow" viewBox="0 0 28 16" width="26" height="15" aria-hidden="true"><path d="M2 3 L14 13 L26 3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
-  </div>
-</section>
-
-<!-- ── Demo ── -->
-<section id="demo">
-  <div class="container">
-    <div class="demo-section-header">
-      <div class="tag reveal">01 — See it work</div>
-      <h2 class="section-title reveal reveal-d1">See how LeanLog runs your operation.</h2>
-      <p class="section-desc reveal reveal-d2">These are real workflows. The agent surfaces the trade-offs and the reasoning; you make the call; it handles the rest.</p>
-    </div>
-    <div class="demo-panel reveal reveal-d3" style="max-width:720px;margin:0 auto;position:static">
-      <div class="demo-header">
-        <div class="demo-dots">
-          <div class="demo-dot demo-dot-r"></div>
-          <div class="demo-dot demo-dot-y"></div>
-          <div class="demo-dot demo-dot-g"></div>
-        </div>
-        <div class="demo-title-bar">leanlog</div>
-      </div>
-      <div class="demo-parent-tabs" id="demoParentTabs"></div>
-      <div class="demo-tabs" id="demoTabs"></div>
-      <div class="demo-body" id="demoBody"></div>
-    </div>
   </div>
 </section>
 
@@ -562,233 +342,116 @@ footer{
 <section id="problem">
   <div class="container">
     <div class="section-header">
-      <div class="tag reveal">02 — Why AI hasn't worked yet</div>
-      <h2 class="section-title reveal reveal-d1">Your ERP holds the records. The operation runs elsewhere.</h2>
-      <p class="section-desc reveal reveal-d2">The AI tools you've seen plug into your systems. But your operation runs on what those systems never captured.</p>
+      <div class="tag reveal">01 — Why nothing has worked</div>
+      <h2 class="section-title reveal reveal-d1">The consultants you hire are slow. The software you buy doesn't fit.</h2>
+      <p class="section-desc reveal reveal-d2">When you need to fix how your operation runs, you have two options, and you've probably tried both.</p>
     </div>
-    <div class="split-panel reveal reveal-d3">
-      <div class="demo-header">
-        <div class="demo-dots">
-          <div class="demo-dot demo-dot-r"></div>
-          <div class="demo-dot demo-dot-y"></div>
-          <div class="demo-dot demo-dot-g"></div>
-        </div>
-        <div class="demo-title-bar">where your operation actually runs</div>
+    <div class="opt-grid reveal reveal-d3">
+      <div class="problem-card">
+        <span class="pc-index">Consulting</span>
+        <h3>You hire consultants and wait.</h3>
+        <p>Months go by, the bills add up, and too often what you get is a plan and a slide deck, not a working system that actually runs your operation.</p>
       </div>
-      <div class="split-grid">
-        <div class="split-side split-side-erp">
-          <div class="split-label">In your ERP</div>
-          <table class="sf-table">
-            <thead><tr><th>Account</th><th>SKU</th><th>Price</th><th>Terms</th></tr></thead>
-            <tbody>
-              <tr><td>Marlow</td><td>6112</td><td>$11.80</td><td>Net 30</td></tr>
-              <tr><td>Cosmo</td><td>BX-208</td><td>$7.90</td><td>Net 30</td></tr>
-              <tr><td>Vega</td><td>4421</td><td>$9.80</td><td>Net 45</td></tr>
-              <tr><td>Apex</td><td>4421</td><td>$6.00</td><td>Net 30</td></tr>
-              <tr><td>Northpoint</td><td>BX-208</td><td>$8.40</td><td>Net 30</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="split-side split-side-real">
-          <div class="split-label">Where the work actually happens</div>
-          <div class="notes">
-            <div class="note note-mono note-rot1"><span class="note-from">Spreadsheet</span>Marlow's floor is $11.80. They push hard, but they never walk away.</div>
-            <div class="note note-rot2"><span class="note-from">In your head</span>Apex remembers every discount. Drop the price once and they expect it forever.</div>
-            <div class="note note-sticky note-rot3"><span class="note-from">Sticky note</span>Vega keeps quoting last year's price. Catch it before you confirm the order.</div>
-            <div class="note note-rot1"><span class="note-from">Inbox</span>Cosmo bills us for freight every time. We agreed they cover it, so check before you pay.</div>
-            <div class="note note-rot2"><span class="note-from">Call log</span>When Northpoint runs late, call Dan. He never answers email.</div>
-          </div>
-        </div>
+      <div class="problem-card">
+        <span class="pc-index">Off-the-shelf software</span>
+        <h3>You buy software and it never quite fits.</h3>
+        <p>It doesn't match how your operation runs. And when something breaks, you're on your own: a support ticket no one answers, no one in tech who knows your business or that you can actually trust.</p>
       </div>
     </div>
-    <p class="split-caption reveal">Off-the-shelf AI can't touch any of it. And when the people holding it leave, it leaves with them.</p>
   </div>
 </section>
 
-<!-- ── Solution (vision) ── -->
+<!-- ── Third option ── -->
 <section id="solution">
   <div class="container">
-    <div class="section-header">
-      <div class="tag reveal">03 — How it runs</div>
-      <h2 class="section-title reveal reveal-d1">Run your operation:<br>cheaper, faster, better.</h2>
-      <p class="section-desc reveal reveal-d2">The agent does the work itself, keeps every decision it learns, and runs the routine automatically. That's cheaper than adding people, faster than doing it by hand, and more consistent than a rotating team.</p>
+    <div class="section-header center">
+      <div class="tag reveal">02 — How we work</div>
+      <h2 class="section-title reveal reveal-d1">We're the third option.</h2>
+      <p class="section-desc reveal reveal-d2">A dedicated team that learns your operation and builds a working system around how you actually run. We stay accountable for it, we're the people you call when something breaks, and most of what you pay is tied to whether it works.</p>
     </div>
 
-    <div class="sf-rows reveal reveal-d3">
+    <div class="cmp reveal reveal-d3">
+      <div class="c-lbl c-head"></div>
+      <div class="c-head">Consulting</div>
+      <div class="c-head">Off-the-shelf software</div>
+      <div class="c-head c-us">LeanLog</div>
 
-      <!-- Row 1: Today — text left, chat-snippet visual right -->
-      <div class="sf-row">
-        <div class="sf-row-text">
-          <div class="sf-row-num">01 — talk</div>
-          <h4>You make the decisions. The agent makes the moves.</h4>
-          <p>Send the agent a task in plain words: "quote Apex," "reconcile Cosmo's invoice," "reorder BX-208." It sources the data, surfaces the trade-offs, and presents the call you need to make. You decide, and the agent then handles the calls, emails, paperwork, and follow-ups. Every task is a short conversation, not a workflow handoff.</p>
-        </div>
-        <div class="sf-row-visual">
-          <div class="demo-header">
-            <div class="demo-dots">
-              <div class="demo-dot demo-dot-r"></div>
-              <div class="demo-dot demo-dot-y"></div>
-              <div class="demo-dot demo-dot-g"></div>
-            </div>
-            <div class="demo-title-bar">quoting · apex</div>
-          </div>
-          <div class="sf-demo-body">
-            <div class="demo-msg human visible">
-              <div class="msg-label">You</div>
-              <div>Quote customer Apex on 500 units of SKU #4421 to Phoenix, 3 weeks.</div>
-            </div>
-            <div class="demo-msg system visible settled">
-              <span class="sys-text">Pulled costs, capacity, Apex's history</span>
-            </div>
-            <div class="demo-msg agent visible">
-              <div class="msg-label">LeanLog Agent</div>
-              <div>$6.00/unit standard, $3,000 total, 3-week lead. Line 2 is light next week — could drop to $4.80 ($2,400) on a 1-week lead and clear ~70%. Anchoring risk. Hold standard?</div>
-            </div>
-            <div class="demo-msg human visible">
-              <div class="msg-label">You</div>
-              <div>Hold standard.</div>
-            </div>
-            <div class="demo-msg system visible settled">
-              <span class="sys-text">Sent quote; logged to CRM</span>
-            </div>
-            <div class="demo-msg agent visible">
-              <div class="msg-label">LeanLog Agent</div>
-              <div>Sent. Apex's account updated; 7-day follow-up flagged.</div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="c-lbl">Fits how you actually work</div>
+      <div><span class="yes">&#10003;</span></div>
+      <div><span class="no">&#10007;</span></div>
+      <div class="c-us"><span class="yes">&#10003;</span></div>
 
-      <!-- Row 2: With LeanLog — table visual left, text right -->
-      <div class="sf-row sf-row-flip">
-        <div class="sf-row-visual">
-          <div class="demo-header">
-            <div class="demo-dots">
-              <div class="demo-dot demo-dot-r"></div>
-              <div class="demo-dot demo-dot-y"></div>
-              <div class="demo-dot demo-dot-g"></div>
-            </div>
-            <div class="demo-title-bar">captured operating knowledge</div>
-          </div>
-          <div class="sf-table-wrap"><table class="sf-table">
-            <thead>
-              <tr><th>Entity</th><th>What the agent has learned</th></tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Customer Marlow</td>
-                <td>Floor $11.80 on SKU 6112; never walks over price; AP contact Sarah for terms</td>
-              </tr>
-              <tr>
-                <td>Supplier Cosmo</td>
-                <td>Net 30 negotiated; FOB Destination required; billing contact Janet (fast on credit memos)</td>
-              </tr>
-              <tr>
-                <td>Customer Vega</td>
-                <td>Q1 MSA stepped up 4%; cached pricing common; warehouse mgr Tom asks for accelerated leads</td>
-              </tr>
-              <tr>
-                <td>Supplier Northpoint</td>
-                <td>3 steel delays in 6 months; call Dan (not email) when late</td>
-              </tr>
-              <tr>
-                <td>Customer Apex</td>
-                <td>Buys ~500/quarter; anchoring-sensitive on price drops</td>
-              </tr>
-            </tbody>
-          </table></div>
-          <div class="sf-table-footer">5 entities captured &middot; always available to your next hire</div>
-        </div>
-        <div class="sf-row-text">
-          <div class="sf-row-num">02 — capture</div>
-          <h4>Knowledge stays, even when people leave.</h4>
-          <p>Every supplier choice, every exception, every decision rule the agent learns becomes part of your operation's codified logic. The next hire inherits both the data and the operating instructions. Turnover stops being a knowledge crisis.</p>
-        </div>
-      </div>
+      <div class="c-lbl">A dedicated team that learns your operation</div>
+      <div><span class="yes">&#10003;</span></div>
+      <div><span class="no">&#10007;</span></div>
+      <div class="c-us"><span class="yes">&#10003;</span></div>
 
-      <!-- Row 3: Over time — text left, approval-rules visual right -->
-      <div class="sf-row">
-        <div class="sf-row-text">
-          <div class="sf-row-num">03 — control</div>
-          <h4>You decide what runs automatically.</h4>
-          <p>Set rules once. Routine reorders and scheduling run on their own. High-value POs, invoice disputes, and cancellations wait for your approval before executing.</p>
-        </div>
-        <div class="sf-row-visual">
-          <div class="demo-header">
-            <div class="demo-dots">
-              <div class="demo-dot demo-dot-r"></div>
-              <div class="demo-dot demo-dot-y"></div>
-              <div class="demo-dot demo-dot-g"></div>
-            </div>
-            <div class="demo-title-bar">decision rules</div>
-          </div>
-          <table class="sf-table">
-            <thead>
-              <tr><th>Workflow</th><th class="center">Status</th></tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Reorder inventory (&lt; $2,000)</td>
-                <td class="center"><span class="sf-pill sf-pill-on">Auto</span></td>
-              </tr>
-              <tr>
-                <td>Supplier confirmation (routine)</td>
-                <td class="center"><span class="sf-pill sf-pill-on">Auto</span></td>
-              </tr>
-              <tr>
-                <td>Delivery scheduling</td>
-                <td class="center"><span class="sf-pill sf-pill-on">Auto</span></td>
-              </tr>
-              <tr>
-                <td>Invoice reconciliation</td>
-                <td class="center"><span class="sf-pill sf-pill-req">Approval</span></td>
-              </tr>
-              <tr>
-                <td>Create PO &gt; $5,000</td>
-                <td class="center"><span class="sf-pill sf-pill-req">Approval</span></td>
-              </tr>
-              <tr>
-                <td>Cancel shipment</td>
-                <td class="center"><span class="sf-pill sf-pill-req">Approval</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+      <div class="c-lbl">A working system, not a slide deck</div>
+      <div><span class="no">&#10007;</span></div>
+      <div><span class="yes">&#10003;</span></div>
+      <div class="c-us"><span class="yes">&#10003;</span></div>
 
+      <div class="c-lbl">Scales as you grow, without adding people</div>
+      <div><span class="no">&#10007;</span></div>
+      <div><span class="yes">&#10003;</span></div>
+      <div class="c-us"><span class="yes">&#10003;</span></div>
+
+      <div class="c-lbl c-wedge">Paid mostly on results</div>
+      <div><span class="no">&#10007;</span></div>
+      <div><span class="no">&#10007;</span></div>
+      <div class="c-us"><span class="yes win">&#10003;</span></div>
     </div>
-  </div>
-</section>
 
-<!-- ── How we work ── -->
-<section id="howwework">
-  <div class="container">
-    <div class="section-header">
-      <div class="tag reveal">04 — How we work</div>
-      <h2 class="section-title reveal reveal-d1">We do this with you, by your side.</h2>
-      <p class="section-desc reveal reveal-d2">We work alongside you and tailor everything to how your operation runs. We learn how it works, find where AI pays off, build it, and stay accountable for what it does.</p>
-    </div>
-    <div class="hww-steps reveal reveal-d3">
+    <div class="hww-steps reveal">
       <div class="hww-step">
         <div class="hww-num">01</div>
-        <h3>We learn how your operation runs.</h3>
-        <p>We start by working inside your operation, watching how the work actually moves, who makes which call, where orders, quotes, and suppliers get stuck. We've run operations ourselves and mapped how dozens of operations-heavy businesses actually run. Before we build anything, we understand how you run.</p>
+        <h3>We embed in your operation.</h3>
+        <p>We start inside the work, learning how it actually moves and where it gets stuck.</p>
       </div>
       <div class="hww-step">
         <div class="hww-num">02</div>
-        <h3>We find where AI pays off. You don't have to know.</h3>
-        <p>You don't need an AI strategy to start. We have been working with AI since well before ChatGPT, so we know what it will actually carry and what it won't. We find the work slowing you down, and we start there.</p>
+        <h3>We codify how the work gets done.</h3>
+        <p>The decisions, exceptions, and rules your people carry become part of the system.</p>
       </div>
       <div class="hww-step">
         <div class="hww-num">03</div>
-        <h3>We ship it, and prove it works.</h3>
-        <p>We build the first workflow and put it to work in weeks, running against your real orders and suppliers. Before LeanLog, we built AI systems at Intel, Johnson &amp; Johnson, and MITRE. You see it work before you trust it with more.</p>
+        <h3>We build it on your data.</h3>
+        <p>A working system running against your real operation, not a prototype on a sample.</p>
       </div>
       <div class="hww-step">
         <div class="hww-num">04</div>
-        <h3>We own the outcome, and grow from there.</h3>
-        <p>We stay accountable for what the agent does, and the next workflow ships faster than the last. Over time LeanLog runs more of your operation, and what it learns stays yours, even when people leave.</p>
+        <h3>We iterate, and own the outcome.</h3>
+        <p>We stay accountable for what it does, and the next process ships faster than the last.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── First process ── -->
+<section id="process">
+  <div class="container">
+    <div class="section-header center">
+      <div class="tag reveal">03 — Where we start</div>
+      <h2 class="section-title reveal reveal-d1">We start with what's hurting most.</h2>
+      <p class="section-desc reveal reveal-d2">We pick the first process together, usually one of the top few pains on your plate.</p>
+    </div>
+    <div class="pain-slots reveal reveal-d3">
+      <div class="pain-slot"><div class="pain-num">01</div></div>
+      <div class="pain-slot"><div class="pain-num">02</div></div>
+      <div class="pain-slot"><div class="pain-num">03</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Who we are ── -->
+<section id="who">
+  <div class="container">
+    <div class="who-grid reveal">
+      <div class="who-left">
+        <div class="tag">04 — Who we are</div>
+        <h2 class="who-title">We've run the operation, and we've built the AI.</h2>
+      </div>
+      <p class="who-prose">LeanLog is built by operators and AI engineers. We've scaled an ecommerce company from zero to $60M and run its operation, and we've shipped AI on manufacturing lines, at Intel, and for the Department of Defense. And everywhere we've worked, the same two bad options show up: consultants who are slow and leave a plan behind, or software that never fits how the operation actually runs. So we built the third option.</p>
     </div>
   </div>
 </section>
@@ -798,8 +461,8 @@ footer{
   <div class="cta-inner">
     <h2>Run your operation on AI.</h2>
     <div class="cta-buttons">
-      <a class="btn-primary reveal" href="mailto:rodrigo@leanlog.ai?subject=Demo%20request">Request a Demo</a>
-      <a class="btn-outline reveal" href="mailto:rodrigo@leanlog.ai">Talk to a Founder</a>
+      <a class="btn-primary reveal" href="mailto:rodrigo@leanlog.ai">Talk to a founder</a>
+      <a class="btn-outline reveal" href="mailto:rodrigo@leanlog.ai?subject=Demo%20request">Request a demo</a>
     </div>
   </div>
 </section>
@@ -807,7 +470,7 @@ footer{
 <!-- ── Footer ── -->
 <footer>
   <span>&copy; 2026 LeanLog, Inc.</span>
-  <span>AI agents for operations-heavy businesses</span>
+  <span>Run your operation on AI</span>
   <a href="/es/" class="footer-lang">Español</a>
 </footer>
 
@@ -818,320 +481,6 @@ const ro = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
-
-/* ── Demo cases ────────────────────────────────────────────────── */
-const cases = [
-  {
-    tab: "Quoting",
-    side: "customer",
-    msgs: [
-      { role: "human", text: "Got an RFQ from customer Apex for 500 units of SKU #4421 to Phoenix, 3 weeks. Run the numbers." },
-      { role: "system", text: "Checking inventory, production capacity, and Apex's history…", done: "200 in stock; 300 to make; Line 2 light next week", duration: 2400 },
-      { role: "agent", text: "Cost build: $4.32/unit blended, standard 28% margin = $6.00/unit, total $3,000, 3-week lead, Net 30. Worth noting — Line 2 is only 60% booked next week. We pay the operators either way, so marginal cost on the 300 we'd run is close to zero. You could quote $4.80/unit ($2,400 total) on a 1-week lead and still clear ~70% on this run. Want me to model that?" },
-      { role: "human", text: "What's the risk?" },
-      { role: "agent", text: "Anchoring. Apex bought 320 last quarter at $6.00 — drop to $4.80 and you've set a new ceiling. Next normal-cost order they'll push for it. I'd hold $6.00 unless this opens a multi-order arrangement." },
-      { role: "human", text: "What would a multi-order arrangement look like?" },
-      { role: "agent", text: "If Apex commits to 1,500 units over the next quarter — they've averaged ~500/quarter for the last three — I'd quote $5.40/unit on a standing basis. 10% off, 20% margin instead of 28%. We get predictable volume to schedule against; they get the lower price they're pushing for. Structure it as a tier (≥1,500 cumulative within 90 days), not a flat discount, so we're protected if they under-commit. Want me to add it as an optional tier on the quote?" },
-      { role: "human", text: "Yeah, add the tier. Send it." },
-      { role: "system", text: "Drafting quote with tier; pulling Apex's standard terms…", done: "Quote #Q-2026-0418 ready", duration: 1800 },
-      { role: "agent", text: "Sending: 500 units @ $6.00 standard ($3,000); tier at $5.40 if cumulative ≥1,500 within 90 days. Net 30, valid 14 days, 3-week lead. Logged to Apex. I'll nudge in 7 days." }
-    ]
-  },
-  {
-    tab: "Negotiating",
-    side: "customer",
-    msgs: [
-      { role: "human", text: "Customer Marlow came back on quote #Q-2026-0392 — they're at $11.40, we're at $13.20. What do I say?" },
-      { role: "system", text: "Pulling Marlow's negotiation history and margin floor…", done: "5 prior negotiations; never killed a deal over price; floor $11.80 on this SKU", duration: 2400 },
-      { role: "agent", text: "They've never killed a deal over price in 5 prior negotiations — typically land within 8% of opening counter. Two ways to play it: (a) Hold $13.20, counter with Net 45 (they're on Net 30). Marlow tightened cash last summer per their AP rep, so 15 extra days reads as concession without touching unit price. Anchoring intact. (b) Meet at $12.40 (~20% margin). Signals flexibility but sets a softer ceiling for next round. I'd go (a). Want me to draft?" },
-      { role: "human", text: "What if they don't budge on price?" },
-      { role: "agent", text: "$11.80 is the floor — 12% margin after freight, breakeven on overhead. Below that we're moving inventory at a loss. If they push past, options are walk away or restructure (move them off the volume tier next quarter). I wouldn't walk — Marlow is top-10 by GP YTD and a steady channel." },
-      { role: "human", text: "Try the terms first. Send (a)." },
-      { role: "system", text: "Drafting counter; pulling Marlow's contact and terms history…", done: "Counter drafted; ready to send", duration: 1800 },
-      { role: "agent", text: "Counter ready: \"Holding $13.20/unit. Happy to extend to Net 45 given the volume — meaningful cash-flow benefit on the order.\" Sending to Sarah (their AP lead, primary on terms). I'll flag follow-up if no reply in 3 business days." },
-      { role: "human", text: "Send it." },
-      { role: "system", text: "Sending counter to Marlow; logging to CRM…", done: "Counter sent; 3-day follow-up flagged", duration: 1400 }
-    ]
-  },
-  {
-    tab: "Order entry",
-    side: "customer",
-    msgs: [
-      { role: "human", text: "PO from customer Vega Industries just hit. Process it." },
-      { role: "system", text: "Parsing PO; cross-checking against quote #Q-2026-0381 and Vega's MSA…", done: "PO parsed; 2 discrepancies found", duration: 2400 },
-      { role: "agent", text: "PO is mostly clean — 800 units of SKU #6112, ship to their Reno DC by Apr 18. Two things flagged:\n\n• PO line price is $9.40; we quoted $9.80. Looks like they applied last year's pricing — Vega's MSA stepped up 4% in Q1.\n\n• Delivery date is 2 weeks earlier than the quoted lead time (4 weeks). Either they're testing what's possible or there's a misunderstanding.\n\nWant me to (a) flag both back to Vega before entering, or (b) enter at quoted terms and send a confirmation noting the MSA pricing and current lead time?" },
-      { role: "human", text: "What's the relationship like? Will they push back?" },
-      { role: "agent", text: "Vega has been clean on terms — 14 POs in the last 18 months, no disputes. On the price, they sometimes use their procurement system's cached pricing without checking the MSA. Quick email usually resolves. On the date, their warehouse manager Tom asks for accelerated lead times monthly; we've never accommodated and they've never escalated." },
-      { role: "human", text: "Go with (b). Enter at $9.80, normal 4-week lead, confirmation note to Tom." },
-      { role: "system", text: "Entering SO; drafting confirmation…", done: "SO #7821 created; confirmation drafted", duration: 1800 },
-      { role: "agent", text: "SO #7821 entered: 800 units @ $9.80 = $7,840, 4-week lead (May 2 ship). Confirmation note to Tom explains the MSA pricing step-up and current lead time. Want to review before sending?" },
-      { role: "human", text: "Send it." },
-      { role: "system", text: "Sending confirmation; logging to CRM…", done: "Confirmation sent; SO booked; 2-day follow-up flagged if no acknowledgment", duration: 1400 }
-    ]
-  },
-  {
-    tab: "Production & delivery scheduling",
-    side: "customer",
-    msgs: [
-      { role: "human", text: "Customer Vega is asking if SO #7821 can ship a week earlier than the May 2 confirmation. Can we?" },
-      { role: "system", text: "Pulling production schedule for SKU #6112; checking dock and carrier availability…", done: "Line 4 has slot Apr 24-25; outbound carrier slots tight Apr 26-27", duration: 2400 },
-      { role: "agent", text: "We can hit Apr 25 if we shift two things:\n\n• Pull Vega's run forward to Apr 24-25 on Line 4. That displaces Helix's Apr 24 build (300 units, currently 2 weeks of buffer to their May 8 ship — safe to move to Apr 28).\n\n• Lock a carrier slot for Apr 26 outbound — three carriers have capacity but rates are 12% above standard this week.\n\nNet cost to accommodate: ~$240 in expedited freight, no production overtime. Want to proceed or push back to Vega?" },
-      { role: "human", text: "What if Helix complains about the shift?" },
-      { role: "agent", text: "Low risk — Helix's order has been re-dated twice already this quarter at our request, both times silently absorbed. Their PO has 3 weeks of pad on the customer-side commitment. If they do flag it, we can offer Net 45 on the next order as goodwill. I'd take the risk." },
-      { role: "human", text: "Do it. Lock Vega Apr 25, move Helix to Apr 28, book the carrier." },
-      { role: "system", text: "Updating production schedule; booking carrier; notifying Helix's account rep…", done: "Schedule updated; carrier confirmed; Helix notified", duration: 2200 },
-      { role: "agent", text: "Done. Vega SO #7821 now ships Apr 25 from Reno via FastFreight (booked $1,840). Helix's run moved to Apr 28, no impact on their May 8 ship date — their rep has been notified with the new build date. Want me to confirm the new ship date back to Vega?" },
-      { role: "human", text: "Yes, and ask if they need any expedited shipping options on their end." },
-      { role: "system", text: "Sending confirmation to Vega; CC'ing their procurement lead Tom…", done: "Confirmation sent; carrier locked; production board updated", duration: 1800 }
-    ]
-  },
-  {
-    tab: "Invoicing & collections",
-    side: "customer",
-    msgs: [
-      { role: "human", text: "AR check — who's late?" },
-      { role: "system", text: "Scanning aged receivables; pulling payment histories…", done: "8 invoices past due over $1k; 3 worth flagging", duration: 2200 },
-      { role: "agent", text: "Three to action:\n\n• Marlow — $9,900 (15 days late, INV-4421). Pays in 35-45 days reliably; not a concern yet, no action needed.\n\n• Sentinel Corp — $14,200 (32 days late, INV-4398). New account, only 1 prior invoice (paid Net 28). Send a friendly first nudge?\n\n• Cresta — $7,800 (47 days late, INV-4287). Slow payer historically; usually responds to a direct call. Worth a phone touch from you, not an email from me.\n\nWant me to handle Sentinel and queue Cresta for your call list?" },
-      { role: "human", text: "What's the escalation path if Sentinel doesn't respond?" },
-      { role: "agent", text: "Standard ladder: friendly nudge today (day 32) → firm reminder day 39 → formal dunning + AR hold day 46 → finance escalation + CFO loop day 60. Their AP contact is Lisa per their procurement form. If you want a softer first touch, I can frame today's nudge as a \"checking nothing fell through the cracks\" rather than a payment chase — typical for a new account where we want to preserve the relationship." },
-      { role: "human", text: "Softer touch. Send it. And yes, queue Cresta for me." },
-      { role: "system", text: "Drafting nudge to Sentinel; queuing Cresta callback in your CRM…", done: "Nudge drafted; Cresta queued for today's call list", duration: 1800 },
-      { role: "agent", text: "Sentinel nudge ready: \"Hi Lisa — just checking in on INV-4398 ($14,200, sent Feb 18). Want to make sure it didn't get caught in a folder. Let me know if you need anything from our side.\" Sending to Lisa, CC'ing their AP@. I'll watch for a reply and ladder up if no response by day 39." },
-      { role: "human", text: "Send it." },
-      { role: "system", text: "Sending to Sentinel; logging; Cresta on your call list…", done: "Sent; AR dashboard updated; Cresta callback flagged for today", duration: 1400 }
-    ]
-  },
-  {
-    tab: "RFQs",
-    side: "supplier",
-    msgs: [
-      { role: "human", text: "Need 1,200 units of part #BX-208 in 3 weeks. Source it." },
-      { role: "system", text: "Sending RFQs to qualified suppliers; tracking responses…", done: "8 suppliers contacted; 6 responses in (avg 4 hours); 2 pending", duration: 2600 },
-      { role: "agent", text: "Six quotes back, normalized for delivered cost (unit + freight + tariffs):\n\n• Northpoint — $8.40 landed, 18-day lead, Net 30. Our primary; no surprises.\n\n• Cosmo Metalworks — $7.90 landed, 21-day lead, prepay. New supplier; qualified on Mil-spec list since Jan.\n\n• Marquez Industrial — $9.20 landed, 12-day lead, Net 45. Fast but premium.\n\n• Three others $8.60-$10.10, longer leads. Worth ignoring unless we need a backup.\n\nCosmo's the cheapest by ~$600 total but they want prepay. Want me to push for Net 30 before recommending?" },
-      { role: "human", text: "Yes, push Cosmo. And why is Northpoint above Cosmo if they're our primary?" },
-      { role: "agent", text: "Northpoint's been quoting tight on materials since their February supplier consolidation — same pattern with three other commodity parts this quarter. Not a red flag yet, but the gap is real. Cosmo's a new vendor; first PO would also be a small loyalty signal we could use later. I'd recommend Cosmo if they'll move to Net 30, otherwise stick with Northpoint and surface the pricing trend to you separately." },
-      { role: "human", text: "Go negotiate. I'll wait." },
-      { role: "system", text: "Contacting Cosmo to negotiate Net 30 terms…", done: "Cosmo agreed to Net 30 on this PO (prepay on the next); will revisit terms at 3 POs", duration: 2800 },
-      { role: "agent", text: "Cosmo accepted Net 30 on this order. Final quote: $7.90 landed × 1,200 = $9,480, 21-day lead, Net 30. Want me to draft the PO?" },
-      { role: "human", text: "Yes, draft it." },
-      { role: "system", text: "Drafting PO; pulling Cosmo's standard PO terms template…", done: "PO #PO-2026-1142 drafted; ready for your approval", duration: 1800 }
-    ]
-  },
-  {
-    tab: "Negotiating",
-    side: "supplier",
-    msgs: [
-      { role: "human", text: "Supplier Northpoint just sent a 6% price hike notice on the BX series effective May 1. What do I do?" },
-      { role: "system", text: "Checking market trends and Northpoint's pricing history…", done: "3 of 4 commodity suppliers raised 4-6% Q1; Northpoint last raised price 9 months ago (3.5%)", duration: 2400 },
-      { role: "agent", text: "This is market-wide, not Northpoint being opportunistic — copper and steel inputs are up materially across the cohort. Their increase is in the middle of the pack and overdue by historical cadence. Pushing for zero will likely fail. What's worth pushing for: cap the increase at 4% in exchange for a 90-day extension on the supply agreement. Northpoint values predictability — their sales rep flagged it twice last quarter — and 90 days locked is cheap for us. I'd open at \"We understand the market move, can you hold at 4% if we commit through October?\"" },
-      { role: "human", text: "What if they hold firm at 6%?" },
-      { role: "agent", text: "Then options are (a) accept and absorb the 1.5% margin hit on our affected SKUs, (b) shift some volume to Cosmo who's cheaper but newer, or (c) re-price our customer-side quotes for the BX-derived products by ~3% on next refresh. (c) is the cleanest — costs roll through to customers within a quarter and we hold margin. Walking from Northpoint on this part would be premature; they cover 60% of our BX volume and switching costs across the catalog are real." },
-      { role: "human", text: "Try the 4% / 90-day commit. If they hold, we go with (c)." },
-      { role: "system", text: "Drafting counter to Northpoint; pulling their rep contact and last contract terms…", done: "Counter drafted; ready to send", duration: 1800 },
-      { role: "agent", text: "Counter ready to Dan at Northpoint: \"Got your May 1 update. We understand the market move. Can you hold the increase at 4% if we commit volume through October? We'd want pricing locked, with a quarterly true-up if inputs move materially.\" Sending. I'll flag the response." },
-      { role: "human", text: "Send it." },
-      { role: "system", text: "Sending to Northpoint; flagging response for your review…", done: "Counter sent; response expected within 2 business days", duration: 1400 }
-    ]
-  },
-  {
-    tab: "PO entry",
-    side: "supplier",
-    msgs: [
-      { role: "human", text: "Issue the PO to supplier Cosmo for the BX-208 order we agreed on." },
-      { role: "system", text: "Drafting PO from quote Q-2026-0411 and Cosmo's standard terms; cross-checking…", done: "Draft ready; 1 flag", duration: 2200 },
-      { role: "agent", text: "PO drafted at the negotiated terms — 1,200 units BX-208, $7.90 landed, 21-day lead, Net 30, ship to our Reno DC. One flag: Cosmo's standard PO template defaults to FOB Origin (we pay freight from their dock). Our negotiated landed cost assumes FOB Destination (Cosmo includes freight). Worth correcting before sending, otherwise we'll get billed twice for freight when their invoice hits. Want me to fix the FOB term and send, or do you want to review the full draft first?" },
-      { role: "human", text: "How often do you catch stuff like this on PO templates?" },
-      { role: "agent", text: "Across our last 6 months: about 1 in 8 outbound POs had a term-drift error if drafted from supplier-default templates without cross-checking against the negotiated quote. Most common are FOB terms (this one), payment terms (Net X defaulting to Net 60 when we agreed Net 30), and lead-time defaults. Cost of missing each runs $50-$400 in disputed invoices and one or two emails to resolve. Cheap to catch up front." },
-      { role: "human", text: "Fix the FOB and send. Don't need to review." },
-      { role: "system", text: "Updating FOB to Destination; sending PO to Cosmo; logging to AP queue…", done: "PO #PO-2026-1142 sent; Cosmo acknowledged receipt; ETA Mar 18 stored", duration: 2000 },
-      { role: "agent", text: "PO #PO-2026-1142 sent to Cosmo with FOB Destination locked. They auto-acknowledged. Expected receipt Mar 18 at Reno DC. I'll start the supplier-follow-up cadence at day 14 if I haven't seen a shipping confirmation by then." },
-      { role: "human", text: "Good. Anything else queued for them?" },
-      { role: "system", text: "Checking Cosmo pipeline…", done: "One open RFQ pending response (part #BX-310, qty 600); no other open POs", duration: 1400 }
-    ]
-  },
-  {
-    tab: "Supplier follow-ups",
-    side: "supplier",
-    msgs: [
-      { role: "human", text: "Where are we on the supplier Northpoint PO #PO-2026-1098? Expected last week." },
-      { role: "system", text: "Pulling PO status; checking for shipping confirmation or carrier scan…", done: "No shipping confirmation; last contact was Mar 4 PO acknowledgment", duration: 2000 },
-      { role: "agent", text: "6 days past ETA, no contact. Dan (their rep) typically responds to email within a day; if he's silent past 48 hours that usually means the production-side hit a snag he doesn't have the answer to yet. Pattern from prior late POs: 4 out of 5 cleared up with a direct call to his desk, not email. Want me to call Dan now? If he's out, I'll try Marcie in their planning group — she's faster on production-status questions." },
-      { role: "human", text: "Call him." },
-      { role: "system", text: "Calling Dan at Northpoint…", done: "Reached Dan — material delay; new ETA Mar 22 (7 days additional)", duration: 2600 },
-      { role: "agent", text: "Northpoint had a steel-input delay from their upstream — affecting 4 customers including us. Dan offered to split the shipment: 60% Mar 22, 40% Mar 29. Net: we get most of the order a week earlier than waiting for the full lot. For our side — that 1,200 units was meant for inventory buffer, not a specific customer ship date. Cushion isn't critical; we can absorb the delay without slipping any customer commits. But it does eat into our re-order safety margin going forward. Take the split shipment, or wait for full?" },
-      { role: "human", text: "Take the split. And what about future risk with Northpoint on this part?" },
-      { role: "agent", text: "This is the third minor delay from them in 6 months — pattern, not noise. I'd recommend running a parallel RFQ to two of our qualified backups on BX-208 over the next quarter, so we have qualified alternates ready if a fourth delay lands. Not a switch yet, just diversification. Want me to queue that?" },
-      { role: "human", text: "Yes, queue it. Take the split shipment from Dan." },
-      { role: "system", text: "Confirming split shipment with Dan; queuing parallel RFQ on BX-208; notifying our production planner of the new ETAs…", done: "Split confirmed (Mar 22 / Mar 29); RFQ task queued for next week; production updated", duration: 2200 }
-    ]
-  },
-  {
-    tab: "Invoice reconciliation",
-    side: "supplier",
-    msgs: [
-      { role: "human", text: "Supplier Cosmo's invoice INV-CSM-2278 just came in. Reconcile." },
-      { role: "system", text: "Cross-checking invoice against PO #PO-2026-1142, GRN, and Cosmo's contract terms…", done: "Invoice parsed; 3 discrepancies flagged", duration: 2400 },
-      { role: "agent", text: "Invoice claims $9,792 for the BX-208 order. Three issues:\n\n• Quantity: invoice bills 1,200 units; we received 1,180 (GRN dated Mar 19, signed by Maria at receiving). 20 units short — $158 over.\n\n• Freight: $312 freight line; should be $0 per the FOB Destination term we locked when sending the PO. $312 over.\n\n• Payment terms: invoice says Net 15; PO says Net 30. Not a dollar issue but it'll trigger our AP to pay early.\n\nTotal over-bill: $470, plus terms correction. Want me to dispute formally, or call Cosmo's billing lead Janet first? She's been quick to issue credit memos in the past — usually resolves within 24h on a call." },
-      { role: "human", text: "How much was the original PO?" },
-      { role: "agent", text: "$9,480 ($7.90 × 1,200 with freight included per FOB Destination). After correcting the 20-unit short delivery, target invoice is $9,322 with Net 30 terms. So we're disputing $470 over-bill and a 15-day terms drift." },
-      { role: "human", text: "Call Janet." },
-      { role: "system", text: "Calling Janet at Cosmo billing…", done: "Reached Janet — confirmed all three; credit memo + corrected invoice in queue", duration: 2800 },
-      { role: "agent", text: "Janet confirmed all three: she'll issue a $470 credit memo today and reissue at Net 30. She apologized for the freight line — their billing template defaulted to FOB Origin and the team didn't catch it on this PO since we're new to their system. She's flagging our account for FOB Destination going forward. Want me to hold payment until the corrected invoice lands, or pay the corrected amount ($9,322) preemptively?" },
-      { role: "human", text: "Wait for the corrected invoice. Don't pay early." },
-      { role: "system", text: "Holding payment; logging dispute resolution; flagging Cosmo account note for billing-team training…", done: "Payment held; credit memo expected within 24h; account flag set", duration: 2200 }
-    ]
-  }
-];
-
-const parentTabsEl = document.getElementById('demoParentTabs');
-const tabsEl = document.getElementById('demoTabs');
-const bodyEl = document.getElementById('demoBody');
-const sides = [
-  { id: "customer", label: "Customer-side" },
-  { id: "supplier", label: "Supplier-side" }
-];
-let activeSide = "customer";
-let activeCase = 0;
-let animTimeout = null, animating = false;
-
-function activeCases() {
-  return cases.filter(c => c.side === activeSide);
-}
-
-sides.forEach((s) => {
-  const t = document.createElement('div');
-  t.className = 'demo-parent-tab' + (s.id === activeSide ? ' active' : '');
-  t.textContent = s.label;
-  t.onclick = () => switchSide(s.id);
-  parentTabsEl.appendChild(t);
-});
-
-function buildChildTabs() {
-  tabsEl.innerHTML = '';
-  activeCases().forEach((c, i) => {
-    const t = document.createElement('div');
-    t.className = 'demo-tab' + (i === activeCase ? ' active' : '');
-    t.textContent = c.tab;
-    t.onclick = () => switchCase(i);
-    tabsEl.appendChild(t);
-  });
-}
-
-function switchSide(sideId) {
-  if (animTimeout) { clearTimeout(animTimeout); animTimeout = null; }
-  activeSide = sideId;
-  activeCase = 0;
-  parentTabsEl.querySelectorAll('.demo-parent-tab').forEach((t, i) => {
-    t.classList.toggle('active', sides[i].id === sideId);
-  });
-  buildChildTabs();
-  bodyEl.innerHTML = '';
-  userScrolledUp = false;
-  animating = true;
-  animateMessages(activeCases()[0].msgs, 0);
-}
-
-function switchCase(idx) {
-  if (animTimeout) { clearTimeout(animTimeout); animTimeout = null; }
-  activeCase = idx;
-  tabsEl.querySelectorAll('.demo-tab').forEach((t, i) => t.classList.toggle('active', i === idx));
-  bodyEl.innerHTML = '';
-  userScrolledUp = false;
-  animating = true;
-  animateMessages(activeCases()[idx].msgs, 0);
-}
-
-buildChildTabs();
-
-let userScrolledUp = false;
-
-function isAtBottom(el) {
-  return el.scrollHeight - el.scrollTop - el.clientHeight < 5;
-}
-
-function onUserScroll() {
-  requestAnimationFrame(() => {
-    userScrolledUp = !isAtBottom(bodyEl);
-  });
-}
-bodyEl.addEventListener('wheel', onUserScroll, { passive: true });
-bodyEl.addEventListener('touchmove', onUserScroll, { passive: true });
-
-function maybeAutoScroll() {
-  if (!userScrolledUp) bodyEl.scrollTop = bodyEl.scrollHeight;
-}
-
-function animateMessages(msgs, idx) {
-  if (idx >= msgs.length) {
-    animating = false;
-    animTimeout = setTimeout(() => switchCase((activeCase + 1) % activeCases().length), 4000);
-    return;
-  }
-
-  const m = msgs[idx];
-
-  if (m.role === 'system') {
-    const div = document.createElement('div');
-    div.className = 'demo-msg system';
-    div.innerHTML = `<div class="sys-pulse"><span></span><span></span><span></span></div><span class="sys-text">${m.text}</span>`;
-    bodyEl.appendChild(div);
-    requestAnimationFrame(() => div.classList.add('visible'));
-    maybeAutoScroll();
-    animTimeout = setTimeout(() => {
-      if (m.done) {
-        div.querySelector('.sys-pulse').remove();
-        div.querySelector('.sys-text').innerHTML = m.done;
-        div.classList.add('settled');
-      }
-      animateMessages(msgs, idx + 1);
-    }, m.duration);
-    return;
-  }
-
-  const div = document.createElement('div');
-  div.className = 'demo-msg ' + m.role;
-  const lbl = document.createElement('div'); lbl.className = 'msg-label';
-  lbl.textContent = m.role === 'agent' ? 'LeanLog Agent' : 'You';
-  const txt = document.createElement('div');
-  div.appendChild(lbl); div.appendChild(txt);
-  bodyEl.appendChild(div);
-  requestAnimationFrame(() => div.classList.add('visible'));
-  maybeAutoScroll();
-
-  const cursor = document.createElement('span'); cursor.className = 'typing-cursor';
-  txt.appendChild(cursor);
-  let ci = 0;
-  const speed = m.role === 'agent' ? 14 : 10;
-  const node = document.createTextNode('');
-  txt.insertBefore(node, cursor);
-
-  function typeChar() {
-    if (ci < m.text.length) {
-      node.textContent += m.text[ci++];
-      maybeAutoScroll();
-      animTimeout = setTimeout(typeChar, speed + Math.random() * 8);
-    } else {
-      cursor.remove();
-      animTimeout = setTimeout(() => animateMessages(msgs, idx + 1), 500);
-    }
-  }
-  animTimeout = setTimeout(typeChar, m.role === 'human' ? 320 : 420);
-}
-
-/* ── Start demo on scroll into view ────────────────────────────── */
-let demoStarted = false;
-const demoTrigger = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting && !demoStarted) {
-      demoStarted = true;
-      switchCase(0);
-      demoTrigger.disconnect();
-    }
-  });
-}, { threshold: 0.35 });
-demoTrigger.observe(document.querySelector('.demo-panel'));
-
-/* Hero is static; headline cycling removed 2026-06-03. */
 </script>
 </body>
 </html>
