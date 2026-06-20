@@ -7,25 +7,25 @@
 <link rel="shortcut icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="/favicon.ico">
 <title>LeanLog — Opere su negocio con IA</title>
-<meta name="description" content="Los consultores son lentos y el software que compra nunca encaja. LeanLog es la tercera opción: un equipo dedicado que aprende su operación y construye un sistema a la medida de cómo trabaja de verdad, y donde paga sobre todo por resultados.">
+<meta name="description" content="Los consultores son lentos y el software que compra nunca encaja. LeanLog es la tercera opción: un equipo dedicado que aprende su operación y construye un sistema a la medida de cómo trabaja de verdad, probado con sus datos antes de comprometerse.">
 <link rel="alternate" hreflang="en" href="https://leanlog.ai/">
 <link rel="alternate" hreflang="es" href="https://leanlog.ai/es/">
 <link rel="alternate" hreflang="x-default" href="https://leanlog.ai/">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* ── Reset & Tokens ────────────────────────────────────────────── */
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#f8f5ef;
-  --bg2:#f1ede6;
-  --bg3:#e9e4db;
-  --bg4:#e1dbd0;
-  --accent:#141210;
-  --accent-dim:rgba(0,0,0,.04);
-  --accent-glow:rgba(0,0,0,.08);
+  --bg:#f5f6f7;
+  --bg2:#edeef0;
+  --bg3:#e4e6e9;
+  --bg4:#d8dbe0;
+  --accent:#0f6e56;
+  --accent-dim:rgba(15,110,86,.06);
+  --accent-glow:rgba(15,110,86,.10);
   --text:#141210;
-  --text2:#5a5650;
-  --text3:#a09a92;
+  --text2:#565a61;
+  --text3:#9aa0a7;
   --border:rgba(0,0,0,.08);
   --border2:rgba(0,0,0,.14);
   --serif:'Playfair Display',Georgia,serif;
@@ -40,7 +40,7 @@ img{display:block;max-width:100%}
 /* ── Dot-grid ──────────────────────────────────────────────────── */
 body::before{
   content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
-  background-image:radial-gradient(rgba(0,0,0,.06) 1px,transparent 1px);
+  background-image:radial-gradient(rgba(0,0,0,.05) 1px,transparent 1px);
   background-size:32px 32px;
 }
 
@@ -51,7 +51,7 @@ body::before{
 
 /* ── Utility ───────────────────────────────────────────────────── */
 .container{max-width:1140px;margin:0 auto;padding:0 48px}
-.tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--text3);margin-bottom:22px}
+.tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);margin-bottom:22px}
 .tag::before{content:'//'}
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
@@ -65,7 +65,7 @@ body::before{
   position:fixed;top:0;left:0;right:0;z-index:200;
   padding:0 48px;height:60px;
   display:flex;align-items:center;justify-content:space-between;
-  background:rgba(248,245,239,.92);backdrop-filter:blur(20px);
+  background:rgba(245,246,247,.92);backdrop-filter:blur(20px);
   border-bottom:1px solid var(--border);
 }
 .nav-logo{display:flex;align-items:center}
@@ -76,19 +76,13 @@ body::before{
 .footer-lang{color:var(--text3);transition:color .2s}
 .footer-lang:hover{color:var(--text2)}
 .nav-right{display:flex;align-items:center;gap:12px}
-.btn-ghost{
-  font-size:13px;color:var(--text3);padding:7px 16px;
-  border:1px solid var(--border2);background:none;cursor:pointer;
-  font-family:var(--sans);transition:all .2s;letter-spacing:.1px;
-}
-.btn-ghost:hover{color:var(--text2);border-color:var(--text3)}
 .btn-primary{
   font-size:13px;font-weight:500;color:var(--bg);background:var(--accent);
   padding:8px 20px;border:none;cursor:pointer;font-family:var(--sans);
   transition:all .2s;letter-spacing:.2px;
   display:inline-flex;align-items:center;
 }
-.btn-primary:hover{background:#2e2b28;box-shadow:0 4px 20px rgba(0,0,0,.15)}
+.btn-primary:hover{background:#0c5a47;box-shadow:0 4px 20px rgba(15,110,86,.22)}
 .btn-outline{
   font-size:13px;font-weight:500;color:var(--text);background:none;
   padding:8px 20px;border:1px solid var(--border2);cursor:pointer;
@@ -105,7 +99,7 @@ body::before{
 }
 .hero-glow{
   position:absolute;top:-20%;right:-10%;width:800px;height:800px;
-  background:radial-gradient(circle,rgba(0,0,0,.03) 0%,transparent 65%);
+  background:radial-gradient(circle,var(--accent-glow) 0%,transparent 65%);
   pointer-events:none;
 }
 .hero-inner{max-width:1140px;margin:0 auto;width:100%}
@@ -144,40 +138,72 @@ body::before{
   padding:14px 0;
   display:flex;align-items:center;justify-content:center;
 }
-.org-logo img{height:32px;width:auto;max-width:100%;object-fit:contain;display:block;opacity:.78;transition:opacity .2s}
-.org-logo:hover img{opacity:1}
-/* GT mark stacks Georgia/Tech vertically; bump height for parity */
+.org-logo img{height:32px;width:auto;max-width:100%;object-fit:contain;display:block;opacity:.7;transition:opacity .2s;filter:grayscale(1)}
+.org-logo:hover img{opacity:1;filter:grayscale(0)}
 .org-logo img[alt*="Georgia"]{height:60px}
 
 /* ── Section commons ───────────────────────────────────────────── */
 section{padding:64px 0;position:relative;z-index:1}
-#problem,#solution,#process,#who{background:var(--bg);scroll-margin-top:70px}
+#thesis,#processes,#cases,#why,#third,#start,#begin,#who{background:var(--bg);scroll-margin-top:70px}
 .section-header{margin-bottom:48px}
 .section-header.center{text-align:center}
-.section-header.center .section-title{margin-left:auto;margin-right:auto;max-width:880px}
+.section-header.center .section-title{margin-left:auto;margin-right:auto;max-width:900px}
 .section-header.center .section-desc{margin-left:auto;margin-right:auto}
 .section-title{
-  font-family:var(--serif);font-size:clamp(22px,3vw,44px);
-  line-height:1.14;max-width:820px;color:var(--text);
+  font-family:var(--serif);font-size:clamp(22px,3vw,42px);
+  line-height:1.16;max-width:880px;color:var(--text);
   font-weight:400;letter-spacing:-.3px;margin-bottom:18px;
 }
 .section-title em{font-style:italic;color:var(--accent)}
-.section-desc{font-size:15px;line-height:1.8;color:var(--text2);max-width:600px;font-weight:300}
+.section-title em.al{color:var(--text)}
+.section-title strong{font-weight:700;color:var(--accent)}
+.section-desc{font-size:15px;line-height:1.8;color:var(--text2);max-width:620px;font-weight:300}
 
-/* ── Card grids (problem · process) ────────────────────────────── */
-.opt-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
-.problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
-.problem-card{
-  background:var(--bg);padding:32px 30px;position:relative;
-  overflow:hidden;transition:background .3s;
+/* ── Thesis statement ──────────────────────────────────────────── */
+#thesis{padding:96px 0;border-bottom:1px solid var(--border)}
+.thesis-line{
+  font-family:var(--serif);font-size:clamp(26px,3.6vw,48px);line-height:1.22;
+  max-width:1040px;margin:0 auto;text-align:center;color:var(--text);
+  font-weight:400;letter-spacing:-.3px;
 }
-.problem-card:hover{background:var(--bg2)}
-.pc-index{
-  font-family:var(--mono);font-size:10px;color:var(--text3);
-  letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;display:block;
+.thesis-line strong{font-weight:700;color:var(--accent)}
+.thesis-line em{font-style:italic;color:var(--text)}
+
+/* ── Processes grid ────────────────────────────────────────────── */
+.proc-cols{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.col-head{
+  font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--text);margin-bottom:16px;display:flex;align-items:center;gap:12px;
 }
-.problem-card h3{font-family:var(--serif);font-size:21px;font-weight:400;margin-bottom:12px;line-height:1.25;color:var(--text);letter-spacing:-.2px}
-.problem-card p{font-size:13.5px;color:var(--text2);line-height:1.8;font-weight:300}
+.col-head span{color:var(--text3);letter-spacing:1px;text-transform:none;font-size:10.5px}
+.col-head::after{content:'';flex:1;height:1px;background:var(--border2)}
+.mods{display:grid;grid-template-columns:1fr;gap:1px;background:var(--border);border:1px solid var(--border)}
+.mod{background:var(--bg);padding:18px 22px;transition:background .25s}
+.mod:hover{background:var(--bg2)}
+.mod-name{font-size:15px;font-weight:500;color:var(--text);line-height:1.2;margin-bottom:4px}
+.mod-desc{font-size:12.5px;font-weight:300;color:var(--text2);line-height:1.5}
+
+/* ── Case studies ──────────────────────────────────────────────── */
+.cs{max-width:1140px;margin:0 auto}
+.cs + .cs{margin-top:40px}
+.cs-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.cs-title{font-family:var(--serif);font-size:clamp(20px,2.4vw,30px);font-weight:400;color:var(--text);letter-spacing:-.2px;line-height:1.2;margin-bottom:22px}
+.cs-title strong{font-weight:700;color:var(--accent)}
+.cs-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+.cs-step{background:var(--bg);padding:24px 22px;display:flex;flex-direction:column;gap:9px}
+.cs-step-n{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--accent)}
+.cs-step h4{font-family:var(--serif);font-size:16px;font-weight:400;color:var(--text);line-height:1.25;letter-spacing:-.1px}
+.cs-step p{font-size:12.5px;color:var(--text2);line-height:1.6;font-weight:300}
+
+/* ── Why not build it yourself (DIY risk) ──────────────────────── */
+.why-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+.why-card{background:var(--bg);padding:26px 22px;display:flex;flex-direction:column;gap:12px}
+.why-ico{width:42px;height:42px;border-radius:10px;background:var(--bg3);display:flex;align-items:center;justify-content:center;color:var(--accent);flex-shrink:0}
+.why-ico svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.why-h{font-family:var(--serif);font-size:17px;font-weight:400;line-height:1.2;color:var(--text);letter-spacing:-.2px}
+.why-body{font-size:12.5px;line-height:1.55;color:var(--text2);font-weight:300}
+.why-foot{margin:30px auto 0;max-width:1000px;text-align:center;font-size:clamp(15px,1.6vw,18px);line-height:1.5;color:var(--text);font-weight:300}
+.why-foot strong{color:var(--accent);font-weight:600}
 
 /* ── Third option (consulting vs software vs LeanLog) ──────────── */
 .cmp{display:grid;grid-template-columns:1.9fr 1fr 1.15fr 1fr;max-width:980px;margin:0 auto;border:1px solid var(--border);background:var(--bg)}
@@ -190,8 +216,8 @@ section{padding:64px 0;position:relative;z-index:1}
 .yes{color:var(--text);font-size:18px;line-height:1;font-weight:700}
 .no{color:var(--text3);font-size:16px;line-height:1}
 .c-wedge{font-weight:600}
-.yes.win{color:#1e9440;font-weight:700}
-.cmp .c-us .yes{color:#1e9440}
+.yes.win{color:var(--accent);font-weight:700}
+.cmp .c-us .yes{color:var(--accent)}
 
 /* ── How we work (stepper) ─────────────────────────────────────── */
 .hww-steps{
@@ -204,7 +230,7 @@ section{padding:64px 0;position:relative;z-index:1}
   display:flex;flex-direction:column;
 }
 .hww-num{
-  font-family:var(--mono);font-size:11px;letter-spacing:2.5px;color:var(--text3);
+  font-family:var(--mono);font-size:11px;letter-spacing:2.5px;color:var(--accent);
   margin-bottom:18px;display:flex;align-items:center;gap:10px;
 }
 .hww-num::after{content:'';flex:1;height:1px;background:var(--border2)}
@@ -220,6 +246,21 @@ section{padding:64px 0;position:relative;z-index:1}
 .pain-slots{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);max-width:1000px;margin:0 auto}
 .pain-slot{background:var(--bg);padding:34px 28px;min-height:150px}
 .pain-num{font-family:var(--serif);font-size:38px;font-weight:400;color:var(--bg4);line-height:1}
+
+/* ── Two ways to begin ─────────────────────────────────────────── */
+.next-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);max-width:1000px;margin:0 auto}
+.next-card{background:var(--bg);padding:34px 36px;display:flex;flex-direction:column}
+.next-label{font-family:var(--serif);font-size:23px;font-weight:400;color:var(--text);letter-spacing:-.2px}
+.next-sub{font-family:var(--mono);font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);margin:8px 0 22px}
+.next-steps{list-style:none;counter-reset:ns;display:flex;flex-direction:column;gap:11px;margin-bottom:22px}
+.next-steps li{counter-increment:ns;font-size:14px;line-height:1.5;color:var(--text);font-weight:400;padding-left:30px;position:relative}
+.next-steps li::before{content:counter(ns);position:absolute;left:0;top:-1px;font-family:var(--mono);font-size:10px;color:var(--text3);border:1px solid var(--border2);width:19px;height:19px;display:flex;align-items:center;justify-content:center;border-radius:50%}
+.next-points{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:22px}
+.next-points li{font-size:14px;line-height:1.55;color:var(--text);font-weight:300;padding-left:18px;position:relative}
+.next-points li::before{content:'';position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--accent)}
+.next-terms{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:auto;border-top:1px solid var(--border);padding-top:18px}
+.next-terms li{font-size:13px;line-height:1.6;color:var(--text2);font-weight:300;padding-left:16px;position:relative}
+.next-terms li::before{content:'';position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--text3)}
 
 /* ── Who we are (secondary aside — two-column band) ── */
 #who{padding:52px 0;border-top:1px solid var(--border)}
@@ -237,12 +278,14 @@ section{padding:64px 0;position:relative;z-index:1}
 }
 .cta-inner h2{
   font-family:var(--serif);font-size:clamp(36px,5vw,72px);font-weight:400;
-  color:var(--text);line-height:1.08;letter-spacing:-.5px;margin-bottom:48px;
+  color:var(--text);line-height:1.08;letter-spacing:-.5px;margin-bottom:40px;
 }
-.cta-inner h2 em{font-style:italic}
-.cta-buttons{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:24px}
+.cta-inner h2 em{font-style:italic;color:var(--accent)}
+.cta-buttons{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:22px}
 .cta-inner .btn-primary{padding:18px 48px;font-size:15px;letter-spacing:.3px}
 .cta-inner .btn-outline{padding:18px 48px;font-size:15px;letter-spacing:.3px}
+.cta-phone{font-family:var(--mono);font-size:12px;letter-spacing:.5px;color:var(--text3)}
+.cta-phone a{color:var(--text2);border-bottom:1px solid var(--border2)}
 
 footer{
   border-top:1px solid var(--border);padding:28px 48px;
@@ -264,7 +307,11 @@ footer{
   .nav-center,.nav-right .btn-ghost{display:none}
   .hero{padding:100px 24px 72px}
   section{padding:72px 0}
-  .opt-grid,.problem-grid,.pain-slots{grid-template-columns:1fr}
+  .proc-cols{grid-template-columns:1fr;gap:32px}
+  .problem-grid,.pain-slots{grid-template-columns:1fr}
+  .cs-steps{grid-template-columns:repeat(2,1fr)}
+  .why-grid{grid-template-columns:repeat(2,1fr)}
+  .next-grid{grid-template-columns:1fr}
   .hww-steps{grid-template-columns:repeat(2,1fr)}
   .hero-creds{margin-top:40px}
   footer{padding:20px 24px;flex-direction:column;gap:6px;text-align:center}
@@ -278,9 +325,10 @@ footer{
   .cmp .c-lbl{font-size:12px}
 }
 
-@media(max-width:520px){.hww-steps{grid-template-columns:1fr}}
+@media(max-width:520px){
+  .hww-steps,.cs-steps,.why-grid{grid-template-columns:1fr}
+}
 
-/* Mobile logo grid — 4 columns × 2 rows (7 logos, last cell empty) */
 @media(max-width:680px){
   .hero h1{font-size:clamp(40px,12vw,60px);line-height:1.08}
   .org-logos{
@@ -305,7 +353,8 @@ footer{
 <nav class="nav">
   <a href="/es/" class="nav-logo"><img src="/leanlog-final-light 2.png" alt="LeanLog"></a>
   <div class="nav-center">
-    <a href="/es/#solution">Cómo trabajamos</a>
+    <a href="/es/#processes">Qué hacemos</a>
+    <a href="/es/#third">Cómo trabajamos</a>
     <a href="/es/#who">Quiénes somos</a>
   </div>
   <div class="nav-right">
@@ -317,7 +366,7 @@ footer{
 <section class="hero">
   <div class="hero-glow"></div>
   <div class="hero-inner">
-    <h1>Opere su negocio con IA.</h1>
+    <h1>Opere su negocio con <em>IA</em>.</h1>
 
     <!-- Credenciales -->
     <div class="hero-creds">
@@ -332,43 +381,144 @@ footer{
         <div class="org-logo"><img src="/assets/logos/mitre.svg" alt="MITRE Corporation"></div>
       </div>
     </div>
-    <button class="hero-scroll" onclick="document.getElementById('problem').scrollIntoView({behavior:'smooth'})">
+    <button class="hero-scroll" onclick="document.getElementById('thesis').scrollIntoView({behavior:'smooth'})">
       <span>Deslice para explorar</span>
       <svg class="hero-scroll-arrow" viewBox="0 0 28 16" width="26" height="15" aria-hidden="true"><path d="M2 3 L14 13 L26 3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
   </div>
 </section>
 
-<!-- ── Problema ── -->
-<section id="problem">
+<!-- ── Tesis ── -->
+<section id="thesis">
   <div class="container">
-    <div class="section-header">
-      <div class="tag reveal">01 — Por qué nada ha funcionado</div>
-      <h2 class="section-title reveal reveal-d1">Los consultores que contrata tardan meses, muchas veces para entregar diapositivas. El software que compra nunca encaja con su operación.</h2>
-      <p class="section-desc reveal reveal-d2">Cuando necesita arreglar cómo funciona su operación, tiene dos opciones, y probablemente ya probó las dos.</p>
+    <p class="thesis-line reveal">Sumamos la <strong>inteligencia</strong> que las empresas de la economía real <em>ya tienen</em> a las <strong>decisiones</strong> que <em>ya toman</em>, para ejecutarlas <strong>más rápido</strong> y <strong>mejor</strong>.</p>
+  </div>
+</section>
+
+<!-- ── Procesos que operamos ── -->
+<section id="processes">
+  <div class="container">
+    <div class="section-header center">
+      <div class="tag reveal">01 — Qué hacemos</div>
+      <h2 class="section-title reveal reveal-d1">Los procesos que operamos en su negocio.</h2>
+      <p class="section-desc reveal reveal-d2">No son módulos que licencia. Son los ciclos de punta a punta que su operación ya corre, ejecutados por IA sobre sus datos.</p>
     </div>
-    <div class="opt-grid reveal reveal-d3">
-      <div class="problem-card">
-        <span class="pc-index">Consultoría</span>
-        <h3>Contrata consultores y espera.</h3>
-        <p>Pasan los meses y las facturas se acumulan mientras espera un sistema que funcione. Muchas veces nunca llega: lo que recibe es un plan, no algo que opere su negocio.</p>
+    <div class="proc-cols reveal reveal-d3">
+      <div>
+        <div class="col-head">Lado de compras <span>· ordene las cantidades correctas al mejor costo total</span></div>
+        <div class="mods">
+          <div class="mod"><div class="mod-name">Pronóstico de demanda</div><div class="mod-desc">Predice cuánto venderá cada SKU, con semanas de anticipación.</div></div>
+          <div class="mod"><div class="mod-name">Reabastecimiento</div><div class="mod-desc">Define cuánto pedir por SKU, y cuándo.</div></div>
+          <div class="mod"><div class="mod-name">Búsqueda de proveedores y RFQ</div><div class="mod-desc">Contacta a proveedores calificados y compara cotizaciones.</div></div>
+          <div class="mod"><div class="mod-name">OC y conciliación a 3 vías</div><div class="mod-desc">Emite la OC y la concilia contra la recepción y la factura.</div></div>
+        </div>
       </div>
-      <div class="problem-card">
-        <span class="pc-index">Software estándar</span>
-        <h3>Compra software y nunca encaja.</h3>
-        <p>Es un solo producto hecho para todos, así que no puede ajustarse a cómo funciona su operación. Y cuando algo se rompe, está solo: un ticket de soporte que nadie responde, nadie en tecnología que conozca su negocio o en quien pueda confiar.</p>
+      <div>
+        <div class="col-head">Lado de ventas <span>· maximice ingresos sin sacrificar márgenes</span></div>
+        <div class="mods">
+          <div class="mod"><div class="mod-name">Cotización y precios</div><div class="mod-desc">Cotiza cada solicitud contra su historial y redacta la cotización.</div></div>
+          <div class="mod"><div class="mod-name">Gestión de pedidos</div><div class="mod-desc">Convierte las cotizaciones aceptadas en pedidos validados.</div></div>
+          <div class="mod"><div class="mod-name">Facturación</div><div class="mod-desc">Factura con exactitud desde el pedido, a tiempo.</div></div>
+          <div class="mod"><div class="mod-name">Cobranza</div><div class="mod-desc">Concilia los pagos y prioriza a quién perseguir.</div></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── La tercera opción ── -->
-<section id="solution">
+<!-- ── Casos ── -->
+<section id="cases">
   <div class="container">
     <div class="section-header center">
-      <div class="tag reveal">02 — Cómo trabajamos</div>
+      <div class="tag reveal">02 — Cómo funciona</div>
+      <h2 class="section-title reveal reveal-d1">Cómo se ve en su operación.</h2>
+      <p class="section-desc reveal reveal-d2">Tres de los procesos, de principio a fin. El agente hace el trabajo; usted mantiene el control.</p>
+    </div>
+
+    <!-- Cotización -->
+    <div class="cs reveal reveal-d3">
+      <div class="cs-eyebrow">Cotización</div>
+      <h3 class="cs-title">Envíe <strong>cotizaciones</strong> en <strong>minutos</strong> sin dejar <strong>dinero</strong> sobre la mesa.</h3>
+      <div class="cs-steps">
+        <div class="cs-step"><div class="cs-step-n">01</div><h4>El agente se activa</h4><p>Llega una solicitud de cotización a su correo. El agente la toma y lee la ficha técnica, nadie vuelve a teclear nada.</p></div>
+        <div class="cs-step"><div class="cs-step-n">02</div><h4>Reúne el contexto</h4><p>Pondera lo que ponderaría una persona: su ERP y cotizaciones pasadas, este cliente, sus márgenes, restricciones y objetivos.</p></div>
+        <div class="cs-step"><div class="cs-step-n">03</div><h4>Explica; usted ajusta</h4><p>Muestra exactamente cómo fijó el precio. Usted agrega lo que no puede ver, como un competidor en juego, y vuelve a cotizar al instante.</p></div>
+        <div class="cs-step"><div class="cs-step-n">04</div><h4>Lista para enviar</h4><p>Una cotización terminada queda en sus borradores, lista para salir en cuanto usted la envíe.</p></div>
+      </div>
+    </div>
+
+    <!-- Compras -->
+    <div class="cs reveal">
+      <div class="cs-eyebrow">Compras</div>
+      <h3 class="cs-title">Compre las <strong>cantidades</strong> correctas al <strong>mejor costo total</strong>.</h3>
+      <div class="cs-steps">
+        <div class="cs-step"><div class="cs-step-n">01</div><h4>Pronostica la demanda</h4><p>Los últimos modelos de ML predicen la demanda de cada SKU, automáticamente, todos los días, reentrenados con datos nuevos cada mañana.</p></div>
+        <div class="cs-step"><div class="cs-step-n">02</div><h4>Decide qué comprar</h4><p>Pondera el pronóstico contra su inventario, su política de capital de trabajo y los tiempos de entrega para disparar las compras correctas.</p></div>
+        <div class="cs-step"><div class="cs-step-n">03</div><h4>Elige el mejor trato</h4><p>Negocia de ida y vuelta con sus proveedores hasta cerrar el trato que consigue el producto cuando lo necesita, al mejor precio.</p></div>
+        <div class="cs-step"><div class="cs-step-n">04</div><h4>Coloca el pedido</h4><p>Envía el pedido al proveedor y registra la OC en su ERP, sin doble captura, sin que se pierda nada.</p></div>
+      </div>
+    </div>
+
+    <!-- Cobranza -->
+    <div class="cs reveal">
+      <div class="cs-eyebrow">Cobranza</div>
+      <h3 class="cs-title">Cobre <strong>más rápido</strong>, y persiga primero a las <strong>cuentas correctas</strong>.</h3>
+      <div class="cs-steps">
+        <div class="cs-step"><div class="cs-step-n">01</div><h4>Concilia el efectivo</h4><p>Empareja cada pago entrante con la factura correcta y marca los pagos incompletos y las discrepancias.</p></div>
+        <div class="cs-step"><div class="cs-step-n">02</div><h4>Calcula la antigüedad</h4><p>Calcula la antigüedad de sus cuentas por cobrar y ordena a quién perseguir según cuánto está en juego y qué tan probable es que se retrase.</p></div>
+        <div class="cs-step"><div class="cs-step-n">03</div><h4>Redacta el recordatorio</h4><p>Redacta el recordatorio adecuado para cada cuenta, con un tono que escala a medida que el saldo envejece.</p></div>
+        <div class="cs-step"><div class="cs-step-n">04</div><h4>Usted mantiene el control</h4><p>Usted agrega lo que no puede ver, como una promesa hecha en una llamada, y se detiene.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Construirlo usted mismo ── -->
+<section id="why">
+  <div class="container">
+    <div class="section-header center">
+      <div class="tag reveal">03 — Construirlo usted mismo</div>
+      <h2 class="section-title reveal reveal-d1">Usar IA no es difícil; hacerlo por su cuenta implica <strong>riesgos reales</strong> para su negocio.</h2>
+      <p class="section-desc reveal reveal-d2">Claude y ChatGPT hacen fácil empezar. Operarlo de forma segura, económica y confiable sobre su negocio es más difícil de lo que parece.</p>
+    </div>
+    <div class="why-grid reveal reveal-d3">
+      <div class="why-card">
+        <div class="why-ico"><svg viewBox="0 0 24 24"><path d="M12 4 L21.5 20 H2.5 Z"/><line x1="12" y1="10" x2="12" y2="14"/><line x1="12" y1="17" x2="12" y2="17"/></svg></div>
+        <div class="why-h">La automatización multiplica los errores</div>
+        <div class="why-body">Si lo conecta mal, un paso omitido o datos malos, no obtiene una sola mala decisión. La obtiene a velocidad de máquina, en todas partes.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-ico"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.34-5.66"/><polyline points="20 4 20 9 15 9"/></svg></div>
+        <div class="why-h">Se deteriora sin mantenimiento</div>
+        <div class="why-body">Como todo software, necesita mantenimiento: nuevos modelos, nuevas reglas, nuevos casos límite. Si se descuida, deriva en respuestas seguras y equivocadas.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v5.5c0 4.7-3.4 7.8-8 9-4.6-1.2-8-4.3-8-9V6z"/><polyline points="8.8 12 11 14.2 15.2 9.8"/></svg></div>
+        <div class="why-h">Sus datos necesitan seguridad real</div>
+        <div class="why-body">Conectar IA a su ERP, su correo y sus finanzas es una superficie de seguridad. Hecho a la ligera, expone datos que no puede recuperar.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-ico"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5.5" rx="7.5" ry="2.8"/><path d="M4.5 5.5v13c0 1.55 3.36 2.8 7.5 2.8s7.5-1.25 7.5-2.8v-13"/><path d="M4.5 12c0 1.55 3.36 2.8 7.5 2.8s7.5-1.25 7.5-2.8"/></svg></div>
+        <div class="why-h">La IA sin su contexto es un extraño</div>
+        <div class="why-body">El modelo más inteligente del mundo, sin contexto, da respuestas genéricas, seguras y equivocadas. El valor no es el modelo, es el contexto a su alrededor.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-ico"><svg viewBox="0 0 24 24"><polygon points="12 3 21 7.5 12 12 3 7.5"/><polyline points="3 12 12 16.5 21 12"/><polyline points="3 16.5 12 21 21 16.5"/></svg></div>
+        <div class="why-h">Una base que se acumula</div>
+        <div class="why-body">Construya la capa de contexto una vez y cada nueva aplicación sale en días, conectada con el resto. Omítala, y cada una es un desarrollo lento y aislado, hasta que el sistema se pudre.</div>
+      </div>
+    </div>
+    <p class="why-foot reveal">Nosotros construimos la base: <strong>su contexto, las barreras de seguridad y el mantenimiento</strong>, y desplegamos agentes encima.</p>
+  </div>
+</section>
+
+<!-- ── La tercera opción ── -->
+<section id="third">
+  <div class="container">
+    <div class="section-header center">
+      <div class="tag reveal">04 — Cómo trabajamos</div>
       <h2 class="section-title reveal reveal-d1">Somos la tercera opción.</h2>
-      <p class="section-desc reveal reveal-d2">Un equipo dedicado que aprende su operación y construye un sistema a la medida de cómo trabaja de verdad. Respondemos por lo que hace, somos a quienes llama cuando algo se rompe, y la mayor parte de lo que paga depende de que funcione.</p>
+      <p class="section-desc reveal reveal-d2">Un equipo dedicado que aprende su operación y construye un sistema a la medida de cómo trabaja de verdad. Respondemos por lo que hace, y somos a quienes llama cuando algo se rompe.</p>
     </div>
 
     <div class="cmp reveal reveal-d3">
@@ -397,7 +547,7 @@ footer{
       <div><span class="yes">&#10003;</span></div>
       <div class="c-us"><span class="yes">&#10003;</span></div>
 
-      <div class="c-lbl c-wedge">Se paga sobre todo por resultados</div>
+      <div class="c-lbl c-wedge">Probado con sus datos antes de comprometerse</div>
       <div><span class="no">&#10007;</span></div>
       <div><span class="no">&#10007;</span></div>
       <div class="c-us"><span class="yes win">&#10003;</span></div>
@@ -428,11 +578,11 @@ footer{
   </div>
 </section>
 
-<!-- ── El primer proceso ── -->
-<section id="process">
+<!-- ── Por dónde empezamos ── -->
+<section id="start">
   <div class="container">
     <div class="section-header center">
-      <div class="tag reveal">03 — Por dónde empezamos</div>
+      <div class="tag reveal">05 — Por dónde empezamos</div>
       <h2 class="section-title reveal reveal-d1">Empezamos por lo que más duele.</h2>
       <p class="section-desc reveal reveal-d2">Elegimos juntos el primer proceso, normalmente uno de los dolores más urgentes que tiene encima.</p>
     </div>
@@ -444,12 +594,53 @@ footer{
   </div>
 </section>
 
+<!-- ── Dos formas de empezar ── -->
+<section id="begin">
+  <div class="container">
+    <div class="section-header center">
+      <div class="tag reveal">06 — Por dónde empezar</div>
+      <h2 class="section-title reveal reveal-d1">Dos formas de empezar.</h2>
+    </div>
+    <div class="next-grid reveal reveal-d2">
+      <div class="next-card">
+        <div class="next-label">El piloto</div>
+        <div class="next-sub">Dos meses · $2k/mes · integrados</div>
+        <ul class="next-steps">
+          <li>Nos integramos en su operación.</li>
+          <li>Codificamos cómo se hace el trabajo de verdad.</li>
+          <li>Construimos un prototipo funcional con sus datos.</li>
+          <li>Iteramos hasta que esté listo para producción.</li>
+        </ul>
+        <ul class="next-terms">
+          <li>Es una prueba de valor, sobre sus datos.</li>
+          <li>El precio de largo plazo se define después de probar el valor.</li>
+          <li>Si toma más de dos meses, corre por nuestra cuenta.</li>
+        </ul>
+      </div>
+      <div class="next-card">
+        <div class="next-label">Implementación completa</div>
+        <div class="next-sub">Anual · desde $50k</div>
+        <ul class="next-points">
+          <li>La desplegamos en toda su operación, no solo en un proceso.</li>
+          <li>Sistemas en producción, integrados y mantenidos todo el año.</li>
+          <li>Un equipo dedicado que escala con usted.</li>
+        </ul>
+        <ul class="next-terms">
+          <li>Para equipos listos para apostar de lleno por la IA.</li>
+          <li>Cuando el beneficio es grande, y sabe dónde está.</li>
+          <li>Cuando quiere un solo socio en toda la operación.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ── Quiénes somos ── -->
 <section id="who">
   <div class="container">
     <div class="who-grid reveal">
       <div class="who-left">
-        <div class="tag">04 — Quiénes somos</div>
+        <div class="tag">07 — Quiénes somos</div>
         <h2 class="who-title">Hemos operado el negocio, y hemos construido la IA.</h2>
       </div>
       <p class="who-prose">LeanLog está hecho por operadores e ingenieros de IA. Escalamos una empresa de ecommerce de cero a $60M y operamos su negocio, y hemos puesto IA en líneas de producción, en Intel y para el Departamento de Defensa. Y en todos los lugares donde trabajamos aparecen las mismas dos malas opciones: consultores lentos que dejan un plan, o software que nunca encaja con cómo funciona la operación de verdad. Por eso construimos la tercera opción.</p>
@@ -460,11 +651,12 @@ footer{
 <!-- ── CTA final ── -->
 <section id="cta">
   <div class="cta-inner">
-    <h2>Opere su negocio con IA.</h2>
+    <h2>Opere su negocio con <em>IA</em>.</h2>
     <div class="cta-buttons">
       <a class="btn-primary reveal" href="mailto:rodrigo@leanlog.ai">Hable con un fundador</a>
       <a class="btn-outline reveal" href="mailto:rodrigo@leanlog.ai?subject=Solicitud%20de%20demo">Solicite una demo</a>
     </div>
+    <p class="cta-phone reveal">O llame al CEO al <a href="tel:+17733863801">+1 773 386 3801</a></p>
   </div>
 </section>
 

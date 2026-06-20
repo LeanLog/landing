@@ -7,25 +7,25 @@
 <link rel="shortcut icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="/favicon.ico">
 <title>LeanLog — Run your operation on AI</title>
-<meta name="description" content="Consultants are slow and the software you buy never fits. LeanLog is the third option: a dedicated team that learns your operation and builds a working system around how you actually run, and where you pay mostly on results.">
+<meta name="description" content="Consultants are slow and the software you buy never fits. LeanLog is the third option: a dedicated team that learns your operation and builds a working system around how you actually run, proven on your data before you commit.">
 <link rel="alternate" hreflang="en" href="https://leanlog.ai/">
 <link rel="alternate" hreflang="es" href="https://leanlog.ai/es/">
 <link rel="alternate" hreflang="x-default" href="https://leanlog.ai/">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* ── Reset & Tokens ────────────────────────────────────────────── */
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#f8f5ef;
-  --bg2:#f1ede6;
-  --bg3:#e9e4db;
-  --bg4:#e1dbd0;
-  --accent:#141210;
-  --accent-dim:rgba(0,0,0,.04);
-  --accent-glow:rgba(0,0,0,.08);
+  --bg:#f5f6f7;
+  --bg2:#edeef0;
+  --bg3:#e4e6e9;
+  --bg4:#d8dbe0;
+  --accent:#0f6e56;
+  --accent-dim:rgba(15,110,86,.06);
+  --accent-glow:rgba(15,110,86,.10);
   --text:#141210;
-  --text2:#5a5650;
-  --text3:#a09a92;
+  --text2:#565a61;
+  --text3:#9aa0a7;
   --border:rgba(0,0,0,.08);
   --border2:rgba(0,0,0,.14);
   --serif:'Playfair Display',Georgia,serif;
@@ -40,7 +40,7 @@ img{display:block;max-width:100%}
 /* ── Dot-grid ──────────────────────────────────────────────────── */
 body::before{
   content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
-  background-image:radial-gradient(rgba(0,0,0,.06) 1px,transparent 1px);
+  background-image:radial-gradient(rgba(0,0,0,.05) 1px,transparent 1px);
   background-size:32px 32px;
 }
 
@@ -51,7 +51,7 @@ body::before{
 
 /* ── Utility ───────────────────────────────────────────────────── */
 .container{max-width:1140px;margin:0 auto;padding:0 48px}
-.tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--text3);margin-bottom:22px}
+.tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);margin-bottom:22px}
 .tag::before{content:'//'}
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
@@ -65,7 +65,7 @@ body::before{
   position:fixed;top:0;left:0;right:0;z-index:200;
   padding:0 48px;height:60px;
   display:flex;align-items:center;justify-content:space-between;
-  background:rgba(248,245,239,.92);backdrop-filter:blur(20px);
+  background:rgba(245,246,247,.92);backdrop-filter:blur(20px);
   border-bottom:1px solid var(--border);
 }
 .nav-logo{display:flex;align-items:center}
@@ -76,19 +76,13 @@ body::before{
 .footer-lang{color:var(--text3);transition:color .2s}
 .footer-lang:hover{color:var(--text2)}
 .nav-right{display:flex;align-items:center;gap:12px}
-.btn-ghost{
-  font-size:13px;color:var(--text3);padding:7px 16px;
-  border:1px solid var(--border2);background:none;cursor:pointer;
-  font-family:var(--sans);transition:all .2s;letter-spacing:.1px;
-}
-.btn-ghost:hover{color:var(--text2);border-color:var(--text3)}
 .btn-primary{
   font-size:13px;font-weight:500;color:var(--bg);background:var(--accent);
   padding:8px 20px;border:none;cursor:pointer;font-family:var(--sans);
   transition:all .2s;letter-spacing:.2px;
   display:inline-flex;align-items:center;
 }
-.btn-primary:hover{background:#2e2b28;box-shadow:0 4px 20px rgba(0,0,0,.15)}
+.btn-primary:hover{background:#0c5a47;box-shadow:0 4px 20px rgba(15,110,86,.22)}
 .btn-outline{
   font-size:13px;font-weight:500;color:var(--text);background:none;
   padding:8px 20px;border:1px solid var(--border2);cursor:pointer;
@@ -105,7 +99,7 @@ body::before{
 }
 .hero-glow{
   position:absolute;top:-20%;right:-10%;width:800px;height:800px;
-  background:radial-gradient(circle,rgba(0,0,0,.03) 0%,transparent 65%);
+  background:radial-gradient(circle,var(--accent-glow) 0%,transparent 65%);
   pointer-events:none;
 }
 .hero-inner{max-width:1140px;margin:0 auto;width:100%}
@@ -144,40 +138,73 @@ body::before{
   padding:14px 0;
   display:flex;align-items:center;justify-content:center;
 }
-.org-logo img{height:32px;width:auto;max-width:100%;object-fit:contain;display:block;opacity:.78;transition:opacity .2s}
-.org-logo:hover img{opacity:1}
+.org-logo img{height:32px;width:auto;max-width:100%;object-fit:contain;display:block;opacity:.7;transition:opacity .2s;filter:grayscale(1)}
+.org-logo:hover img{opacity:1;filter:grayscale(0)}
 /* GT mark stacks Georgia/Tech vertically; bump height for parity */
 .org-logo img[alt*="Georgia"]{height:60px}
 
 /* ── Section commons ───────────────────────────────────────────── */
 section{padding:64px 0;position:relative;z-index:1}
-#problem,#solution,#process,#who{background:var(--bg);scroll-margin-top:70px}
+#thesis,#processes,#cases,#why,#third,#start,#begin,#who{background:var(--bg);scroll-margin-top:70px}
 .section-header{margin-bottom:48px}
 .section-header.center{text-align:center}
-.section-header.center .section-title{margin-left:auto;margin-right:auto;max-width:880px}
+.section-header.center .section-title{margin-left:auto;margin-right:auto;max-width:900px}
 .section-header.center .section-desc{margin-left:auto;margin-right:auto}
 .section-title{
-  font-family:var(--serif);font-size:clamp(22px,3vw,44px);
-  line-height:1.14;max-width:820px;color:var(--text);
+  font-family:var(--serif);font-size:clamp(22px,3vw,42px);
+  line-height:1.16;max-width:880px;color:var(--text);
   font-weight:400;letter-spacing:-.3px;margin-bottom:18px;
 }
 .section-title em{font-style:italic;color:var(--accent)}
-.section-desc{font-size:15px;line-height:1.8;color:var(--text2);max-width:600px;font-weight:300}
+.section-title em.al{color:var(--text)}
+.section-title strong{font-weight:700;color:var(--accent)}
+.section-desc{font-size:15px;line-height:1.8;color:var(--text2);max-width:620px;font-weight:300}
 
-/* ── Card grids (problem · process) ────────────────────────────── */
-.opt-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
-.problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
-.problem-card{
-  background:var(--bg);padding:32px 30px;position:relative;
-  overflow:hidden;transition:background .3s;
+/* ── Thesis statement ──────────────────────────────────────────── */
+#thesis{padding:96px 0;border-bottom:1px solid var(--border)}
+.thesis-line{
+  font-family:var(--serif);font-size:clamp(26px,3.6vw,48px);line-height:1.22;
+  max-width:1040px;margin:0 auto;text-align:center;color:var(--text);
+  font-weight:400;letter-spacing:-.3px;
 }
-.problem-card:hover{background:var(--bg2)}
-.pc-index{
-  font-family:var(--mono);font-size:10px;color:var(--text3);
-  letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;display:block;
+.thesis-line strong{font-weight:700;color:var(--accent)}
+.thesis-line em{font-style:italic;color:var(--text)}
+
+/* ── Processes grid ────────────────────────────────────────────── */
+.proc-cols{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.col-head{
+  font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--text);margin-bottom:16px;display:flex;align-items:center;gap:12px;
 }
-.problem-card h3{font-family:var(--serif);font-size:21px;font-weight:400;margin-bottom:12px;line-height:1.25;color:var(--text);letter-spacing:-.2px}
-.problem-card p{font-size:13.5px;color:var(--text2);line-height:1.8;font-weight:300}
+.col-head span{color:var(--text3);letter-spacing:1px;text-transform:none;font-size:10.5px}
+.col-head::after{content:'';flex:1;height:1px;background:var(--border2)}
+.mods{display:grid;grid-template-columns:1fr;gap:1px;background:var(--border);border:1px solid var(--border)}
+.mod{background:var(--bg);padding:18px 22px;transition:background .25s}
+.mod:hover{background:var(--bg2)}
+.mod-name{font-size:15px;font-weight:500;color:var(--text);line-height:1.2;margin-bottom:4px}
+.mod-desc{font-size:12.5px;font-weight:300;color:var(--text2);line-height:1.5}
+
+/* ── Case studies ──────────────────────────────────────────────── */
+.cs{max-width:1140px;margin:0 auto}
+.cs + .cs{margin-top:40px}
+.cs-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.cs-title{font-family:var(--serif);font-size:clamp(20px,2.4vw,30px);font-weight:400;color:var(--text);letter-spacing:-.2px;line-height:1.2;margin-bottom:22px}
+.cs-title strong{font-weight:700;color:var(--accent)}
+.cs-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+.cs-step{background:var(--bg);padding:24px 22px;display:flex;flex-direction:column;gap:9px}
+.cs-step-n{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--accent)}
+.cs-step h4{font-family:var(--serif);font-size:16px;font-weight:400;color:var(--text);line-height:1.25;letter-spacing:-.1px}
+.cs-step p{font-size:12.5px;color:var(--text2);line-height:1.6;font-weight:300}
+
+/* ── Why not build it yourself (DIY risk) ──────────────────────── */
+.why-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+.why-card{background:var(--bg);padding:26px 22px;display:flex;flex-direction:column;gap:12px}
+.why-ico{width:42px;height:42px;border-radius:10px;background:var(--bg3);display:flex;align-items:center;justify-content:center;color:var(--accent);flex-shrink:0}
+.why-ico svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.why-h{font-family:var(--serif);font-size:17px;font-weight:400;line-height:1.2;color:var(--text);letter-spacing:-.2px}
+.why-body{font-size:12.5px;line-height:1.55;color:var(--text2);font-weight:300}
+.why-foot{margin:30px auto 0;max-width:1000px;text-align:center;font-size:clamp(15px,1.6vw,18px);line-height:1.5;color:var(--text);font-weight:300}
+.why-foot strong{color:var(--accent);font-weight:600}
 
 /* ── Third option (consulting vs software vs LeanLog) ──────────── */
 .cmp{display:grid;grid-template-columns:1.9fr 1fr 1.15fr 1fr;max-width:980px;margin:0 auto;border:1px solid var(--border);background:var(--bg)}
@@ -190,8 +217,8 @@ section{padding:64px 0;position:relative;z-index:1}
 .yes{color:var(--text);font-size:18px;line-height:1;font-weight:700}
 .no{color:var(--text3);font-size:16px;line-height:1}
 .c-wedge{font-weight:600}
-.yes.win{color:#1e9440;font-weight:700}
-.cmp .c-us .yes{color:#1e9440}
+.yes.win{color:var(--accent);font-weight:700}
+.cmp .c-us .yes{color:var(--accent)}
 
 /* ── How we work (stepper) ─────────────────────────────────────── */
 .hww-steps{
@@ -204,7 +231,7 @@ section{padding:64px 0;position:relative;z-index:1}
   display:flex;flex-direction:column;
 }
 .hww-num{
-  font-family:var(--mono);font-size:11px;letter-spacing:2.5px;color:var(--text3);
+  font-family:var(--mono);font-size:11px;letter-spacing:2.5px;color:var(--accent);
   margin-bottom:18px;display:flex;align-items:center;gap:10px;
 }
 .hww-num::after{content:'';flex:1;height:1px;background:var(--border2)}
@@ -215,10 +242,26 @@ section{padding:64px 0;position:relative;z-index:1}
 .hww-step p{
   font-size:13px;color:var(--text2);line-height:1.75;font-weight:300;
 }
+
 /* ── First process (empty pain slots) ─────────────────────────── */
 .pain-slots{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);max-width:1000px;margin:0 auto}
 .pain-slot{background:var(--bg);padding:34px 28px;min-height:150px}
 .pain-num{font-family:var(--serif);font-size:38px;font-weight:400;color:var(--bg4);line-height:1}
+
+/* ── Two ways to begin ─────────────────────────────────────────── */
+.next-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);max-width:1000px;margin:0 auto}
+.next-card{background:var(--bg);padding:34px 36px;display:flex;flex-direction:column}
+.next-label{font-family:var(--serif);font-size:23px;font-weight:400;color:var(--text);letter-spacing:-.2px}
+.next-sub{font-family:var(--mono);font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);margin:8px 0 22px}
+.next-steps{list-style:none;counter-reset:ns;display:flex;flex-direction:column;gap:11px;margin-bottom:22px}
+.next-steps li{counter-increment:ns;font-size:14px;line-height:1.5;color:var(--text);font-weight:400;padding-left:30px;position:relative}
+.next-steps li::before{content:counter(ns);position:absolute;left:0;top:-1px;font-family:var(--mono);font-size:10px;color:var(--text3);border:1px solid var(--border2);width:19px;height:19px;display:flex;align-items:center;justify-content:center;border-radius:50%}
+.next-points{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:22px}
+.next-points li{font-size:14px;line-height:1.55;color:var(--text);font-weight:300;padding-left:18px;position:relative}
+.next-points li::before{content:'';position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--accent)}
+.next-terms{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:auto;border-top:1px solid var(--border);padding-top:18px}
+.next-terms li{font-size:13px;line-height:1.6;color:var(--text2);font-weight:300;padding-left:16px;position:relative}
+.next-terms li::before{content:'';position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--text3)}
 
 /* ── Who we are (secondary aside — two-column band) ── */
 #who{padding:52px 0;border-top:1px solid var(--border)}
@@ -236,12 +279,14 @@ section{padding:64px 0;position:relative;z-index:1}
 }
 .cta-inner h2{
   font-family:var(--serif);font-size:clamp(36px,5vw,72px);font-weight:400;
-  color:var(--text);line-height:1.08;letter-spacing:-.5px;margin-bottom:48px;
+  color:var(--text);line-height:1.08;letter-spacing:-.5px;margin-bottom:40px;
 }
-.cta-inner h2 em{font-style:italic}
-.cta-buttons{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:24px}
+.cta-inner h2 em{font-style:italic;color:var(--accent)}
+.cta-buttons{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:22px}
 .cta-inner .btn-primary{padding:18px 48px;font-size:15px;letter-spacing:.3px}
 .cta-inner .btn-outline{padding:18px 48px;font-size:15px;letter-spacing:.3px}
+.cta-phone{font-family:var(--mono);font-size:12px;letter-spacing:.5px;color:var(--text3)}
+.cta-phone a{color:var(--text2);border-bottom:1px solid var(--border2)}
 
 footer{
   border-top:1px solid var(--border);padding:28px 48px;
@@ -263,7 +308,11 @@ footer{
   .nav-center,.nav-right .btn-ghost{display:none}
   .hero{padding:100px 24px 72px}
   section{padding:72px 0}
-  .opt-grid,.problem-grid,.pain-slots{grid-template-columns:1fr}
+  .proc-cols{grid-template-columns:1fr;gap:32px}
+  .problem-grid,.pain-slots{grid-template-columns:1fr}
+  .cs-steps{grid-template-columns:repeat(2,1fr)}
+  .why-grid{grid-template-columns:repeat(2,1fr)}
+  .next-grid{grid-template-columns:1fr}
   .hww-steps{grid-template-columns:repeat(2,1fr)}
   .hero-creds{margin-top:40px}
   footer{padding:20px 24px;flex-direction:column;gap:6px;text-align:center}
@@ -277,7 +326,9 @@ footer{
   .cmp .c-lbl{font-size:12px}
 }
 
-@media(max-width:520px){.hww-steps{grid-template-columns:1fr}}
+@media(max-width:520px){
+  .hww-steps,.cs-steps,.why-grid{grid-template-columns:1fr}
+}
 
 /* Mobile logo grid — 4 columns × 2 rows (7 logos, last cell empty) */
 @media(max-width:680px){
@@ -304,7 +355,8 @@ footer{
 <nav class="nav">
   <a href="/" class="nav-logo"><img src="leanlog-final-light 2.png" alt="LeanLog"></a>
   <div class="nav-center">
-    <a href="/#solution">How we work</a>
+    <a href="/#processes">What we run</a>
+    <a href="/#third">How we work</a>
     <a href="/#who">Who we are</a>
   </div>
   <div class="nav-right">
@@ -316,7 +368,7 @@ footer{
 <section class="hero">
   <div class="hero-glow"></div>
   <div class="hero-inner">
-    <h1>Run your operation on AI.</h1>
+    <h1>Run your operation on <em>AI</em>.</h1>
 
     <!-- Credentials -->
     <div class="hero-creds">
@@ -331,43 +383,144 @@ footer{
         <div class="org-logo"><img src="assets/logos/mitre.svg" alt="MITRE Corporation"></div>
       </div>
     </div>
-    <button class="hero-scroll" onclick="document.getElementById('problem').scrollIntoView({behavior:'smooth'})">
+    <button class="hero-scroll" onclick="document.getElementById('thesis').scrollIntoView({behavior:'smooth'})">
       <span>Scroll to explore</span>
       <svg class="hero-scroll-arrow" viewBox="0 0 28 16" width="26" height="15" aria-hidden="true"><path d="M2 3 L14 13 L26 3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
   </div>
 </section>
 
-<!-- ── Problem ── -->
-<section id="problem">
+<!-- ── Thesis ── -->
+<section id="thesis">
   <div class="container">
-    <div class="section-header">
-      <div class="tag reveal">01 — Why nothing has worked</div>
-      <h2 class="section-title reveal reveal-d1">The consultants you hire take months, often for slides. The software you buy never fits how you run.</h2>
-      <p class="section-desc reveal reveal-d2">When you need to fix how your operation runs, you have two options, and you've probably tried both.</p>
+    <p class="thesis-line reveal">We add <strong>intelligence</strong> real economy companies <em>already have</em> to <strong>decisions</strong> they <em>already make</em>, to execute them <strong>faster</strong> and <strong>better</strong>.</p>
+  </div>
+</section>
+
+<!-- ── Processes we run ── -->
+<section id="processes">
+  <div class="container">
+    <div class="section-header center">
+      <div class="tag reveal">01 — What we run</div>
+      <h2 class="section-title reveal reveal-d1">The processes we run on your operation.</h2>
+      <p class="section-desc reveal reveal-d2">Not modules you license. The end-to-end cycles your operation already runs, executed by AI on your data.</p>
     </div>
-    <div class="opt-grid reveal reveal-d3">
-      <div class="problem-card">
-        <span class="pc-index">Consulting</span>
-        <h3>You hire consultants and wait.</h3>
-        <p>Months go by and the bills add up while you wait for a working system. Too often it never comes: what you get is a plan, not something that runs your operation.</p>
+    <div class="proc-cols reveal reveal-d3">
+      <div>
+        <div class="col-head">Buy side <span>· order the right quantities at the best total cost</span></div>
+        <div class="mods">
+          <div class="mod"><div class="mod-name">Demand forecasting</div><div class="mod-desc">Predicts what each SKU will sell, weeks out.</div></div>
+          <div class="mod"><div class="mod-name">Replenishment</div><div class="mod-desc">Sets how much to order per SKU, and when.</div></div>
+          <div class="mod"><div class="mod-name">Sourcing &amp; RFQ</div><div class="mod-desc">Reaches qualified suppliers and compares quotes.</div></div>
+          <div class="mod"><div class="mod-name">PO &amp; 3-way match</div><div class="mod-desc">Cuts the PO, then matches it to receipt and invoice.</div></div>
+        </div>
       </div>
-      <div class="problem-card">
-        <span class="pc-index">Off-the-shelf software</span>
-        <h3>You buy software and it never fits.</h3>
-        <p>It's one product built for everyone, so it can't match how your operation runs. And when something breaks, you're on your own: a support ticket no one answers, no one in tech who knows your business or that you can trust.</p>
+      <div>
+        <div class="col-head">Sell side <span>· maximize revenue without compromising margins</span></div>
+        <div class="mods">
+          <div class="mod"><div class="mod-name">Quoting &amp; pricing</div><div class="mod-desc">Prices each request against your history and drafts the quote.</div></div>
+          <div class="mod"><div class="mod-name">Order management</div><div class="mod-desc">Turns accepted quotes into validated orders.</div></div>
+          <div class="mod"><div class="mod-name">Invoicing</div><div class="mod-desc">Bills accurately from the order, on time.</div></div>
+          <div class="mod"><div class="mod-name">Collections</div><div class="mod-desc">Reconciles payments and prioritizes who to chase.</div></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── Third option ── -->
-<section id="solution">
+<!-- ── Case studies ── -->
+<section id="cases">
   <div class="container">
     <div class="section-header center">
-      <div class="tag reveal">02 — How we work</div>
+      <div class="tag reveal">02 — How it runs</div>
+      <h2 class="section-title reveal reveal-d1">What it looks like in your operation.</h2>
+      <p class="section-desc reveal reveal-d2">Three of the processes, start to finish. The agent does the work; you stay in control.</p>
+    </div>
+
+    <!-- Quoting -->
+    <div class="cs reveal reveal-d3">
+      <div class="cs-eyebrow">Quoting</div>
+      <h3 class="cs-title">Send <strong>quotes</strong> in <strong>minutes</strong> without leaving <strong>money</strong> on the table.</h3>
+      <div class="cs-steps">
+        <div class="cs-step"><div class="cs-step-n">01</div><h4>Agent is triggered</h4><p>A quote request hits your inbox. The agent picks it up and reads the spec, no one re-keys anything.</p></div>
+        <div class="cs-step"><div class="cs-step-n">02</div><h4>It gathers the context</h4><p>It weighs what a person would: your ERP and past quotes, this customer, your margins, constraints, and goals.</p></div>
+        <div class="cs-step"><div class="cs-step-n">03</div><h4>It explains; you refine</h4><p>The agent shows exactly how it priced. You add what it can't see, like a rival in the mix, and it re-prices on the spot.</p></div>
+        <div class="cs-step"><div class="cs-step-n">04</div><h4>Ready to send</h4><p>A finished quote sits in your drafts, ready to go out the moment you hit send.</p></div>
+      </div>
+    </div>
+
+    <!-- Procurement -->
+    <div class="cs reveal">
+      <div class="cs-eyebrow">Procurement</div>
+      <h3 class="cs-title">Buy the right <strong>quantities</strong> at the <strong>best total cost</strong>.</h3>
+      <div class="cs-steps">
+        <div class="cs-step"><div class="cs-step-n">01</div><h4>It forecasts demand</h4><p>The latest ML models predict demand for every SKU, automatically, every day, retrained on new data each morning.</p></div>
+        <div class="cs-step"><div class="cs-step-n">02</div><h4>It decides what to buy</h4><p>It weighs the forecast against your inventory, working-capital policy, and lead times to trigger the right purchases.</p></div>
+        <div class="cs-step"><div class="cs-step-n">03</div><h4>It picks the best deal</h4><p>It goes back and forth with your suppliers until it lands the deal that gets the product when you need it, at the best price.</p></div>
+        <div class="cs-step"><div class="cs-step-n">04</div><h4>It places the order</h4><p>It emails the order to the supplier and books the PO in your ERP, no double entry, nothing dropped.</p></div>
+      </div>
+    </div>
+
+    <!-- Collections -->
+    <div class="cs reveal">
+      <div class="cs-eyebrow">Collections</div>
+      <h3 class="cs-title">Get <strong>paid faster</strong>, and chase the <strong>right accounts</strong> first.</h3>
+      <div class="cs-steps">
+        <div class="cs-step"><div class="cs-step-n">01</div><h4>It reconciles the cash</h4><p>It matches every incoming payment to the right invoice and flags the short-pays and discrepancies.</p></div>
+        <div class="cs-step"><div class="cs-step-n">02</div><h4>It ages the book</h4><p>It ages your receivables and ranks who to chase by how much is at stake and how likely it is to slip.</p></div>
+        <div class="cs-step"><div class="cs-step-n">03</div><h4>It drafts the chase</h4><p>It drafts the right reminder for each account, with the tone escalating as the balance ages.</p></div>
+        <div class="cs-step"><div class="cs-step-n">04</div><h4>You stay in control</h4><p>You add what it can't see, like a promise made on a call, and it holds off.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Why not build it yourself ── -->
+<section id="why">
+  <div class="container">
+    <div class="section-header center">
+      <div class="tag reveal">03 — Building it yourself</div>
+      <h2 class="section-title reveal reveal-d1">Using AI isn't hard, but DIY carries <strong>real risk</strong> for your business.</h2>
+      <p class="section-desc reveal reveal-d2">Claude and ChatGPT make it easy to start. Running it safely, cheaply, and reliably on your operation is harder than it looks.</p>
+    </div>
+    <div class="why-grid reveal reveal-d3">
+      <div class="why-card">
+        <div class="why-ico"><svg viewBox="0 0 24 24"><path d="M12 4 L21.5 20 H2.5 Z"/><line x1="12" y1="10" x2="12" y2="14"/><line x1="12" y1="17" x2="12" y2="17"/></svg></div>
+        <div class="why-h">Automation multiplies mistakes</div>
+        <div class="why-body">Wire it up wrong, a missed step or bad data, and you don't get one bad decision. You get it at machine speed, everywhere.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-ico"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.34-5.66"/><polyline points="20 4 20 9 15 9"/></svg></div>
+        <div class="why-h">It rots without upkeep</div>
+        <div class="why-body">Like any software, it needs maintaining: new models, new rules, new edge cases. Left alone, it drifts into confident, wrong answers.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v5.5c0 4.7-3.4 7.8-8 9-4.6-1.2-8-4.3-8-9V6z"/><polyline points="8.8 12 11 14.2 15.2 9.8"/></svg></div>
+        <div class="why-h">Your data needs real security</div>
+        <div class="why-body">Connecting AI to your ERP, inbox, and financials is a security surface. Done casually, you expose data you can't take back.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-ico"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5.5" rx="7.5" ry="2.8"/><path d="M4.5 5.5v13c0 1.55 3.36 2.8 7.5 2.8s7.5-1.25 7.5-2.8v-13"/><path d="M4.5 12c0 1.55 3.36 2.8 7.5 2.8s7.5-1.25 7.5-2.8"/></svg></div>
+        <div class="why-h">AI without your context is a stranger</div>
+        <div class="why-body">The smartest model on earth, with no context, gives generic, confident, wrong answers. The value isn't the model, it's the context around it.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-ico"><svg viewBox="0 0 24 24"><polygon points="12 3 21 7.5 12 12 3 7.5"/><polyline points="3 12 12 16.5 21 12"/><polyline points="3 16.5 12 21 21 16.5"/></svg></div>
+        <div class="why-h">A foundation that compounds</div>
+        <div class="why-body">Build the context layer once and every new application ships in days, connected to the rest. Skip it, and each one is a slow, disconnected one-off, until the system rots.</div>
+      </div>
+    </div>
+    <p class="why-foot reveal">We build the foundation: <strong>your context, the guardrails, and the upkeep</strong>, and deploy agents on top.</p>
+  </div>
+</section>
+
+<!-- ── Third option ── -->
+<section id="third">
+  <div class="container">
+    <div class="section-header center">
+      <div class="tag reveal">04 — How we work</div>
       <h2 class="section-title reveal reveal-d1">We're the third option.</h2>
-      <p class="section-desc reveal reveal-d2">A dedicated team that learns your operation and builds a working system around how you actually run. We stay accountable for it, we're the people you call when something breaks, and most of what you pay is tied to whether it works.</p>
+      <p class="section-desc reveal reveal-d2">A dedicated team that learns your operation and builds a working system around how you actually run. We stay accountable for it, and we're the people you call when something breaks.</p>
     </div>
 
     <div class="cmp reveal reveal-d3">
@@ -396,7 +549,7 @@ footer{
       <div><span class="yes">&#10003;</span></div>
       <div class="c-us"><span class="yes">&#10003;</span></div>
 
-      <div class="c-lbl c-wedge">Paid mostly on results</div>
+      <div class="c-lbl c-wedge">Proven on your data before you commit</div>
       <div><span class="no">&#10007;</span></div>
       <div><span class="no">&#10007;</span></div>
       <div class="c-us"><span class="yes win">&#10003;</span></div>
@@ -427,11 +580,11 @@ footer{
   </div>
 </section>
 
-<!-- ── First process ── -->
-<section id="process">
+<!-- ── Where we start ── -->
+<section id="start">
   <div class="container">
     <div class="section-header center">
-      <div class="tag reveal">03 — Where we start</div>
+      <div class="tag reveal">05 — Where we start</div>
       <h2 class="section-title reveal reveal-d1">We start with what's hurting most.</h2>
       <p class="section-desc reveal reveal-d2">We pick the first process together, usually one of the top few pains on your plate.</p>
     </div>
@@ -443,12 +596,53 @@ footer{
   </div>
 </section>
 
+<!-- ── Two ways to begin ── -->
+<section id="begin">
+  <div class="container">
+    <div class="section-header center">
+      <div class="tag reveal">06 — Where to begin</div>
+      <h2 class="section-title reveal reveal-d1">Two ways to begin.</h2>
+    </div>
+    <div class="next-grid reveal reveal-d2">
+      <div class="next-card">
+        <div class="next-label">The pilot</div>
+        <div class="next-sub">Two months · $2k/mo · embedded</div>
+        <ul class="next-steps">
+          <li>We embed in your operation.</li>
+          <li>We codify how the work actually gets done.</li>
+          <li>We build a working prototype on your data.</li>
+          <li>We iterate until it's ready for production.</li>
+        </ul>
+        <ul class="next-terms">
+          <li>This is a proof of value, run on your data.</li>
+          <li>Long-term pricing comes after the value is proven.</li>
+          <li>If it takes more than two months, that's on us.</li>
+        </ul>
+      </div>
+      <div class="next-card">
+        <div class="next-label">Full implementation</div>
+        <div class="next-sub">Annual · from $50k</div>
+        <ul class="next-points">
+          <li>We roll it out across your whole operation, not just one process.</li>
+          <li>Production systems, embedded and maintained year-round.</li>
+          <li>A dedicated team that scales with you.</li>
+        </ul>
+        <ul class="next-terms">
+          <li>For teams ready to go all-in on AI.</li>
+          <li>When the upside is large, and you know where it is.</li>
+          <li>When you want one partner across the operation.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ── Who we are ── -->
 <section id="who">
   <div class="container">
     <div class="who-grid reveal">
       <div class="who-left">
-        <div class="tag">04 — Who we are</div>
+        <div class="tag">07 — Who we are</div>
         <h2 class="who-title">We've run the operation, and we've built the AI.</h2>
       </div>
       <p class="who-prose">LeanLog is built by operators and AI engineers. We've scaled an ecommerce company from zero to $60M and run its operation, and we've shipped AI on manufacturing lines, at Intel, and for the Department of Defense. And everywhere we've worked, the same two bad options show up: consultants who are slow and leave a plan behind, or software that never fits how the operation actually runs. So we built the third option.</p>
@@ -459,11 +653,12 @@ footer{
 <!-- ── Bottom CTA ── -->
 <section id="cta">
   <div class="cta-inner">
-    <h2>Run your operation on AI.</h2>
+    <h2>Run your operation on <em>AI</em>.</h2>
     <div class="cta-buttons">
       <a class="btn-primary reveal" href="mailto:rodrigo@leanlog.ai">Talk to a founder</a>
       <a class="btn-outline reveal" href="mailto:rodrigo@leanlog.ai?subject=Demo%20request">Request a demo</a>
     </div>
+    <p class="cta-phone reveal">Or call the CEO at <a href="tel:+17733863801">+1 773 386 3801</a></p>
   </div>
 </section>
 
