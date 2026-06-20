@@ -38,7 +38,7 @@
 
 <!-- ── Storyline ── -->
 <div class="pp-body">
-  <div class="story story-4 reveal">
+  <div class="story story-4 stagger">
     <div class="story-col">
       <div class="story-img">
         <div class="story-stack">
@@ -163,7 +163,7 @@
 const ro = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
 }, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+document.querySelectorAll(".reveal, .stagger").forEach(el => ro.observe(el));
 </script>
 </body>
 </html>

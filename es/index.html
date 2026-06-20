@@ -103,10 +103,10 @@
     </div>
 
     <!-- Cotización -->
-    <div class="cs reveal reveal-d3">
+    <div class="cs">
       <div class="cs-eyebrow">Cotización</div>
       <h3 class="cs-title">Envíe <strong>cotizaciones</strong> en <strong>minutos</strong> sin dejar <strong>dinero</strong> sobre la mesa.</h3>
-      <div class="story story-4">
+      <div class="story story-4 stagger">
         <div class="story-col">
           <div class="story-img">
             <div class="gmail">
@@ -182,10 +182,10 @@
     </div>
 
     <!-- Compras -->
-    <div class="cs reveal">
+    <div class="cs">
       <div class="cs-eyebrow">Compras</div>
       <h3 class="cs-title">Compre las <strong>cantidades</strong> correctas al <strong>mejor costo total</strong>.</h3>
-      <div class="story story-4">
+      <div class="story story-4 stagger">
         <div class="story-col">
           <div class="story-img">
             <div class="story-stack">
@@ -278,10 +278,10 @@
     </div>
 
     <!-- Cobranza -->
-    <div class="cs reveal">
+    <div class="cs">
       <div class="cs-eyebrow">Cobranza</div>
       <h3 class="cs-title">Cobre <strong>más rápido</strong>, y persiga primero a las <strong>cuentas correctas</strong>.</h3>
-      <div class="story story-4">
+      <div class="story story-4 stagger">
         <div class="story-col">
           <div class="story-img">
             <div class="erp">
@@ -344,7 +344,7 @@
       <h2 class="section-title reveal reveal-d1">Usar IA no es difícil; hacerlo por su cuenta implica <strong>riesgos reales</strong> para su negocio.</h2>
       <p class="section-desc reveal reveal-d2">Claude y ChatGPT hacen fácil empezar. Operarlo de forma segura, económica y confiable sobre su negocio es más difícil de lo que parece.</p>
     </div>
-    <div class="why-grid reveal reveal-d3">
+    <div class="why-grid stagger">
       <div class="why-card">
         <div class="why-ico"><svg viewBox="0 0 24 24"><path d="M12 4 L21.5 20 H2.5 Z"/><line x1="12" y1="10" x2="12" y2="14"/><line x1="12" y1="17" x2="12" y2="17"/></svg></div>
         <div class="why-h">La automatización multiplica los errores</div>
@@ -495,7 +495,7 @@ if (history.scrollRestoration) history.scrollRestoration = 'manual';
 const ro = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
 }, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+document.querySelectorAll('.reveal, .stagger').forEach(el => ro.observe(el));
 </script>
 </body>
 </html>

@@ -103,10 +103,10 @@
     </div>
 
     <!-- Quoting -->
-    <div class="cs reveal reveal-d3">
+    <div class="cs">
       <div class="cs-eyebrow">Quoting</div>
       <h3 class="cs-title">Send <strong>quotes</strong> in <strong>minutes</strong> without leaving <strong>money</strong> on the table.</h3>
-      <div class="story story-4">
+      <div class="story story-4 stagger">
         <div class="story-col">
           <div class="story-img">
             <div class="gmail">
@@ -182,10 +182,10 @@
     </div>
 
     <!-- Procurement -->
-    <div class="cs reveal">
+    <div class="cs">
       <div class="cs-eyebrow">Procurement</div>
       <h3 class="cs-title">Buy the right <strong>quantities</strong> at the <strong>best total cost</strong>.</h3>
-      <div class="story story-4">
+      <div class="story story-4 stagger">
         <div class="story-col">
           <div class="story-img">
             <div class="story-stack">
@@ -278,10 +278,10 @@
     </div>
 
     <!-- Collections -->
-    <div class="cs reveal">
+    <div class="cs">
       <div class="cs-eyebrow">Collections</div>
       <h3 class="cs-title">Get <strong>paid faster</strong>, and chase the <strong>right accounts</strong> first.</h3>
-      <div class="story story-4">
+      <div class="story story-4 stagger">
         <div class="story-col">
           <div class="story-img">
             <div class="erp">
@@ -344,7 +344,7 @@
       <h2 class="section-title reveal reveal-d1">Using AI isn't hard, but DIY carries <strong>real risk</strong> for your business.</h2>
       <p class="section-desc reveal reveal-d2">Claude and ChatGPT make it easy to start. Running it safely, cheaply, and reliably on your operation is harder than it looks.</p>
     </div>
-    <div class="why-grid reveal reveal-d3">
+    <div class="why-grid stagger">
       <div class="why-card">
         <div class="why-ico"><svg viewBox="0 0 24 24"><path d="M12 4 L21.5 20 H2.5 Z"/><line x1="12" y1="10" x2="12" y2="14"/><line x1="12" y1="17" x2="12" y2="17"/></svg></div>
         <div class="why-h">Automation multiplies mistakes</div>
@@ -495,7 +495,7 @@ if (history.scrollRestoration) history.scrollRestoration = 'manual';
 const ro = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
 }, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+document.querySelectorAll('.reveal, .stagger').forEach(el => ro.observe(el));
 </script>
 </body>
 </html>
