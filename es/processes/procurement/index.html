@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/favicon.ico">
+<title>Compras — LeanLog</title>
+<meta name="description" content="Cómo LeanLog corre las compras de principio a fin: pronósticos de demanda por SKU con ML, la decisión de compra contra el inventario y el capital de trabajo, la negociación con proveedores por el mejor costo total, y la orden registrada en su ERP.">
+<link rel="alternate" hreflang="en" href="https://leanlog.ai/processes/procurement/">
+<link rel="alternate" hreflang="es" href="https://leanlog.ai/es/processes/procurement/">
+<link rel="alternate" hreflang="x-default" href="https://leanlog.ai/processes/procurement/">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<!-- ── Navegación ── -->
+<nav class="nav">
+  <a href="/es/" class="nav-logo"><img src="/leanlog-final-light 2.png" alt="LeanLog"></a>
+  <div class="nav-center">
+    <a href="/es/#processes">Qué hacemos</a>
+    <a href="/es/#third">Cómo trabajamos</a>
+    <a href="/es/#who">Quiénes somos</a>
+  </div>
+  <div class="nav-right">
+    <a class="btn-primary" href="mailto:rodrigo@leanlog.ai">Hable con un fundador</a>
+  </div>
+</nav>
+
+<!-- ── Hero ── -->
+<div class="pp-hero">
+  <div class="pp-eyebrow">Lado de compras · de la compra al pago</div>
+  <h1 class="pp-h1">Compre las <strong>cantidades</strong> correctas al <strong>mejor costo total</strong>.</h1>
+  <p class="pp-sub">Pronosticar, reordenar, negociar y colocar la orden. El agente corre todo el ciclo de compras sobre sus datos, para que tenga el inventario correcto sin amarrar su capital.</p>
+</div>
+
+<!-- ── Storyline ── -->
+<div class="pp-body">
+  <div class="story story-4 reveal">
+    <div class="story-col">
+      <div class="story-img">
+        <div class="story-stack">
+          <svg class="node-svg" viewBox="0 0 300 200" style="height:152px" xmlns="http://www.w3.org/2000/svg">
+            <line x1="24" y1="22" x2="24" y2="172" stroke="#d6d8dc" stroke-width="1"/>
+            <line x1="24" y1="172" x2="286" y2="172" stroke="#d6d8dc" stroke-width="1"/>
+            <line x1="158" y1="22" x2="158" y2="172" stroke="#d6d8dc" stroke-width="1" stroke-dasharray="2 3"/>
+            <path d="M158,90 C180,64 198,92 220,62 C242,40 260,72 282,44 L282,72 C260,94 242,62 220,82 C198,110 180,76 158,102 Z" fill="#e4e6e9" stroke="none"/>
+            <path d="M24,152 C50,120 70,150 96,118 C120,92 138,128 158,96" fill="none" stroke="#141210" stroke-width="2" stroke-linecap="round"/>
+            <path d="M158,96 C180,70 198,100 220,72 C242,52 260,82 282,58" fill="none" stroke="#0f6e56" stroke-width="2" stroke-dasharray="5 3" stroke-linecap="round"/>
+            <circle cx="282" cy="58" r="3" fill="#0f6e56"/>
+            <text x="28" y="36" fill="#9aa0a7" font-family="JetBrains Mono,monospace" font-size="8">ACTUAL</text>
+            <text x="164" y="36" fill="#9aa0a7" font-family="JetBrains Mono,monospace" font-size="8">PRONÓSTICO</text>
+            <text x="200" y="150" fill="#9aa0a7" font-family="JetBrains Mono,monospace" font-size="8">95% de confianza</text>
+          </svg>
+          <div class="sku-panel">
+            <div class="sp-title">Pronóstico · por SKU</div>
+            <div class="sku-row"><span class="sku-id">SKU-2204</span><svg class="spark" viewBox="0 0 64 18"><path d="M2,14 C14,10 20,12 32,6 C44,2 52,6 62,3"/></svg></div>
+            <div class="sku-row"><span class="sku-id">SKU-0921</span><svg class="spark" viewBox="0 0 64 18"><path d="M2,12 C14,13 20,3 30,4 C40,5 48,13 62,11"/></svg></div>
+            <div class="sku-row"><span class="sku-id">SKU-1190</span><svg class="spark" viewBox="0 0 64 18"><path d="M2,9 C16,9 22,11 34,9 C46,8 54,10 62,9"/></svg></div>
+            <div class="sku-row"><span class="sku-id">SKU-4410</span><svg class="spark" viewBox="0 0 64 18"><path d="M2,6 C14,9 22,13 34,11 C46,9 54,13 62,14"/></svg></div>
+            <div class="sp-foot">+ 1,836 más</div>
+          </div>
+        </div>
+      </div>
+      <div class="story-h">Pronostica la demanda</div>
+      <div class="story-cap">Los últimos modelos de ML predicen la demanda de cada SKU, automáticamente, todos los días, reentrenados con datos nuevos cada mañana.</div>
+    </div>
+    <div class="story-col">
+      <div class="story-img">
+        <svg class="node-svg" viewBox="0 0 320 248" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="160" cy="118" r="58" fill="none" stroke="#d8dbe0" stroke-width="1"/>
+          <circle cx="160" cy="118" r="92" fill="none" stroke="#ced1d6" stroke-width="1"/>
+          <line x1="160" y1="118" x2="160" y2="26" stroke="#d2d4d9" stroke-width="1"/>
+          <line x1="160" y1="118" x2="240" y2="72" stroke="#d2d4d9" stroke-width="1"/>
+          <line x1="160" y1="118" x2="240" y2="164" stroke="#d2d4d9" stroke-width="1"/>
+          <line x1="160" y1="118" x2="160" y2="210" stroke="#d2d4d9" stroke-width="1"/>
+          <line x1="160" y1="118" x2="80" y2="164" stroke="#d2d4d9" stroke-width="1"/>
+          <line x1="160" y1="118" x2="80" y2="72" stroke="#d2d4d9" stroke-width="1"/>
+          <circle cx="160" cy="26" r="3.5" fill="#141210"/><circle cx="240" cy="72" r="3.5" fill="#141210"/><circle cx="240" cy="164" r="3.5" fill="#141210"/><circle cx="160" cy="210" r="3.5" fill="#141210"/><circle cx="80" cy="164" r="3.5" fill="#141210"/><circle cx="80" cy="72" r="3.5" fill="#141210"/>
+          <text x="160" y="16" text-anchor="middle" fill="#565a61" font-family="JetBrains Mono,monospace" font-size="8.5">DEMANDA</text>
+          <text x="250" y="75" text-anchor="start" fill="#565a61" font-family="JetBrains Mono,monospace" font-size="8.5">ENTREGA</text>
+          <text x="250" y="167" text-anchor="start" fill="#565a61" font-family="JetBrains Mono,monospace" font-size="8.5">PROVEEDORES</text>
+          <text x="160" y="227" text-anchor="middle" fill="#565a61" font-family="JetBrains Mono,monospace" font-size="8.5">CAPITAL DE TRABAJO</text>
+          <text x="70" y="167" text-anchor="end" fill="#565a61" font-family="JetBrains Mono,monospace" font-size="8.5">REORDEN</text>
+          <text x="70" y="75" text-anchor="end" fill="#565a61" font-family="JetBrains Mono,monospace" font-size="8.5">INVENTARIO</text>
+          <circle cx="160" cy="118" r="37" fill="none" stroke="#d2d4d9" stroke-width="1"/>
+          <circle cx="160" cy="118" r="30" fill="#0f6e56"/>
+          <line x1="160" y1="118" x2="151" y2="110" stroke="#f5f6f7" stroke-width="1"/><line x1="160" y1="118" x2="170" y2="113" stroke="#f5f6f7" stroke-width="1"/><line x1="160" y1="118" x2="158" y2="128" stroke="#f5f6f7" stroke-width="1"/>
+          <circle cx="160" cy="118" r="2.4" fill="#f5f6f7"/><circle cx="151" cy="110" r="2.4" fill="#f5f6f7"/><circle cx="170" cy="113" r="2.4" fill="#f5f6f7"/><circle cx="158" cy="128" r="2.4" fill="#f5f6f7"/>
+        </svg>
+      </div>
+      <div class="story-h">Decide qué comprar</div>
+      <div class="story-cap">Pondera el pronóstico contra su inventario, su política de capital de trabajo y los tiempos de entrega para disparar las compras correctas.</div>
+    </div>
+    <div class="story-col">
+      <div class="story-img">
+        <div class="cmp-card">
+          <div class="cmp-title">Mejor trato</div>
+          <div class="cmp-row cmp-rec"><b>Proveedor A</b><span class="cmp-m">$34.00 · 2sem · 98%</span></div>
+          <div class="cmp-row"><b>Proveedor B</b><span class="cmp-m">$33.80 · 2sem · 71%</span></div>
+          <div class="cmp-row"><b>Proveedor C</b><span class="cmp-m">$34.40 · 3sem · 95%</span></div>
+          <div class="cmp-note">B es $0.20 más barato, pero a 71% a tiempo. A llega el viernes, confiable, a casi el mejor costo.</div>
+        </div>
+      </div>
+      <div class="story-h">Elige el mejor trato</div>
+      <div class="story-cap">Negocia de ida y vuelta con sus proveedores hasta cerrar el trato que consigue el producto cuando lo necesita, al mejor precio.</div>
+    </div>
+    <div class="story-col">
+      <div class="story-img">
+        <div class="story-stack">
+          <div class="gcompose">
+            <div class="gc-bar"><span>Mensaje nuevo</span><span>&#10005;</span></div>
+            <div class="gc-field">Para: <b>orders@supplier-a.com</b></div>
+            <div class="gc-body">OC #4471 — 1,200 unidades, entrega el viernes. Confirmación adjunta.</div>
+            <div class="gc-foot"><span class="gc-send">Enviar</span></div>
+          </div>
+          <div class="erp">
+            <div class="erp-bar">ERP · nueva orden de compra</div>
+            <div class="erp-row"><span>OC #4471</span><span>Proveedor A</span></div>
+            <div class="erp-row"><span>Cant. 1,200</span><span>$40,920</span></div>
+            <div class="erp-foot" style="color:#188038">guardado en el ERP &#10003;</div>
+          </div>
+        </div>
+      </div>
+      <div class="story-h">Coloca el pedido</div>
+      <div class="story-cap">Envía el pedido al proveedor y registra la OC en su ERP, sin doble captura, sin que se pierda nada.</div>
+    </div>
+  </div>
+  <p class="pp-fit reveal">Las compras son el ciclo <b>de la compra al pago</b>, del pronóstico a la orden colocada. Alimentan el reabastecimiento, la búsqueda de proveedores y la conciliación a 3 vías, y el mismo contexto que fija una cotización también decide qué comprar.</p>
+</div>
+
+<!-- ── Otros procesos ── -->
+<div class="pp-more">
+  <div class="pp-more-label">Más procesos</div>
+  <div class="pp-more-links">
+    <a href="/es/processes/quoting/">Cotización</a>
+    <a href="/es/processes/collections/">Cobranza</a>
+    <a href="/es/#processes">Todos los procesos</a>
+  </div>
+</div>
+
+<!-- ── CTA ── -->
+<section id="cta">
+  <div class="cta-inner">
+    <h2>Opere su negocio con <em>IA</em>.</h2>
+    <div class="cta-buttons">
+      <a class="btn-primary" href="mailto:rodrigo@leanlog.ai">Hable con un fundador</a>
+      <a class="btn-outline" href="mailto:rodrigo@leanlog.ai?subject=Solicitud%20de%20demo">Solicite una demo</a>
+    </div>
+    <p class="cta-phone">O llame al CEO al <a href="tel:+17733863801">+1 773 386 3801</a></p>
+  </div>
+</section>
+
+<footer>
+  <span>&copy; 2026 LeanLog, Inc.</span>
+  <span>Opere su negocio con IA</span>
+  <a href="/processes/procurement/" class="footer-lang">English</a>
+</footer>
+
+<script>
+const ro = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+</script>
+</body>
+</html>
